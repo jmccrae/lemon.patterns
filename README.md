@@ -105,10 +105,10 @@ Event verbs describe an event involving multiple arguments.
 Event verbs may be one of the following:
 
 * `EventVerb` (superclass of all below)
-** `AchievementVerb`: Verb has an end (i.e., achieves a result) but does not have a duration
-** `AccomplishmentVerb`: Verb has an end (i.e., accomplishes a result) and has a duration
-** `SemelfactiveVerb`: Verb has no result and has no duration (occurs instantaneously)
-** `ActivityVerb`: Verb has no result and occurs for some duration.
+  * `AchievementVerb`: Verb has an end (i.e., achieves a result) but does not have a duration
+  * `AccomplishmentVerb`: Verb has an end (i.e., accomplishes a result) and has a duration
+  * `SemelfactiveVerb`: Verb has no result and has no duration (occurs instantaneously)
+  * `ActivityVerb`: Verb has no result and occurs for some duration.
            
 # Adjectives
 
