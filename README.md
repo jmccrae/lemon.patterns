@@ -39,19 +39,21 @@ And used anywhere a full URI would be acceptable as follows
 Catalogue
 ---------
 
-**Names**
+# Nouns
+
+## Names
 
 Names are used for named individuals in the domain, these should be proper nouns
 
   Name("Microsoft","http://microsoft.com")
 
-**Class Nouns**
+## Class Nouns
 
 Class nouns represent genuses of objects from the domain, this includes most common nouns
 
   ClassNoun("cat",dbpedia("cat")) withPlural "cats"
 
-**Relational Nouns**
+## Relational Nouns
 
 These represent relations between two entities that are expressed in sentences as nouns
 
@@ -59,7 +61,7 @@ These represent relations between two entities that are expressed in sentences a
                  propSubj=Subject,
                  propObj=PrepositionalObject("about"))
 
-** Multivalent Relational Nouns **
+## Multivalent Relational Nouns
 
 As with relational nouns but supports more than two arguments
 
