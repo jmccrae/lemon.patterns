@@ -7,13 +7,13 @@ package net.lemonmodel {
   package object patterns {
     implicit def pimpStr(uri : String) = new {
       def as(arg : Arg) : OntologyFrameElement = OntologyFrameElement(URI.create(uri), arg)
-      def greaterThan(boundary : Double) : ScalarMembership = ScalarMembership(URI.create(uri),boundary,positive)
-      def lessThan(boundary : Double) : ScalarMembership = ScalarMembership(URI.create(uri),boundary,negative)
+      def greaterThan(boundary : Double) : ScalarMembershipSlashClass = new ScalarMembershipSlashClass(URI.create(uri),boundary,positive)
+      def lessThan(boundary : Double) : ScalarMembershipSlashClass = new ScalarMembershipSlashClass(URI.create(uri),boundary,negative)
     }
     implicit def pimpStr(uri : URI) = new {
       def as(arg : Arg) : OntologyFrameElement = OntologyFrameElement(uri, arg)
-      def greaterThan(boundary : Double) : ScalarMembership = ScalarMembership(uri,boundary,positive)
-      def lessThan(boundary : Double) : ScalarMembership = ScalarMembership(uri,boundary,negative)
+      def greaterThan(boundary : Double) : ScalarMembershipSlashClass = new ScalarMembershipSlashClass(uri,boundary,positive)
+      def lessThan(boundary : Double) : ScalarMembershipSlashClass = new ScalarMembershipSlashClass(uri,boundary,negative)
     }
     
     implicit def str2URI(uri : String) : URI = URI.create(uri)
@@ -112,8 +112,17 @@ package net.lemonmodel {
     sealed trait Direction
     object positive extends Direction
     object negative extends Direction
-                                   
+ 
+    
+    
+    class ScalarMembershipSlashClass(val property : URI,
+                                     val boundary : Double,
+                                     val direction : Direction) {
+      def forClass(classURI : URI) = ScalarMembership(property,classURI,boundary,direction)
+    }
+      
     case class ScalarMembership(val property : URI,
+                                val forClass : URI,
                                 val boundary : Double,
                                 val direction : Direction)
   }

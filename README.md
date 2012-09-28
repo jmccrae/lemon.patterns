@@ -74,6 +74,77 @@ As with relational nouns but supports more than two arguments
 
 ## State Verb
 
-Represents a verb describing a (atemporal) state of an individual
+Represents a verb describing a (atemporal) state of an individual. The following
+example shows how to create an inflectional table for a verb, which can be used 
+with any verb pattern
 
+    StateVerb("amare",ontology("loves")) withTable (lexinfo,Map(
+      ("tense","present") -> Map(
+        ("number","singular") -> Map(
+          ("person","firstPerson") -> "amo",
+          ("person","secondPerson") -> "amas",
+          ("person","thirdPerson") -> "amat"
+        ),
+        ("number","plural") -> Map(
+          ("person","firstPerson") -> "amamus",
+          ("person","secondPerson") -> "amatis",
+          ("person","thirdPerson") -> "amant"
+        )
+      )
+    ))
     
+## Event Verbs
+
+Event verbs describe an event involving multiple arguments.
+
+    AchievementVerb("give",ontology("GivingEvent"),
+         args=Seq(ontology("giver") as Subject,
+                  ontology("recipient") as DirectObject,
+                  ontology("givenObject") as IndirectObject))
+                  
+Event verbs may be one of the following:
+
+* `EventVerb` (superclass of all below)
+** `AchievementVerb`: Verb has an end (i.e., achieves a result) but does not have a duration
+** `AccomplishmentVerb`: Verb has an end (i.e., accomplishes a result) and has a duration
+** `SemelfactiveVerb`: Verb has no result and has no duration (occurs instantaneously)
+** `ActivityVerb`: Verb has no result and occurs for some duration.
+           
+# Adjectives
+
+## Intersective Adjectives
+
+Intersective adjectives meaning are composed by intersection. As such these adjectives form
+a natural class of objects in the world. 
+
+    IntersectiveAdjective("Belgian",ontology("Belgian"))
+    
+In addition there are two patterns for constructing adjectives from values of properties. The two 
+patterns are for object and datatype properties
+
+    IntersectiveDataPropertyAdjective("green",ontology("color"),"green")
+    
+## Property-modifying Adjectives
+
+Property-modifying adjectives alter the meaning of the noun they are attributed to. They can normally
+only be used in an attributive manner. In the ontology they are generally mappable to object properties
+
+    PropertyModifyingAdjective("former",ontology("heldRole"))
+    
+This works as _"X is a former Y"_ means `X heldRole Y`
+
+## Relational Adjectives
+
+Relational adjectives constitute a relationship between two indidivuals and as such
+are properties in the ontology
+
+    RelationalAdjective("related",ontology("isRelatedTo"))
+    
+## Scalar Adjectives
+
+Scalar adjectives consitute a subspace of a conceptual space and are modelled in the 
+ontology as datatype ranges
+
+    ScalarAdjective("big",
+      scalarMemberships=Seq(
+        ontology("size") greaterThan "5" forClass ontology("Building"))) withComparative "bigger" withSuperlative "biggest"
