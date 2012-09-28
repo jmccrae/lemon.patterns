@@ -69,4 +69,11 @@ As with relational nouns but supports more than two arguments
                 args=Seq(ontology("employee") as PossessiveAdjunct,
                          ontology("role") as PrepositionalObject("as") optional,
                          ontology("startOfEmployment") as PrepositionalObject("since") optional))
+                         
+# Verbs
 
+## State Verb
+
+Represents a verb describing a (atemporal) state of an individual
+
+    
