@@ -17,8 +17,6 @@ command
 
 The project may be compiled using [sbt](http://www.scala-sbt.org/) or [Maven](http://maven.apache.org).
 
-[API documentation](raw/master/docs/api/index.html)
-
 Writing ontology-lexica with patterns
 -------------------------------------
 
