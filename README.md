@@ -55,6 +55,8 @@ Class nouns represent genuses of objects from the domain, this includes most com
 
 ## Relational Nouns
 
+![The relational noun pattern](images/RelationalNoun.png)
+
 These represent relations between two entities that are expressed in sentences as nouns
 
     RelationalNoun("agreement",ontology("agreeAbout"),
