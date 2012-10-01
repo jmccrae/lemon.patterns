@@ -43,11 +43,15 @@ Catalogue
 
 ## Names
 
+![The name pattern](raw/master/images/Name.png)
+
 Names are used for named individuals in the domain, these should be proper nouns
 
     Name("Microsoft","http://microsoft.com")
 
 ## Class Nouns
+
+![The class noun pattern](raw/master/images/ClassNoun.png)
 
 Class nouns represent genuses of objects from the domain, this includes most common nouns
 
@@ -65,12 +69,29 @@ These represent relations between two entities that are expressed in sentences a
 
 ## Multivalent Relational Nouns
 
+![The multivalent relational noun pattern](raw/master/images/MultivalentRelationalNoun.png)
+
 As with relational nouns but supports more than two arguments
 
     RelationalMultivalentNoun("position",ontology("Employement"),
                 args=Seq(ontology("employee") as PossessiveAdjunct,
                          ontology("role") as PrepositionalObject("as") optional,
                          ontology("startOfEmployment") as PrepositionalObject("since") optional))
+
+## Class Relational Nouns
+
+This is a shortcut pattern for nouns that have both a class and property ontological 
+description. An example of this "father", as a father is both a father to someone
+and a father.
+
+    ClassRelationalNoun("father",
+                        ontology("Father"),
+                        ontology("fatherOf"),
+                        propObj=PossessiveAdjunct)
+                        
+Note: `PossessiveAdjunct` is used to indicate arguments made with "of" or a genetive
+form, this allows constructions like "John is Betty's father" as well as 
+"John is the father of Betty".
                          
 # Verbs
 
