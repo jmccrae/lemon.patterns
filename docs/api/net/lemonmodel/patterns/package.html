@@ -1,0 +1,563 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>net.lemonmodel.patterns</title>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link type="text/css" media="screen" rel="stylesheet" href="../../../lib/template.css" />
+      <script type="text/javascript" src="../../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="../../../lib/package_big.png" />
+        <p id="owner"><a name="net" class="extype" href="../../package.html">net</a>.<a name="net.lemonmodel" class="extype" href="../package.html">lemonmodel</a></p>
+        <h1>patterns</h1>
+      </div>
+
+      <h4 class="signature" id="signature">
+      <span class="kind">package</span>
+      <span class="symbol"> 
+        <span class="name">patterns</span>
+        
+        
+      </span>
+      </h4>
+      
+          <div class="fullcommenttop" id="comment"></div>
+        
+
+      <div id="template">
+
+        <div id="mbrsel">
+          <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+          
+          
+          <div id="visbl">
+              <span class="filtertype">Visibility</span>
+              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+            </div>
+        </div>
+
+        
+
+        <div class="types members" id="types">
+              <h3>Type Members</h3>
+              <ol><li visbl="pub" name="net.lemonmodel.patterns.AccomplishmentVerb" data-isabs="false">
+      <a id="AccomplishmentVerb:AccomplishmentVerb"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="AccomplishmentVerb.html"><span class="name">AccomplishmentVerb</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="eventClass">eventClass: URI</span>, <span name="args">args: Seq[OntologyFrameElement]</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends EventVerb[AccomplishmentVerb] with Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Indicates an event verb that has a clear goal and started at some point</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.AchievementVerb" data-isabs="false">
+      <a id="AchievementVerb:AchievementVerb"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="AchievementVerb.html"><span class="name">AchievementVerb</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="eventClass">eventClass: URI</span>, <span name="args">args: Seq[OntologyFrameElement]</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends EventVerb[AchievementVerb] with Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Indicates an event verb that has a clear end but not beginning</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.ActivityVerb" data-isabs="false">
+      <a id="ActivityVerb:ActivityVerb"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="ActivityVerb.html"><span class="name">ActivityVerb</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="eventClass">eventClass: URI</span>, <span name="args">args: Seq[OntologyFrameElement]</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends EventVerb[ActivityVerb] with Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Indicates an event verb that occurs at some point of time</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Adjective" data-isabs="true">
+      <a id="Adjective:Adjective[V]"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="Adjective.html"><span class="name">Adjective</span></a>
+        <span class="tparams">[<span name="V">V &lt;: net.lemonmodel.patterns.Adjective[_]</span>]</span>
+        <span class="result"> extends Pattern</span>
+      </span>
+      </h4>
+      <p class="comment cmt">An adjective
+</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.AdpositionalObject" data-isabs="true">
+      <a id="AdpositionalObject:AdpositionalObject"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="AdpositionalObject.html"><span class="name">AdpositionalObject</span></a>
+        
+        <span class="result"> extends Arg</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Arg" data-isabs="true">
+      <a id="Arg:Arg"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="Arg.html"><span class="name">Arg</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">An argument in a frame
+</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.ClassNoun" data-isabs="false">
+      <a id="ClassNoun:ClassNoun"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="ClassNoun.html"><span class="name">ClassNoun</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="sense">sense: URI</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Noun[ClassNoun] with Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A noun representing a genus of object associated with an ontology class</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.ClassRelationalNoun" data-isabs="false">
+      <a id="ClassRelationalNoun:ClassRelationalNoun"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="ClassRelationalNoun.html"><span class="name">ClassRelationalNoun</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="relationClass">relationClass: URI</span>, <span name="relation">relation: URI</span>, <span name="propSubj">propSubj: Arg</span>, <span name="propObj">propObj: Arg</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Noun[ClassRelationalNoun] with Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A noun representing a relation that also defines a class</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Direction" data-isabs="true">
+      <a id="Direction:Direction"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="Direction.html"><span class="name">Direction</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>sealed </dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.EventVerb" data-isabs="true">
+      <a id="EventVerb:EventVerb[V]"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="EventVerb.html"><span class="name">EventVerb</span></a>
+        <span class="tparams">[<span name="V">V &lt;: net.lemonmodel.patterns.EventVerb[_]</span>]</span>
+        <span class="result"> extends Verb[V]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Event verbs</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Form" data-isabs="false">
+      <a id="Form:Form"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="Form.html"><span class="name">Form</span></a>
+        
+        <span class="params">(<span name="writtenRep">writtenRep: String</span>, <span name="props">props: Map[URI, URI]</span>)</span><span class="result"> extends Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">An other (non-canonical) form of a word</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.IntersectiveAdjective" data-isabs="false">
+      <a id="IntersectiveAdjective:IntersectiveAdjective"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="IntersectiveAdjective.html"><span class="name">IntersectiveAdjective</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="sense">sense: URI</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Adjective[IntersectiveAdjective] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.IntersectiveDataPropertyAdjective" data-isabs="false">
+      <a id="IntersectiveDataPropertyAdjective:IntersectiveDataPropertyAdjective"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="IntersectiveDataPropertyAdjective.html"><span class="name">IntersectiveDataPropertyAdjective</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="property">property: URI</span>, <span name="value">value: String</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Adjective[IntersectiveDataPropertyAdjective] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.IntersectiveObjectPropertyAdjective" data-isabs="false">
+      <a id="IntersectiveObjectPropertyAdjective:IntersectiveObjectPropertyAdjective"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="IntersectiveObjectPropertyAdjective.html"><span class="name">IntersectiveObjectPropertyAdjective</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="property">property: URI</span>, <span name="value">value: URI</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Adjective[IntersectiveObjectPropertyAdjective] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Name" data-isabs="false">
+      <a id="Name:Name"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="Name.html"><span class="name">Name</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="sense">sense: URI</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Noun[Name] with Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A name (proper noun) associated to a named individual in the ontology</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Namespace" data-isabs="false">
+      <a id="Namespace:Namespace"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="Namespace.html"><span class="name">Namespace</span></a>
+        
+        <span class="params">(<span name="prefix">prefix: String</span>)</span><span class="result"> extends Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun" data-isabs="true">
+      <a id="Noun:Noun[N]"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="Noun.html"><span class="name">Noun</span></a>
+        <span class="tparams">[<span name="N">N &lt;: net.lemonmodel.patterns.Noun[_]</span>]</span>
+        <span class="result"> extends Pattern</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A noun
+</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.OntologyFrameElement" data-isabs="false">
+      <a id="OntologyFrameElement:OntologyFrameElement"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="OntologyFrameElement.html"><span class="name">OntologyFrameElement</span></a>
+        
+        <span class="params">(<span name="property">property: URI</span>, <span name="arg">arg: Arg</span>, <span name="isOptional">isOptional: Boolean</span>)</span><span class="result"> extends Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">An element of a multivalent frame in the ontology.</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Pattern" data-isabs="true">
+      <a id="Pattern:Pattern"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="Pattern.html"><span class="name">Pattern</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.PostpositionalObject" data-isabs="false">
+      <a id="PostpositionalObject:PostpositionalObject"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="PostpositionalObject.html"><span class="name">PostpositionalObject</span></a>
+        
+        <span class="params">(<span name="postposition">postposition: String</span>)</span><span class="result"> extends AdpositionalObject with Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A postposition object in a frame
+</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.PrepositionalObject" data-isabs="false">
+      <a id="PrepositionalObject:PrepositionalObject"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="PrepositionalObject.html"><span class="name">PrepositionalObject</span></a>
+        
+        <span class="params">(<span name="preposition">preposition: String</span>)</span><span class="result"> extends AdpositionalObject with Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A prepositional object in a frame
+</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.PropertyModifyingAdjective" data-isabs="false">
+      <a id="PropertyModifyingAdjective:PropertyModifyingAdjective"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="PropertyModifyingAdjective.html"><span class="name">PropertyModifyingAdjective</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="property">property: URI</span>, <span name="propObjIsAttr">propObjIsAttr: Boolean</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Adjective[PropertyModifyingAdjective] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.RelationalAdjective" data-isabs="false">
+      <a id="RelationalAdjective:RelationalAdjective"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="RelationalAdjective.html"><span class="name">RelationalAdjective</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="property">property: URI</span>, <span name="relationalArg">relationalArg: Arg</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Adjective[RelationalAdjective] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.RelationalMultivalentNoun" data-isabs="false">
+      <a id="RelationalMultivalentNoun:RelationalMultivalentNoun"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="RelationalMultivalentNoun.html"><span class="name">RelationalMultivalentNoun</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="relationClass">relationClass: URI</span>, <span name="args">args: Seq[OntologyFrameElement]</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Noun[RelationalMultivalentNoun] with Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A noun representing a relationship with multiple arguments</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.RelationalNoun" data-isabs="false">
+      <a id="RelationalNoun:RelationalNoun"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="RelationalNoun.html"><span class="name">RelationalNoun</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="sense">sense: URI</span>, <span name="propSubj">propSubj: Arg</span>, <span name="propObj">propObj: Arg</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Noun[RelationalNoun] with Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A noun representing a bivalent relationship associated with an object property
+in the ontology</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.ScalarAdjective" data-isabs="false">
+      <a id="ScalarAdjective:ScalarAdjective"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="ScalarAdjective.html"><span class="name">ScalarAdjective</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="scalarMemberships">scalarMemberships: Seq[ScalarMembership]</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Adjective[ScalarAdjective] with Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.ScalarMembership" data-isabs="false">
+      <a id="ScalarMembership:ScalarMembership"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="ScalarMembership.html"><span class="name">ScalarMembership</span></a>
+        
+        <span class="params">(<span name="property">property: URI</span>, <span name="forClass">forClass: URI</span>, <span name="boundary">boundary: Double</span>, <span name="direction">direction: Direction</span>)</span><span class="result"> extends Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.ScalarMembershipSlashClass" data-isabs="false">
+      <a id="ScalarMembershipSlashClass:ScalarMembershipSlashClass"></a>
+      <h4 class="signature">
+      <span class="kind">class</span>
+      <span class="symbol"> 
+        <a href="ScalarMembershipSlashClass.html"><span class="name">ScalarMembershipSlashClass</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.SemelfactiveVerb" data-isabs="false">
+      <a id="SemelfactiveVerb:SemelfactiveVerb"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="SemelfactiveVerb.html"><span class="name">SemelfactiveVerb</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="eventClass">eventClass: URI</span>, <span name="args">args: Seq[OntologyFrameElement]</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends EventVerb[SemelfactiveVerb] with Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Indicates an event verb that occurs at some point in time (without a duration)</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.StateVerb" data-isabs="false">
+      <a id="StateVerb:StateVerb"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="StateVerb.html"><span class="name">StateVerb</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="sense">sense: URI</span>, <span name="propSubj">propSubj: Arg</span>, <span name="propObj">propObj: Arg</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Verb[StateVerb] with Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A state verb indicating a property</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.URINamer" data-isabs="true">
+      <a id="URINamer:URINamer"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="URINamer.html"><span class="name">URINamer</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Verb" data-isabs="true">
+      <a id="Verb:Verb[V]"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="Verb.html"><span class="name">Verb</span></a>
+        <span class="tparams">[<span name="V">V &lt;: net.lemonmodel.patterns.Verb[_]</span>]</span>
+        <span class="result"> extends Pattern</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A verb
+</p>
+    </li></ol>
+            </div>
+        
+        
+
+        <div class="values members" id="values">
+              <h3>Value Members</h3>
+              <ol><li visbl="pub" name="net.lemonmodel.patterns.DirectObject" data-isabs="false">
+      <a id="DirectObject:DirectObject"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="DirectObject$.html"><span class="name">DirectObject</span></a>
+        
+        <span class="result"> extends Arg</span>
+      </span>
+      </h4>
+      <p class="comment cmt">The direct object of a verb
+</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.EventVerb" data-isabs="false">
+      <a id="EventVerb:EventVerb"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="EventVerb$.html"><span class="name">EventVerb</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.IndirectObject" data-isabs="false">
+      <a id="IndirectObject:IndirectObject"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="IndirectObject$.html"><span class="name">IndirectObject</span></a>
+        
+        <span class="result"> extends Arg</span>
+      </span>
+      </h4>
+      <p class="comment cmt">The indirect object of a verb
+</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.PossessiveAdjunct" data-isabs="false">
+      <a id="PossessiveAdjunct:PossessiveAdjunct"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="PossessiveAdjunct$.html"><span class="name">PossessiveAdjunct</span></a>
+        
+        <span class="result"> extends Arg</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Subject" data-isabs="false">
+      <a id="Subject:Subject"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="Subject$.html"><span class="name">Subject</span></a>
+        
+        <span class="result"> extends Arg</span>
+      </span>
+      </h4>
+      <p class="comment cmt">The subject of a verb or the copulative in noun/adjective predicative frame
+</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.package#lexinfo" data-isabs="false">
+      <a id="lexinfo:Namespace"></a>
+      <h4 class="signature">
+      <span class="kind">val</span>
+      <span class="symbol"> 
+        <span class="name">lexinfo</span>
+        
+        <span class="result">: <a name="net.lemonmodel.patterns.Namespace" class="extype" href="Namespace.html">Namespace</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.negative" data-isabs="false">
+      <a id="negative:negative"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="negative$.html"><span class="name">negative</span></a>
+        
+        <span class="result"> extends Direction</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.package#pimpStr" data-isabs="false">
+      <a id="pimpStr(URI):AnyRef { ... /* 3 definitions in type refinement */ }"></a>
+      <h4 class="signature">
+      <span class="kind">implicit def</span>
+      <span class="symbol"> 
+        <span class="name">pimpStr</span>
+        
+        <span class="params">(<span name="uri">uri: <span name="java.net.URI" class="extype">URI</span></span>)</span><span class="result">: AnyRef { ... /* 3 definitions in type refinement */ }</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.package#pimpStr" data-isabs="false">
+      <a id="pimpStr(String):AnyRef { ... /* 3 definitions in type refinement */ }"></a>
+      <h4 class="signature">
+      <span class="kind">implicit def</span>
+      <span class="symbol"> 
+        <span class="name">pimpStr</span>
+        
+        <span class="params">(<span name="uri">uri: String</span>)</span><span class="result">: AnyRef { ... /* 3 definitions in type refinement */ }</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.positive" data-isabs="false">
+      <a id="positive:positive"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="positive$.html"><span class="name">positive</span></a>
+        
+        <span class="result"> extends Direction</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.package#str2URI" data-isabs="false">
+      <a id="str2URI(String):URI"></a>
+      <h4 class="signature">
+      <span class="kind">implicit def</span>
+      <span class="symbol"> 
+        <span class="name">str2URI</span>
+        
+        <span class="params">(<span name="uri">uri: String</span>)</span><span class="result">: <span name="java.net.URI" class="extype">URI</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.package#uriToStr" data-isabs="false">
+      <a id="uriToStr(URI):String"></a>
+      <h4 class="signature">
+      <span class="kind">implicit def</span>
+      <span class="symbol"> 
+        <span class="name">uriToStr</span>
+        
+        <span class="params">(<span name="uri">uri: <span name="java.net.URI" class="extype">URI</span></span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+
+      </div>
+      
+      <div id="tooltip"></div>
+      
+    </body>
+      </html>

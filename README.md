@@ -17,6 +17,8 @@ command
 
 The project may be compiled using [sbt](http://www.scala-sbt.org/) or [Maven](http://maven.apache.org).
 
+[API documentation](raw/master/docs/api/index.html)
+
 Writing ontology-lexica with patterns
 -------------------------------------
 
@@ -97,6 +99,8 @@ form, this allows constructions like "John is Betty's father" as well as
 
 ## State Verb
 
+![The state verb pattern](raw/master/images/StateVerb.png)
+
 Represents a verb describing a (atemporal) state of an individual. The following
 example shows how to create an inflectional table for a verb, which can be used 
 with any verb pattern
@@ -117,6 +121,8 @@ with any verb pattern
     ))
     
 ## Event Verbs
+
+![The accomplishment verb pattern](raw/master/images/AccomplishmentVerb.png) 
 
 Event verbs describe an event involving multiple arguments.
 
