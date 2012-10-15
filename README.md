@@ -43,7 +43,7 @@ Catalogue
 
 ## Names
 
-![The name pattern](raw/master/images/Name.png)
+![The name pattern](master/images/Name.png)
 
 Names are used for named individuals in the domain, these should be proper nouns
 
@@ -59,7 +59,7 @@ Class nouns represent genuses of objects from the domain, this includes most com
 
 ## Relational Nouns
 
-![The relational noun pattern](raw/master/images/RelationalNoun.png)
+![The relational noun pattern](master/images/RelationalNoun.png)
 
 These represent relations between two entities that are expressed in sentences as nouns
 
@@ -69,7 +69,7 @@ These represent relations between two entities that are expressed in sentences a
 
 ## Multivalent Relational Nouns
 
-![The multivalent relational noun pattern](raw/master/images/MultivalentRelationalNoun.png)
+![The multivalent relational noun pattern](master/images/MultivalentRelationalNoun.png)
 
 As with relational nouns but supports more than two arguments
 
@@ -97,7 +97,7 @@ form, this allows constructions like "John is Betty's father" as well as
 
 ## State Verb
 
-![The state verb pattern](raw/master/images/StateVerb.png)
+![The state verb pattern](master/images/StateVerb.png)
 
 Represents a verb describing a (atemporal) state of an individual. The following
 example shows how to create an inflectional table for a verb, which can be used 
@@ -120,7 +120,7 @@ with any verb pattern
     
 ## Event Verbs
 
-![The accomplishment verb pattern](raw/master/images/AccomplishmentVerb.png) 
+![The accomplishment verb pattern](master/images/AccomplishmentVerb.png) 
 
 Event verbs describe an event involving multiple arguments.
 
