@@ -10,7 +10,7 @@ Usage and Requirements
 
 You will need [Scala](http://www.scala-lang.org) to compile scripts using this language
 
-Source files are normal Scala files and as such they can be compile using the following 
+Source files are normal Scala files and as such they can be compiled using the following 
 command
  
     scala -cp lemon-patterns.jar lexicon.scala
@@ -20,7 +20,7 @@ The project may be compiled using [sbt](http://www.scala-sbt.org/) or [Maven](ht
 Writing ontology-lexica with patterns
 -------------------------------------
 
-Writing an ontology-lexicon using these patterns involves starting the file with a `OntologyLexicon`
+Writing an ontology-lexicon using these patterns involves starting the file with an `OntologyLexicon`
 declaration that defines the path of the ontology-lexicon and its language, finally the serialization
 
     OntologyLexicon("http://www.example.com/published/path", // Here is where the ontology-lexicon will be published
@@ -89,7 +89,7 @@ and a father.
                         ontology("fatherOf"),
                         propObj=PossessiveAdjunct)
                         
-Note: `PossessiveAdjunct` is used to indicate arguments made with "of" or a genetive
+Note: `PossessiveAdjunct` is used to indicate arguments made with "of" or a genitive
 form, this allows constructions like "John is Betty's father" as well as 
 "John is the father of Betty".
                          
@@ -162,7 +162,7 @@ This works as _"X is a former Y"_ means `X heldRole Y`
 
 ## Relational Adjectives
 
-Relational adjectives constitute a relationship between two indidivuals and as such
+Relational adjectives constitute a relationship between two individuals and as such
 are properties in the ontology
 
     RelationalAdjective("related",ontology("isRelatedTo"))
