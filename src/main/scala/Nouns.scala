@@ -3,7 +3,7 @@ package net.lemonmodel.patterns
 import java.net.URI
 import scala.xml._
 import net.lemonmodel.rdfutil.RDFUtil._
-       
+        
 /**
  * A noun
  */
@@ -23,24 +23,19 @@ trait Noun[N <: Noun[_]] extends Pattern {
   def withAccusativePlural(form : String) = makeWithForm(Form(form,Map(lexinfo("number")->lexinfo("plural"),lexinfo("case")->lexinfo("accusativeCase"))))
   def withGenetivePlural(form : String) = makeWithForm(Form(form,Map(lexinfo("number")->lexinfo("plural"),lexinfo("case")->lexinfo("genetiveCase"))))
   def withDativePlural(form : String) = makeWithForm(Form(form,Map(lexinfo("number")->lexinfo("plural"),lexinfo("case")->lexinfo("dativeCase"))))
-  def lemma : String
+  def lemma : NounPhrase
   def forms : Seq[Form]
-  def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer("noun",lemma)}>
+  def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer("noun",lemma.toString())}>
       <lemon:canonicalForm>
-        <lemon:LexicalForm rdf:about={namer("noun",lemma,Some("canonicalForm"))}>
-          <lemon:writtenRep xml:lang={lang}>{lemma}</lemon:writtenRep>
+        <lemon:LexicalForm rdf:about={namer("noun",lemma.toString(),Some("canonicalForm"))}>
+          <lemon:writtenRep xml:lang={lang}>{lemma.toString()}</lemon:writtenRep>
         </lemon:LexicalForm>
       </lemon:canonicalForm>
-      { if(isProper) {
-          <lexinfo:partOfSpeech rdf:resource={lexinfo("properNoun")}/>
-        } else {
-          <lexinfo:partOfSpeech rdf:resource={lexinfo("commonNoun")}/>
-        }
-      }
+      { lemma.toXML(namer,lang) }
       {
         for(form <- forms) yield {
           <lemon:otherForm>
-            <lemon:LexicalForm rdf:about={namer("noun",lemma,Some("form"))}>
+            <lemon:LexicalForm rdf:about={namer("noun",lemma.toString(),Some("form"))}>
               <lemon:writtenRep xml:lang={lang}>{form.writtenRep}</lemon:writtenRep>
               {
                 for((prop,propVal) <- form.props) yield {
@@ -63,12 +58,12 @@ trait Noun[N <: Noun[_]] extends Pattern {
 * @param sense The URI of the associated named individual
 * @param forms The set of other forms
 */
-case class Name(val lemma : String, 
+case class Name(val lemma : PNP, 
                 val sense : URI = null, 
                 val forms : Seq[Form] = Nil) extends Noun[Name] {
   protected def makeWithForm(form : Form) = Name(lemma,sense, forms :+ form)
   protected def senseXML(namer : URINamer) = <lemon:sense>
-       <lemon:LexicalSense rdf:about={namer("noun",lemma,Some("sense"))}>
+       <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("sense"))}>
          <lemon:reference>
            <owl:NamedIndividual rdf:about={sense}/>
          </lemon:reference>
@@ -83,24 +78,24 @@ case class Name(val lemma : String,
 * @param sense The URI to be associated with
 * @param forms The set of other forms
 */
-case class ClassNoun(val lemma : String, 
+case class ClassNoun(val lemma : NP, 
                      val sense : URI = null, 
                      val forms : Seq[Form] = Nil) extends Noun[ClassNoun] {
   def makeWithForm(form : Form) = ClassNoun(lemma,sense,forms :+ form)
   def senseXML(namer : URINamer) = {
-  val subjURI = namer("noun",lemma,Some("subject"))
+  val subjURI = namer("noun",lemma.toString(),Some("subject"))
     <lemon:sense>
-      <lemon:LexicalSense rdf:about={namer("noun",lemma,Some("sense"))}>
+      <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("sense"))}>
          <lemon:reference>
            <owl:Class rdf:about={sense}/>
          </lemon:reference>
-         <lemon:semArg>
+         <lemon:isA>
             <lemon:Argument rdf:about={subjURI}/>
-         </lemon:semArg>
+         </lemon:isA>
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("noun",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("NounPredicativeFrame")}/>
         <lexinfo:subject rdf:resource={subjURI}/>
       </lemon:Frame>
@@ -117,31 +112,35 @@ case class ClassNoun(val lemma : String,
  * @param propObj Indicates the argument that fills the object (range) of the object property (required)
  * @param forms The set of other forms
  */
-case class RelationalNoun(val lemma : String, 
+case class RelationalNoun(val lemma : NP, 
                           val sense : URI = null, 
-                          val propSubj : Arg = Subject, 
+                          val propSubj : Arg = CopulativeArg, 
                           val propObj : Arg, 
                           val forms : Seq[Form] = Nil) extends Noun[RelationalNoun] {
    protected def makeWithForm(inflForm : Form) = RelationalNoun(lemma,sense,propSubj,propObj,forms :+ inflForm)
    protected def senseXML(namer : URINamer) = {
-     val subjURI = namer("noun",lemma,Some("subject"))
-     val objURI = namer("noun",lemma,Some("adpositionalObject"))
+     val subjURI = namer("noun",lemma.toString(),Some("subject"))
+     val objURI = namer("noun",lemma.toString(),Some("adpositionalObject"))
      <lemon:sense>
-      <lemon:LexicalSense rdf:about={namer("noun",lemma,Some("sense"))}>
+      <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("sense"))}>
          <lemon:reference>
            <rdf:Property rdf:about={sense}/>
          </lemon:reference>
-         <lemon:semArg>
+         <lemon:subjOfProp>
             <lemon:Argument rdf:about={subjURI}/>
+         </lemon:subjOfProp>
+         <lemon:objOfProp>
             <lemon:Argument rdf:about={objURI}/>
-         </lemon:semArg>
+         </lemon:objOfProp>
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("noun",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
         { (propSubj,propObj) match {
-          case (Subject,o : AdpositionalObject) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
-            case (o : AdpositionalObject, Subject) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+          case (s : SubjectArg,o : AdpositionalObject) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+            case (o : AdpositionalObject,s : SubjectArg) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+            case (c : Copulative,p : PossessiveAdjunctArg) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
+            case (p : PossessiveAdjunctArg,c : Copulative) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
             case _ => <!--Unrecognised frame-->
            }
         }
@@ -159,17 +158,17 @@ case class RelationalNoun(val lemma : String,
  * @param args The argument structure (required)
  * @param forms The set of other forms
  */
-case class RelationalMultivalentNoun(val lemma : String,
+case class RelationalMultivalentNoun(val lemma : NP,
                                      val relationClass : URI = null,
                                      val args : Seq[OntologyFrameElement],
                                      val forms : Seq[Form] = Nil)extends Noun[RelationalMultivalentNoun] {
    protected def makeWithForm(form : Form) = RelationalMultivalentNoun(lemma,relationClass,args,forms :+ form)
    protected def senseXML(namer : URINamer) = {
      val argURI = (for((arg,i) <- args.zipWithIndex) yield {
-       arg -> namer("noun",lemma,Some("arg"+(i+1)))
+       arg -> namer("noun",lemma.toString(),Some("arg"+(i+1)))
      }).toMap
      <lemon:sense>
-      <lemon:LexicalSense rdf:about={namer("noun",lemma,Some("sense"))}>
+      <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("sense"))}>
          <lemon:reference>
            <rdfs:Class rdf:about={relationClass}>
              <rdfs:subClassOf rdf:resource="http://www.lemon-model.net/oils#Relationship"/>
@@ -178,8 +177,8 @@ case class RelationalMultivalentNoun(val lemma : String,
          {
            for((arg,i) <- args.zipWithIndex) yield {
             <lemon:subsense>
-              <lemon:LexicalSense rdf:about={namer("noun",lemma,Some("subsense"+(i+1)))}>
-                <lemon:semArg>
+              <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("subsense"+(i+1)))}>
+                <lemon:objOfProp>
                   <lemon:Argument rdf:about={argURI(arg)}/>
                   {
                     if(arg.isOptional) {
@@ -188,7 +187,7 @@ case class RelationalMultivalentNoun(val lemma : String,
                       <!-- Mandatory argument -->
                     }
                   }
-                </lemon:semArg>
+                </lemon:objOfProp>
                 <lemon:reference>
                   <rdf:Property rdf:about={arg.property}/>
                 </lemon:reference>
@@ -199,7 +198,7 @@ case class RelationalMultivalentNoun(val lemma : String,
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("noun",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
         {
           for(arg <- args) yield {
             arg.arg.toXML(argURI(arg),namer)
@@ -219,40 +218,44 @@ case class RelationalMultivalentNoun(val lemma : String,
  * @param propObj The object of the proprety (required)
  * @param forms The set of other forms
  **/
-case class ClassRelationalNoun(val lemma : String,
+case class ClassRelationalNoun(val lemma : NP,
                                val relationClass : URI = null,
                                val relation : URI = null,
-                               val propSubj : Arg = Subject,
+                               val propSubj : Arg = CopulativeArg,
                                val propObj : Arg,
                                val forms : Seq[Form] = Nil) extends Noun[ClassRelationalNoun] {
    protected def makeWithForm(form : Form) = ClassRelationalNoun(lemma,relationClass,relation,propSubj,propObj,forms :+ form)
    protected def senseXML(namer : URINamer) = {
-     val subjURI = namer("noun",lemma,Some("subject"))
-     val objURI = namer("noun",lemma,Some("adpositionalObject"))
+     val subjURI = namer("noun",lemma.toString(),Some("subject"))
+     val objURI = namer("noun",lemma.toString(),Some("adpositionalObject"))
      <lemon:sense>
-      <lemon:LexicalSense rdf:about={namer("noun",lemma,Some("senseRel"))}>
+      <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("senseRel"))}>
          <lemon:reference>
            <rdf:Property rdf:about={relation}/>
          </lemon:reference>
-         <lemon:semArg>
+         <lemon:subjOfProp>
             <lemon:Argument rdf:about={subjURI}/>
+         </lemon:subjOfProp>
+         <lemon:objOfProp>
             <lemon:Argument rdf:about={objURI}/>
-         </lemon:semArg>
+         </lemon:objOfProp>
        </lemon:LexicalSense>
-      <lemon:LexicalSense rdf:about={namer("noun",lemma,Some("senseClass"))}>
+      <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("senseClass"))}>
          <lemon:reference>
            <rdf:Property rdf:about={relationClass}/>
          </lemon:reference>
-         <lemon:semArg>
+         <lemon:isA>
             <lemon:Argument rdf:about={subjURI}/>
-         </lemon:semArg>
+         </lemon:isA>
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("noun",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
         { (propSubj,propObj) match {
-          case (Subject,o : AdpositionalObject) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
-            case (o : AdpositionalObject, Subject) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+          case (c : Copulative,o : AdpositionalObject) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+            case (o : AdpositionalObject, c : Copulative) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+            case (c : Copulative,p : PossessiveAdjunctArg) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
+            case (p : PossessiveAdjunctArg,c : Copulative) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
             case _ => <!--Unrecognised frame-->
            }
         }
@@ -261,7 +264,7 @@ case class ClassRelationalNoun(val lemma : String,
       </lemon:Frame>
     </lemon:synBehavior> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("noun",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("NounPredicateFrame")}/>
         { propSubj.toXML(subjURI,namer) }
       </lemon:Frame>

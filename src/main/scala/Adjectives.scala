@@ -30,19 +30,19 @@ trait Adjective[V <: Adjective[_]] extends Pattern {
   }
   def withComparative(comparativeForm : String) = makeWithForm(Form(comparativeForm,Map(lexinfo("degree")->lexinfo("comparative"))))
   def withSuperlative(superlativeForm : String) = makeWithForm(Form(superlativeForm,Map(lexinfo("degree")->lexinfo("superlative"))))
-  def lemma : String
+  def lemma : AP
   def forms : Seq[Form]
-  def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer("adjective",lemma)}>
+  def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer("adjective",lemma.toString())}>
       <lemon:canonicalForm>
-        <lemon:LexicalForm rdf:about={namer("adjective",lemma,Some("canonicalForm"))}>
-          <lemon:writtenRep xml:lang={lang}>{lemma}</lemon:writtenRep>
+        <lemon:LexicalForm rdf:about={namer("adjective",lemma.toString(),Some("canonicalForm"))}>
+          <lemon:writtenRep xml:lang={lang}>{lemma.toString()}</lemon:writtenRep>
         </lemon:LexicalForm>
       </lemon:canonicalForm> 
       <lexinfo:partOfSpeech rdf:resource={lexinfo("adjective")}/>
       {
         for(form <- forms) yield {
           <lemon:otherForm>
-            <lemon:LexicalForm rdf:about={namer("adjective",lemma,Some("form"))}>
+            <lemon:LexicalForm rdf:about={namer("adjective",lemma.toString(),Some("form"))}>
               <lemon:writtenRep xml:lang={lang}>{form.writtenRep}</lemon:writtenRep>
               {
                 for((prop,propVal) <- form.props) yield {
@@ -59,29 +59,29 @@ trait Adjective[V <: Adjective[_]] extends Pattern {
     </lemon:LexicalEntry>
 }
 
-case class IntersectiveAdjective(val lemma : String,
+case class IntersectiveAdjective(val lemma : AP,
                                       val sense : URI = null,
                                       val forms : Seq[Form] = Nil) extends Adjective[IntersectiveAdjective] {
   protected def makeWithForm(form : Form) = IntersectiveAdjective(lemma,sense,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = IntersectiveAdjective(lemma,sense, forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
-  val subjURI = namer("adjective",lemma,Some("subject"))
+  val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     <lemon:sense>
-      <lemon:LexicalSense rdf:about={namer("adjective",lemma,Some("sense"))}>
+      <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
          <lemon:reference>
            <owl:Class rdf:about={sense}/>
          </lemon:reference>
-         <lemon:semArg>
+         <lemon:isA>
             <lemon:Argument rdf:about={subjURI}/>
-         </lemon:semArg>
+         </lemon:isA>
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("adjective",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
-        <lexinfo:subject rdf:resource={subjURI}/>
+        <lexinfo:copulativeSubject rdf:resource={subjURI}/>
       </lemon:Frame>
-      <lemon:Frame rdf:about={namer("adjective",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
         <lexinfo:attributiveArg rdf:resource={subjURI}/>
       </lemon:Frame>
@@ -89,33 +89,33 @@ case class IntersectiveAdjective(val lemma : String,
   }
 }
                                       
-case class IntersectiveObjectPropertyAdjective(val lemma : String,
+case class IntersectiveObjectPropertyAdjective(val lemma : AP,
                                                val property : URI,
                                                val value : URI,
                                                val forms : Seq[Form] = Nil) extends Adjective[IntersectiveObjectPropertyAdjective] {
   protected def makeWithForm(form : Form) = IntersectiveObjectPropertyAdjective(lemma,property,value,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = IntersectiveObjectPropertyAdjective(lemma,property,value, forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
-  val subjURI = namer("adjective",lemma,Some("subject"))
+  val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     <lemon:sense>
-      <lemon:LexicalSense rdf:about={namer("adjective",lemma,Some("sense"))}>
+      <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
          <lemon:reference>
            <owl:Restriction>
              <owl:onProperty rdf:resource={property}/>
              <owl:hasValue rdf:resource={value}/>
            </owl:Restriction>
          </lemon:reference>
-         <lemon:semArg>
+         <lemon:isA>
             <lemon:Argument rdf:about={subjURI}/>
-         </lemon:semArg>
+         </lemon:isA>
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("adjective",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
-        <lexinfo:subject rdf:resource={subjURI}/>
+        <lexinfo:copulativeSubject rdf:resource={subjURI}/>
       </lemon:Frame>
-      <lemon:Frame rdf:about={namer("adjective",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
         <lexinfo:attributiveArg rdf:resource={subjURI}/>
       </lemon:Frame>
@@ -123,33 +123,33 @@ case class IntersectiveObjectPropertyAdjective(val lemma : String,
   }
 }
                                                
-case class IntersectiveDataPropertyAdjective(val lemma : String,
+case class IntersectiveDataPropertyAdjective(val lemma : AP,
                                              val property : URI,
                                              val value : String,
                                              val forms : Seq[Form] = Nil) extends Adjective[IntersectiveDataPropertyAdjective] {
   protected def makeWithForm(form : Form) = IntersectiveDataPropertyAdjective(lemma,property,value,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = IntersectiveDataPropertyAdjective(lemma,property,value, forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
-  val subjURI = namer("adjective",lemma,Some("subject"))
+  val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     <lemon:sense>
-      <lemon:LexicalSense rdf:about={namer("adjective",lemma,Some("sense"))}>
+      <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
          <lemon:reference>
            <owl:Restriction>
              <owl:onProperty rdf:resource={property}/>
              <owl:hasValue>{value}</owl:hasValue>
            </owl:Restriction>
          </lemon:reference>
-         <lemon:semArg>
+         <lemon:isA>
             <lemon:Argument rdf:about={subjURI}/>
-         </lemon:semArg>
+         </lemon:isA>
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("adjective",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
-        <lexinfo:subject rdf:resource={subjURI}/>
+        <lexinfo:copulativeSubject rdf:resource={subjURI}/>
       </lemon:Frame>
-      <lemon:Frame rdf:about={namer("adjective",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
         <lexinfo:attributiveArg rdf:resource={subjURI}/>
       </lemon:Frame>
@@ -157,64 +157,64 @@ case class IntersectiveDataPropertyAdjective(val lemma : String,
   }
 }
                                              
-case class PropertyModifyingAdjective(val lemma : String,
+case class PropertyModifyingAdjective(val lemma : AP,
                                       val property : URI,
                                       val propObjIsAttr : Boolean,
                                       val forms : Seq[Form] = Nil) extends Adjective[PropertyModifyingAdjective] {
   protected def makeWithForm(form : Form) = PropertyModifyingAdjective(lemma,property,propObjIsAttr,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = PropertyModifyingAdjective(lemma,property,propObjIsAttr,forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
-    val subjURI = namer("adjective",lemma,Some("subject"))
-    val objURI = namer("adjective",lemma,Some("attributive"))
+    val subjURI = namer("adjective",lemma.toString(),Some("subject"))
+    val objURI = namer("adjective",lemma.toString(),Some("attributive"))
     <lemon:sense>
-      <lemon:LexicalSense rdf:about={namer("adjective",lemma,Some("sense"))}>
+      <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
          <lemon:reference>
            <rdf:Property rdf:about={property}/>
          </lemon:reference>
-         <lemon:semArg>
+         <lemon:subjOfProp>
             <lemon:Argument rdf:about={subjURI}/>
-         </lemon:semArg>
-         <lemon:semArg>
+         </lemon:subjOfProp>
+         <lemon:objOfProp>
             <lemon:Argument rdf:about={objURI}/>
-         </lemon:semArg>
+         </lemon:objOfProp>
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("adjective",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectivePropertyModifyingFrame")}/>
-        <lexinfo:subject rdf:resource={subjURI}/>
+        <lexinfo:copulativeSubject rdf:resource={subjURI}/>
         <lexinfo:attributeArg rdf:resource={objURI}/>
       </lemon:Frame>
     </lemon:synBehavior>
   }
 }
                                       
-case class RelationalAdjective(val lemma : String,
+case class RelationalAdjective(val lemma : AP,
                                val property : URI = null,
                                val relationalArg : Arg,
                                val forms : Seq[Form] = Nil) extends Adjective[RelationalAdjective] {
   protected def makeWithForm(form : Form) = RelationalAdjective(lemma,property,relationalArg,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = RelationalAdjective(lemma,property,relationalArg,forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
-    val subjURI = namer("adjective",lemma,Some("subject"))
-    val objURI = namer("adjective",lemma,Some("attributive"))
+    val subjURI = namer("adjective",lemma.toString(),Some("subject"))
+    val objURI = namer("adjective",lemma.toString(),Some("attributive"))
     <lemon:sense>
-      <lemon:LexicalSense rdf:about={namer("adjective",lemma,Some("sense"))}>
+      <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
          <lemon:reference>
            <rdf:Property rdf:about={property}/>
          </lemon:reference>
-         <lemon:semArg>
+         <lemon:subjOfProp>
             <lemon:Argument rdf:about={subjURI}/>
-         </lemon:semArg>
-         <lemon:semArg>
+         </lemon:subjOfProp>
+         <lemon:objOfProp>
             <lemon:Argument rdf:about={objURI}/>
-         </lemon:semArg>
+         </lemon:objOfProp>
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("adjective",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectivePPFrame")}/>
-        <lexinfo:subject rdf:resource={subjURI}/>
+        <lexinfo:copulativeSubject rdf:resource={subjURI}/>
         { relationalArg.toXML(objURI,namer) }
       </lemon:Frame>
     </lemon:synBehavior>
@@ -222,17 +222,17 @@ case class RelationalAdjective(val lemma : String,
 }
 
                                
-case class ScalarAdjective(val lemma : String,
+case class ScalarAdjective(val lemma : AP,
                            val scalarMemberships : Seq[ScalarMembership] = Nil,
                            val forms : Seq[Form] = Nil) extends Adjective[ScalarAdjective] {   
   protected def makeWithForm(form : Form) = ScalarAdjective(lemma,scalarMemberships,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = ScalarAdjective(lemma,scalarMemberships,forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
-    val subjURI = namer("adjective",lemma,Some("subject"))
+    val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     <lemon:sense>
     {
       for(ScalarMembership(property,forClass,boundary,direction) <- scalarMemberships) yield {
-      <lemon:LexicalSense rdf:about={namer("adjective",lemma,Some("sense"))}>
+      <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
          <lemon:reference>
             <owl:Class>
               <rdfs:subClassOf rdf:resource={forClass}/>
@@ -264,11 +264,11 @@ case class ScalarAdjective(val lemma : String,
     }
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("adjective",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
-        <lexinfo:subject rdf:resource={subjURI}/>
+        <lexinfo:copulativeSubject rdf:resource={subjURI}/>
       </lemon:Frame>
-      <lemon:Frame rdf:about={namer("adjective",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
         <lexinfo:attributiveArg rdf:resource={subjURI}/>
       </lemon:Frame>
@@ -276,19 +276,19 @@ case class ScalarAdjective(val lemma : String,
   }
 }
 /*
-case class ScalarParticleAdjective(val lemma : String,
+case class ScalarParticleAdjective(val lemma : AP,
                            val scalarMemberships : Seq[ScalarMembership] = Nil,
                            val forms : Seq[Form] = Nil) extends Adjective[ScalarParticleAdjective] {
                              
   protected def makeWithForm(form : Form) = ScalarAdjective(lemma,scalarMemberships,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = ScalarAdjective(lemma,scalarMemberships,forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
-    val subjURI = namer("adjective",lemma,Some("subject"))
-    val subjURI = namer("adjective",lemma,Some("object"))
+    val subjURI = namer("adjective",lemma.toString(),Some("subject"))
+    val subjURI = namer("adjective",lemma.toString(),Some("object"))
     <lemon:sense>
     {
       for(ScalarMembership(property,boundary,direction) <- scalarMemberships) yield {
-      <lemon:LexicalSense rdf:about={namer("adjective",lemma,Some("sense"))}>
+      <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
          <lemon:reference>
             <rdfs:Datatype>
                 <owl:withRestrictions rdf:parseType="Collection">
@@ -311,20 +311,20 @@ case class ScalarParticleAdjective(val lemma : String,
     }
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("adjective",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
         <lexinfo:subject rdf:resource={subjURI}/>
       </lemon:Frame>
-      <lemon:Frame rdf:about={namer("adjective",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
         <lexinfo:attributiveArg rdf:resource={subjURI}/>
       </lemon:Frame>
-      <lemon:Frame rdf:about={namer("adjective",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveComparativeFrame")}/>
         <lexinfo:subject rdf:resource={subjURI}/>
         <lexinfo:comparativeAdjunct rdf:resource={objURI}/>
       </lemon:Frame>
-      <lemon:Frame rdf:about={namer("adjective",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveSuperlativeFrame")}/>
         <lexinfo:superlativeAdjunct rdf:resource={objURI}/>
       </lemon:Frame>

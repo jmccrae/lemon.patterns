@@ -1,0 +1,28 @@
+#!/bin/bash
+
+die () {
+    echo >&2 "$@"
+    exit 1
+}
+
+if [ $# -ne 1 ] 
+then
+  die "Required argument: lexiconFile" 
+fi
+
+echo "import net.lemonmodel.patterns._" > tmp_model.scala
+echo "import net.lemonmodel.patterns.pos._" >> tmp_model.scala
+echo "import net.lemonmodel.rdfutil.RDFUtil._" >> tmp_model.scala
+echo "" >> tmp_model.scala
+echo "object TmpModel {" >> tmp_model.scala
+echo "  var lexicons = List[Lexicon]()" >> tmp_model.scala
+
+cat $1 >> tmp_model.scala
+
+perl -pi -e 's/Lexicon\(/lexicons ::= Lexicon\(/g' tmp_model.scala
+
+echo " def main(args : Array[String]) = println(WriteAsRDF.apply(for(lexicon <- lexicons) yield { lexicon.toXML() })) }" >> tmp_model.scala
+
+scala -cp target/scala-2.9.1/lemon-patterns_2.9.1-1.12.9.jar tmp_model.scala
+
+rm tmp_model.scala

@@ -27,19 +27,19 @@ trait Verb[V <: Verb[_]] extends Pattern {
     val forms = extractForms(namespace,table,Nil)
     makeWithForms(forms)
   }
-  def lemma : String
+  def lemma : VP
   def forms : Seq[Form]
-  def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer("verb",lemma)}>
+  def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer("verb",lemma.toString())}>
       <lemon:canonicalForm>
-        <lemon:LexicalForm rdf:about={namer("verb",lemma,Some("canonicalForm"))}>
-          <lemon:writtenRep xml:lang={lang}>{lemma}</lemon:writtenRep>
+        <lemon:LexicalForm rdf:about={namer("verb",lemma.toString(),Some("canonicalForm"))}>
+          <lemon:writtenRep xml:lang={lang}>{lemma.toString()}</lemon:writtenRep>
         </lemon:LexicalForm>
       </lemon:canonicalForm> 
       <lexinfo:partOfSpeech rdf:resource={lexinfo("verb")}/>
       {
         for(form <- forms) yield {
           <lemon:otherForm>
-            <lemon:LexicalForm rdf:about={namer("verb",lemma,Some("form"))}>
+            <lemon:LexicalForm rdf:about={namer("verb",lemma.toString(),Some("form"))}>
               <lemon:writtenRep xml:lang={lang}>{form.writtenRep}</lemon:writtenRep>
               {
                 for((prop,propVal) <- form.props) yield {
@@ -62,7 +62,7 @@ trait Verb[V <: Verb[_]] extends Pattern {
  * @param sense The sense of the verb
  * @param forms The set of other forms
  **/
-case class StateVerb(val lemma : String,
+case class StateVerb(val lemma : VP,
                      val sense : URI = null,
                      val propSubj : Arg = Subject, 
                      val propObj : Arg = DirectObject, 
@@ -70,26 +70,28 @@ case class StateVerb(val lemma : String,
   protected def makeWithForm(form : Form) = StateVerb(lemma,sense,propSubj,propObj,forms :+ form)
   protected def makeWithForms(extraForms : Seq[Form]) = StateVerb(lemma,sense,propSubj,propObj,forms ++ extraForms)
   protected def senseXML(namer : URINamer) = {
-     val subjURI = namer("verb",lemma,Some("subject"))
-     val objURI = namer("verb",lemma,Some("object"))
+     val subjURI = namer("verb",lemma.toString(),Some("subject"))
+     val objURI = namer("verb",lemma.toString(),Some("object"))
      <lemon:sense>
-      <lemon:LexicalSense rdf:about={namer("verb",lemma,Some("sense"))}>
+      <lemon:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
          <lemon:reference>
            <rdf:Property rdf:about={sense}/>
          </lemon:reference>
-         <lemon:semArg>
+         <lemon:subjOfProp>
             <lemon:Argument rdf:about={subjURI}/>
+         </lemon:subjOfProp>
+         <lemon:objOfProp>
             <lemon:Argument rdf:about={objURI}/>
-         </lemon:semArg>
+         </lemon:objOfProp>
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("verb",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("verb",lemma.toString(),Some("frame"))}>
         { (propSubj,propObj) match {
-            case (Subject,DirectObject) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
-            case (DirectObject, Subject) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
-            case (Subject,o : AdpositionalObject) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
-            case (o : AdpositionalObject, Subject) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case (s : SubjectArg,o : DirectObjectArg) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
+            case (o : DirectObjectArg,s : SubjectArg) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
+            case (s : SubjectArg,o : AdpositionalObject) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case (o : AdpositionalObject, s : SubjectArg) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
             case _ => <!--Unrecognised frame-->
            }
         }
@@ -114,20 +116,20 @@ trait EventVerb[V <: EventVerb[_]] extends Verb[V] {
   protected def oilsURI : URI
   protected def senseXML(namer : URINamer) = {
      val argURI = (for((arg,i) <- args.zipWithIndex) yield {
-       arg -> namer("verb",lemma,Some("arg"+(i+1)))
+       arg -> namer("verb",lemma.toString(),Some("arg"+(i+1)))
      }).toMap
      <lemon:sense>
-      <lemon:LexicalSense rdf:about={namer("verb",lemma,Some("sense"))}>
+      <lemon:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
          <lemon:reference>
            <rdfs:Class rdf:about={eventClass}>
            <rdfs:subClassOf rdf:resource={oilsURI}/>
            </rdfs:Class>
-         </lemon:reference>
+         </lemon:reference>                        
          {
            for((arg,i) <- args.zipWithIndex) yield {
             <lemon:subsense>
-              <lemon:LexicalSense rdf:about={namer("verb",lemma,Some("subsense"+(i+1)))}>
-                <lemon:semArg>
+              <lemon:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("subsense"+(i+1)))}>
+                <lemon:objOfProp>
                   <lemon:Argument rdf:about={argURI(arg)}/>
                   {
                     if(arg.isOptional) {
@@ -136,7 +138,7 @@ trait EventVerb[V <: EventVerb[_]] extends Verb[V] {
                       <!-- Mandatory argument -->
                     }
                   }
-                </lemon:semArg>
+                </lemon:objOfProp>
                 <lemon:reference>
                   <rdf:Property rdf:about={arg.property}/>
                 </lemon:reference>
@@ -147,7 +149,7 @@ trait EventVerb[V <: EventVerb[_]] extends Verb[V] {
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("verb",lemma,Some("frame"))}>
+      <lemon:Frame rdf:about={namer("verb",lemma.toString(),Some("frame"))}>
         {
           for(arg <- args) yield {
             arg.arg.toXML(argURI(arg),namer)
@@ -159,7 +161,7 @@ trait EventVerb[V <: EventVerb[_]] extends Verb[V] {
 }
 
 object EventVerb {
-  def apply(_lemma : String,
+  def apply(_lemma : VP,
             _eventClass : URI = null,
             _args : Seq[OntologyFrameElement],
             _forms : Seq[Form] = Nil) : EventVerb[EventVerb[_]] = new EventVerb[EventVerb[_]] {
@@ -181,7 +183,7 @@ object EventVerb {
  * @param args The argument structure of the verb (required)
  * @param forms The set of other forms
  */
-case class AchievementVerb(val lemma : String,
+case class AchievementVerb(val lemma : VP,
                            val eventClass : URI = null,
                            val args : Seq[OntologyFrameElement],
                            val forms : Seq[Form] = Nil) extends EventVerb[AchievementVerb] {
@@ -197,7 +199,7 @@ case class AchievementVerb(val lemma : String,
  * @param args The argument structure of the verb (required)
  * @param forms The set of other forms
  */
-case class AccomplishmentVerb(val lemma : String,
+case class AccomplishmentVerb(val lemma : VP,
                               val eventClass : URI = null,
                               val args : Seq[OntologyFrameElement],
                               val forms : Seq[Form] = Nil) extends EventVerb[AccomplishmentVerb] {
@@ -213,7 +215,7 @@ case class AccomplishmentVerb(val lemma : String,
  * @param args The argument structure of the verb (required)
  * @param forms The set of other forms
  */
-case class SemelfactiveVerb(val lemma : String,
+case class SemelfactiveVerb(val lemma : VP,
                             val eventClass : URI = null,
                             val args : Seq[OntologyFrameElement],
                             val forms : Seq[Form] = Nil) extends EventVerb[SemelfactiveVerb] {
@@ -229,7 +231,7 @@ case class SemelfactiveVerb(val lemma : String,
  * @param args The argument structure of the verb (required)
  * @param forms The set of other forms
  */
-case class ActivityVerb(val lemma : String,
+case class ActivityVerb(val lemma : VP,
                         val eventClass : URI = null,
                         val args : Seq[OntologyFrameElement],
                         val forms : Seq[Form] = Nil) extends EventVerb[ActivityVerb] {
