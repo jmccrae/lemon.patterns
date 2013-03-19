@@ -77,11 +77,11 @@ case class IntersectiveAdjective(val lemma : AP,
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("predFrame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
         <lexinfo:copulativeSubject rdf:resource={subjURI}/>
       </lemon:Frame>
-      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
         <lexinfo:attributiveArg rdf:resource={subjURI}/>
       </lemon:Frame>
@@ -111,11 +111,11 @@ case class IntersectiveObjectPropertyAdjective(val lemma : AP,
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("predFrame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
         <lexinfo:copulativeSubject rdf:resource={subjURI}/>
       </lemon:Frame>
-      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
         <lexinfo:attributiveArg rdf:resource={subjURI}/>
       </lemon:Frame>
@@ -145,11 +145,11 @@ case class IntersectiveDataPropertyAdjective(val lemma : AP,
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("predFrame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
         <lexinfo:copulativeSubject rdf:resource={subjURI}/>
       </lemon:Frame>
-      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
         <lexinfo:attributiveArg rdf:resource={subjURI}/>
       </lemon:Frame>
@@ -235,7 +235,13 @@ case class ScalarAdjective(val lemma : AP,
       <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
          <lemon:reference>
             <owl:Class>
-              <rdfs:subClassOf rdf:resource={forClass}/>
+              { 
+                if(forClass != null) {
+                 <rdfs:subClassOf rdf:resource={forClass}/>
+                }
+              }
+              {
+                if(!boundary.isNaN) {
               <owl:equivalentClass>
                 <owl:Restriction>
                   <owl:onProperty rdf:resource={property}/>
@@ -254,6 +260,16 @@ case class ScalarAdjective(val lemma : AP,
                   </owl:someValuesForm>
                 </owl:Restriction>
               </owl:equivalentClass>
+                }
+            }
+            <oils:boundTo rdf:resource={property}/>
+            {
+              if(direction == positive) {
+                <rdfs:subClassOf rdf:resource="http://lemon-model.net/oils#CovariantScalar"/>
+              } else {
+                <rdfs:subClassOf rdf:resource="http://lemon-model.net/oils#ContravariantScalar"/>
+              }
+            }
             </owl:Class>
          </lemon:reference>
          <lemon:isA>
@@ -264,13 +280,67 @@ case class ScalarAdjective(val lemma : AP,
     }
     </lemon:sense> :+
     <lemon:synBehavior>
-      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("predFrame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
         <lexinfo:copulativeSubject rdf:resource={subjURI}/>
       </lemon:Frame>
-      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
         <lexinfo:attributiveArg rdf:resource={subjURI}/>
+      </lemon:Frame>
+    </lemon:synBehavior>
+  }
+}
+
+case class ScalarQuantifyingAdjective(val lemma : AP,
+                                      val scalarMembership : ScalarMembership,
+                                      val forms : Seq[Form] = Nil) extends Adjective[ScalarQuantifyingAdjective] {
+  protected def makeWithForm(form : Form) = ScalarQuantifyingAdjective(lemma,scalarMembership,forms :+ form)
+  protected def makeWithForms(otherForms : Seq[Form]) = ScalarQuantifyingAdjective(lemma,scalarMembership,forms ++ otherForms)
+  protected def senseXML(namer : URINamer) = {
+    val subjURI = namer("adjective",lemma.toString(),Some("subject"))
+    val objURI = namer("adjective",lemma.toString(),Some("object"))
+    <lemon:sense>
+      <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
+         <lemon:reference>
+            <owl:DatatypeProperty rdf:resource={scalarMembership.property}>
+              {
+                if(!scalarMembership.boundary.isNaN) {
+              <rdfs:range>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource={scalarMembership.property}/>
+                  <owl:someValuesForm>
+                    <rdfs:Datatype>
+                      <owl:withRestrictions rdf:parseType="Collection">
+                        <rdf:Description>{
+                          if(scalarMembership.direction == positive) {
+                            <xsd:minExclusive>{scalarMembership.boundary}</xsd:minExclusive>
+                          } else {
+                            <xsd:maxExclusive>{scalarMembership.boundary}</xsd:maxExclusive> 
+                          }
+                        }</rdf:Description>
+                      </owl:withRestrictions>
+                    </rdfs:Datatype>
+                  </owl:someValuesForm>
+                </owl:Restriction>
+              </rdfs:range>
+                }
+            }
+            </owl:DatatypeProperty>
+         </lemon:reference>
+         <lemon:subjOfProp>
+            <lemon:Argument rdf:about={subjURI}/>
+         </lemon:subjOfProp>
+         <lemon:objOfProp>
+            <lemon:Argument rdf:about={subjURI}/>
+         </lemon:objOfProp>
+       </lemon:LexicalSense>
+    </lemon:sense> :+
+    <lemon:synBehavior>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectiveScaleFrame")}/>
+        <lexinfo:copulativeSubject rdf:resource={subjURI}/>
+        <lexinfo:adverbialComplement rdf:resource={objURI}/>
       </lemon:Frame>
     </lemon:synBehavior>
   }

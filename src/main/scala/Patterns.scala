@@ -14,7 +14,15 @@ package net.lemonmodel {
       def as(arg : Arg) : OntologyFrameElement = OntologyFrameElement(uri, arg)
       def greaterThan(boundary : Double) : ScalarMembershipSlashClass = new ScalarMembershipSlashClass(uri,boundary,positive)
       def lessThan(boundary : Double) : ScalarMembershipSlashClass = new ScalarMembershipSlashClass(uri,boundary,negative)
+      def covariant : ScalarMembershipSimpleClass = new ScalarMembershipSimpleClass(uri,positive)
+      def contravariant : ScalarMembershipSimpleClass = new ScalarMembershipSimpleClass(uri,negative)
     }
+    
+    implicit def smsc2Seq(smsc : ScalarMembershipSimpleClass) : Seq[ScalarMembership] = 
+      Seq(ScalarMembership(smsc.property,null,Double.NaN,smsc.direction))
+    
+    implicit def smsc2sms(smsc : ScalarMembershipSimpleClass) : ScalarMembership =
+      ScalarMembership(smsc.property,null,Double.NaN,smsc.direction)
     
     implicit def str2URI(uri : String) : URI = URI.create(uri)
     implicit def uriToStr(uri : URI) : String = uri.toString()
@@ -22,15 +30,15 @@ package net.lemonmodel {
     implicit def str2NP(lemma : String) : NP = NP(Word(lemma,pos.commonNoun))
     implicit def str2PNP(lemma : String) : PNP = PNP(Word(lemma,pos.properNoun))
     implicit def str2VP(lemma : String) : VP = VP(Word(lemma,pos.verb))
-    implicit def str2AP(lemma : String) : VP = VP(Word(lemma,pos.adjective))
-    
+    implicit def str2AP(lemma : String) : AP = AP(Word(lemma,pos.adjective))
+        
     implicit def str2Word(lemma : String) = new {
       def /(pos : POS) = Word(lemma,pos)
     }
     
     val lexinfo = Namespace("http://lexinfo.net/ontology/2.0/lexinfo#")
-
-        
+    val base = Namespace("#")
+            
   }
   
   package patterns {
@@ -193,7 +201,7 @@ package net.lemonmodel {
       
      
     sealed trait Direction
-    object positive extends Direction
+    object positive extends Direction   
     object negative extends Direction
  
     
@@ -202,6 +210,21 @@ package net.lemonmodel {
                                      val boundary : Double,
                                      val direction : Direction) {
       def forClass(classURI : URI) = ScalarMembership(property,classURI,boundary,direction)
+    }
+    
+    class ScalarMembershipSimpleClass(val property : URI,
+                                      val direction : Direction) {
+      def greaterThan(boundary : Double) = if(direction == positive) {
+        new ScalarMembershipSlashClass(property,boundary,direction)
+      } else {
+        throw new IllegalArgumentException("Scalar membership indicated as both positive and negative!");
+      }
+      
+      def lessThan(boundary : Double) = if(direction == negative) {
+        new ScalarMembershipSlashClass(property,boundary,direction)
+      } else {
+        throw new IllegalArgumentException("Scalar membership indicated as both positive and negative!");
+      }
     }
       
     case class ScalarMembership(val property : URI,

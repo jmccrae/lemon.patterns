@@ -240,3 +240,75 @@ case class ActivityVerb(val lemma : VP,
   protected def oilsURI = URI.create("http://www.lemon-model.net/oils#ActivityVerb")
 }
 
+case class ConsequenceVerb(val lemma : VP,
+                           val conseqProp : URI,
+                           val propSubj : OntologyFrameElement, 
+                           val propObj : OntologyFrameElement, 
+                           val eventClass : URI = null,
+                           val forms : Seq[Form] = Nil) extends Verb[ConsequenceVerb] {
+  protected def makeWithForm(form : Form) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms :+ form)
+  protected def makeWithForms(extraForms : Seq[Form]) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms ++ extraForms)
+  protected def senseXML(namer : URINamer) = {
+     val subjURI = namer("verb",lemma.toString(),Some("subject"))
+     val objURI = namer("verb",lemma.toString(),Some("object"))
+     <lemon:sense>
+      <lemon:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
+         { if(eventClass != null)  {
+             <lemon:reference>
+               <rdf:Property rdf:about={eventClass}/>
+             </lemon:reference>
+           }
+         }
+         <lemon:subsense>
+           <lemon:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
+             <lemon:reference>
+               <rdf:Property rdf:about={propSubj.property}/>
+             </lemon:reference>
+             <lemon:objOfProp>
+               <lemon:Argument rdf:about={subjURI}/>
+             </lemon:objOfProp>
+           </lemon:LexicalSense>
+         </lemon:subsense>
+         <lemon:subsense>
+           <lemon:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
+             <lemon:reference>
+               <rdf:Property rdf:about={propObj.property}/>
+             </lemon:reference>
+             <lemon:objOfProp>
+               <lemon:Argument rdf:about={objURI}/>
+             </lemon:objOfProp>
+           </lemon:LexicalSense>
+         </lemon:subsense>
+       </lemon:LexicalSense>
+    </lemon:sense> :+
+    <lemon:sense>
+      <lemon:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
+        <lemon:reference>
+          <rdf:Property rdf:about={conseqProp}>
+             <owl:propertyChainAxiom rdf:parseType="Collection">
+               <rdf:Description>
+                 <owl:inverseOf rdf:resource={propSubj.property}/>
+               </rdf:Description>
+               <rdf:Description rdf:resource={propObj.property}/>
+             </owl:propertyChainAxiom>
+          </rdf:Property>
+        </lemon:reference>
+      </lemon:LexicalSense>
+    </lemon:sense> :+
+    <lemon:synBehavior>
+      <lemon:Frame rdf:about={namer("verb",lemma.toString(),Some("frame"))}>
+        { (propSubj.arg,propObj.arg) match {
+            case (s : SubjectArg,o : DirectObjectArg) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
+            case (o : DirectObjectArg,s : SubjectArg) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
+            case (s : SubjectArg,o : AdpositionalObject) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case (o : AdpositionalObject, s : SubjectArg) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case _ => <!--Unrecognised frame-->
+           }
+        }
+        { propSubj.arg.toXML(subjURI,namer) }
+        { propObj.arg.toXML(objURI,namer) }
+      </lemon:Frame>
+    </lemon:synBehavior>
+   }
+}                           
+
