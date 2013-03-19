@@ -1,0 +1,108 @@
+token FullURI ["!\"#$%&'()*+,-./0123456789:;<=?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}"] + ;
+
+comment "//" ;
+comment "/*" "*/" ;
+
+EPrefix. Statement ::= "@prefix" Ident ":" "<" FullURI ">" "." ;
+ELexicon. Statement ::= "Lexicon" "(" URI "," String "," [Pattern] ")" ;
+
+EPatternWithForm. Pattern ::= Pattern "with" [Category] String ;
+ENoun. Pattern ::= NounPattern ;
+EVerb. Pattern ::= VerbPattern ;
+EAdjective. Pattern ::= AdjectivePattern ;
+
+EName. NounPattern ::= "Name" "(" PNP "," URI ")" ;
+EClassNoun. NounPattern ::= "ClassNoun" "(" NP "," URI ")" ;
+ERelationalNoun1. NounPattern ::= "RelationalNoun" "(" NP "," URI "," "propSubj" "=" Arg "," "propObj" "=" Arg ")" ;
+ERelationalNoun2. NounPattern ::= "RelationalNoun" "(" NP "," URI "," "propObj" "=" Arg ")" ;
+ERelationalMultivalentNoun. NounPattern ::= "RelationalMultivalentNoun" "(" NP "," URI "," "[" [OntologyFrameElement] "]" ")" ;
+EClassRelationalNoun1. NounPattern ::= "ClassRelationalNoun" "(" NP "," "property" "=" URI "," "class" "=" URI "," "propSubj" "=" Arg "," "propObj" "=" Arg ")" ;
+EClassRelationalNoun2. NounPattern ::= "ClassRelationalNoun" "(" NP "," "property" "=" URI "," "class" "=" URI "," "propObj" "=" Arg ")" ;
+
+EStateVerb1. VerbPattern ::= "StateVerb" "(" VP "," URI ")" ;
+EStateVerb2. VerbPattern ::= "StateVerb" "(" VP "," URI "," "propObj" "=" Arg ")" ;
+EStateVerb3. VerbPattern ::= "StateVerb" "(" VP "," URI "," "propSubj" "=" Arg "," "probObj" "=" Arg ")" ;
+ETelicEventVerb. VerbPattern ::= "telic" VerbPattern2 ;
+ENontelicEventVerb. VerbPattern ::= "nontelic" VerbPattern2 ;
+EDunnotelicEventVerb. VerbPattern ::= VerbPattern3 ;
+EDurativeEventVerb. VerbPattern2 ::= "durative" VerbPattern3 ;
+EInstantEventVerb. VerbPattern2 ::= "instant" VerbPattern3 ;
+EDurativeConsequenceVerb. VerbPattern ::= "durative" VerbPattern4 ;
+EInstantConsequenceVerb. VerbPattern ::= "instant" VerbPattern4 ;
+EConsequenceVerb. VerbPattern ::= VerbPattern4 ;
+EEventVerb. VerbPattern3 ::= "EventVerb" "(" VP "," URI "," "[" [OntologyFrameElement] "]" ")" ;
+EConsequenceVerb1. VerbPattern4 ::= "ConsequenceVerb" "(" VP "," URI "," "propSubj" "=" Arg "," "propObj" "=" Arg "," URI ")" ;
+EConsequenceVerb2. VerbPattern4 ::= "ConsequenceVerb" "(" VP "," URI "," "propSubj" "=" Arg "," "propObj" "=" Arg ")" ;
+
+EIntersectiveAdjective. AdjectivePattern ::= "IntersectiveAdjective" "(" AP "," URI ")" ;
+EIntersectiveObjectPropertyAdjective. AdjectivePattern ::= "IntersectiveObjectPropertyAdjective" "(" AP "," URI "," URI ")" ;
+EIntersectiveDataPropertyAdjective. AdjectivePattern ::= "IntersectiveDataPropertyAdjective" "(" AP "," URI "," URI ")" ;
+EPropertyModifyingAdjective. AdjectivePattern ::= "PropertyModifyingAdjective" "(" AP "," URI ")" ;
+ERelationalAdjective. AdjectivePattern ::= "RelationalAdjective" "(" AP "," URI "," "relationalArg" "=" Arg ")" ;
+EScalarAdjective. AdjectivePattern ::= "ScalarAdjective" "(" AP "," "[" [ScalarMembership] "]" ")" ;
+
+separator Pattern "," ;
+
+ESubject. Arg ::= "Subject" ;
+EDirectObject. Arg ::= "DirectObject" ;
+EIndirectObject. Arg ::= "IndirectObject" ;
+ECopulativeArg. Arg ::= "CopulativeArg" ;
+ECopulativeSubject. Arg ::= "CopulativeSubject" ;
+EPrepositionalObject. Arg ::= "PrepositionalObject" "(" String ")" ;
+EPostpositionalObject. Arg ::= "PostpositionalObject" "(" String ")" ;
+EPossessiveAdjunct. Arg ::= "PossessiveAdjunct" ;
+
+EURIAsSynArg. OntologyFrameElement ::= URI "as" Arg ;
+separator OntologyFrameElement "," ;
+
+EPNPSimple. PNP ::= String ;
+EPNPComplex. PNP ::= "PNP" "(" [POSTaggedWord] ")" ;
+
+ENPSimple. NP ::= String ;
+ENPComplex. NP ::= "NP" "(" [POSTaggedWord] ")" ;
+
+EVPSimple. VP ::= String ;
+EVPComplex. VP ::= "VP" "(" [POSTaggedWord] ")" ;
+
+EAPSimple. AP ::= String ;
+EAPComplex. AP ::= "AP" "(" [POSTaggedWord] ")" ;
+
+EPOSTaggedWord. POSTaggedWord ::= String "/" POSTag ;
+separator POSTaggedWord "," ;
+
+CovariantScalarMembership. ScalarMembership ::= URI "covariant" ;
+ContravariantScalarMembership. ScalarMembership ::= URI "contravariant" ;
+GreaterThanScalarMembership. ScalarMembership ::= URI ">" Double "for" URI ;
+LessThanScalarMembership. ScalarMembership ::= URI "<" Double "for" URI ;
+separator ScalarMembership "," ;
+
+ESingular. Category ::= "singular" ;
+EDual. Category ::= "dual" ;
+EPlural. Category ::= "plural" ;
+ENominative. Category ::= "nominative" ;
+EAccusative. Category ::= "accusative" ;
+EGenitive. Category ::= "genitive" ;
+EDative. Category ::= "dative" ;
+EComparative. Category ::= "comparative" ;
+ESuperlative. Category ::= "superlative" ;
+EPresent. Category ::= "present" ;
+EPast. Category ::= "past" ;
+EFuture. Category ::= "future" ;
+EFirstPerson. Category ::= "firstPerson" ;
+ESecondPerson. Category ::= "secondPerson" ;
+EThirdPerson. Category ::= "thirdPerson" ;
+EImperfect. Category ::= "imperfect" ;
+EImperative. Category ::= "imperative" ;
+EIndicative. Category ::= "indicative" ;
+ESubjunctive. Category ::= "subjunctive" ;
+EConditional. Category ::= "conditional" ;
+EGerundive. Category ::= "gerundive" ;
+EInfinitive. Category ::= "infinitive" ;
+EParticiple. Category ::= "participle" ;
+EAnyCat. Category ::= URI "=>" URI ;
+separator Category "" ;
+
+ENN. POSTag ::= "NN" ;
+
+EQName. URI ::= Ident ":" Ident ;
+EURI. URI ::= "<" FullURI ">" ;

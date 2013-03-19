@@ -159,10 +159,9 @@ case class IntersectiveDataPropertyAdjective(val lemma : AP,
                                              
 case class PropertyModifyingAdjective(val lemma : AP,
                                       val property : URI,
-                                      val propObjIsAttr : Boolean,
                                       val forms : Seq[Form] = Nil) extends Adjective[PropertyModifyingAdjective] {
-  protected def makeWithForm(form : Form) = PropertyModifyingAdjective(lemma,property,propObjIsAttr,forms :+ form)
-  protected def makeWithForms(otherForms : Seq[Form]) = PropertyModifyingAdjective(lemma,property,propObjIsAttr,forms ++ otherForms)
+  protected def makeWithForm(form : Form) = PropertyModifyingAdjective(lemma,property,forms :+ form)
+  protected def makeWithForms(otherForms : Seq[Form]) = PropertyModifyingAdjective(lemma,property,forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     val objURI = namer("adjective",lemma.toString(),Some("attributive"))
