@@ -56,6 +56,7 @@ package net.lemonmodel {
     }
     
     trait Pattern {
+      def makeWithForm(form : Form) : Pattern
       def toXML(namer : URINamer, lang : String)  : Node
     }
     

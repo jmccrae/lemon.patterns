@@ -7,9 +7,9 @@ import net.lemonmodel.rdfutil.RDFUtil._
 /**
  * A verb
  */
-trait Verb[V <: Verb[_]] extends Pattern {
-  protected def makeWithForm(form : Form) : V
-  protected def makeWithForms(forms : Seq[Form]) : V
+trait Verb extends Pattern {
+  def makeWithForm(form : Form) : Verb
+  protected def makeWithForms(forms : Seq[Form]) : Verb
   protected def senseXML(namer : URINamer) : NodeSeq
   def extractForms(namespace : Namespace,  table : Map[(String,String),Any], props : List[(URI,URI)]) : Seq[Form] = {
     (for(((prop,propVal),subtable) <- table) yield {
@@ -23,7 +23,7 @@ trait Verb[V <: Verb[_]] extends Pattern {
       }
     }).flatten.toSeq
   }
-  def withTable(namespace : Namespace, table : Map[(String,String),Any]) : V = {
+  def withTable(namespace : Namespace, table : Map[(String,String),Any]) : Verb = {
     val forms = extractForms(namespace,table,Nil)
     makeWithForms(forms)
   }
@@ -66,8 +66,8 @@ case class StateVerb(val lemma : VP,
                      val sense : URI = null,
                      val propSubj : Arg = Subject, 
                      val propObj : Arg = DirectObject, 
-                     val forms : Seq[Form] = Nil) extends Verb[StateVerb] {
-  protected def makeWithForm(form : Form) = StateVerb(lemma,sense,propSubj,propObj,forms :+ form)
+                     val forms : Seq[Form] = Nil) extends Verb {
+  def makeWithForm(form : Form) = StateVerb(lemma,sense,propSubj,propObj,forms :+ form)
   protected def makeWithForms(extraForms : Seq[Form]) = StateVerb(lemma,sense,propSubj,propObj,forms ++ extraForms)
   protected def senseXML(namer : URINamer) = {
      val subjURI = namer("verb",lemma.toString(),Some("subject"))
@@ -109,7 +109,7 @@ case class StateVerb(val lemma : VP,
  * @param args The argument structure of the verb (required)
  * @param forms The set of other forms
  */
-trait EventVerb[V <: EventVerb[_]] extends Verb[V] {
+trait EventVerb extends Verb {
   def eventClass : URI
   def args : Seq[OntologyFrameElement]
   def forms : Seq[Form]
@@ -164,8 +164,8 @@ object EventVerb {
   def apply(_lemma : VP,
             _eventClass : URI = null,
             _args : Seq[OntologyFrameElement],
-            _forms : Seq[Form] = Nil) : EventVerb[EventVerb[_]] = new EventVerb[EventVerb[_]] {
-    protected def makeWithForm(form : Form) = EventVerb(lemma,eventClass,args,forms :+ form)
+            _forms : Seq[Form] = Nil) : EventVerb = new EventVerb {
+    def makeWithForm(form : Form) = EventVerb(lemma,eventClass,args,forms :+ form)
     protected def makeWithForms(extraForms : Seq[Form]) = EventVerb(lemma,eventClass,args,forms ++ extraForms)
     protected def oilsURI = URI.create("http://www.lemon-model.net/oils#Event")
     def lemma = _lemma
@@ -186,8 +186,8 @@ object EventVerb {
 case class AchievementVerb(val lemma : VP,
                            val eventClass : URI = null,
                            val args : Seq[OntologyFrameElement],
-                           val forms : Seq[Form] = Nil) extends EventVerb[AchievementVerb] {
-  protected def makeWithForm(form : Form) = AchievementVerb(lemma,eventClass,args,forms :+ form)
+                           val forms : Seq[Form] = Nil) extends EventVerb {
+  def makeWithForm(form : Form) = AchievementVerb(lemma,eventClass,args,forms :+ form)
   protected def makeWithForms(extraForms : Seq[Form]) = AchievementVerb(lemma,eventClass,args,forms ++ extraForms)
   protected def oilsURI = URI.create("http://www.lemon-model.net/oils#Achievement")
 }
@@ -202,8 +202,8 @@ case class AchievementVerb(val lemma : VP,
 case class AccomplishmentVerb(val lemma : VP,
                               val eventClass : URI = null,
                               val args : Seq[OntologyFrameElement],
-                              val forms : Seq[Form] = Nil) extends EventVerb[AccomplishmentVerb] {
-  protected def makeWithForm(form : Form) = AccomplishmentVerb(lemma,eventClass,args,forms :+ form)
+                              val forms : Seq[Form] = Nil) extends EventVerb {
+  def makeWithForm(form : Form) = AccomplishmentVerb(lemma,eventClass,args,forms :+ form)
   protected def makeWithForms(extraForms : Seq[Form]) = AccomplishmentVerb(lemma,eventClass,args,forms ++ extraForms)
   protected def oilsURI = URI.create("http://www.lemon-model.net/oils#Accomplishment")
 }
@@ -218,8 +218,8 @@ case class AccomplishmentVerb(val lemma : VP,
 case class SemelfactiveVerb(val lemma : VP,
                             val eventClass : URI = null,
                             val args : Seq[OntologyFrameElement],
-                            val forms : Seq[Form] = Nil) extends EventVerb[SemelfactiveVerb] {
-  protected def makeWithForm(form : Form) = SemelfactiveVerb(lemma,eventClass,args,forms :+ form)
+                            val forms : Seq[Form] = Nil) extends EventVerb {
+  def makeWithForm(form : Form) = SemelfactiveVerb(lemma,eventClass,args,forms :+ form)
   protected def makeWithForms(extraForms : Seq[Form]) = SemelfactiveVerb(lemma,eventClass,args,forms ++ extraForms)
   protected def oilsURI = URI.create("http://www.lemon-model.net/oils#SemelfactiveVerb")
 }
@@ -234,8 +234,8 @@ case class SemelfactiveVerb(val lemma : VP,
 case class ActivityVerb(val lemma : VP,
                         val eventClass : URI = null,
                         val args : Seq[OntologyFrameElement],
-                        val forms : Seq[Form] = Nil) extends EventVerb[ActivityVerb] {
-  protected def makeWithForm(form : Form) = ActivityVerb(lemma,eventClass,args,forms :+ form)
+                        val forms : Seq[Form] = Nil) extends EventVerb {
+  def makeWithForm(form : Form) = ActivityVerb(lemma,eventClass,args,forms :+ form)
   protected def makeWithForms(extraForms : Seq[Form]) = ActivityVerb(lemma,eventClass,args,forms ++ extraForms)
   protected def oilsURI = URI.create("http://www.lemon-model.net/oils#ActivityVerb")
 }
@@ -245,8 +245,8 @@ case class ConsequenceVerb(val lemma : VP,
                            val propSubj : OntologyFrameElement, 
                            val propObj : OntologyFrameElement, 
                            val eventClass : URI = null,
-                           val forms : Seq[Form] = Nil) extends Verb[ConsequenceVerb] {
-  protected def makeWithForm(form : Form) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms :+ form)
+                           val forms : Seq[Form] = Nil) extends Verb {
+  def makeWithForm(form : Form) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms :+ form)
   protected def makeWithForms(extraForms : Seq[Form]) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms ++ extraForms)
   protected def senseXML(namer : URINamer) = {
      val subjURI = namer("verb",lemma.toString(),Some("subject"))

@@ -8,9 +8,9 @@ import net.lemonmodel.rdfutil.RDFUtil._
 /**
  * An adjective
  */
-trait Adjective[V <: Adjective[_]] extends Pattern {
-  protected def makeWithForm(form : Form) : V
-  protected def makeWithForms(forms : Seq[Form]) : V
+trait Adjective extends Pattern {
+  def makeWithForm(form : Form) : Adjective
+  protected def makeWithForms(forms : Seq[Form]) : Adjective
   protected def senseXML(namer : URINamer) : NodeSeq
   def extractForms(namespace : Namespace,  table : Map[(String,String),Any], props : List[(URI,URI)]) : Seq[Form] = {
     (for(((prop,propVal),subtable) <- table) yield {
@@ -24,7 +24,7 @@ trait Adjective[V <: Adjective[_]] extends Pattern {
       }
     }).flatten.toSeq
   }
-  def withTable(namespace : Namespace, table : Map[(String,String),Any]) : V = {
+  def withTable(namespace : Namespace, table : Map[(String,String),Any]) : Adjective = {
     val forms = extractForms(namespace,table,Nil)
     makeWithForms(forms)
   }
@@ -61,8 +61,8 @@ trait Adjective[V <: Adjective[_]] extends Pattern {
 
 case class IntersectiveAdjective(val lemma : AP,
                                       val sense : URI = null,
-                                      val forms : Seq[Form] = Nil) extends Adjective[IntersectiveAdjective] {
-  protected def makeWithForm(form : Form) = IntersectiveAdjective(lemma,sense,forms :+ form)
+                                      val forms : Seq[Form] = Nil) extends Adjective {
+  def makeWithForm(form : Form) = IntersectiveAdjective(lemma,sense,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = IntersectiveAdjective(lemma,sense, forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
   val subjURI = namer("adjective",lemma.toString(),Some("subject"))
@@ -92,8 +92,8 @@ case class IntersectiveAdjective(val lemma : AP,
 case class IntersectiveObjectPropertyAdjective(val lemma : AP,
                                                val property : URI,
                                                val value : URI,
-                                               val forms : Seq[Form] = Nil) extends Adjective[IntersectiveObjectPropertyAdjective] {
-  protected def makeWithForm(form : Form) = IntersectiveObjectPropertyAdjective(lemma,property,value,forms :+ form)
+                                               val forms : Seq[Form] = Nil) extends Adjective {
+  def makeWithForm(form : Form) = IntersectiveObjectPropertyAdjective(lemma,property,value,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = IntersectiveObjectPropertyAdjective(lemma,property,value, forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
   val subjURI = namer("adjective",lemma.toString(),Some("subject"))
@@ -126,8 +126,8 @@ case class IntersectiveObjectPropertyAdjective(val lemma : AP,
 case class IntersectiveDataPropertyAdjective(val lemma : AP,
                                              val property : URI,
                                              val value : String,
-                                             val forms : Seq[Form] = Nil) extends Adjective[IntersectiveDataPropertyAdjective] {
-  protected def makeWithForm(form : Form) = IntersectiveDataPropertyAdjective(lemma,property,value,forms :+ form)
+                                             val forms : Seq[Form] = Nil) extends Adjective {
+  def makeWithForm(form : Form) = IntersectiveDataPropertyAdjective(lemma,property,value,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = IntersectiveDataPropertyAdjective(lemma,property,value, forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
   val subjURI = namer("adjective",lemma.toString(),Some("subject"))
@@ -159,8 +159,8 @@ case class IntersectiveDataPropertyAdjective(val lemma : AP,
                                              
 case class PropertyModifyingAdjective(val lemma : AP,
                                       val property : URI,
-                                      val forms : Seq[Form] = Nil) extends Adjective[PropertyModifyingAdjective] {
-  protected def makeWithForm(form : Form) = PropertyModifyingAdjective(lemma,property,forms :+ form)
+                                      val forms : Seq[Form] = Nil) extends Adjective {
+  def makeWithForm(form : Form) = PropertyModifyingAdjective(lemma,property,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = PropertyModifyingAdjective(lemma,property,forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))
@@ -191,8 +191,8 @@ case class PropertyModifyingAdjective(val lemma : AP,
 case class RelationalAdjective(val lemma : AP,
                                val property : URI = null,
                                val relationalArg : Arg,
-                               val forms : Seq[Form] = Nil) extends Adjective[RelationalAdjective] {
-  protected def makeWithForm(form : Form) = RelationalAdjective(lemma,property,relationalArg,forms :+ form)
+                               val forms : Seq[Form] = Nil) extends Adjective {
+  def makeWithForm(form : Form) = RelationalAdjective(lemma,property,relationalArg,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = RelationalAdjective(lemma,property,relationalArg,forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))
@@ -223,8 +223,8 @@ case class RelationalAdjective(val lemma : AP,
                                
 case class ScalarAdjective(val lemma : AP,
                            val scalarMemberships : Seq[ScalarMembership] = Nil,
-                           val forms : Seq[Form] = Nil) extends Adjective[ScalarAdjective] {   
-  protected def makeWithForm(form : Form) = ScalarAdjective(lemma,scalarMemberships,forms :+ form)
+                           val forms : Seq[Form] = Nil) extends Adjective {   
+  def makeWithForm(form : Form) = ScalarAdjective(lemma,scalarMemberships,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = ScalarAdjective(lemma,scalarMemberships,forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))
@@ -293,8 +293,8 @@ case class ScalarAdjective(val lemma : AP,
 
 case class ScalarQuantifyingAdjective(val lemma : AP,
                                       val scalarMembership : ScalarMembership,
-                                      val forms : Seq[Form] = Nil) extends Adjective[ScalarQuantifyingAdjective] {
-  protected def makeWithForm(form : Form) = ScalarQuantifyingAdjective(lemma,scalarMembership,forms :+ form)
+                                      val forms : Seq[Form] = Nil) extends Adjective {
+  def makeWithForm(form : Form) = ScalarQuantifyingAdjective(lemma,scalarMembership,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = ScalarQuantifyingAdjective(lemma,scalarMembership,forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))
@@ -349,7 +349,7 @@ case class ScalarParticleAdjective(val lemma : AP,
                            val scalarMemberships : Seq[ScalarMembership] = Nil,
                            val forms : Seq[Form] = Nil) extends Adjective[ScalarParticleAdjective] {
                              
-  protected def makeWithForm(form : Form) = ScalarAdjective(lemma,scalarMemberships,forms :+ form)
+  def makeWithForm(form : Form) = ScalarAdjective(lemma,scalarMemberships,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = ScalarAdjective(lemma,scalarMemberships,forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))

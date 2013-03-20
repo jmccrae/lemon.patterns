@@ -56,24 +56,32 @@ The reserved words used in parser are the following: \\
 {\reserved{ConsequenceVerb}} &{\reserved{CopulativeArg}} &{\reserved{CopulativeSubject}} \\
 {\reserved{DirectObject}} &{\reserved{EventVerb}} &{\reserved{IndirectObject}} \\
 {\reserved{IntersectiveAdjective}} &{\reserved{IntersectiveDataPropertyAdjective}} &{\reserved{IntersectiveObjectPropertyAdjective}} \\
-{\reserved{Lexicon}} &{\reserved{NN}} &{\reserved{NP}} \\
-{\reserved{Name}} &{\reserved{PNP}} &{\reserved{PossessiveAdjunct}} \\
-{\reserved{PostpositionalObject}} &{\reserved{PrepositionalObject}} &{\reserved{PropertyModifyingAdjective}} \\
-{\reserved{RelationalAdjective}} &{\reserved{RelationalMultivalentNoun}} &{\reserved{RelationalNoun}} \\
-{\reserved{ScalarAdjective}} &{\reserved{StateVerb}} &{\reserved{Subject}} \\
-{\reserved{VP}} &{\reserved{accusative}} &{\reserved{as}} \\
-{\reserved{class}} &{\reserved{comparative}} &{\reserved{conditional}} \\
-{\reserved{contravariant}} &{\reserved{covariant}} &{\reserved{dative}} \\
-{\reserved{dual}} &{\reserved{durative}} &{\reserved{firstPerson}} \\
-{\reserved{for}} &{\reserved{future}} &{\reserved{genitive}} \\
-{\reserved{gerundive}} &{\reserved{imperative}} &{\reserved{imperfect}} \\
-{\reserved{indicative}} &{\reserved{infinitive}} &{\reserved{instant}} \\
-{\reserved{nominative}} &{\reserved{nontelic}} &{\reserved{participle}} \\
-{\reserved{past}} &{\reserved{plural}} &{\reserved{present}} \\
-{\reserved{probObj}} &{\reserved{propObj}} &{\reserved{propSubj}} \\
-{\reserved{property}} &{\reserved{relationalArg}} &{\reserved{secondPerson}} \\
-{\reserved{singular}} &{\reserved{subjunctive}} &{\reserved{superlative}} \\
-{\reserved{telic}} &{\reserved{thirdPerson}} &{\reserved{with}} \\
+{\reserved{Lexicon}} &{\reserved{NP}} &{\reserved{Name}} \\
+{\reserved{PNP}} &{\reserved{PossessiveAdjunct}} &{\reserved{PostpositionalObject}} \\
+{\reserved{PrepositionalObject}} &{\reserved{PropertyModifyingAdjective}} &{\reserved{RelationalAdjective}} \\
+{\reserved{RelationalMultivalentNoun}} &{\reserved{RelationalNoun}} &{\reserved{ScalarAdjective}} \\
+{\reserved{StateVerb}} &{\reserved{Subject}} &{\reserved{VP}} \\
+{\reserved{accusative}} &{\reserved{adjective}} &{\reserved{adposition}} \\
+{\reserved{adverb}} &{\reserved{article}} &{\reserved{as}} \\
+{\reserved{bullet}} &{\reserved{circumposition}} &{\reserved{class}} \\
+{\reserved{colon}} &{\reserved{comma}} &{\reserved{comparative}} \\
+{\reserved{conditional}} &{\reserved{conjunction}} &{\reserved{contravariant}} \\
+{\reserved{copula}} &{\reserved{covariant}} &{\reserved{dative}} \\
+{\reserved{determiner}} &{\reserved{dual}} &{\reserved{durative}} \\
+{\reserved{firstPerson}} &{\reserved{for}} &{\reserved{future}} \\
+{\reserved{genitive}} &{\reserved{gerundive}} &{\reserved{imperative}} \\
+{\reserved{imperfect}} &{\reserved{indicative}} &{\reserved{infinitive}} \\
+{\reserved{instant}} &{\reserved{interjection}} &{\reserved{nominative}} \\
+{\reserved{nontelic}} &{\reserved{noun}} &{\reserved{numeral}} \\
+{\reserved{participle}} &{\reserved{particle}} &{\reserved{past}} \\
+{\reserved{plural}} &{\reserved{point}} &{\reserved{postposition}} \\
+{\reserved{preposition}} &{\reserved{present}} &{\reserved{probObj}} \\
+{\reserved{pronoun}} &{\reserved{propObj}} &{\reserved{propSubj}} \\
+{\reserved{property}} &{\reserved{punctuation}} &{\reserved{relationalArg}} \\
+{\reserved{secondPerson}} &{\reserved{semiColon}} &{\reserved{singular}} \\
+{\reserved{slash}} &{\reserved{subjunctive}} &{\reserved{superlative}} \\
+{\reserved{telic}} &{\reserved{thirdPerson}} &{\reserved{verb}} \\
+{\reserved{with}} & & \\
 \end{tabular}\\
 
 The symbols used in parser are the following: \\
@@ -96,8 +104,17 @@ and {\emptyP} (empty rule) belong to the BNF notation.
 All other symbols are terminals.\\
 
 \begin{tabular}{lll}
+{\nonterminal{Statements}} & {\arrow}  &{\nonterminal{ListStatement}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
 {\nonterminal{Statement}} & {\arrow}  &{\terminal{@prefix}} {\nonterminal{Ident}} {\terminal{:}} {\terminal{{$<$}}} {\nonterminal{FullURI}} {\terminal{{$>$}}} {\terminal{.}}  \\
  & {\delimit}  &{\terminal{Lexicon}} {\terminal{(}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{String}} {\terminal{,}} {\nonterminal{ListPattern}} {\terminal{)}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{ListStatement}} & {\arrow}  &{\emptyP} \\
+ & {\delimit}  &{\nonterminal{Statement}} {\nonterminal{ListStatement}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -255,7 +272,30 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{POSTag}} & {\arrow}  &{\terminal{NN}}  \\
+{\nonterminal{POSTag}} & {\arrow}  &{\terminal{adjective}}  \\
+ & {\delimit}  &{\terminal{adposition}}  \\
+ & {\delimit}  &{\terminal{adverb}}  \\
+ & {\delimit}  &{\terminal{article}}  \\
+ & {\delimit}  &{\terminal{bullet}}  \\
+ & {\delimit}  &{\terminal{circumposition}}  \\
+ & {\delimit}  &{\terminal{colon}}  \\
+ & {\delimit}  &{\terminal{comma}}  \\
+ & {\delimit}  &{\terminal{conjunction}}  \\
+ & {\delimit}  &{\terminal{copula}}  \\
+ & {\delimit}  &{\terminal{determiner}}  \\
+ & {\delimit}  &{\terminal{interjection}}  \\
+ & {\delimit}  &{\terminal{noun}}  \\
+ & {\delimit}  &{\terminal{numeral}}  \\
+ & {\delimit}  &{\terminal{particle}}  \\
+ & {\delimit}  &{\terminal{point}}  \\
+ & {\delimit}  &{\terminal{postposition}}  \\
+ & {\delimit}  &{\terminal{preposition}}  \\
+ & {\delimit}  &{\terminal{pronoun}}  \\
+ & {\delimit}  &{\terminal{punctuation}}  \\
+ & {\delimit}  &{\terminal{semiColon}}  \\
+ & {\delimit}  &{\terminal{slash}}  \\
+ & {\delimit}  &{\terminal{verb}}  \\
+ & {\delimit}  &{\nonterminal{String}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
