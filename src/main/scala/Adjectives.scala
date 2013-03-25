@@ -208,6 +208,11 @@ case class RelationalAdjective(val lemma : AP,
          <lemon:objOfProp>
             <lemon:Argument rdf:about={objURI}/>
          </lemon:objOfProp>
+        { 
+          if(relationalArg.restriction != None) {
+            <lemon:propertyDomain rdf:resource={relationalArg.restriction.get}/>
+          }
+        }
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
@@ -230,7 +235,7 @@ case class ScalarAdjective(val lemma : AP,
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     <lemon:sense>
     {
-      for(ScalarMembership(property,forClass,boundary,direction) <- scalarMemberships) yield {
+      for(ScalarMembership(property,forClass,boundary,direction,boundary2) <- scalarMemberships) yield {
       <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
          <lemon:reference>
             <owl:Class>
@@ -250,6 +255,9 @@ case class ScalarAdjective(val lemma : AP,
                         <rdf:Description>{
                           if(direction == positive) {
                             <xsd:minExclusive>{boundary}</xsd:minExclusive>
+                          } else if(direction == central) {
+                            <xsd:minExclusive>{boundary}</xsd:minExclusive>
+                            <xsd:maxExclusive>{boundary2}</xsd:maxExclusive>
                           } else {
                             <xsd:maxExclusive>{boundary}</xsd:maxExclusive> 
                           }

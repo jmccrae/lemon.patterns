@@ -218,27 +218,26 @@ public class VisitSkel
 
       return null;
     }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EDurativeConsequenceVerb p, A arg)
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1 p, A arg)
     {
-      /* Code For EDurativeConsequenceVerb Goes Here */
+      /* Code For EConsequenceVerb1 Goes Here */
 
-      p.verbpattern_.accept(new VerbPatternVisitor<R,A>(), arg);
+      p.vp_.accept(new VPVisitor<R,A>(), arg);
+      p.uri_1.accept(new URIVisitor<R,A>(), arg);
+      p.ontologyframeelement_1.accept(new OntologyFrameElementVisitor<R,A>(), arg);
+      p.ontologyframeelement_2.accept(new OntologyFrameElementVisitor<R,A>(), arg);
+      p.uri_2.accept(new URIVisitor<R,A>(), arg);
 
       return null;
     }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EInstantConsequenceVerb p, A arg)
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2 p, A arg)
     {
-      /* Code For EInstantConsequenceVerb Goes Here */
+      /* Code For EConsequenceVerb2 Goes Here */
 
-      p.verbpattern_.accept(new VerbPatternVisitor<R,A>(), arg);
-
-      return null;
-    }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb p, A arg)
-    {
-      /* Code For EConsequenceVerb Goes Here */
-
-      p.verbpattern_.accept(new VerbPatternVisitor<R,A>(), arg);
+      p.vp_.accept(new VPVisitor<R,A>(), arg);
+      p.uri_.accept(new URIVisitor<R,A>(), arg);
+      p.ontologyframeelement_1.accept(new OntologyFrameElementVisitor<R,A>(), arg);
+      p.ontologyframeelement_2.accept(new OntologyFrameElementVisitor<R,A>(), arg);
 
       return null;
     }
@@ -266,29 +265,6 @@ public class VisitSkel
       p.uri_.accept(new URIVisitor<R,A>(), arg);
       for (OntologyFrameElement x : p.listontologyframeelement_) {
       }
-
-      return null;
-    }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1 p, A arg)
-    {
-      /* Code For EConsequenceVerb1 Goes Here */
-
-      p.vp_.accept(new VPVisitor<R,A>(), arg);
-      p.uri_1.accept(new URIVisitor<R,A>(), arg);
-      p.arg_1.accept(new ArgVisitor<R,A>(), arg);
-      p.arg_2.accept(new ArgVisitor<R,A>(), arg);
-      p.uri_2.accept(new URIVisitor<R,A>(), arg);
-
-      return null;
-    }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2 p, A arg)
-    {
-      /* Code For EConsequenceVerb2 Goes Here */
-
-      p.vp_.accept(new VPVisitor<R,A>(), arg);
-      p.uri_.accept(new URIVisitor<R,A>(), arg);
-      p.arg_1.accept(new ArgVisitor<R,A>(), arg);
-      p.arg_2.accept(new ArgVisitor<R,A>(), arg);
 
       return null;
     }
@@ -320,8 +296,8 @@ public class VisitSkel
       /* Code For EIntersectiveDataPropertyAdjective Goes Here */
 
       p.ap_.accept(new APVisitor<R,A>(), arg);
-      p.uri_1.accept(new URIVisitor<R,A>(), arg);
-      p.uri_2.accept(new URIVisitor<R,A>(), arg);
+      p.uri_.accept(new URIVisitor<R,A>(), arg);
+      //p.string_;
 
       return null;
     }
@@ -358,6 +334,23 @@ public class VisitSkel
   }
   public class ArgVisitor<R,A> implements Arg.Visitor<R,A>
   {
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EOptionalArg p, A arg)
+    {
+      /* Code For EOptionalArg Goes Here */
+
+      p.arg_.accept(new ArgVisitor<R,A>(), arg);
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ERestrictedArg p, A arg)
+    {
+      /* Code For ERestrictedArg Goes Here */
+
+      p.arg_.accept(new ArgVisitor<R,A>(), arg);
+      p.uri_.accept(new URIVisitor<R,A>(), arg);
+
+      return null;
+    }
     public R visit(net.lemonmodel.patterns.parser.Absyn.ESubject p, A arg)
     {
       /* Code For ESubject Goes Here */
@@ -546,6 +539,14 @@ public class VisitSkel
 
       return null;
     }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.CentralScalarMembership p, A arg)
+    {
+      /* Code For CentralScalarMembership Goes Here */
+
+      p.uri_.accept(new URIVisitor<R,A>(), arg);
+
+      return null;
+    }
     public R visit(net.lemonmodel.patterns.parser.Absyn.GreaterThanScalarMembership p, A arg)
     {
       /* Code For GreaterThanScalarMembership Goes Here */
@@ -562,6 +563,17 @@ public class VisitSkel
 
       p.uri_1.accept(new URIVisitor<R,A>(), arg);
       //p.double_;
+      p.uri_2.accept(new URIVisitor<R,A>(), arg);
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.BoundedScalarMembership p, A arg)
+    {
+      /* Code For BoundedScalarMembership Goes Here */
+
+      //p.double_1;
+      p.uri_1.accept(new URIVisitor<R,A>(), arg);
+      //p.double_2;
       p.uri_2.accept(new URIVisitor<R,A>(), arg);
 
       return null;

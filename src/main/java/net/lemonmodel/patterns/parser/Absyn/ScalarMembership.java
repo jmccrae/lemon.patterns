@@ -5,8 +5,10 @@ public abstract class ScalarMembership implements java.io.Serializable {
   public interface Visitor <R,A> {
     public R visit(net.lemonmodel.patterns.parser.Absyn.CovariantScalarMembership p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.ContravariantScalarMembership p, A arg);
+    public R visit(net.lemonmodel.patterns.parser.Absyn.CentralScalarMembership p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.GreaterThanScalarMembership p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.LessThanScalarMembership p, A arg);
+    public R visit(net.lemonmodel.patterns.parser.Absyn.BoundedScalarMembership p, A arg);
 
   }
 

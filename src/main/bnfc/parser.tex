@@ -63,21 +63,22 @@ The reserved words used in parser are the following: \\
 {\reserved{StateVerb}} &{\reserved{Subject}} &{\reserved{VP}} \\
 {\reserved{accusative}} &{\reserved{adjective}} &{\reserved{adposition}} \\
 {\reserved{adverb}} &{\reserved{article}} &{\reserved{as}} \\
-{\reserved{bullet}} &{\reserved{circumposition}} &{\reserved{class}} \\
-{\reserved{colon}} &{\reserved{comma}} &{\reserved{comparative}} \\
-{\reserved{conditional}} &{\reserved{conjunction}} &{\reserved{contravariant}} \\
-{\reserved{copula}} &{\reserved{covariant}} &{\reserved{dative}} \\
-{\reserved{determiner}} &{\reserved{dual}} &{\reserved{durative}} \\
-{\reserved{firstPerson}} &{\reserved{for}} &{\reserved{future}} \\
-{\reserved{genitive}} &{\reserved{gerundive}} &{\reserved{imperative}} \\
-{\reserved{imperfect}} &{\reserved{indicative}} &{\reserved{infinitive}} \\
-{\reserved{instant}} &{\reserved{interjection}} &{\reserved{nominative}} \\
-{\reserved{nontelic}} &{\reserved{noun}} &{\reserved{numeral}} \\
-{\reserved{participle}} &{\reserved{particle}} &{\reserved{past}} \\
-{\reserved{plural}} &{\reserved{point}} &{\reserved{postposition}} \\
-{\reserved{preposition}} &{\reserved{present}} &{\reserved{probObj}} \\
-{\reserved{pronoun}} &{\reserved{propObj}} &{\reserved{propSubj}} \\
-{\reserved{property}} &{\reserved{punctuation}} &{\reserved{relationalArg}} \\
+{\reserved{bullet}} &{\reserved{central}} &{\reserved{circumposition}} \\
+{\reserved{class}} &{\reserved{colon}} &{\reserved{comma}} \\
+{\reserved{comparative}} &{\reserved{conditional}} &{\reserved{conjunction}} \\
+{\reserved{contravariant}} &{\reserved{copula}} &{\reserved{covariant}} \\
+{\reserved{dative}} &{\reserved{determiner}} &{\reserved{dual}} \\
+{\reserved{durative}} &{\reserved{firstPerson}} &{\reserved{for}} \\
+{\reserved{future}} &{\reserved{genitive}} &{\reserved{gerundive}} \\
+{\reserved{imperative}} &{\reserved{imperfect}} &{\reserved{indicative}} \\
+{\reserved{infinitive}} &{\reserved{instant}} &{\reserved{interjection}} \\
+{\reserved{nominative}} &{\reserved{nontelic}} &{\reserved{noun}} \\
+{\reserved{numeral}} &{\reserved{optional}} &{\reserved{participle}} \\
+{\reserved{particle}} &{\reserved{past}} &{\reserved{plural}} \\
+{\reserved{point}} &{\reserved{postposition}} &{\reserved{preposition}} \\
+{\reserved{present}} &{\reserved{probObj}} &{\reserved{pronoun}} \\
+{\reserved{propObj}} &{\reserved{propSubj}} &{\reserved{property}} \\
+{\reserved{punctuation}} &{\reserved{relationalArg}} &{\reserved{restrictedTo}} \\
 {\reserved{secondPerson}} &{\reserved{semiColon}} &{\reserved{singular}} \\
 {\reserved{slash}} &{\reserved{subjunctive}} &{\reserved{superlative}} \\
 {\reserved{telic}} &{\reserved{thirdPerson}} &{\reserved{verb}} \\
@@ -141,9 +142,8 @@ All other symbols are terminals.\\
  & {\delimit}  &{\terminal{telic}} {\nonterminal{VerbPattern2}}  \\
  & {\delimit}  &{\terminal{nontelic}} {\nonterminal{VerbPattern2}}  \\
  & {\delimit}  &{\nonterminal{VerbPattern3}}  \\
- & {\delimit}  &{\terminal{durative}} {\nonterminal{VerbPattern4}}  \\
- & {\delimit}  &{\terminal{instant}} {\nonterminal{VerbPattern4}}  \\
- & {\delimit}  &{\nonterminal{VerbPattern4}}  \\
+ & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{)}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -156,14 +156,9 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{VerbPattern4}} & {\arrow}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
-\end{tabular}\\
-
-\begin{tabular}{lll}
 {\nonterminal{AdjectivePattern}} & {\arrow}  &{\terminal{IntersectiveAdjective}} {\terminal{(}} {\nonterminal{AP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{IntersectiveObjectPropertyAdjective}} {\terminal{(}} {\nonterminal{AP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{IntersectiveDataPropertyAdjective}} {\terminal{(}} {\nonterminal{AP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{IntersectiveDataPropertyAdjective}} {\terminal{(}} {\nonterminal{AP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{String}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{PropertyModifyingAdjective}} {\terminal{(}} {\nonterminal{AP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{RelationalAdjective}} {\terminal{(}} {\nonterminal{AP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{relationalArg}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{ScalarAdjective}} {\terminal{(}} {\nonterminal{AP}} {\terminal{,}} {\terminal{[}} {\nonterminal{ListScalarMembership}} {\terminal{]}} {\terminal{)}}  \\
@@ -176,7 +171,9 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{Arg}} & {\arrow}  &{\terminal{Subject}}  \\
+{\nonterminal{Arg}} & {\arrow}  &{\nonterminal{Arg}} {\terminal{optional}}  \\
+ & {\delimit}  &{\nonterminal{Arg}} {\terminal{restrictedTo}} {\nonterminal{URI}}  \\
+ & {\delimit}  &{\terminal{Subject}}  \\
  & {\delimit}  &{\terminal{DirectObject}}  \\
  & {\delimit}  &{\terminal{IndirectObject}}  \\
  & {\delimit}  &{\terminal{CopulativeArg}}  \\
@@ -229,8 +226,10 @@ All other symbols are terminals.\\
 \begin{tabular}{lll}
 {\nonterminal{ScalarMembership}} & {\arrow}  &{\nonterminal{URI}} {\terminal{covariant}}  \\
  & {\delimit}  &{\nonterminal{URI}} {\terminal{contravariant}}  \\
+ & {\delimit}  &{\nonterminal{URI}} {\terminal{central}}  \\
  & {\delimit}  &{\nonterminal{URI}} {\terminal{{$>$}}} {\nonterminal{Double}} {\terminal{for}} {\nonterminal{URI}}  \\
  & {\delimit}  &{\nonterminal{URI}} {\terminal{{$<$}}} {\nonterminal{Double}} {\terminal{for}} {\nonterminal{URI}}  \\
+ & {\delimit}  &{\nonterminal{Double}} {\terminal{{$<$}}} {\nonterminal{URI}} {\terminal{{$<$}}} {\nonterminal{Double}} {\terminal{for}} {\nonterminal{URI}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}

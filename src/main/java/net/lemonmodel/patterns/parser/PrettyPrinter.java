@@ -698,27 +698,46 @@ public class PrettyPrinter
        pp(_edunnoteliceventverb.verbpattern_, 3);
        if (_i_ > 0) render(_R_PAREN);
     }
-    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EDurativeConsequenceVerb)
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1)
     {
-       net.lemonmodel.patterns.parser.Absyn.EDurativeConsequenceVerb _edurativeconsequenceverb = (net.lemonmodel.patterns.parser.Absyn.EDurativeConsequenceVerb) foo;
+       net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1 _econsequenceverb1 = (net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1) foo;
        if (_i_ > 0) render(_L_PAREN);
-       render("durative");
-       pp(_edurativeconsequenceverb.verbpattern_, 4);
+       render("ConsequenceVerb");
+       render("(");
+       pp(_econsequenceverb1.vp_, 0);
+       render(",");
+       pp(_econsequenceverb1.uri_1, 0);
+       render(",");
+       render("propSubj");
+       render("=");
+       pp(_econsequenceverb1.ontologyframeelement_1, 0);
+       render(",");
+       render("propObj");
+       render("=");
+       pp(_econsequenceverb1.ontologyframeelement_2, 0);
+       render(",");
+       pp(_econsequenceverb1.uri_2, 0);
+       render(")");
        if (_i_ > 0) render(_R_PAREN);
     }
-    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EInstantConsequenceVerb)
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2)
     {
-       net.lemonmodel.patterns.parser.Absyn.EInstantConsequenceVerb _einstantconsequenceverb = (net.lemonmodel.patterns.parser.Absyn.EInstantConsequenceVerb) foo;
+       net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2 _econsequenceverb2 = (net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2) foo;
        if (_i_ > 0) render(_L_PAREN);
-       render("instant");
-       pp(_einstantconsequenceverb.verbpattern_, 4);
-       if (_i_ > 0) render(_R_PAREN);
-    }
-    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb)
-    {
-       net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb _econsequenceverb = (net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb) foo;
-       if (_i_ > 0) render(_L_PAREN);
-       pp(_econsequenceverb.verbpattern_, 4);
+       render("ConsequenceVerb");
+       render("(");
+       pp(_econsequenceverb2.vp_, 0);
+       render(",");
+       pp(_econsequenceverb2.uri_, 0);
+       render(",");
+       render("propSubj");
+       render("=");
+       pp(_econsequenceverb2.ontologyframeelement_1, 0);
+       render(",");
+       render("propObj");
+       render("=");
+       pp(_econsequenceverb2.ontologyframeelement_2, 0);
+       render(")");
        if (_i_ > 0) render(_R_PAREN);
     }
     else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EDurativeEventVerb)
@@ -752,48 +771,6 @@ public class PrettyPrinter
        render("]");
        render(")");
        if (_i_ > 3) render(_R_PAREN);
-    }
-    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1)
-    {
-       net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1 _econsequenceverb1 = (net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1) foo;
-       if (_i_ > 4) render(_L_PAREN);
-       render("ConsequenceVerb");
-       render("(");
-       pp(_econsequenceverb1.vp_, 0);
-       render(",");
-       pp(_econsequenceverb1.uri_1, 0);
-       render(",");
-       render("propSubj");
-       render("=");
-       pp(_econsequenceverb1.arg_1, 0);
-       render(",");
-       render("propObj");
-       render("=");
-       pp(_econsequenceverb1.arg_2, 0);
-       render(",");
-       pp(_econsequenceverb1.uri_2, 0);
-       render(")");
-       if (_i_ > 4) render(_R_PAREN);
-    }
-    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2)
-    {
-       net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2 _econsequenceverb2 = (net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2) foo;
-       if (_i_ > 4) render(_L_PAREN);
-       render("ConsequenceVerb");
-       render("(");
-       pp(_econsequenceverb2.vp_, 0);
-       render(",");
-       pp(_econsequenceverb2.uri_, 0);
-       render(",");
-       render("propSubj");
-       render("=");
-       pp(_econsequenceverb2.arg_1, 0);
-       render(",");
-       render("propObj");
-       render("=");
-       pp(_econsequenceverb2.arg_2, 0);
-       render(")");
-       if (_i_ > 4) render(_R_PAREN);
     }
   }
 
@@ -833,9 +810,9 @@ public class PrettyPrinter
        render("(");
        pp(_eintersectivedatapropertyadjective.ap_, 0);
        render(",");
-       pp(_eintersectivedatapropertyadjective.uri_1, 0);
+       pp(_eintersectivedatapropertyadjective.uri_, 0);
        render(",");
-       pp(_eintersectivedatapropertyadjective.uri_2, 0);
+       printQuoted(_eintersectivedatapropertyadjective.string_);
        render(")");
        if (_i_ > 0) render(_R_PAREN);
     }
@@ -898,7 +875,24 @@ public class PrettyPrinter
 
   private static void pp(net.lemonmodel.patterns.parser.Absyn.Arg foo, int _i_)
   {
-    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ESubject)
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EOptionalArg)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EOptionalArg _eoptionalarg = (net.lemonmodel.patterns.parser.Absyn.EOptionalArg) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       pp(_eoptionalarg.arg_, 0);
+       render("optional");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ERestrictedArg)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ERestrictedArg _erestrictedarg = (net.lemonmodel.patterns.parser.Absyn.ERestrictedArg) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       pp(_erestrictedarg.arg_, 0);
+       render("restrictedTo");
+       pp(_erestrictedarg.uri_, 0);
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ESubject)
     {
        net.lemonmodel.patterns.parser.Absyn.ESubject _esubject = (net.lemonmodel.patterns.parser.Absyn.ESubject) foo;
        if (_i_ > 0) render(_L_PAREN);
@@ -1116,6 +1110,14 @@ public class PrettyPrinter
        render("contravariant");
        if (_i_ > 0) render(_R_PAREN);
     }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.CentralScalarMembership)
+    {
+       net.lemonmodel.patterns.parser.Absyn.CentralScalarMembership _centralscalarmembership = (net.lemonmodel.patterns.parser.Absyn.CentralScalarMembership) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       pp(_centralscalarmembership.uri_, 0);
+       render("central");
+       if (_i_ > 0) render(_R_PAREN);
+    }
     else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.GreaterThanScalarMembership)
     {
        net.lemonmodel.patterns.parser.Absyn.GreaterThanScalarMembership _greaterthanscalarmembership = (net.lemonmodel.patterns.parser.Absyn.GreaterThanScalarMembership) foo;
@@ -1136,6 +1138,19 @@ public class PrettyPrinter
        pp(_lessthanscalarmembership.double_, 0);
        render("for");
        pp(_lessthanscalarmembership.uri_2, 0);
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.BoundedScalarMembership)
+    {
+       net.lemonmodel.patterns.parser.Absyn.BoundedScalarMembership _boundedscalarmembership = (net.lemonmodel.patterns.parser.Absyn.BoundedScalarMembership) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       pp(_boundedscalarmembership.double_1, 0);
+       render("<");
+       pp(_boundedscalarmembership.uri_1, 0);
+       render("<");
+       pp(_boundedscalarmembership.double_2, 0);
+       render("for");
+       pp(_boundedscalarmembership.uri_2, 0);
        if (_i_ > 0) render(_R_PAREN);
     }
   }
@@ -1758,28 +1773,27 @@ public class PrettyPrinter
        sh(_edunnoteliceventverb.verbpattern_);
        render(")");
     }
-    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EDurativeConsequenceVerb)
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1)
     {
-       net.lemonmodel.patterns.parser.Absyn.EDurativeConsequenceVerb _edurativeconsequenceverb = (net.lemonmodel.patterns.parser.Absyn.EDurativeConsequenceVerb) foo;
+       net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1 _econsequenceverb1 = (net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1) foo;
        render("(");
-       render("EDurativeConsequenceVerb");
-       sh(_edurativeconsequenceverb.verbpattern_);
+       render("EConsequenceVerb1");
+       sh(_econsequenceverb1.vp_);
+       sh(_econsequenceverb1.uri_1);
+       sh(_econsequenceverb1.ontologyframeelement_1);
+       sh(_econsequenceverb1.ontologyframeelement_2);
+       sh(_econsequenceverb1.uri_2);
        render(")");
     }
-    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EInstantConsequenceVerb)
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2)
     {
-       net.lemonmodel.patterns.parser.Absyn.EInstantConsequenceVerb _einstantconsequenceverb = (net.lemonmodel.patterns.parser.Absyn.EInstantConsequenceVerb) foo;
+       net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2 _econsequenceverb2 = (net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2) foo;
        render("(");
-       render("EInstantConsequenceVerb");
-       sh(_einstantconsequenceverb.verbpattern_);
-       render(")");
-    }
-    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb)
-    {
-       net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb _econsequenceverb = (net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb) foo;
-       render("(");
-       render("EConsequenceVerb");
-       sh(_econsequenceverb.verbpattern_);
+       render("EConsequenceVerb2");
+       sh(_econsequenceverb2.vp_);
+       sh(_econsequenceverb2.uri_);
+       sh(_econsequenceverb2.ontologyframeelement_1);
+       sh(_econsequenceverb2.ontologyframeelement_2);
        render(")");
     }
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EDurativeEventVerb)
@@ -1808,29 +1822,6 @@ public class PrettyPrinter
        render("[");
        sh(_eeventverb.listontologyframeelement_);
        render("]");
-       render(")");
-    }
-    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1)
-    {
-       net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1 _econsequenceverb1 = (net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1) foo;
-       render("(");
-       render("EConsequenceVerb1");
-       sh(_econsequenceverb1.vp_);
-       sh(_econsequenceverb1.uri_1);
-       sh(_econsequenceverb1.arg_1);
-       sh(_econsequenceverb1.arg_2);
-       sh(_econsequenceverb1.uri_2);
-       render(")");
-    }
-    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2)
-    {
-       net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2 _econsequenceverb2 = (net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2) foo;
-       render("(");
-       render("EConsequenceVerb2");
-       sh(_econsequenceverb2.vp_);
-       sh(_econsequenceverb2.uri_);
-       sh(_econsequenceverb2.arg_1);
-       sh(_econsequenceverb2.arg_2);
        render(")");
     }
   }
@@ -1862,8 +1853,8 @@ public class PrettyPrinter
        render("(");
        render("EIntersectiveDataPropertyAdjective");
        sh(_eintersectivedatapropertyadjective.ap_);
-       sh(_eintersectivedatapropertyadjective.uri_1);
-       sh(_eintersectivedatapropertyadjective.uri_2);
+       sh(_eintersectivedatapropertyadjective.uri_);
+       sh(_eintersectivedatapropertyadjective.string_);
        render(")");
     }
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EPropertyModifyingAdjective)
@@ -1910,6 +1901,23 @@ public class PrettyPrinter
 
   private static void sh(net.lemonmodel.patterns.parser.Absyn.Arg foo)
   {
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EOptionalArg)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EOptionalArg _eoptionalarg = (net.lemonmodel.patterns.parser.Absyn.EOptionalArg) foo;
+       render("(");
+       render("EOptionalArg");
+       sh(_eoptionalarg.arg_);
+       render(")");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ERestrictedArg)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ERestrictedArg _erestrictedarg = (net.lemonmodel.patterns.parser.Absyn.ERestrictedArg) foo;
+       render("(");
+       render("ERestrictedArg");
+       sh(_erestrictedarg.arg_);
+       sh(_erestrictedarg.uri_);
+       render(")");
+    }
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ESubject)
     {
        net.lemonmodel.patterns.parser.Absyn.ESubject _esubject = (net.lemonmodel.patterns.parser.Absyn.ESubject) foo;
@@ -2110,6 +2118,14 @@ public class PrettyPrinter
        sh(_contravariantscalarmembership.uri_);
        render(")");
     }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.CentralScalarMembership)
+    {
+       net.lemonmodel.patterns.parser.Absyn.CentralScalarMembership _centralscalarmembership = (net.lemonmodel.patterns.parser.Absyn.CentralScalarMembership) foo;
+       render("(");
+       render("CentralScalarMembership");
+       sh(_centralscalarmembership.uri_);
+       render(")");
+    }
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.GreaterThanScalarMembership)
     {
        net.lemonmodel.patterns.parser.Absyn.GreaterThanScalarMembership _greaterthanscalarmembership = (net.lemonmodel.patterns.parser.Absyn.GreaterThanScalarMembership) foo;
@@ -2128,6 +2144,17 @@ public class PrettyPrinter
        sh(_lessthanscalarmembership.uri_1);
        sh(_lessthanscalarmembership.double_);
        sh(_lessthanscalarmembership.uri_2);
+       render(")");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.BoundedScalarMembership)
+    {
+       net.lemonmodel.patterns.parser.Absyn.BoundedScalarMembership _boundedscalarmembership = (net.lemonmodel.patterns.parser.Absyn.BoundedScalarMembership) foo;
+       render("(");
+       render("BoundedScalarMembership");
+       sh(_boundedscalarmembership.double_1);
+       sh(_boundedscalarmembership.uri_1);
+       sh(_boundedscalarmembership.double_2);
+       sh(_boundedscalarmembership.uri_2);
        render(")");
     }
   }

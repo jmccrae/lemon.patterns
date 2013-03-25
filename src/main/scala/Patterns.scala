@@ -72,138 +72,112 @@ package net.lemonmodel {
     * An argument in a frame
     */
     trait Arg {
-      def toXML(uri : URI, namer : URINamer) : NodeSeq
+      def isOptional : Boolean
+      def restriction : Option[URI]
+      def toXML(uri : URI, namer : URINamer) : Node
       def optional : Arg
+      def restrictedTo(uri : URI) : Arg
     }
-    trait Copulative extends Arg
-
+    
+    case class ArgImpl(val isOptional : Boolean, val restriction : Option[URI], val name : String) extends Arg{
+      def toXML(uri : URI, namer : URINamer) = if(!isOptional) {
+        xml.Elem("lexinfo",name,Null,TopScope) % new xml.PrefixedAttribute("rdf","about",uri.toString,Null)
+      } else {
+        val a = <lemon:Argument rdf:about={uri} lemon:optional="true"/>
+        xml.Elem("lexinfo",name,Null,TopScope,a) % new xml.PrefixedAttribute("rdf","about",uri.toString,Null)
+      }
+      def optional = ArgImpl(true,restriction,name)
+      def restrictedTo(uri : URI) = ArgImpl(isOptional,Some(uri),name)
+    }
+    
     /**
     * The subject of a verb
     */
-    trait SubjectArg extends Arg
-    object Subject extends SubjectArg {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:subject rdf:resource={uri}/>
-      def optional = OptionalSubject
-    }
-    object OptionalSubject extends SubjectArg {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:subject><lemon:Argument rdf:about={uri} lemon:optional="true"/></lexinfo:subject>
-      def optional = this
-    }
+    object Subject extends ArgImpl(false,None,"subject")
     
     /**
      * The copulative argument of a noun or adjective
      */
-    object CopulativeArg extends Copulative {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:copulativeArg rdf:resource={uri}/>
-      def optional = OptionalCopulativeArg
-    }
-    object OptionalCopulativeArg extends Copulative {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:copulativeArg><lemon:Argument rdf:about={uri} lemon:optional="true"/></lexinfo:copulativeArg>
-      def optional = this
-    }
+    object CopulativeArg extends ArgImpl(false,None,"copulativeArg")
     
     /**
      * The copulative subject of a noun or adjective
      */
-    object CopulativeSubject extends Copulative {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:copulativeSubject rdf:resource={uri}/>
-      def optional = OptionalCopulativeSubject
-    }
-    object OptionalCopulativeSubject extends Copulative {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:copulativeSubject><lemon:Argument rdf:about={uri} lemon:optional="true"/></lexinfo:copulativeSubject>
-      def optional = this
-    }
+    object CopulativeSubject extends ArgImpl(false,None,"copulativeSubject")
     
     /**
     * The direct object of a verb
     */
-    trait DirectObjectArg extends Arg
-    object DirectObject extends DirectObjectArg {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:directObject rdf:resource={uri}/>
-      def optional = OptionalDirectObject
-    }
-    object OptionalDirectObject extends DirectObjectArg {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:directObject><lemon:Argument rdf:about={uri} lemon:optional="true"/></lexinfo:directObject>
-      def optional = this
-    }
+    object DirectObject extends ArgImpl(false,None,"directObject")
     
     /**
     * The indirect object of a verb
     */
-    trait IndirectObjectArg extends Arg
-    object IndirectObject extends IndirectObjectArg {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:indirectObject rdf:resource={uri}/>
-      def optional = OptionalIndirectObject
-    }
-    object OptionalIndirectObject extends IndirectObjectArg {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:indirectObject><lemon:Argument rdf:about={uri} lemon:optional="true"/></lexinfo:indirectObject>
-      def optional = this
-    }
+    object IndirectObject extends ArgImpl(false,None,"indirectObject")
 
-    trait AdpositionalObject extends Arg 
-    
     /**
     * A prepositional object in a frame
     */
-    case class PrepositionalObject(preposition : String) extends AdpositionalObject {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:prepositionalObject>
-                  <lemon:Argument rdf:about={uri}>
-                    <lemon:marker rdf:resource={namer.auxiliaryEntry(preposition)}/>
-                  </lemon:Argument>
-                </lexinfo:prepositionalObject>
-      def optional = OptionalPrepositionalObject(preposition) 
+    case class PrepositionalObject(val isOptional : Boolean, val restriction : Option[URI], val preposition : String) extends Arg {
+      def toXML(uri : URI, namer : URINamer) = if(isOptional) {
+        <lexinfo:prepositionalObject>
+          <lemon:Argument rdf:about={uri} lemon:optional="true">
+            <lemon:marker rdf:resource={namer.auxiliaryEntry(preposition)}/>
+           </lemon:Argument>
+        </lexinfo:prepositionalObject>
+      } else {
+        <lexinfo:prepositionalObject>
+          <lemon:Argument rdf:about={uri}>
+            <lemon:marker rdf:resource={namer.auxiliaryEntry(preposition)}/>
+           </lemon:Argument>
+        </lexinfo:prepositionalObject>
+      }
+      def optional = PrepositionalObject(true,restriction, preposition)
+      def restrictedTo(uri : URI) = PrepositionalObject(isOptional,Some(uri),preposition)
     }
-    case class OptionalPrepositionalObject(preposition : String) extends AdpositionalObject {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:prepositionalObject>
-                  <lemon:Argument rdf:about={uri} lemon:optional="true">
-                    <lemon:marker rdf:resource={namer.auxiliaryEntry(preposition)}/>
-                  </lemon:Argument>
-                </lexinfo:prepositionalObject>
-      def optional = OptionalPrepositionalObject(preposition) 
+    
+    object PrepositionalObject {
+      def apply(preposition : String) = new PrepositionalObject(false,None,preposition)
     }
     
     /**
      * A postposition object in a frame
      */
-    case class PostpositionalObject(postposition : String) extends AdpositionalObject  {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:postpositionalObject>
-                  <lemon:Argument rdf:about={uri}>
-                    <lemon:marker rdf:resource={namer.auxiliaryEntry(postposition)}/>
-                  </lemon:Argument>
-                </lexinfo:postpositionalObject>
-      def optional = OptionalPostpositionalObject(postposition)
-    }
-    case class OptionalPostpositionalObject(postposition : String) extends AdpositionalObject  {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:postpositionalObject>
-                  <lemon:Argument rdf:about={uri} lemon:optional="true">
-                    <lemon:marker rdf:resource={namer.auxiliaryEntry(postposition)}/>
-                  </lemon:Argument>
-                </lexinfo:postpositionalObject>
-      def optional = this
-    }
-    
-    trait PossessiveAdjunctArg extends Arg
-    object PossessiveAdjunct extends PossessiveAdjunctArg {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:possessiveAdjunct rdf:resource={uri}/>
-      def optional = OptionalPossessiveAdjunct
-    } 
-    object OptionalPossessiveAdjunct extends PossessiveAdjunctArg {
-      def toXML(uri : URI, namer : URINamer) = <lexinfo:possessiveAdjunct><lemon:Argument rdf:about={uri} lemon:optional="true"/></lexinfo:possessiveAdjunct>
-      def optional = this
+    case class PostpositionalObject(val isOptional : Boolean, val restriction : Option[URI], val postposition : String) extends Arg {
+      def toXML(uri : URI, namer : URINamer) = if(isOptional) {
+        <lexinfo:postpositionalObject>
+          <lemon:Argument rdf:about={uri} lemon:optional="true">
+            <lemon:marker rdf:resource={namer.auxiliaryEntry(postposition)}/>
+           </lemon:Argument>
+        </lexinfo:postpositionalObject>
+      } else {
+        <lexinfo:postpositionalObject>
+          <lemon:Argument rdf:about={uri}>
+            <lemon:marker rdf:resource={namer.auxiliaryEntry(postposition)}/>
+           </lemon:Argument>
+        </lexinfo:postpositionalObject>
+      }
+      def optional = PostpositionalObject(true,restriction, postposition)
+      def restrictedTo(uri : URI) = PostpositionalObject(isOptional,Some(uri),postposition)
     }
     
+    object PostpositionalObject {
+      def apply(postposition : String) = new PostpositionalObject(false,None,postposition)
+    }
+    
+    object PossessiveAdjunct extends ArgImpl(false,None,"possessiveAdjunct")
+        
     /**
      * An element of a multivalent frame in the ontology. Normally constructed
      * using the {@code as} implicit, e.g., {@code "http://www.example.com/ontology#property" as Subject}
      */
-     case class OntologyFrameElement(val property : URI, val arg : Arg, val isOptional : Boolean = false) {
-       def optional = OntologyFrameElement(property,arg,true)
-     }
+     case class OntologyFrameElement(val property : URI, val arg : Arg) 
       
      
     sealed trait Direction
     object positive extends Direction   
     object negative extends Direction
+    object central extends Direction
  
     
     
@@ -231,6 +205,7 @@ package net.lemonmodel {
     case class ScalarMembership(val property : URI,
                                 val forClass : URI,
                                 val boundary : Double,
-                                val direction : Direction)
+                                val direction : Direction,
+                                val boundary2 : Double = Double.NaN)
   }
 }

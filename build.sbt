@@ -10,3 +10,6 @@ libraryDependencies ++= Seq(
 )
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")
+
+compileOrder := CompileOrder.JavaThenScala
+

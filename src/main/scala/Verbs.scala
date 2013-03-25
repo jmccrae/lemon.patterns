@@ -83,15 +83,25 @@ case class StateVerb(val lemma : VP,
          <lemon:objOfProp>
             <lemon:Argument rdf:about={objURI}/>
          </lemon:objOfProp>
+        { 
+          if(propSubj.restriction != None) {
+            <lemon:propertyDomain rdf:resource={propSubj.restriction.get}/>
+          }
+        }
+        { 
+          if(propObj.restriction != None) {
+            <lemon:propertyRange rdf:resource={propObj.restriction.get}/>
+          }
+        }
        </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
       <lemon:Frame rdf:about={namer("verb",lemma.toString(),Some("frame"))}>
         { (propSubj,propObj) match {
-            case (s : SubjectArg,o : DirectObjectArg) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
-            case (o : DirectObjectArg,s : SubjectArg) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
-            case (s : SubjectArg,o : AdpositionalObject) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
-            case (o : AdpositionalObject, s : SubjectArg) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case (ArgImpl(_,_,"subject"),ArgImpl(_,_,"directObject")) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
+            case (ArgImpl(_,_,"directObject"),ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
+            case (ArgImpl(_,_,"subject"),ArgImpl(_,_,"prepostionalObject")) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case (ArgImpl(_,_,"prepositionalObject"),ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
             case _ => <!--Unrecognised frame-->
            }
         }
@@ -109,11 +119,28 @@ case class StateVerb(val lemma : VP,
  * @param args The argument structure of the verb (required)
  * @param forms The set of other forms
  */
-trait EventVerb extends Verb {
-  def eventClass : URI
-  def args : Seq[OntologyFrameElement]
-  def forms : Seq[Form]
-  protected def oilsURI : URI
+case class EventVerb(val lemma : VP,
+                     val eventClass : URI = null,
+                     val args : Seq[OntologyFrameElement],
+                     val telic : Option[Boolean] = None,
+                     val durative : Option[Boolean] = None,
+                     val forms : Seq[Form] = Nil) extends Verb {
+                       
+  def makeWithForm(form : Form) = EventVerb(lemma,eventClass,args,telic,durative,forms :+ form)
+  protected def makeWithForms(extraForms : Seq[Form]) = EventVerb(lemma,eventClass,args,telic,durative,forms ++ extraForms)
+  protected def oilsURI = telic match {
+    case Some(true) => durative match {
+      case Some(true) => URI.create("http://www.lemon-model.net/oils#Accomplishment")
+      case Some(false) => URI.create("http://www.lemon-model.net/oils#Achievement")
+      case None => URI.create("http://www.lemon-model.net/oils#Event")
+    }
+    case Some(false) => durative match {
+      case Some(true) => URI.create("http://www.lemon-model.net/oils#ActivityVerb")
+      case Some(false) => URI.create("http://www.lemon-model.net/oils#SemelfactiveVerb")
+      case None => URI.create("http://www.lemon-model.net/oils#Event")
+    }
+    case None => URI.create("http://www.lemon-model.net/oils#Event")
+  }
   protected def senseXML(namer : URINamer) = {
      val argURI = (for((arg,i) <- args.zipWithIndex) yield {
        arg -> namer("verb",lemma.toString(),Some("arg"+(i+1)))
@@ -132,7 +159,7 @@ trait EventVerb extends Verb {
                 <lemon:objOfProp>
                   <lemon:Argument rdf:about={argURI(arg)}/>
                   {
-                    if(arg.isOptional) {
+                    if(arg.arg.isOptional) {
                       <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
                     } else {
                       <!-- Mandatory argument -->
@@ -142,6 +169,11 @@ trait EventVerb extends Verb {
                 <lemon:reference>
                   <rdf:Property rdf:about={arg.property}/>
                 </lemon:reference>
+        { 
+          if(arg.arg.restriction != None) {
+            <lemon:propertyRange rdf:resource={arg.arg.restriction.get}/>
+          }
+        }
               </lemon:LexicalSense>
             </lemon:subsense>
            }
@@ -159,22 +191,6 @@ trait EventVerb extends Verb {
     </lemon:synBehavior>
    }
 }
-
-object EventVerb {
-  def apply(_lemma : VP,
-            _eventClass : URI = null,
-            _args : Seq[OntologyFrameElement],
-            _forms : Seq[Form] = Nil) : EventVerb = new EventVerb {
-    def makeWithForm(form : Form) = EventVerb(lemma,eventClass,args,forms :+ form)
-    protected def makeWithForms(extraForms : Seq[Form]) = EventVerb(lemma,eventClass,args,forms ++ extraForms)
-    protected def oilsURI = URI.create("http://www.lemon-model.net/oils#Event")
-    def lemma = _lemma
-    def eventClass = _eventClass
-    def args = _args
-    def forms = _forms
-  }
-}
-             
                 
 /**
  * Indicates an event verb that has a clear end but not beginning
@@ -183,13 +199,12 @@ object EventVerb {
  * @param args The argument structure of the verb (required)
  * @param forms The set of other forms
  */
-case class AchievementVerb(val lemma : VP,
-                           val eventClass : URI = null,
-                           val args : Seq[OntologyFrameElement],
-                           val forms : Seq[Form] = Nil) extends EventVerb {
-  def makeWithForm(form : Form) = AchievementVerb(lemma,eventClass,args,forms :+ form)
-  protected def makeWithForms(extraForms : Seq[Form]) = AchievementVerb(lemma,eventClass,args,forms ++ extraForms)
-  protected def oilsURI = URI.create("http://www.lemon-model.net/oils#Achievement")
+object AchievementVerb {
+    def apply(_lemma : VP,
+            _eventClass : URI = null,
+            _args : Seq[OntologyFrameElement],
+            _forms : Seq[Form] = Nil) : EventVerb = EventVerb(_lemma, _eventClass,
+              _args,Some(true),Some(false),_forms)
 }
                            
  /**
@@ -199,13 +214,12 @@ case class AchievementVerb(val lemma : VP,
  * @param args The argument structure of the verb (required)
  * @param forms The set of other forms
  */
-case class AccomplishmentVerb(val lemma : VP,
-                              val eventClass : URI = null,
-                              val args : Seq[OntologyFrameElement],
-                              val forms : Seq[Form] = Nil) extends EventVerb {
-  def makeWithForm(form : Form) = AccomplishmentVerb(lemma,eventClass,args,forms :+ form)
-  protected def makeWithForms(extraForms : Seq[Form]) = AccomplishmentVerb(lemma,eventClass,args,forms ++ extraForms)
-  protected def oilsURI = URI.create("http://www.lemon-model.net/oils#Accomplishment")
+object AccomplishmentVerb {
+  def apply(_lemma : VP,
+            _eventClass : URI = null,
+            _args : Seq[OntologyFrameElement],
+            _forms : Seq[Form] = Nil) : EventVerb = EventVerb(_lemma, _eventClass,
+              _args,Some(true),Some(true),_forms)
 }
                            
  /**
@@ -215,13 +229,12 @@ case class AccomplishmentVerb(val lemma : VP,
  * @param args The argument structure of the verb (required)
  * @param forms The set of other forms
  */
-case class SemelfactiveVerb(val lemma : VP,
-                            val eventClass : URI = null,
-                            val args : Seq[OntologyFrameElement],
-                            val forms : Seq[Form] = Nil) extends EventVerb {
-  def makeWithForm(form : Form) = SemelfactiveVerb(lemma,eventClass,args,forms :+ form)
-  protected def makeWithForms(extraForms : Seq[Form]) = SemelfactiveVerb(lemma,eventClass,args,forms ++ extraForms)
-  protected def oilsURI = URI.create("http://www.lemon-model.net/oils#SemelfactiveVerb")
+object SemelfactiveVerb {
+                              def apply(_lemma : VP,
+            _eventClass : URI = null,
+            _args : Seq[OntologyFrameElement],
+            _forms : Seq[Form] = Nil) : EventVerb = EventVerb(_lemma, _eventClass,
+              _args,Some(false),Some(false),_forms)
 }
                            
 /**
@@ -231,13 +244,12 @@ case class SemelfactiveVerb(val lemma : VP,
  * @param args The argument structure of the verb (required)
  * @param forms The set of other forms
  */
-case class ActivityVerb(val lemma : VP,
-                        val eventClass : URI = null,
-                        val args : Seq[OntologyFrameElement],
-                        val forms : Seq[Form] = Nil) extends EventVerb {
-  def makeWithForm(form : Form) = ActivityVerb(lemma,eventClass,args,forms :+ form)
-  protected def makeWithForms(extraForms : Seq[Form]) = ActivityVerb(lemma,eventClass,args,forms ++ extraForms)
-  protected def oilsURI = URI.create("http://www.lemon-model.net/oils#ActivityVerb")
+object ActivityVerb {
+  def apply(_lemma : VP,
+            _eventClass : URI = null,
+            _args : Seq[OntologyFrameElement],
+            _forms : Seq[Form] = Nil) : EventVerb = EventVerb(_lemma, _eventClass,
+              _args,Some(false),Some(true),_forms)
 }
 
 case class ConsequenceVerb(val lemma : VP,
@@ -267,6 +279,11 @@ case class ConsequenceVerb(val lemma : VP,
              <lemon:objOfProp>
                <lemon:Argument rdf:about={subjURI}/>
              </lemon:objOfProp>
+        { 
+          if(propSubj.arg.restriction != None) {
+            <lemon:propertyDomain rdf:resource={propSubj.arg.restriction.get}/>
+          }
+        }
            </lemon:LexicalSense>
          </lemon:subsense>
          <lemon:subsense>
@@ -277,6 +294,11 @@ case class ConsequenceVerb(val lemma : VP,
              <lemon:objOfProp>
                <lemon:Argument rdf:about={objURI}/>
              </lemon:objOfProp>
+        { 
+          if(propObj.arg.restriction != None) {
+            <lemon:propertyRange rdf:resource={propObj.arg.restriction.get}/>
+          }
+        }
            </lemon:LexicalSense>
          </lemon:subsense>
        </lemon:LexicalSense>
@@ -293,15 +315,25 @@ case class ConsequenceVerb(val lemma : VP,
              </owl:propertyChainAxiom>
           </rdf:Property>
         </lemon:reference>
+        { 
+          if(propSubj.arg.restriction != None) {
+            <lemon:propertyDomain rdf:resource={propSubj.arg.restriction.get}/>
+          }
+        }
+        { 
+          if(propObj.arg.restriction != None) {
+            <lemon:propertyRange rdf:resource={propObj.arg.restriction.get}/>
+          }
+        }
       </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
       <lemon:Frame rdf:about={namer("verb",lemma.toString(),Some("frame"))}>
         { (propSubj.arg,propObj.arg) match {
-            case (s : SubjectArg,o : DirectObjectArg) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
-            case (o : DirectObjectArg,s : SubjectArg) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
-            case (s : SubjectArg,o : AdpositionalObject) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
-            case (o : AdpositionalObject, s : SubjectArg) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case (ArgImpl(_,_,"subject"),ArgImpl(_,_,"directObject")) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
+            case (ArgImpl(_,_,"directObject"),ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
+            case (ArgImpl(_,_,"subject"),ArgImpl(_,_,"prepositionalObject")) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case (ArgImpl(_,_,"prepositionalObject"), ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
             case _ => <!--Unrecognised frame-->
            }
         }

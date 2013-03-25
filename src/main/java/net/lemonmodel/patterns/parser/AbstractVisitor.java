@@ -39,14 +39,11 @@ public class AbstractVisitor<R,A> implements AllVisitor<R,A> {
     public R visit(net.lemonmodel.patterns.parser.Absyn.ETelicEventVerb p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.ENontelicEventVerb p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EDunnotelicEventVerb p, A arg) { return visitDefault(p, arg); }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EDurativeConsequenceVerb p, A arg) { return visitDefault(p, arg); }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EInstantConsequenceVerb p, A arg) { return visitDefault(p, arg); }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1 p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2 p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EDurativeEventVerb p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EInstantEventVerb p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EEventVerb p, A arg) { return visitDefault(p, arg); }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1 p, A arg) { return visitDefault(p, arg); }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2 p, A arg) { return visitDefault(p, arg); }
     public R visitDefault(net.lemonmodel.patterns.parser.Absyn.VerbPattern p, A arg) {
       throw new IllegalArgumentException(this.getClass().getName() + ": " + p);
     }
@@ -61,6 +58,8 @@ public class AbstractVisitor<R,A> implements AllVisitor<R,A> {
       throw new IllegalArgumentException(this.getClass().getName() + ": " + p);
     }
 /* Arg */
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EOptionalArg p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ERestrictedArg p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.ESubject p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EDirectObject p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EIndirectObject p, A arg) { return visitDefault(p, arg); }
@@ -109,8 +108,10 @@ public class AbstractVisitor<R,A> implements AllVisitor<R,A> {
 /* ScalarMembership */
     public R visit(net.lemonmodel.patterns.parser.Absyn.CovariantScalarMembership p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.ContravariantScalarMembership p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.CentralScalarMembership p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.GreaterThanScalarMembership p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.LessThanScalarMembership p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.BoundedScalarMembership p, A arg) { return visitDefault(p, arg); }
     public R visitDefault(net.lemonmodel.patterns.parser.Absyn.ScalarMembership p, A arg) {
       throw new IllegalArgumentException(this.getClass().getName() + ": " + p);
     }

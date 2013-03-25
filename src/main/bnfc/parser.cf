@@ -30,22 +30,21 @@ ENontelicEventVerb. VerbPattern ::= "nontelic" VerbPattern2 ;
 EDunnotelicEventVerb. VerbPattern ::= VerbPattern3 ;
 EDurativeEventVerb. VerbPattern2 ::= "durative" VerbPattern3 ;
 EInstantEventVerb. VerbPattern2 ::= "instant" VerbPattern3 ;
-EDurativeConsequenceVerb. VerbPattern ::= "durative" VerbPattern4 ;
-EInstantConsequenceVerb. VerbPattern ::= "instant" VerbPattern4 ;
-EConsequenceVerb. VerbPattern ::= VerbPattern4 ;
 EEventVerb. VerbPattern3 ::= "EventVerb" "(" VP "," URI "," "[" [OntologyFrameElement] "]" ")" ;
-EConsequenceVerb1. VerbPattern4 ::= "ConsequenceVerb" "(" VP "," URI "," "propSubj" "=" Arg "," "propObj" "=" Arg "," URI ")" ;
-EConsequenceVerb2. VerbPattern4 ::= "ConsequenceVerb" "(" VP "," URI "," "propSubj" "=" Arg "," "propObj" "=" Arg ")" ;
+EConsequenceVerb1. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," "propSubj" "=" OntologyFrameElement "," "propObj" "=" OntologyFrameElement "," URI ")" ;
+EConsequenceVerb2. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," "propSubj" "=" OntologyFrameElement "," "propObj" "=" OntologyFrameElement ")" ;
 
 EIntersectiveAdjective. AdjectivePattern ::= "IntersectiveAdjective" "(" AP "," URI ")" ;
 EIntersectiveObjectPropertyAdjective. AdjectivePattern ::= "IntersectiveObjectPropertyAdjective" "(" AP "," URI "," URI ")" ;
-EIntersectiveDataPropertyAdjective. AdjectivePattern ::= "IntersectiveDataPropertyAdjective" "(" AP "," URI "," URI ")" ;
+EIntersectiveDataPropertyAdjective. AdjectivePattern ::= "IntersectiveDataPropertyAdjective" "(" AP "," URI "," String ")" ;
 EPropertyModifyingAdjective. AdjectivePattern ::= "PropertyModifyingAdjective" "(" AP "," URI ")" ;
 ERelationalAdjective. AdjectivePattern ::= "RelationalAdjective" "(" AP "," URI "," "relationalArg" "=" Arg ")" ;
 EScalarAdjective. AdjectivePattern ::= "ScalarAdjective" "(" AP "," "[" [ScalarMembership] "]" ")" ;
 
 separator Pattern "," ;
 
+EOptionalArg. Arg ::= Arg "optional" ;
+ERestrictedArg. Arg ::= Arg "restrictedTo" URI ;
 ESubject. Arg ::= "Subject" ;
 EDirectObject. Arg ::= "DirectObject" ;
 EIndirectObject. Arg ::= "IndirectObject" ;
@@ -75,8 +74,10 @@ separator POSTaggedWord "," ;
 
 CovariantScalarMembership. ScalarMembership ::= URI "covariant" ;
 ContravariantScalarMembership. ScalarMembership ::= URI "contravariant" ;
+CentralScalarMembership. ScalarMembership ::= URI "central" ;
 GreaterThanScalarMembership. ScalarMembership ::= URI ">" Double "for" URI ;
 LessThanScalarMembership. ScalarMembership ::= URI "<" Double "for" URI ;
+BoundedScalarMembership. ScalarMembership ::= Double "<" URI "<" Double "for" URI ;
 separator ScalarMembership "," ;
 
 ESingular. Category ::= "singular" ;

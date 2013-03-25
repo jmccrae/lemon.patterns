@@ -133,14 +133,24 @@ case class RelationalNoun(val lemma : NP,
             <lemon:Argument rdf:about={objURI}/>
          </lemon:objOfProp>
        </lemon:LexicalSense>
+        { 
+          if(propSubj.restriction != None) {
+            <lemon:propertyDomain rdf:resource={propSubj.restriction.get}/>
+          }
+        }
+        { 
+          if(propObj.restriction != None) {
+            <lemon:propertyRange rdf:resource={propObj.restriction.get}/>
+          }
+        }
     </lemon:sense> :+
     <lemon:synBehavior>
       <lemon:Frame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
         { (propSubj,propObj) match {
-          case (s : SubjectArg,o : AdpositionalObject) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
-            case (o : AdpositionalObject,s : SubjectArg) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
-            case (c : Copulative,p : PossessiveAdjunctArg) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
-            case (p : PossessiveAdjunctArg,c : Copulative) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
+          case (ArgImpl(_,_,"subject"),PrepositionalObject(_,_,_)) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+            case (PrepositionalObject(_,_,_),ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+            case (ArgImpl(_,_,"copulativeArg"),ArgImpl(_,_,"possessiveAdjunct")) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
+            case (ArgImpl(_,_,"possessiveAdjunct"),ArgImpl(_,_,"copualtiveArg")) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
             case _ => <!--Unrecognised frame-->
            }
         }
@@ -181,7 +191,7 @@ case class RelationalMultivalentNoun(val lemma : NP,
                 <lemon:objOfProp>
                   <lemon:Argument rdf:about={argURI(arg)}/>
                   {
-                    if(arg.isOptional) {
+                    if(arg.arg.isOptional) {
                       <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
                     } else {
                       <!-- Mandatory argument -->
@@ -191,6 +201,11 @@ case class RelationalMultivalentNoun(val lemma : NP,
                 <lemon:reference>
                   <rdf:Property rdf:about={arg.property}/>
                 </lemon:reference>
+                {
+                  if(arg.arg.restriction != None) {
+                    <lemon:propertyRange rdf:resource={arg.arg.restriction.get}/>
+                   }
+                }
               </lemon:LexicalSense>
             </lemon:subsense>
            }
@@ -240,6 +255,16 @@ case class ClassRelationalNoun(val lemma : NP,
             <lemon:Argument rdf:about={objURI}/>
          </lemon:objOfProp>
        </lemon:LexicalSense>
+        { 
+          if(propSubj.restriction != None) {
+            <lemon:propertyDomain rdf:resource={propSubj.restriction.get}/>
+          }
+        }
+        { 
+          if(propObj.restriction != None) {
+            <lemon:propertyRange rdf:resource={propObj.restriction.get}/>
+          }
+        }
       <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("senseClass"))}>
          <lemon:reference>
            <rdf:Property rdf:about={relationClass}/>
@@ -252,10 +277,10 @@ case class ClassRelationalNoun(val lemma : NP,
     <lemon:synBehavior>
       <lemon:Frame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
         { (propSubj,propObj) match {
-          case (c : Copulative,o : AdpositionalObject) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
-            case (o : AdpositionalObject, c : Copulative) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
-            case (c : Copulative,p : PossessiveAdjunctArg) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
-            case (p : PossessiveAdjunctArg,c : Copulative) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
+          case (ArgImpl(_,_,"copulativeArg"),PrepositionalObject(_,_,_)) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+            case (PrepositionalObject(_,_,_), ArgImpl(_,_,"copulativeArg")) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+            case (ArgImpl(_,_,"copulativeArg"),ArgImpl(_,_,"possessiveAdjunct")) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
+            case (ArgImpl(_,_,"possessiveAdjunct"),ArgImpl(_,_,"copulativeArg")) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
             case _ => <!--Unrecognised frame-->
            }
         }
