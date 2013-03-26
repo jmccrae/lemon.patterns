@@ -14,7 +14,7 @@ fi
 
 if [ ! -d $LEMONPATTERNS_HOME/lib ]
 then
-	die "Directory lib does not exist!"
+  mkdir lib
 fi
 
 if [ ! -e $LEMONPATTERNS_HOME/lib/scala-library-2.9.1.jar ]
