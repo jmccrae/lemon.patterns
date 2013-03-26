@@ -1,5 +1,7 @@
 #!/bin/bash
 
+LEMONPATTERNS_HOME=.
+
 die () {
     echo >&2 "$@"
     exit 1
@@ -10,28 +12,28 @@ then
   die "Required argument: lexiconFile" 
 fi
 
-if [ ! -d lib ]
+if [ ! -d $LEMONPATTERNS_HOME/lib ]
 then
 	die "Directory lib does not exist!"
 fi
 
-if [ ! -e lib/scala-library-2.9.1.jar ]
+if [ ! -e $LEMONPATTERNS_HOME/lib/scala-library-2.9.1.jar ]
 then
   echo "Obtaining Scala library"
   wget http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.1/scala-library-2.9.1.jar -O lib/scala-library-2.9.1.jar || die "wget failed"
 fi
 
-if [ ! -e lib/jflex-1.4.3.jar ]
+if [ ! -e $LEMONPATTERNS_HOME/lib/jflex-1.4.3.jar ]
 then
   echo "Obtaining JFlex"
   wget http://repo1.maven.org/maven2/de/jflex/jflex/1.4.3/jflex-1.4.3.jar -O lib/jflex-1.4.3.jar || die "wget failed"
 fi
 
-if [ ! -e target/lemon.patterns_2.9.1-1.12.9.jar ]
+if [ ! -e $LEMONPATTERNS_HOME/target/lemon.patterns_2.9.1-1.12.9.jar ]
 then
   echo "Compiling sources"
   mvn install || die "Maven failed"
 fi
 
-java -cp lib/scala-library-2.9.1.jar:lib/jflex-1.4.3.jar:target/lemon.patterns_2.9.1-1.12.9.jar net.lemonmodel.patterns.ConvertPatterns "$@"
+java -cp $LEMONPATTERNS_HOME/lib/scala-library-2.9.1.jar:$LEMONPATTERNS_HOME/lib/jflex-1.4.3.jar:$LEMONPATTERNS_HOME/target/lemon.patterns_2.9.1-1.12.9.jar net.lemonmodel.patterns.ConvertPatterns "$@"
 

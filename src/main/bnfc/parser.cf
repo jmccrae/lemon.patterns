@@ -19,8 +19,8 @@ EClassNoun. NounPattern ::= "ClassNoun" "(" NP "," URI ")" ;
 ERelationalNoun1. NounPattern ::= "RelationalNoun" "(" NP "," URI "," "propSubj" "=" Arg "," "propObj" "=" Arg ")" ;
 ERelationalNoun2. NounPattern ::= "RelationalNoun" "(" NP "," URI "," "propObj" "=" Arg ")" ;
 ERelationalMultivalentNoun. NounPattern ::= "RelationalMultivalentNoun" "(" NP "," URI "," "[" [OntologyFrameElement] "]" ")" ;
-EClassRelationalNoun1. NounPattern ::= "ClassRelationalNoun" "(" NP "," "property" "=" URI "," "class" "=" URI "," "propSubj" "=" Arg "," "propObj" "=" Arg ")" ;
-EClassRelationalNoun2. NounPattern ::= "ClassRelationalNoun" "(" NP "," "property" "=" URI "," "class" "=" URI "," "propObj" "=" Arg ")" ;
+EClassRelationalNoun1. NounPattern ::= "ClassRelationalNoun" "(" NP "," "class" "=" URI "," "property" "=" URI "," "propSubj" "=" Arg "," "propObj" "=" Arg ")" ;
+EClassRelationalNoun2. NounPattern ::= "ClassRelationalNoun" "(" NP "," "class" "=" URI "," "property" "=" URI "," "propObj" "=" Arg ")" ;
 
 EStateVerb1. VerbPattern ::= "StateVerb" "(" VP "," URI ")" ;
 EStateVerb2. VerbPattern ::= "StateVerb" "(" VP "," URI "," "propObj" "=" Arg ")" ;
@@ -58,19 +58,19 @@ EURIAsSynArg. OntologyFrameElement ::= URI "as" Arg ;
 separator OntologyFrameElement "," ;
 
 EPNPSimple. PNP ::= String ;
-EPNPComplex. PNP ::= "PNP" "(" [POSTaggedWord] ")" ;
+EPNPComplex. PNP ::= "[" [POSTaggedWord] "]" ;
 
 ENPSimple. NP ::= String ;
-ENPComplex. NP ::= "NP" "(" [POSTaggedWord] ")" ;
+ENPComplex. NP ::= "[" [POSTaggedWord] "]" ;
 
 EVPSimple. VP ::= String ;
-EVPComplex. VP ::= "VP" "(" [POSTaggedWord] ")" ;
+EVPComplex. VP ::= "[" [POSTaggedWord] "]" ;
 
 EAPSimple. AP ::= String ;
-EAPComplex. AP ::= "AP" "(" [POSTaggedWord] ")" ;
+EAPComplex. AP ::= "[" [POSTaggedWord] "]" ;
 
 EPOSTaggedWord. POSTaggedWord ::= String "/" POSTag ;
-separator POSTaggedWord "," ;
+separator POSTaggedWord "" ;
 
 CovariantScalarMembership. ScalarMembership ::= URI "covariant" ;
 ContravariantScalarMembership. ScalarMembership ::= URI "contravariant" ;

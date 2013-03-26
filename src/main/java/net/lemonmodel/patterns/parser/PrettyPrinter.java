@@ -581,11 +581,11 @@ public class PrettyPrinter
        render("(");
        pp(_eclassrelationalnoun1.np_, 0);
        render(",");
-       render("property");
+       render("class");
        render("=");
        pp(_eclassrelationalnoun1.uri_1, 0);
        render(",");
-       render("class");
+       render("property");
        render("=");
        pp(_eclassrelationalnoun1.uri_2, 0);
        render(",");
@@ -607,11 +607,11 @@ public class PrettyPrinter
        render("(");
        pp(_eclassrelationalnoun2.np_, 0);
        render(",");
-       render("property");
+       render("class");
        render("=");
        pp(_eclassrelationalnoun2.uri_1, 0);
        render(",");
-       render("class");
+       render("property");
        render("=");
        pp(_eclassrelationalnoun2.uri_2, 0);
        render(",");
@@ -993,10 +993,9 @@ public class PrettyPrinter
     {
        net.lemonmodel.patterns.parser.Absyn.EPNPComplex _epnpcomplex = (net.lemonmodel.patterns.parser.Absyn.EPNPComplex) foo;
        if (_i_ > 0) render(_L_PAREN);
-       render("PNP");
-       render("(");
+       render("[");
        pp(_epnpcomplex.listpostaggedword_, 0);
-       render(")");
+       render("]");
        if (_i_ > 0) render(_R_PAREN);
     }
   }
@@ -1014,10 +1013,9 @@ public class PrettyPrinter
     {
        net.lemonmodel.patterns.parser.Absyn.ENPComplex _enpcomplex = (net.lemonmodel.patterns.parser.Absyn.ENPComplex) foo;
        if (_i_ > 0) render(_L_PAREN);
-       render("NP");
-       render("(");
+       render("[");
        pp(_enpcomplex.listpostaggedword_, 0);
-       render(")");
+       render("]");
        if (_i_ > 0) render(_R_PAREN);
     }
   }
@@ -1035,10 +1033,9 @@ public class PrettyPrinter
     {
        net.lemonmodel.patterns.parser.Absyn.EVPComplex _evpcomplex = (net.lemonmodel.patterns.parser.Absyn.EVPComplex) foo;
        if (_i_ > 0) render(_L_PAREN);
-       render("VP");
-       render("(");
+       render("[");
        pp(_evpcomplex.listpostaggedword_, 0);
-       render(")");
+       render("]");
        if (_i_ > 0) render(_R_PAREN);
     }
   }
@@ -1056,10 +1053,9 @@ public class PrettyPrinter
     {
        net.lemonmodel.patterns.parser.Absyn.EAPComplex _eapcomplex = (net.lemonmodel.patterns.parser.Absyn.EAPComplex) foo;
        if (_i_ > 0) render(_L_PAREN);
-       render("AP");
-       render("(");
+       render("[");
        pp(_eapcomplex.listpostaggedword_, 0);
-       render(")");
+       render("]");
        if (_i_ > 0) render(_R_PAREN);
     }
   }
@@ -1083,7 +1079,7 @@ public class PrettyPrinter
      {
        pp(it.next(), 0);
        if (it.hasNext()) {
-         render(",");
+         render("");
        } else {
          render("");
        }

@@ -1,0 +1,40 @@
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix ontology: <http://www.example.org/ontology#> .
+
+Lexicon(<http://www.example.com/published/path>, // Here is where the ontology-lexicon will be published
+        "eng", // The language (as an ISO-639 code)
+        
+  Name("Microsoft",<http://microsoft.com>),
+  ClassNoun("cat",dbpedia:Cat) with plural "cats",
+  ClassNoun(["body"/"common noun" "of"/preposition "water"/"common noun"],dbpedia:BodyOfWater),
+  RelationalNoun("agreement",ontology:agreeAbout,
+                   propSubj=Subject,
+                   propObj=PrepositionalObject("about")),
+  RelationalMultivalentNoun("position",ontology:Employement,
+                [ontology:employee as PossessiveAdjunct,
+                 ontology:role as PrepositionalObject("as") optional,
+                 ontology:startOfEmployment as PrepositionalObject("since") optional]),
+  ClassRelationalNoun("father",
+                      class = ontology:Father,
+                      property = ontology:fatherOf,
+                      propObj = PossessiveAdjunct),    
+  StateVerb("amare",ontology:loves) 
+      with present singular firstPerson  "amo"
+      with present singular secondPerson "amas"
+      with present singular thirdPerson  "amat"
+      with present plural   firstPerson  "amamus"
+      with present plural   secondPerson "amatis"
+      with present plural   thirdPerson  "amant",
+  telic durative EventVerb("give",ontology:GivingEvent,
+         [ontology:giver as Subject,
+          ontology:recipient as DirectObject,
+          ontology:givenObject as IndirectObject]),    
+  IntersectiveAdjective("Belgian",ontology:Belgian),
+  IntersectiveDataPropertyAdjective("green",ontology:color,"green"),
+  PropertyModifyingAdjective("former",ontology:heldRole),
+  RelationalAdjective("related",ontology:isRelatedTo,
+       relationalArg = PrepositionalObject("to")),
+  ScalarAdjective("big",
+      [ontology:size > 5.0 for ontology:Building])
+)
+

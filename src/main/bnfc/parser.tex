@@ -52,37 +52,35 @@ The set of reserved words is the set of terminals appearing in the grammar. Thos
 The reserved words used in parser are the following: \\
 
 \begin{tabular}{lll}
-{\reserved{AP}} &{\reserved{ClassNoun}} &{\reserved{ClassRelationalNoun}} \\
-{\reserved{ConsequenceVerb}} &{\reserved{CopulativeArg}} &{\reserved{CopulativeSubject}} \\
-{\reserved{DirectObject}} &{\reserved{EventVerb}} &{\reserved{IndirectObject}} \\
-{\reserved{IntersectiveAdjective}} &{\reserved{IntersectiveDataPropertyAdjective}} &{\reserved{IntersectiveObjectPropertyAdjective}} \\
-{\reserved{Lexicon}} &{\reserved{NP}} &{\reserved{Name}} \\
-{\reserved{PNP}} &{\reserved{PossessiveAdjunct}} &{\reserved{PostpositionalObject}} \\
+{\reserved{ClassNoun}} &{\reserved{ClassRelationalNoun}} &{\reserved{ConsequenceVerb}} \\
+{\reserved{CopulativeArg}} &{\reserved{CopulativeSubject}} &{\reserved{DirectObject}} \\
+{\reserved{EventVerb}} &{\reserved{IndirectObject}} &{\reserved{IntersectiveAdjective}} \\
+{\reserved{IntersectiveDataPropertyAdjective}} &{\reserved{IntersectiveObjectPropertyAdjective}} &{\reserved{Lexicon}} \\
+{\reserved{Name}} &{\reserved{PossessiveAdjunct}} &{\reserved{PostpositionalObject}} \\
 {\reserved{PrepositionalObject}} &{\reserved{PropertyModifyingAdjective}} &{\reserved{RelationalAdjective}} \\
 {\reserved{RelationalMultivalentNoun}} &{\reserved{RelationalNoun}} &{\reserved{ScalarAdjective}} \\
-{\reserved{StateVerb}} &{\reserved{Subject}} &{\reserved{VP}} \\
-{\reserved{accusative}} &{\reserved{adjective}} &{\reserved{adposition}} \\
-{\reserved{adverb}} &{\reserved{article}} &{\reserved{as}} \\
-{\reserved{bullet}} &{\reserved{central}} &{\reserved{circumposition}} \\
-{\reserved{class}} &{\reserved{colon}} &{\reserved{comma}} \\
-{\reserved{comparative}} &{\reserved{conditional}} &{\reserved{conjunction}} \\
-{\reserved{contravariant}} &{\reserved{copula}} &{\reserved{covariant}} \\
-{\reserved{dative}} &{\reserved{determiner}} &{\reserved{dual}} \\
-{\reserved{durative}} &{\reserved{firstPerson}} &{\reserved{for}} \\
-{\reserved{future}} &{\reserved{genitive}} &{\reserved{gerundive}} \\
-{\reserved{imperative}} &{\reserved{imperfect}} &{\reserved{indicative}} \\
-{\reserved{infinitive}} &{\reserved{instant}} &{\reserved{interjection}} \\
-{\reserved{nominative}} &{\reserved{nontelic}} &{\reserved{noun}} \\
-{\reserved{numeral}} &{\reserved{optional}} &{\reserved{participle}} \\
-{\reserved{particle}} &{\reserved{past}} &{\reserved{plural}} \\
-{\reserved{point}} &{\reserved{postposition}} &{\reserved{preposition}} \\
-{\reserved{present}} &{\reserved{probObj}} &{\reserved{pronoun}} \\
-{\reserved{propObj}} &{\reserved{propSubj}} &{\reserved{property}} \\
-{\reserved{punctuation}} &{\reserved{relationalArg}} &{\reserved{restrictedTo}} \\
-{\reserved{secondPerson}} &{\reserved{semiColon}} &{\reserved{singular}} \\
-{\reserved{slash}} &{\reserved{subjunctive}} &{\reserved{superlative}} \\
-{\reserved{telic}} &{\reserved{thirdPerson}} &{\reserved{verb}} \\
-{\reserved{with}} & & \\
+{\reserved{StateVerb}} &{\reserved{Subject}} &{\reserved{accusative}} \\
+{\reserved{adjective}} &{\reserved{adposition}} &{\reserved{adverb}} \\
+{\reserved{article}} &{\reserved{as}} &{\reserved{bullet}} \\
+{\reserved{central}} &{\reserved{circumposition}} &{\reserved{class}} \\
+{\reserved{colon}} &{\reserved{comma}} &{\reserved{comparative}} \\
+{\reserved{conditional}} &{\reserved{conjunction}} &{\reserved{contravariant}} \\
+{\reserved{copula}} &{\reserved{covariant}} &{\reserved{dative}} \\
+{\reserved{determiner}} &{\reserved{dual}} &{\reserved{durative}} \\
+{\reserved{firstPerson}} &{\reserved{for}} &{\reserved{future}} \\
+{\reserved{genitive}} &{\reserved{gerundive}} &{\reserved{imperative}} \\
+{\reserved{imperfect}} &{\reserved{indicative}} &{\reserved{infinitive}} \\
+{\reserved{instant}} &{\reserved{interjection}} &{\reserved{nominative}} \\
+{\reserved{nontelic}} &{\reserved{noun}} &{\reserved{numeral}} \\
+{\reserved{optional}} &{\reserved{participle}} &{\reserved{particle}} \\
+{\reserved{past}} &{\reserved{plural}} &{\reserved{point}} \\
+{\reserved{postposition}} &{\reserved{preposition}} &{\reserved{present}} \\
+{\reserved{probObj}} &{\reserved{pronoun}} &{\reserved{propObj}} \\
+{\reserved{propSubj}} &{\reserved{property}} &{\reserved{punctuation}} \\
+{\reserved{relationalArg}} &{\reserved{restrictedTo}} &{\reserved{secondPerson}} \\
+{\reserved{semiColon}} &{\reserved{singular}} &{\reserved{slash}} \\
+{\reserved{subjunctive}} &{\reserved{superlative}} &{\reserved{telic}} \\
+{\reserved{thirdPerson}} &{\reserved{verb}} &{\reserved{with}} \\
 \end{tabular}\\
 
 The symbols used in parser are the following: \\
@@ -131,8 +129,8 @@ All other symbols are terminals.\\
  & {\delimit}  &{\terminal{RelationalNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{RelationalNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{RelationalMultivalentNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{[}} {\nonterminal{ListOntologyFrameElement}} {\terminal{]}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{ClassRelationalNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\terminal{property}} {\terminal{{$=$}}} {\nonterminal{URI}} {\terminal{,}} {\terminal{class}} {\terminal{{$=$}}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{ClassRelationalNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\terminal{property}} {\terminal{{$=$}}} {\nonterminal{URI}} {\terminal{,}} {\terminal{class}} {\terminal{{$=$}}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{ClassRelationalNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\terminal{class}} {\terminal{{$=$}}} {\nonterminal{URI}} {\terminal{,}} {\terminal{property}} {\terminal{{$=$}}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{ClassRelationalNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\terminal{class}} {\terminal{{$=$}}} {\nonterminal{URI}} {\terminal{,}} {\terminal{property}} {\terminal{{$=$}}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -195,22 +193,22 @@ All other symbols are terminals.\\
 
 \begin{tabular}{lll}
 {\nonterminal{PNP}} & {\arrow}  &{\nonterminal{String}}  \\
- & {\delimit}  &{\terminal{PNP}} {\terminal{(}} {\nonterminal{ListPOSTaggedWord}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{[}} {\nonterminal{ListPOSTaggedWord}} {\terminal{]}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
 {\nonterminal{NP}} & {\arrow}  &{\nonterminal{String}}  \\
- & {\delimit}  &{\terminal{NP}} {\terminal{(}} {\nonterminal{ListPOSTaggedWord}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{[}} {\nonterminal{ListPOSTaggedWord}} {\terminal{]}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
 {\nonterminal{VP}} & {\arrow}  &{\nonterminal{String}}  \\
- & {\delimit}  &{\terminal{VP}} {\terminal{(}} {\nonterminal{ListPOSTaggedWord}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{[}} {\nonterminal{ListPOSTaggedWord}} {\terminal{]}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
 {\nonterminal{AP}} & {\arrow}  &{\nonterminal{String}}  \\
- & {\delimit}  &{\terminal{AP}} {\terminal{(}} {\nonterminal{ListPOSTaggedWord}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{[}} {\nonterminal{ListPOSTaggedWord}} {\terminal{]}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -219,8 +217,7 @@ All other symbols are terminals.\\
 
 \begin{tabular}{lll}
 {\nonterminal{ListPOSTaggedWord}} & {\arrow}  &{\emptyP} \\
- & {\delimit}  &{\nonterminal{POSTaggedWord}}  \\
- & {\delimit}  &{\nonterminal{POSTaggedWord}} {\terminal{,}} {\nonterminal{ListPOSTaggedWord}}  \\
+ & {\delimit}  &{\nonterminal{POSTaggedWord}} {\nonterminal{ListPOSTaggedWord}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}

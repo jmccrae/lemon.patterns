@@ -39,5 +39,22 @@ class BNFCTest extends FlatSpec with ShouldMatchers {
       }
     }
   }
+  
+  "the readme examples" should "validate" in {
+    val l = new Yylex(new FileReader("src/test/resources/readme-examples.ldp"))
+    val p = new parser(l);
+    try {
+      val parse_tree = p.pStatements();
+      val visitor = new PatternVisitor()
+      val x = parse_tree.accept(visitor, collection.mutable.Map[String,String]())
+      x should not be (null)
+      x.size should be (1)
+    } catch {
+      case (e : Throwable) => {
+        System.err.println("At line " + String.valueOf(l.line_num()) + ", near \"" + l.buff() + "\" :");
+        throw e
+      }
+    }
+  }
 }
 
