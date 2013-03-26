@@ -38,17 +38,17 @@ class AdjectiveTest extends FlatSpec with ShouldMatchers {
              <lemon:reference>
                <owl:Class rdf:about="http://www.example.com/ontology#Belgian"/>
              </lemon:reference>
-             <lemon:semArg>
+             <lemon:isA>
                <lemon:Argument rdf:about="file:example/Belgian-adjective#subject"/>
-             </lemon:semArg>
+             </lemon:isA>
            </lemon:LexicalSense>
          </lemon:sense>
          <lemon:synBehavior>
-           <lemon:Frame rdf:about="file:example/Belgian-adjective#frame">
+           <lemon:Frame rdf:about="file:example/Belgian-adjective#predFrame">
              <rdf:type rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#AdjectivePredicativeFrame"/>
-             <lexinfo:subject rdf:resource="file:example/Belgian-adjective#subject"/>
+             <lexinfo:copulativeSubject rdf:resource="file:example/Belgian-adjective#subject"/>
            </lemon:Frame>
-           <lemon:Frame rdf:about="file:example/Belgian-adjective#frame">
+           <lemon:Frame rdf:about="file:example/Belgian-adjective#attrFrame">
              <rdf:type rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#AdjectiveAttributiveFrame"/>
              <lexinfo:attributiveArg rdf:resource="file:example/Belgian-adjective#subject"/>
            </lemon:Frame>

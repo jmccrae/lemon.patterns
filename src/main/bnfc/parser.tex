@@ -43,7 +43,7 @@ followed by an unsigned or negative exponent.
 
 
 FullURI literals are recognized by the regular expression
-\([\mbox{``!"\#\$\%\&'()*{$+$},{$-$}./0123456789:;{$<$}{$=$}?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]\^\_`abcdefghijklmnopqrstuvwxyz\{{$|$}\}''}]+\)
+\([\mbox{``{$<$}''}] [\mbox{``\^{$>$}''}]* [\mbox{``{$>$}''}]\)
 
 
 \subsection*{Reserved words and symbols}
@@ -88,10 +88,10 @@ The reserved words used in parser are the following: \\
 The symbols used in parser are the following: \\
 
 \begin{tabular}{lll}
-{\symb{@prefix}} &{\symb{:}} &{\symb{{$<$}}} \\
-{\symb{{$>$}}} &{\symb{.}} &{\symb{(}} \\
-{\symb{,}} &{\symb{)}} &{\symb{{$=$}}} \\
-{\symb{[}} &{\symb{]}} &{\symb{/}} \\
+{\symb{@prefix}} &{\symb{:}} &{\symb{.}} \\
+{\symb{(}} &{\symb{,}} &{\symb{)}} \\
+{\symb{{$=$}}} &{\symb{[}} &{\symb{]}} \\
+{\symb{/}} &{\symb{{$>$}}} &{\symb{{$<$}}} \\
 {\symb{{$=$}{$>$}}} & & \\
 \end{tabular}\\
 
@@ -109,7 +109,7 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{Statement}} & {\arrow}  &{\terminal{@prefix}} {\nonterminal{Ident}} {\terminal{:}} {\terminal{{$<$}}} {\nonterminal{FullURI}} {\terminal{{$>$}}} {\terminal{.}}  \\
+{\nonterminal{Statement}} & {\arrow}  &{\terminal{@prefix}} {\nonterminal{Ident}} {\terminal{:}} {\nonterminal{FullURI}} {\terminal{.}}  \\
  & {\delimit}  &{\terminal{Lexicon}} {\terminal{(}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{String}} {\terminal{,}} {\nonterminal{ListPattern}} {\terminal{)}}  \\
 \end{tabular}\\
 
@@ -299,7 +299,8 @@ All other symbols are terminals.\\
 
 \begin{tabular}{lll}
 {\nonterminal{URI}} & {\arrow}  &{\nonterminal{Ident}} {\terminal{:}} {\nonterminal{Ident}}  \\
- & {\delimit}  &{\terminal{{$<$}}} {\nonterminal{FullURI}} {\terminal{{$>$}}}  \\
+ & {\delimit}  &{\terminal{:}} {\nonterminal{Ident}}  \\
+ & {\delimit}  &{\nonterminal{FullURI}}  \\
 \end{tabular}\\
 
 

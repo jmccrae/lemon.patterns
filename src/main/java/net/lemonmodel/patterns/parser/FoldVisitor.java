@@ -579,6 +579,10 @@ public abstract class FoldVisitor<R,A> implements AllVisitor<R,A> {
       R r = leaf(arg);
       return r;
     }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EQName2 p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EURI p, A arg) {
       R r = leaf(arg);
       return r;

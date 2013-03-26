@@ -114,10 +114,12 @@ class VerbTest extends FlatSpec with ShouldMatchers {
              <lemon:reference>
                <rdf:Property rdf:about="http://www.example.com/ontology#loves"/>
              </lemon:reference>
-             <lemon:semArg>
+             <lemon:subjOfProp>
                <lemon:Argument rdf:about="file:example/amare-verb#subject"/>
+             </lemon:subjOfProp>
+             <lemon:objOfProp>
                <lemon:Argument rdf:about="file:example/amare-verb#object"/>
-             </lemon:semArg>
+             </lemon:objOfProp>
            </lemon:LexicalSense>
          </lemon:sense>
          <lemon:synBehavior>
@@ -133,7 +135,7 @@ class VerbTest extends FlatSpec with ShouldMatchers {
   "The event verb frame" should "produce valid lemon" in {
     
     xmlCheck(AchievementVerb("give",ontology("GivingEvent"),
-         args=Seq(ontology("giver") as Subject,
+         _args=Seq(ontology("giver") as Subject,
                   ontology("recipient") as DirectObject,
                   ontology("givenObject") as IndirectObject)),
        <lemon:LexicalEntry rdf:about="file:example/give-verb">
@@ -152,10 +154,10 @@ class VerbTest extends FlatSpec with ShouldMatchers {
              </lemon:reference>
              <lemon:subsense>
                <lemon:LexicalSense rdf:about="file:example/give-verb#subsense1">
-                 <lemon:semArg>
+                 <lemon:objOfProp>
                    <lemon:Argument rdf:about="file:example/give-verb#arg1"/>
                    <!-- Mandatory argument -->
-                 </lemon:semArg>
+                 </lemon:objOfProp>
                  <lemon:reference>
                    <rdf:Property rdf:about="http://www.example.com/ontology#giver"/>
                  </lemon:reference>
@@ -163,10 +165,10 @@ class VerbTest extends FlatSpec with ShouldMatchers {
              </lemon:subsense>
              <lemon:subsense>
                <lemon:LexicalSense rdf:about="file:example/give-verb#subsense2">
-                 <lemon:semArg>
+                 <lemon:objOfProp>
                    <lemon:Argument rdf:about="file:example/give-verb#arg2"/>
                    <!-- Mandatory argument -->
-                 </lemon:semArg>
+                 </lemon:objOfProp>
                  <lemon:reference>
                    <rdf:Property rdf:about="http://www.example.com/ontology#recipient"/>
                  </lemon:reference>
@@ -174,10 +176,10 @@ class VerbTest extends FlatSpec with ShouldMatchers {
              </lemon:subsense>
              <lemon:subsense>
                <lemon:LexicalSense rdf:about="file:example/give-verb#subsense3">
-                 <lemon:semArg>
+                 <lemon:objOfProp>
                    <lemon:Argument rdf:about="file:example/give-verb#arg3"/>
                    <!-- Mandatory argument -->
-                 </lemon:semArg>
+                 </lemon:objOfProp>
                  <lemon:reference>
                    <rdf:Property rdf:about="http://www.example.com/ontology#givenObject"/>
                  </lemon:reference>

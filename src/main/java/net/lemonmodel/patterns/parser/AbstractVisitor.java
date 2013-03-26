@@ -173,6 +173,7 @@ public class AbstractVisitor<R,A> implements AllVisitor<R,A> {
     }
 /* URI */
     public R visit(net.lemonmodel.patterns.parser.Absyn.EQName p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EQName2 p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EURI p, A arg) { return visitDefault(p, arg); }
     public R visitDefault(net.lemonmodel.patterns.parser.Absyn.URI p, A arg) {
       throw new IllegalArgumentException(this.getClass().getName() + ": " + p);

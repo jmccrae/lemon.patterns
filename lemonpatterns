@@ -5,24 +5,33 @@ die () {
     exit 1
 }
 
-if [ $# -ne 1 ] 
+if [ $# -ne 1 ] && [ $# -ne 2 ] 
 then
   die "Required argument: lexiconFile" 
 fi
 
-echo "import net.lemonmodel.patterns._" > tmp_model.scala
-echo "import net.lemonmodel.patterns.pos._" >> tmp_model.scala
-echo "import net.lemonmodel.rdfutil.RDFUtil._" >> tmp_model.scala
-echo "" >> tmp_model.scala
-echo "object TmpModel {" >> tmp_model.scala
-echo "  var lexicons = List[Lexicon]()" >> tmp_model.scala
+if [ ! -d lib ]
+then
+	die "Directory lib does not exist!"
+fi
 
-cat $1 >> tmp_model.scala
+if [ ! -e lib/scala-library-2.9.1.jar ]
+then
+  echo "Obtaining Scala library"
+  wget http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.1/scala-library-2.9.1.jar -O lib/scala-library-2.9.1.jar || die "wget failed"
+fi
 
-perl -pi -e 's/Lexicon\(/lexicons ::= Lexicon\(/g' tmp_model.scala
+if [ ! -e lib/jflex-1.4.3.jar ]
+then
+  echo "Obtaining JFlex"
+  wget http://repo1.maven.org/maven2/de/jflex/jflex/1.4.3/jflex-1.4.3.jar -O lib/jflex-1.4.3.jar || die "wget failed"
+fi
 
-echo " def main(args : Array[String]) = println(WriteAsRDF.apply(for(lexicon <- lexicons) yield { lexicon.toXML() })) }" >> tmp_model.scala
+if [ ! -e target/lemon.patterns_2.9.1-1.12.9.jar ]
+then
+  echo "Compiling sources"
+  mvn install || die "Maven failed"
+fi
 
-scala -cp target/scala-2.9.1/lemon-patterns_2.9.1-1.12.9.jar tmp_model.scala
+java -cp lib/scala-library-2.9.1.jar:lib/jflex-1.4.3.jar:target/lemon.patterns_2.9.1-1.12.9.jar net.lemonmodel.patterns.ConvertPatterns "$@"
 
-rm tmp_model.scala

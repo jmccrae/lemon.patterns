@@ -24,7 +24,14 @@ object ConvertPatterns {
       val parse_tree = p.pStatements();
       val visitor = new PatternVisitor();
       val lexicons = parse_tree.accept(visitor,collection.mutable.Map[String,String]())
-      println(WriteAsRDF.apply(for(lexicon <- lexicons) yield { lexicon.toXML() }))
+      if(args.length == 1) {
+        println(WriteAsRDF.apply(for(lexicon <- lexicons) yield { lexicon.toXML() }))
+      } else {
+        val out = new PrintWriter(args(1))
+        out.println(WriteAsRDF.apply(for(lexicon <- lexicons) yield { lexicon.toXML() }))
+        out.flush
+        out.close
+      }
     }
     catch
     {

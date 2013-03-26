@@ -1,11 +1,11 @@
-token FullURI ["!\"#$%&'()*+,-./0123456789:;<=?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}"] + ;
+token FullURI (["<"] ["^>"]* [">"]) ;
 
 comment "//" ;
 comment "/*" "*/" ;
 
 EStatments. Statements ::= [Statement] ;
 
-EPrefix. Statement ::= "@prefix" Ident ":" "<" FullURI ">" "." ;
+EPrefix. Statement ::= "@prefix" Ident ":" FullURI "." ;
 ELexicon. Statement ::= "Lexicon" "(" URI "," String "," [Pattern] ")" ;
 separator Statement "" ;
 
@@ -132,4 +132,5 @@ EVerbPOS. POSTag ::= "verb" ;
 EAnyPOS. POSTag ::= String ;
 
 EQName. URI ::= Ident ":" Ident ;
-EURI. URI ::= "<" FullURI ">" ;
+EQName2. URI ::= ":" Ident ;
+EURI. URI ::= FullURI ;

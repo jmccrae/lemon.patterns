@@ -726,6 +726,12 @@ public class ComposVisitor<A> implements
 
       return new net.lemonmodel.patterns.parser.Absyn.EQName(ident_1, ident_2);
     }
+    public URI visit(net.lemonmodel.patterns.parser.Absyn.EQName2 p, A arg)
+    {
+      String ident_ = p.ident_;
+
+      return new net.lemonmodel.patterns.parser.Absyn.EQName2(ident_);
+    }
     public URI visit(net.lemonmodel.patterns.parser.Absyn.EURI p, A arg)
     {
       String fulluri_ = p.fulluri_;

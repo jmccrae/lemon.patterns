@@ -50,16 +50,16 @@ nonterminal net.lemonmodel.patterns.parser.Absyn.URI URI;
 
 terminal _SYMB_0;    //   @prefix
 terminal _SYMB_1;    //   :
-terminal _SYMB_2;    //   <
-terminal _SYMB_3;    //   >
-terminal _SYMB_4;    //   .
-terminal _SYMB_5;    //   (
-terminal _SYMB_6;    //   ,
-terminal _SYMB_7;    //   )
-terminal _SYMB_8;    //   =
-terminal _SYMB_9;    //   [
-terminal _SYMB_10;    //   ]
-terminal _SYMB_11;    //   /
+terminal _SYMB_2;    //   .
+terminal _SYMB_3;    //   (
+terminal _SYMB_4;    //   ,
+terminal _SYMB_5;    //   )
+terminal _SYMB_6;    //   =
+terminal _SYMB_7;    //   [
+terminal _SYMB_8;    //   ]
+terminal _SYMB_9;    //   /
+terminal _SYMB_10;    //   >
+terminal _SYMB_11;    //   <
 terminal _SYMB_12;    //   =>
 terminal _SYMB_13;    //   AP
 terminal _SYMB_14;    //   ClassNoun
@@ -167,8 +167,8 @@ start with Statements;
 
 Statements ::= ListStatement:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EStatments(p_1); :} 
 ;
-Statement ::= _SYMB_0 _IDENT_:p_2 _SYMB_1 _SYMB_2 FullURI:p_5 _SYMB_3 _SYMB_4  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPrefix(p_2,p_5); :} 
-  | _SYMB_25 _SYMB_5 URI:p_3 _SYMB_6 _STRING_:p_5 _SYMB_6 ListPattern:p_7 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ELexicon(p_3,p_5,p_7); :}
+Statement ::= _SYMB_0 _IDENT_:p_2 _SYMB_1 FullURI:p_4 _SYMB_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPrefix(p_2,p_4); :} 
+  | _SYMB_25 _SYMB_3 URI:p_3 _SYMB_4 _STRING_:p_5 _SYMB_4 ListPattern:p_7 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ELexicon(p_3,p_5,p_7); :}
 ;
 ListStatement ::=  /* empty */  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListStatement(); :} 
   | ListStatement:p_1 Statement:p_2  {: RESULT = p_1; p_1.addLast(p_2); :}
@@ -178,38 +178,38 @@ Pattern ::= Pattern:p_1 _SYMB_103 ListCategory:p_3 _STRING_:p_4  {: RESULT = new
   | VerbPattern:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EVerb(p_1); :}
   | AdjectivePattern:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAdjective(p_1); :}
 ;
-NounPattern ::= _SYMB_27 _SYMB_5 PNP:p_3 _SYMB_6 URI:p_5 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EName(p_3,p_5); :} 
-  | _SYMB_14 _SYMB_5 NP:p_3 _SYMB_6 URI:p_5 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EClassNoun(p_3,p_5); :}
-  | _SYMB_35 _SYMB_5 NP:p_3 _SYMB_6 URI:p_5 _SYMB_6 _SYMB_89 _SYMB_8 Arg:p_9 _SYMB_6 _SYMB_88 _SYMB_8 Arg:p_13 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1(p_3,p_5,p_9,p_13); :}
-  | _SYMB_35 _SYMB_5 NP:p_3 _SYMB_6 URI:p_5 _SYMB_6 _SYMB_88 _SYMB_8 Arg:p_9 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalNoun2(p_3,p_5,p_9); :}
-  | _SYMB_34 _SYMB_5 NP:p_3 _SYMB_6 URI:p_5 _SYMB_6 _SYMB_9 ListOntologyFrameElement:p_8 _SYMB_10 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalMultivalentNoun(p_3,p_5,p_8); :}
-  | _SYMB_15 _SYMB_5 NP:p_3 _SYMB_6 _SYMB_90 _SYMB_8 URI:p_7 _SYMB_6 _SYMB_49 _SYMB_8 URI:p_11 _SYMB_6 _SYMB_89 _SYMB_8 Arg:p_15 _SYMB_6 _SYMB_88 _SYMB_8 Arg:p_19 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EClassRelationalNoun1(p_3,p_7,p_11,p_15,p_19); :}
-  | _SYMB_15 _SYMB_5 NP:p_3 _SYMB_6 _SYMB_90 _SYMB_8 URI:p_7 _SYMB_6 _SYMB_49 _SYMB_8 URI:p_11 _SYMB_6 _SYMB_88 _SYMB_8 Arg:p_15 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EClassRelationalNoun2(p_3,p_7,p_11,p_15); :}
+NounPattern ::= _SYMB_27 _SYMB_3 PNP:p_3 _SYMB_4 URI:p_5 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EName(p_3,p_5); :} 
+  | _SYMB_14 _SYMB_3 NP:p_3 _SYMB_4 URI:p_5 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EClassNoun(p_3,p_5); :}
+  | _SYMB_35 _SYMB_3 NP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_89 _SYMB_6 Arg:p_9 _SYMB_4 _SYMB_88 _SYMB_6 Arg:p_13 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1(p_3,p_5,p_9,p_13); :}
+  | _SYMB_35 _SYMB_3 NP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_88 _SYMB_6 Arg:p_9 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalNoun2(p_3,p_5,p_9); :}
+  | _SYMB_34 _SYMB_3 NP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_7 ListOntologyFrameElement:p_8 _SYMB_8 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalMultivalentNoun(p_3,p_5,p_8); :}
+  | _SYMB_15 _SYMB_3 NP:p_3 _SYMB_4 _SYMB_90 _SYMB_6 URI:p_7 _SYMB_4 _SYMB_49 _SYMB_6 URI:p_11 _SYMB_4 _SYMB_89 _SYMB_6 Arg:p_15 _SYMB_4 _SYMB_88 _SYMB_6 Arg:p_19 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EClassRelationalNoun1(p_3,p_7,p_11,p_15,p_19); :}
+  | _SYMB_15 _SYMB_3 NP:p_3 _SYMB_4 _SYMB_90 _SYMB_6 URI:p_7 _SYMB_4 _SYMB_49 _SYMB_6 URI:p_11 _SYMB_4 _SYMB_88 _SYMB_6 Arg:p_15 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EClassRelationalNoun2(p_3,p_7,p_11,p_15); :}
 ;
-VerbPattern ::= _SYMB_37 _SYMB_5 VP:p_3 _SYMB_6 URI:p_5 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EStateVerb1(p_3,p_5); :} 
-  | _SYMB_37 _SYMB_5 VP:p_3 _SYMB_6 URI:p_5 _SYMB_6 _SYMB_88 _SYMB_8 Arg:p_9 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EStateVerb2(p_3,p_5,p_9); :}
-  | _SYMB_37 _SYMB_5 VP:p_3 _SYMB_6 URI:p_5 _SYMB_6 _SYMB_89 _SYMB_8 Arg:p_9 _SYMB_6 _SYMB_86 _SYMB_8 Arg:p_13 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EStateVerb3(p_3,p_5,p_9,p_13); :}
+VerbPattern ::= _SYMB_37 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EStateVerb1(p_3,p_5); :} 
+  | _SYMB_37 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_88 _SYMB_6 Arg:p_9 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EStateVerb2(p_3,p_5,p_9); :}
+  | _SYMB_37 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_89 _SYMB_6 Arg:p_9 _SYMB_4 _SYMB_86 _SYMB_6 Arg:p_13 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EStateVerb3(p_3,p_5,p_9,p_13); :}
   | _SYMB_100 VerbPattern2:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ETelicEventVerb(p_2); :}
   | _SYMB_74 VerbPattern2:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENontelicEventVerb(p_2); :}
   | VerbPattern3:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDunnotelicEventVerb(p_1); :}
-  | _SYMB_16 _SYMB_5 VP:p_3 _SYMB_6 URI:p_5 _SYMB_6 _SYMB_89 _SYMB_8 OntologyFrameElement:p_9 _SYMB_6 _SYMB_88 _SYMB_8 OntologyFrameElement:p_13 _SYMB_6 URI:p_15 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1(p_3,p_5,p_9,p_13,p_15); :}
-  | _SYMB_16 _SYMB_5 VP:p_3 _SYMB_6 URI:p_5 _SYMB_6 _SYMB_89 _SYMB_8 OntologyFrameElement:p_9 _SYMB_6 _SYMB_88 _SYMB_8 OntologyFrameElement:p_13 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2(p_3,p_5,p_9,p_13); :}
+  | _SYMB_16 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_89 _SYMB_6 OntologyFrameElement:p_9 _SYMB_4 _SYMB_88 _SYMB_6 OntologyFrameElement:p_13 _SYMB_4 URI:p_15 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1(p_3,p_5,p_9,p_13,p_15); :}
+  | _SYMB_16 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_89 _SYMB_6 OntologyFrameElement:p_9 _SYMB_4 _SYMB_88 _SYMB_6 OntologyFrameElement:p_13 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2(p_3,p_5,p_9,p_13); :}
 ;
 VerbPattern2 ::= _SYMB_61 VerbPattern3:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDurativeEventVerb(p_2); :} 
   | _SYMB_71 VerbPattern3:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EInstantEventVerb(p_2); :}
 ;
-VerbPattern3 ::= _SYMB_20 _SYMB_5 VP:p_3 _SYMB_6 URI:p_5 _SYMB_6 _SYMB_9 ListOntologyFrameElement:p_8 _SYMB_10 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EEventVerb(p_3,p_5,p_8); :} 
+VerbPattern3 ::= _SYMB_20 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_7 ListOntologyFrameElement:p_8 _SYMB_8 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EEventVerb(p_3,p_5,p_8); :} 
 ;
-AdjectivePattern ::= _SYMB_22 _SYMB_5 AP:p_3 _SYMB_6 URI:p_5 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIntersectiveAdjective(p_3,p_5); :} 
-  | _SYMB_24 _SYMB_5 AP:p_3 _SYMB_6 URI:p_5 _SYMB_6 URI:p_7 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIntersectiveObjectPropertyAdjective(p_3,p_5,p_7); :}
-  | _SYMB_23 _SYMB_5 AP:p_3 _SYMB_6 URI:p_5 _SYMB_6 _STRING_:p_7 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIntersectiveDataPropertyAdjective(p_3,p_5,p_7); :}
-  | _SYMB_32 _SYMB_5 AP:p_3 _SYMB_6 URI:p_5 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPropertyModifyingAdjective(p_3,p_5); :}
-  | _SYMB_33 _SYMB_5 AP:p_3 _SYMB_6 URI:p_5 _SYMB_6 _SYMB_92 _SYMB_8 Arg:p_9 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalAdjective(p_3,p_5,p_9); :}
-  | _SYMB_36 _SYMB_5 AP:p_3 _SYMB_6 _SYMB_9 ListScalarMembership:p_6 _SYMB_10 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EScalarAdjective(p_3,p_6); :}
+AdjectivePattern ::= _SYMB_22 _SYMB_3 AP:p_3 _SYMB_4 URI:p_5 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIntersectiveAdjective(p_3,p_5); :} 
+  | _SYMB_24 _SYMB_3 AP:p_3 _SYMB_4 URI:p_5 _SYMB_4 URI:p_7 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIntersectiveObjectPropertyAdjective(p_3,p_5,p_7); :}
+  | _SYMB_23 _SYMB_3 AP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _STRING_:p_7 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIntersectiveDataPropertyAdjective(p_3,p_5,p_7); :}
+  | _SYMB_32 _SYMB_3 AP:p_3 _SYMB_4 URI:p_5 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPropertyModifyingAdjective(p_3,p_5); :}
+  | _SYMB_33 _SYMB_3 AP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_92 _SYMB_6 Arg:p_9 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalAdjective(p_3,p_5,p_9); :}
+  | _SYMB_36 _SYMB_3 AP:p_3 _SYMB_4 _SYMB_7 ListScalarMembership:p_6 _SYMB_8 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EScalarAdjective(p_3,p_6); :}
 ;
 ListPattern ::=  /* empty */  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListPattern(); :} 
   | Pattern:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListPattern(); RESULT.addLast(p_1); :}
-  | Pattern:p_1 _SYMB_6 ListPattern:p_3  {: RESULT = p_3; p_3.addFirst(p_1); :}
+  | Pattern:p_1 _SYMB_4 ListPattern:p_3  {: RESULT = p_3; p_3.addFirst(p_1); :}
 ;
 Arg ::= Arg:p_1 _SYMB_77  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EOptionalArg(p_1); :} 
   | Arg:p_1 _SYMB_93 URI:p_3  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERestrictedArg(p_1,p_3); :}
@@ -218,44 +218,44 @@ Arg ::= Arg:p_1 _SYMB_77  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.E
   | _SYMB_21  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIndirectObject(); :}
   | _SYMB_17  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ECopulativeArg(); :}
   | _SYMB_18  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ECopulativeSubject(); :}
-  | _SYMB_31 _SYMB_5 _STRING_:p_3 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPrepositionalObject(p_3); :}
-  | _SYMB_30 _SYMB_5 _STRING_:p_3 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPostpositionalObject(p_3); :}
+  | _SYMB_31 _SYMB_3 _STRING_:p_3 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPrepositionalObject(p_3); :}
+  | _SYMB_30 _SYMB_3 _STRING_:p_3 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPostpositionalObject(p_3); :}
   | _SYMB_29  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPossessiveAdjunct(); :}
 ;
 OntologyFrameElement ::= URI:p_1 _SYMB_45 Arg:p_3  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EURIAsSynArg(p_1,p_3); :} 
 ;
 ListOntologyFrameElement ::=  /* empty */  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListOntologyFrameElement(); :} 
   | OntologyFrameElement:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListOntologyFrameElement(); RESULT.addLast(p_1); :}
-  | OntologyFrameElement:p_1 _SYMB_6 ListOntologyFrameElement:p_3  {: RESULT = p_3; p_3.addFirst(p_1); :}
+  | OntologyFrameElement:p_1 _SYMB_4 ListOntologyFrameElement:p_3  {: RESULT = p_3; p_3.addFirst(p_1); :}
 ;
 PNP ::= _STRING_:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPNPSimple(p_1); :} 
-  | _SYMB_28 _SYMB_5 ListPOSTaggedWord:p_3 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPNPComplex(p_3); :}
+  | _SYMB_28 _SYMB_3 ListPOSTaggedWord:p_3 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPNPComplex(p_3); :}
 ;
 NP ::= _STRING_:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENPSimple(p_1); :} 
-  | _SYMB_26 _SYMB_5 ListPOSTaggedWord:p_3 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENPComplex(p_3); :}
+  | _SYMB_26 _SYMB_3 ListPOSTaggedWord:p_3 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENPComplex(p_3); :}
 ;
 VP ::= _STRING_:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EVPSimple(p_1); :} 
-  | _SYMB_39 _SYMB_5 ListPOSTaggedWord:p_3 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EVPComplex(p_3); :}
+  | _SYMB_39 _SYMB_3 ListPOSTaggedWord:p_3 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EVPComplex(p_3); :}
 ;
 AP ::= _STRING_:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAPSimple(p_1); :} 
-  | _SYMB_13 _SYMB_5 ListPOSTaggedWord:p_3 _SYMB_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAPComplex(p_3); :}
+  | _SYMB_13 _SYMB_3 ListPOSTaggedWord:p_3 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAPComplex(p_3); :}
 ;
-POSTaggedWord ::= _STRING_:p_1 _SYMB_11 POSTag:p_3  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord(p_1,p_3); :} 
+POSTaggedWord ::= _STRING_:p_1 _SYMB_9 POSTag:p_3  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord(p_1,p_3); :} 
 ;
 ListPOSTaggedWord ::=  /* empty */  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListPOSTaggedWord(); :} 
   | POSTaggedWord:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListPOSTaggedWord(); RESULT.addLast(p_1); :}
-  | POSTaggedWord:p_1 _SYMB_6 ListPOSTaggedWord:p_3  {: RESULT = p_3; p_3.addFirst(p_1); :}
+  | POSTaggedWord:p_1 _SYMB_4 ListPOSTaggedWord:p_3  {: RESULT = p_3; p_3.addFirst(p_1); :}
 ;
 ScalarMembership ::= URI:p_1 _SYMB_57  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.CovariantScalarMembership(p_1); :} 
   | URI:p_1 _SYMB_55  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ContravariantScalarMembership(p_1); :}
   | URI:p_1 _SYMB_47  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.CentralScalarMembership(p_1); :}
-  | URI:p_1 _SYMB_3 _DOUBLE_:p_3 _SYMB_63 URI:p_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.GreaterThanScalarMembership(p_1,p_3,p_5); :}
-  | URI:p_1 _SYMB_2 _DOUBLE_:p_3 _SYMB_63 URI:p_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.LessThanScalarMembership(p_1,p_3,p_5); :}
-  | _DOUBLE_:p_1 _SYMB_2 URI:p_3 _SYMB_2 _DOUBLE_:p_5 _SYMB_63 URI:p_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.BoundedScalarMembership(p_1,p_3,p_5,p_7); :}
+  | URI:p_1 _SYMB_10 _DOUBLE_:p_3 _SYMB_63 URI:p_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.GreaterThanScalarMembership(p_1,p_3,p_5); :}
+  | URI:p_1 _SYMB_11 _DOUBLE_:p_3 _SYMB_63 URI:p_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.LessThanScalarMembership(p_1,p_3,p_5); :}
+  | _DOUBLE_:p_1 _SYMB_11 URI:p_3 _SYMB_11 _DOUBLE_:p_5 _SYMB_63 URI:p_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.BoundedScalarMembership(p_1,p_3,p_5,p_7); :}
 ;
 ListScalarMembership ::=  /* empty */  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListScalarMembership(); :} 
   | ScalarMembership:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListScalarMembership(); RESULT.addLast(p_1); :}
-  | ScalarMembership:p_1 _SYMB_6 ListScalarMembership:p_3  {: RESULT = p_3; p_3.addFirst(p_1); :}
+  | ScalarMembership:p_1 _SYMB_4 ListScalarMembership:p_3  {: RESULT = p_3; p_3.addFirst(p_1); :}
 ;
 Category ::= _SYMB_96  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESingular(); :} 
   | _SYMB_60  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDual(); :}
@@ -311,6 +311,7 @@ POSTag ::= _SYMB_41  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAdjec
   | _STRING_:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAnyPOS(p_1); :}
 ;
 URI ::= _IDENT_:p_1 _SYMB_1 _IDENT_:p_3  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EQName(p_1,p_3); :} 
-  | _SYMB_2 FullURI:p_2 _SYMB_3  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EURI(p_2); :}
+  | _SYMB_1 _IDENT_:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EQName2(p_2); :}
+  | FullURI:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EURI(p_1); :}
 ;
 

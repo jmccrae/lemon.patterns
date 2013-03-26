@@ -189,7 +189,7 @@ case class RelationalMultivalentNoun(val lemma : NP,
             <lemon:subsense>
               <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("subsense"+(i+1)))}>
                 <lemon:objOfProp>
-                  <lemon:Argument rdf:about={argURI(arg)}/>
+                  <lemon:Argument rdf:about={argURI(arg)}>
                   {
                     if(arg.arg.isOptional) {
                       <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
@@ -197,6 +197,7 @@ case class RelationalMultivalentNoun(val lemma : NP,
                       <!-- Mandatory argument -->
                     }
                   }
+                 </lemon:Argument>
                 </lemon:objOfProp>
                 <lemon:reference>
                   <rdf:Property rdf:about={arg.property}/>

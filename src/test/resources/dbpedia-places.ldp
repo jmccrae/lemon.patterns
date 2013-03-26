@@ -1,0 +1,134 @@
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix base: <#> .
+
+Lexicon(<http://sc.cit-ec.uni-bielefeld.de/lexica/manuell/dbpedia>,"en",
+  // Classes
+  ClassNoun("place",dbpedia:Place),
+  ClassNoun("location",dbpedia:Place),
+  ClassNoun("continent",dbpedia:Continent),
+  ClassNoun("country",dbpedia:Country),
+  ClassNoun("nation",dbpedia:Country),
+  ClassNoun("city",dbpedia:City),
+  ClassNoun("town",dbpedia:Town),
+  ClassNoun("village",dbpedia:Village),
+  ClassNoun(NP("body"/"common noun","of"/preposition,"water"/"common noun"),dbpedia:BodyOfWater),
+  ClassNoun("stream",dbpedia:Stream),
+  ClassNoun("river",dbpedia:River),
+  ClassNoun("lake",dbpedia:Lake),
+  ClassNoun("island",dbpedia:Island),
+  ClassNoun("atoll",dbpedia:Atoll),
+  ClassNoun("mountain",dbpedia:Mountain),
+  ClassNoun(NP("mountain"/"common noun","range"/"common noun"),dbpedia:MountainRange),
+  ClassNoun(NP("mountain"/"common noun","chain"/"common noun"),dbpedia:MountainRange),
+  ClassNoun("ridge",dbpedia:MountainRange),
+  ClassNoun(NP("mountain"/"common noun","pass"/"common noun"),dbpedia:MountainPass),
+  ClassNoun("cave",dbpedia:Cave),
+  ClassNoun("cavern",dbpedia:Cave),
+  ClassNoun("grotto",dbpedia:Cave),
+  ClassNoun("canal",dbpedia:Canal),
+  ClassNoun("valley",dbpedia:Valley),
+  ClassNoun(NP("world"/"common noun","heritage"/"common noun","site"/"common noun"),dbpedia:WorldHeritageSite),
+  ClassNoun("park",dbpedia:Park),
+  ClassNoun(NP("ski"/"common noun","region"/"common noun"),dbpedia:SkiArea),
+  ClassNoun(NP("wine"/"common noun","region"/"common noun"),dbpedia:WineRegion),
+  
+  // Properties
+  RelationalAdjective("located",dbpedia:country,
+    relationalArg=PrepositionalObject("in")),
+  RelationalAdjective("located",dbpedia:range,
+    relationalArg=PrepositionalObject("in")),
+  RelationalAdjective("located",dbpedia:city,
+    relationalArg=PrepositionalObject("in")),
+  RelationalAdjective("located",dbpedia:location,
+    relationalArg=PrepositionalObject("in")),
+  
+  // No support for "x is in y"
+
+  RelationalNoun("part",dbpedia:range,
+    propObj=PossessiveAdjunct),
+    
+  StateVerb("cross",dbpedia:crosses),
+  
+  StateVerb("traverse",dbpedia:crosses),
+  
+  StateVerb("bridge",dbpedia:crosses),
+  
+  StateVerb("span",dbpedia:crosses),
+  
+  RelationalNoun("crossing",dbpedia:crosses,
+    propObj=PossessiveAdjunct),
+    
+  RelationalNoun("bridge",dbpedia:crosses,
+    propObj=PrepositionalObject("over")),
+    
+  RelationalNoun("source",dbpedia:source,
+    propSubj=PossessiveAdjunct,
+    propObj=CopulativeArg),
+    
+  StateVerb("originate",dbpedia:source,
+    propObj=PrepositionalObject("in")),
+    
+  StateVerb("border",dbpedia:border),
+  
+  RelationalNoun("residence",dbpedia:residence,
+    propSubj=PossessiveAdjunct,
+    propObj=CopulativeArg),
+    
+  StateVerb("reside",dbpedia:residence,
+    propObj=PrepositionalObject("in")),
+     
+  RelationalNoun(NP("highest"/adjective,"mountain"/noun),dbpedia:highestMountain,
+    propObj=PossessiveAdjunct),
+    
+  RelationalNoun("elevation",dbpedia:elevation,
+    propSubj=PossessiveAdjunct,
+    propObj=CopulativeArg),
+    
+  RelationalNoun("altitude",dbpedia:elevation,
+    propSubj=PossessiveAdjunct,
+    propObj=CopulativeArg),
+    
+  RelationalNoun("height",dbpedia:elevation,
+    propSubj=PossessiveAdjunct,
+    propObj=CopulativeArg),
+    
+  ScalarAdjective("high",[dbpedia:elevation covariant]),
+
+  ScalarAdjective("tall",[dbpedia:elevation covariant]),
+
+  RelationalNoun("population",dbpedia:populationTotal,
+    propSubj=PossessiveAdjunct,
+    propObj=CopulativeArg),
+    
+  RelationalNoun(NP("total"/adjective,"population"/"common noun"),dbpedia:populationTotal,
+    propSubj=PossessiveAdjunct,
+    propObj=CopulativeArg),
+  
+  // Can't do "have X inhabitants"
+
+  RelationalNoun("area",dbpedia:areaTotal,
+    propSubj=PossessiveAdjunct,
+    propObj=CopulativeArg),
+  
+  RelationalNoun(NP("total"/adjective,"area"/"common noun"),dbpedia:areaTotal,
+    propSubj=PossessiveAdjunct,
+    propObj=CopulativeArg),
+    
+  ScalarAdjective("big",[dbpedia:areaTotal covariant]),
+  
+  RelationalNoun(NP("highest"/adjective,"region"/"common noun"),dbpedia:highestRegion,
+    propSubj=PossessiveAdjunct,
+    propObj=CopulativeArg),
+    
+  ConsequenceVerb("open",dbpedia:dataUse,
+     propSubj=base:canal as Subject, 
+     propObj=base:dataOpened as PrepositionalObject("in")),
+
+  RelationalNoun(NP("postal"/adjective,"code"/"common noun"),dbpedia:postalCode,
+    propSubj=PossessiveAdjunct,
+    propObj=CopulativeArg),
+    
+  RelationalNoun(NP("post"/adjective,"code"/"common noun"),dbpedia:postalCode,
+    propSubj=PossessiveAdjunct,
+    propObj=CopulativeArg)
+)

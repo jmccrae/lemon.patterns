@@ -427,9 +427,7 @@ public class PrettyPrinter
        render("@prefix");
        pp(_eprefix.ident_, 0);
        render(":");
-       render("<");
        pp(_eprefix.fulluri_, 0);
-       render(">");
        render(".");
        if (_i_ > 0) render(_R_PAREN);
     }
@@ -1538,13 +1536,19 @@ public class PrettyPrinter
        pp(_eqname.ident_2, 0);
        if (_i_ > 0) render(_R_PAREN);
     }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EQName2)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EQName2 _eqname2 = (net.lemonmodel.patterns.parser.Absyn.EQName2) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render(":");
+       pp(_eqname2.ident_, 0);
+       if (_i_ > 0) render(_R_PAREN);
+    }
     else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EURI)
     {
        net.lemonmodel.patterns.parser.Absyn.EURI _euri = (net.lemonmodel.patterns.parser.Absyn.EURI) foo;
        if (_i_ > 0) render(_L_PAREN);
-       render("<");
        pp(_euri.fulluri_, 0);
-       render(">");
        if (_i_ > 0) render(_R_PAREN);
     }
   }
@@ -2443,6 +2447,14 @@ public class PrettyPrinter
        render("EQName");
        sh(_eqname.ident_1);
        sh(_eqname.ident_2);
+       render(")");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EQName2)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EQName2 _eqname2 = (net.lemonmodel.patterns.parser.Absyn.EQName2) foo;
+       render("(");
+       render("EQName2");
+       sh(_eqname2.ident_);
        render(")");
     }
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EURI)

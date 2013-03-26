@@ -938,6 +938,14 @@ public class VisitSkel
 
       return null;
     }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EQName2 p, A arg)
+    {
+      /* Code For EQName2 Goes Here */
+
+      //p.ident_;
+
+      return null;
+    }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EURI p, A arg)
     {
       /* Code For EURI Goes Here */

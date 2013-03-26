@@ -81,10 +81,10 @@ package net.lemonmodel {
     
     case class ArgImpl(val isOptional : Boolean, val restriction : Option[URI], val name : String) extends Arg{
       def toXML(uri : URI, namer : URINamer) = if(!isOptional) {
-        xml.Elem("lexinfo",name,Null,TopScope) % new xml.PrefixedAttribute("rdf","about",uri.toString,Null)
+        xml.Elem("lexinfo",name,Null,TopScope) % new xml.PrefixedAttribute("rdf","resource",uri.toString,Null)
       } else {
-        val a = <lemon:Argument rdf:about={uri} lemon:optional="true"/>
-        xml.Elem("lexinfo",name,Null,TopScope,a) % new xml.PrefixedAttribute("rdf","about",uri.toString,Null)
+        val a = <lemon:Argument rdf:about={uri}><lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional></lemon:Argument>
+        xml.Elem("lexinfo",name,Null,TopScope,a)
       }
       def optional = ArgImpl(true,restriction,name)
       def restrictedTo(uri : URI) = ArgImpl(isOptional,Some(uri),name)
@@ -121,8 +121,9 @@ package net.lemonmodel {
     case class PrepositionalObject(val isOptional : Boolean, val restriction : Option[URI], val preposition : String) extends Arg {
       def toXML(uri : URI, namer : URINamer) = if(isOptional) {
         <lexinfo:prepositionalObject>
-          <lemon:Argument rdf:about={uri} lemon:optional="true">
+          <lemon:Argument rdf:about={uri}>
             <lemon:marker rdf:resource={namer.auxiliaryEntry(preposition)}/>
+            <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
            </lemon:Argument>
         </lexinfo:prepositionalObject>
       } else {
@@ -146,8 +147,9 @@ package net.lemonmodel {
     case class PostpositionalObject(val isOptional : Boolean, val restriction : Option[URI], val postposition : String) extends Arg {
       def toXML(uri : URI, namer : URINamer) = if(isOptional) {
         <lexinfo:postpositionalObject>
-          <lemon:Argument rdf:about={uri} lemon:optional="true">
+          <lemon:Argument rdf:about={uri}>
             <lemon:marker rdf:resource={namer.auxiliaryEntry(postposition)}/>
+            <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
            </lemon:Argument>
         </lexinfo:postpositionalObject>
       } else {
@@ -171,7 +173,9 @@ package net.lemonmodel {
      * An element of a multivalent frame in the ontology. Normally constructed
      * using the {@code as} implicit, e.g., {@code "http://www.example.com/ontology#property" as Subject}
      */
-     case class OntologyFrameElement(val property : URI, val arg : Arg) 
+    case class OntologyFrameElement(val property : URI, val arg : Arg) {
+      def optional = OntologyFrameElement(property,arg optional)
+    }
       
      
     sealed trait Direction

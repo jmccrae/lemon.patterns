@@ -63,9 +63,9 @@ class NounTest extends FlatSpec with ShouldMatchers {
              <lemon:reference>
                <owl:Class rdf:about="http://dbpedia.org/resource/Cat"/>
              </lemon:reference>
-             <lemon:semArg>
+             <lemon:isA>
                <lemon:Argument rdf:about="file:example/cat-noun#subject"/>
-             </lemon:semArg>
+             </lemon:isA>
            </lemon:LexicalSense>
          </lemon:sense>
          <lemon:synBehavior>
@@ -95,10 +95,12 @@ class NounTest extends FlatSpec with ShouldMatchers {
              <lemon:reference>
                <rdf:Property rdf:about="http://www.example.com/ontology#agreeAbout"/>
              </lemon:reference>
-             <lemon:semArg>
+             <lemon:subjOfProp>
                <lemon:Argument rdf:about="file:example/agreement-noun#subject"/>
+             </lemon:subjOfProp>
+             <lemon:objOfProp>
                <lemon:Argument rdf:about="file:example/agreement-noun#adpositionalObject"/>
-             </lemon:semArg>
+             </lemon:objOfProp>
            </lemon:LexicalSense>
          </lemon:sense>
          <lemon:synBehavior>
@@ -136,10 +138,11 @@ class NounTest extends FlatSpec with ShouldMatchers {
              </lemon:reference>
              <lemon:subsense>
                <lemon:LexicalSense rdf:about="file:example/position-noun#subsense1">
-                 <lemon:semArg>
-                   <lemon:Argument rdf:about="file:example/position-noun#arg1"/>
+                 <lemon:objOfProp>
+                   <lemon:Argument rdf:about="file:example/position-noun#arg1">
                    <!-- Mandatory argument -->
-                 </lemon:semArg>
+                   </lemon:Argument>
+                 </lemon:objOfProp>
                  <lemon:reference>
                    <rdf:Property rdf:about="http://www.example.com/ontology#employee"/>
                  </lemon:reference>
@@ -147,10 +150,11 @@ class NounTest extends FlatSpec with ShouldMatchers {
              </lemon:subsense>
              <lemon:subsense>
                <lemon:LexicalSense rdf:about="file:example/position-noun#subsense2">
-                 <lemon:semArg>
-                   <lemon:Argument rdf:about="file:example/position-noun#arg2"/>
-                   <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
-                 </lemon:semArg>
+                 <lemon:objOfProp>
+                   <lemon:Argument rdf:about="file:example/position-noun#arg2">
+                    <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
+                   </lemon:Argument>
+                 </lemon:objOfProp>
                  <lemon:reference>
                    <rdf:Property rdf:about="http://www.example.com/ontology#role"/>
                  </lemon:reference>
@@ -158,10 +162,11 @@ class NounTest extends FlatSpec with ShouldMatchers {
              </lemon:subsense>
              <lemon:subsense>
                <lemon:LexicalSense rdf:about="file:example/position-noun#subsense3">
-                 <lemon:semArg>
-                   <lemon:Argument rdf:about="file:example/position-noun#arg3"/>
-                   <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
-                 </lemon:semArg>
+                 <lemon:objOfProp>
+                   <lemon:Argument rdf:about="file:example/position-noun#arg3">
+                    <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
+                   </lemon:Argument>
+                 </lemon:objOfProp>
                  <lemon:reference>
                    <rdf:Property rdf:about="http://www.example.com/ontology#startOfEmployment"/>
                  </lemon:reference>
@@ -175,11 +180,13 @@ class NounTest extends FlatSpec with ShouldMatchers {
              <lexinfo:prepositionalObject>
                <lemon:Argument rdf:about="file:example/position-noun#arg2">
                  <lemon:marker rdf:resource="file:example/as"/>
+                 <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
                </lemon:Argument>
              </lexinfo:prepositionalObject>
              <lexinfo:prepositionalObject>
                <lemon:Argument rdf:about="file:example/position-noun#arg3">
                  <lemon:marker rdf:resource="file:example/since"/>
+                 <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
                </lemon:Argument>
              </lexinfo:prepositionalObject>
            </lemon:Frame>

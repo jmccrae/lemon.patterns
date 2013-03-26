@@ -4,6 +4,7 @@ public abstract class URI implements java.io.Serializable {
   public abstract <R,A> R accept(URI.Visitor<R,A> v, A arg);
   public interface Visitor <R,A> {
     public R visit(net.lemonmodel.patterns.parser.Absyn.EQName p, A arg);
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EQName2 p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.EURI p, A arg);
 
   }
