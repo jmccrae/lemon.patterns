@@ -23,7 +23,7 @@
       <span class="kind">trait</span>
       <span class="symbol"> 
         <span class="name">Verb</span>
-        <span class="tparams">[<span name="V">V &lt;: net.lemonmodel.patterns.Verb[_]</span>]</span>
+        
         <span class="result"> extends <a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a></span>
       </span>
       </h4>
@@ -34,7 +34,7 @@
           <div class="superTypes hiddenContent"><a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a name="net.lemonmodel.patterns.AccomplishmentVerb" class="extype" href="AccomplishmentVerb.html">AccomplishmentVerb</a>, <a name="net.lemonmodel.patterns.AchievementVerb" class="extype" href="AchievementVerb.html">AchievementVerb</a>, <a name="net.lemonmodel.patterns.ActivityVerb" class="extype" href="ActivityVerb.html">ActivityVerb</a>, <a name="net.lemonmodel.patterns.EventVerb" class="extype" href="EventVerb.html">EventVerb</a>, <a name="net.lemonmodel.patterns.SemelfactiveVerb" class="extype" href="SemelfactiveVerb.html">SemelfactiveVerb</a>, <a name="net.lemonmodel.patterns.StateVerb" class="extype" href="StateVerb.html">StateVerb</a></div>
+          <div class="subClasses hiddenContent"><a name="net.lemonmodel.patterns.ConsequenceVerb" class="extype" href="ConsequenceVerb.html">ConsequenceVerb</a>, <a name="net.lemonmodel.patterns.EventVerb" class="extype" href="EventVerb.html">EventVerb</a>, <a name="net.lemonmodel.patterns.StateVerb" class="extype" href="StateVerb.html">StateVerb</a></div>
         </div></div>
         
 
@@ -76,35 +76,35 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.Verb#lemma" data-isabs="true">
-      <a id="lemma:String"></a>
+      <a id="lemma:VP"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">lemma</span>
         
-        <span class="result">: String</span>
+        <span class="result">: <a name="net.lemonmodel.patterns.VP" class="extype" href="VP.html">VP</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd></dl></div>
-    </li><li visbl="prt" name="net.lemonmodel.patterns.Verb#makeWithForm" data-isabs="true">
-      <a id="makeWithForm(Form):V"></a>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Verb#makeWithForm" data-isabs="true">
+      <a id="makeWithForm(Form):Verb"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">makeWithForm</span>
         
-        <span class="params">(<span name="form">form: <a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a></span>)</span><span class="result">: V</span>
+        <span class="params">(<span name="form">form: <a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a></span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Verb" class="extype" href="">Verb</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected abstract </dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd><dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.Verb" class="extype" href="">Verb</a> → <a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a></dd></dl></div>
     </li><li visbl="prt" name="net.lemonmodel.patterns.Verb#makeWithForms" data-isabs="true">
-      <a id="makeWithForms(Seq[Form]):V"></a>
+      <a id="makeWithForms(Seq[Form]):Verb"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">makeWithForms</span>
         
-        <span class="params">(<span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>)</span><span class="result">: V</span>
+        <span class="params">(<span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Verb" class="extype" href="">Verb</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected abstract </dd></dl></div>
@@ -393,13 +393,13 @@
               
         </dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.Verb#withTable" data-isabs="false">
-      <a id="withTable(Namespace,Map[(String, String), Any]):V"></a>
+      <a id="withTable(Namespace,Map[(String, String), Any]):Verb"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">withTable</span>
         
-        <span class="params">(<span name="namespace">namespace: <a name="net.lemonmodel.patterns.Namespace" class="extype" href="Namespace.html">Namespace</a></span>, <span name="table">table: Map[(String, String), <span name="scala.Any" class="extype">Any</span>]</span>)</span><span class="result">: V</span>
+        <span class="params">(<span name="namespace">namespace: <a name="net.lemonmodel.patterns.Namespace" class="extype" href="Namespace.html">Namespace</a></span>, <span name="table">table: Map[(String, String), <span name="scala.Any" class="extype">Any</span>]</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Verb" class="extype" href="">Verb</a></span>
       </span>
       </h4>
       

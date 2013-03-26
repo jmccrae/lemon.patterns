@@ -14,9 +14,9 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../lib/class_big.png" />
+        <a title="Go to companion" href="PrepositionalObject$.html"><img src="../../../lib/class_to_object_big.png" /></a>
         <p id="owner"><a name="net" class="extype" href="../../package.html">net</a>.<a name="net.lemonmodel" class="extype" href="../package.html">lemonmodel</a>.<a name="net.lemonmodel.patterns" class="extype" href="package.html">patterns</a></p>
-        <h1>PrepositionalObject</h1>
+        <h1><a title="Go to companion" href="PrepositionalObject$.html">PrepositionalObject</a></h1>
       </div>
 
       <h4 class="signature" id="signature">
@@ -24,14 +24,14 @@
       <span class="symbol"> 
         <span class="name">PrepositionalObject</span>
         
-        <span class="params">(<span name="preposition">preposition: String</span>)</span><span class="result"> extends <a name="net.lemonmodel.patterns.AdpositionalObject" class="extype" href="AdpositionalObject.html">AdpositionalObject</a> with <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
+        <span class="params">(<span name="isOptional">isOptional: <span name="scala.Boolean" class="extype">Boolean</span></span>, <span name="restriction">restriction: <span name="scala.Option" class="extype">Option</span>[<span name="java.net.URI" class="extype">URI</span>]</span>, <span name="preposition">preposition: String</span>)</span><span class="result"> extends <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a> with <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
       </span>
       </h4>
       
           <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>A prepositional object in a frame
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span name="scala.Serializable" class="extype">Serializable</span>, <span name="java.io.Serializable" class="extype">Serializable</span>, <span name="scala.Product" class="extype">Product</span>, <span name="scala.Equals" class="extype">Equals</span>, <a name="net.lemonmodel.patterns.AdpositionalObject" class="extype" href="AdpositionalObject.html">AdpositionalObject</a>, <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
+          <div class="superTypes hiddenContent"><span name="scala.Serializable" class="extype">Serializable</span>, <span name="java.io.Serializable" class="extype">Serializable</span>, <span name="scala.Product" class="extype">Product</span>, <span name="scala.Equals" class="extype">Equals</span>, <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
         </div></div>
         
 
@@ -47,7 +47,7 @@
                 <span class="filtertype">Inherited</span>
                 <ol><li class="hideall out"><span>Hide All</span></li>
                 <li class="showall in"><span>Show all</span></li></ol>
-                <ol id="linearization"><li name="net.lemonmodel.patterns.PrepositionalObject" class="in"><span>PrepositionalObject</span></li><li name="scala.Serializable" class="in"><span>Serializable</span></li><li name="java.io.Serializable" class="in"><span>Serializable</span></li><li name="scala.Product" class="in"><span>Product</span></li><li name="scala.Equals" class="in"><span>Equals</span></li><li name="net.lemonmodel.patterns.AdpositionalObject" class="in"><span>AdpositionalObject</span></li><li name="net.lemonmodel.patterns.Arg" class="in"><span>Arg</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
+                <ol id="linearization"><li name="net.lemonmodel.patterns.PrepositionalObject" class="in"><span>PrepositionalObject</span></li><li name="scala.Serializable" class="in"><span>Serializable</span></li><li name="java.io.Serializable" class="in"><span>Serializable</span></li><li name="scala.Product" class="in"><span>Product</span></li><li name="scala.Equals" class="in"><span>Equals</span></li><li name="net.lemonmodel.patterns.Arg" class="in"><span>Arg</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
               </div>
           <div id="visbl">
               <span class="filtertype">Visibility</span>
@@ -64,7 +64,7 @@
       <span class="symbol"> 
         <span class="name">PrepositionalObject</span>
         
-        <span class="params">(<span name="preposition">preposition: String</span>)</span>
+        <span class="params">(<span name="isOptional">isOptional: <span name="scala.Boolean" class="extype">Boolean</span></span>, <span name="restriction">restriction: <span name="scala.Option" class="extype">Option</span>[<span name="java.net.URI" class="extype">URI</span>]</span>, <span name="preposition">preposition: String</span>)</span>
       </span>
       </h4>
       
@@ -237,6 +237,17 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>final </dd><dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.PrepositionalObject#isOptional" data-isabs="false">
+      <a id="isOptional:Boolean"></a>
+      <h4 class="signature">
+      <span class="kind">val</span>
+      <span class="symbol"> 
+        <span class="name">isOptional</span>
+        
+        <span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.PrepositionalObject" class="extype" href="">PrepositionalObject</a> → <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#ne" data-isabs="false">
       <a id="ne(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -270,6 +281,17 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>final </dd><dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.PrepositionalObject#optional" data-isabs="false">
+      <a id="optional:PrepositionalObject"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">optional</span>
+        
+        <span class="result">: <a name="net.lemonmodel.patterns.PrepositionalObject" class="extype" href="">PrepositionalObject</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.PrepositionalObject" class="extype" href="">PrepositionalObject</a> → <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.PrepositionalObject#preposition" data-isabs="false">
       <a id="preposition:String"></a>
       <h4 class="signature">
@@ -325,6 +347,28 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.PrepositionalObject" class="extype" href="">PrepositionalObject</a> → Product</dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.PrepositionalObject#restrictedTo" data-isabs="false">
+      <a id="restrictedTo(URI):PrepositionalObject"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">restrictedTo</span>
+        
+        <span class="params">(<span name="uri">uri: <span name="java.net.URI" class="extype">URI</span></span>)</span><span class="result">: <a name="net.lemonmodel.patterns.PrepositionalObject" class="extype" href="">PrepositionalObject</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.PrepositionalObject" class="extype" href="">PrepositionalObject</a> → <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.PrepositionalObject#restriction" data-isabs="false">
+      <a id="restriction:Option[URI]"></a>
+      <h4 class="signature">
+      <span class="kind">val</span>
+      <span class="symbol"> 
+        <span class="name">restriction</span>
+        
+        <span class="result">: <span name="scala.Option" class="extype">Option</span>[<span name="java.net.URI" class="extype">URI</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.PrepositionalObject" class="extype" href="">PrepositionalObject</a> → <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">
       <a id="synchronized[T0](⇒ T0):T0"></a>
       <h4 class="signature">
@@ -348,13 +392,13 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.PrepositionalObject" class="extype" href="">PrepositionalObject</a> → AnyRef → Any</dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.PrepositionalObject#toXML" data-isabs="false">
-      <a id="toXML(URI,URINamer):Elem"></a>
+      <a id="toXML(URI,URINamer):Node"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">toXML</span>
         
-        <span class="params">(<span name="uri">uri: <span name="java.net.URI" class="extype">URI</span></span>, <span name="namer">namer: <a name="net.lemonmodel.patterns.URINamer" class="extype" href="URINamer.html">URINamer</a></span>)</span><span class="result">: <span name="scala.xml.Elem" class="extype">Elem</span></span>
+        <span class="params">(<span name="uri">uri: <span name="java.net.URI" class="extype">URI</span></span>, <span name="namer">namer: <a name="net.lemonmodel.patterns.URINamer" class="extype" href="URINamer.html">URINamer</a></span>)</span><span class="result">: <span name="scala.xml.Node" class="extype">Node</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.PrepositionalObject" class="extype" href="">PrepositionalObject</a> → <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></dd></dl></div>
@@ -430,8 +474,6 @@
               <h3>Inherited from <span name="scala.Product" class="extype">Product</span></h3>
             </div><div name="scala.Equals" class="parent">
               <h3>Inherited from <span name="scala.Equals" class="extype">Equals</span></h3>
-            </div><div name="net.lemonmodel.patterns.AdpositionalObject" class="parent">
-              <h3>Inherited from <a name="net.lemonmodel.patterns.AdpositionalObject" class="extype" href="AdpositionalObject.html">AdpositionalObject</a></h3>
             </div><div name="net.lemonmodel.patterns.Arg" class="parent">
               <h3>Inherited from <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></h3>
             </div><div name="scala.AnyRef" class="parent">

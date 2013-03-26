@@ -45,6 +45,8 @@ In addition namespaces may be defined before the `Lexicon` as follows
 And used anywhere a full URI would be acceptable as follows
   
     dbpedia:Cat // Generates the URI http://dbpedia.org/resource/Cat
+    
+The full syntax for the pattern language is [here](docs/parser.pdf)
 
 Catalogue
 ---------

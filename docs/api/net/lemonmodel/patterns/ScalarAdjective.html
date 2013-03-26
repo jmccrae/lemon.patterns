@@ -24,13 +24,13 @@
       <span class="symbol"> 
         <span class="name">ScalarAdjective</span>
         
-        <span class="params">(<span name="lemma">lemma: String</span>, <span name="scalarMemberships">scalarMemberships: Seq[<a name="net.lemonmodel.patterns.ScalarMembership" class="extype" href="ScalarMembership.html">ScalarMembership</a>]</span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>)</span><span class="result"> extends <a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a>[<a name="net.lemonmodel.patterns.ScalarAdjective" class="extype" href="">ScalarAdjective</a>] with <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
+        <span class="params">(<span name="lemma">lemma: <a name="net.lemonmodel.patterns.AP" class="extype" href="AP.html">AP</a></span>, <span name="scalarMemberships">scalarMemberships: Seq[<a name="net.lemonmodel.patterns.ScalarMembership" class="extype" href="ScalarMembership.html">ScalarMembership</a>]</span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>)</span><span class="result"> extends <a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a> with <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
       </span>
       </h4>
       
           <div class="fullcommenttop" id="comment"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span name="scala.Serializable" class="extype">Serializable</span>, <span name="java.io.Serializable" class="extype">Serializable</span>, <span name="scala.Product" class="extype">Product</span>, <span name="scala.Equals" class="extype">Equals</span>, <a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a>[<a name="net.lemonmodel.patterns.ScalarAdjective" class="extype" href="">ScalarAdjective</a>], <a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
+          <div class="superTypes hiddenContent"><span name="scala.Serializable" class="extype">Serializable</span>, <span name="java.io.Serializable" class="extype">Serializable</span>, <span name="scala.Product" class="extype">Product</span>, <span name="scala.Equals" class="extype">Equals</span>, <a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a>, <a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
         </div></div>
         
 
@@ -63,7 +63,7 @@
       <span class="symbol"> 
         <span class="name">ScalarAdjective</span>
         
-        <span class="params">(<span name="lemma">lemma: String</span>, <span name="scalarMemberships">scalarMemberships: Seq[<a name="net.lemonmodel.patterns.ScalarMembership" class="extype" href="ScalarMembership.html">ScalarMembership</a>]</span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>)</span>
+        <span class="params">(<span name="lemma">lemma: <a name="net.lemonmodel.patterns.AP" class="extype" href="AP.html">AP</a></span>, <span name="scalarMemberships">scalarMemberships: Seq[<a name="net.lemonmodel.patterns.ScalarMembership" class="extype" href="ScalarMembership.html">ScalarMembership</a>]</span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>)</span>
       </span>
       </h4>
       
@@ -259,17 +259,17 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>final </dd><dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.ScalarAdjective#lemma" data-isabs="false">
-      <a id="lemma:String"></a>
+      <a id="lemma:AP"></a>
       <h4 class="signature">
       <span class="kind">val</span>
       <span class="symbol"> 
         <span class="name">lemma</span>
         
-        <span class="result">: String</span>
+        <span class="result">: <a name="net.lemonmodel.patterns.AP" class="extype" href="AP.html">AP</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.ScalarAdjective" class="extype" href="">ScalarAdjective</a> → <a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a></dd></dl></div>
-    </li><li visbl="prt" name="net.lemonmodel.patterns.ScalarAdjective#makeWithForm" data-isabs="false">
+    </li><li visbl="pub" name="net.lemonmodel.patterns.ScalarAdjective#makeWithForm" data-isabs="false">
       <a id="makeWithForm(Form):ScalarAdjective"></a>
       <h4 class="signature">
       <span class="kind">def</span>
@@ -279,7 +279,7 @@
         <span class="params">(<span name="form">form: <a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a></span>)</span><span class="result">: <a name="net.lemonmodel.patterns.ScalarAdjective" class="extype" href="">ScalarAdjective</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.ScalarAdjective" class="extype" href="">ScalarAdjective</a> → <a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.ScalarAdjective" class="extype" href="">ScalarAdjective</a> → <a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a> → <a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a></dd></dl></div>
     </li><li visbl="prt" name="net.lemonmodel.patterns.ScalarAdjective#makeWithForms" data-isabs="false">
       <a id="makeWithForms(Seq[Form]):ScalarAdjective"></a>
       <h4 class="signature">
@@ -466,35 +466,35 @@
               
         </dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.Adjective#withComparative" data-isabs="false">
-      <a id="withComparative(String):ScalarAdjective"></a>
+      <a id="withComparative(String):Adjective"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">withComparative</span>
         
-        <span class="params">(<span name="comparativeForm">comparativeForm: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.ScalarAdjective" class="extype" href="">ScalarAdjective</a></span>
+        <span class="params">(<span name="comparativeForm">comparativeForm: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a></dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.Adjective#withSuperlative" data-isabs="false">
-      <a id="withSuperlative(String):ScalarAdjective"></a>
+      <a id="withSuperlative(String):Adjective"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">withSuperlative</span>
         
-        <span class="params">(<span name="superlativeForm">superlativeForm: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.ScalarAdjective" class="extype" href="">ScalarAdjective</a></span>
+        <span class="params">(<span name="superlativeForm">superlativeForm: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a></dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.Adjective#withTable" data-isabs="false">
-      <a id="withTable(Namespace,Map[(String, String), Any]):ScalarAdjective"></a>
+      <a id="withTable(Namespace,Map[(String, String), Any]):Adjective"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">withTable</span>
         
-        <span class="params">(<span name="namespace">namespace: <a name="net.lemonmodel.patterns.Namespace" class="extype" href="Namespace.html">Namespace</a></span>, <span name="table">table: Map[(String, String), <span name="scala.Any" class="extype">Any</span>]</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.ScalarAdjective" class="extype" href="">ScalarAdjective</a></span>
+        <span class="params">(<span name="namespace">namespace: <a name="net.lemonmodel.patterns.Namespace" class="extype" href="Namespace.html">Namespace</a></span>, <span name="table">table: Map[(String, String), <span name="scala.Any" class="extype">Any</span>]</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a></dd></dl></div>
@@ -529,7 +529,7 @@
             </div><div name="scala.Equals" class="parent">
               <h3>Inherited from <span name="scala.Equals" class="extype">Equals</span></h3>
             </div><div name="net.lemonmodel.patterns.Adjective" class="parent">
-              <h3>Inherited from <a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a>[<a name="net.lemonmodel.patterns.ScalarAdjective" class="extype" href="">ScalarAdjective</a>]</h3>
+              <h3>Inherited from <a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a></h3>
             </div><div name="net.lemonmodel.patterns.Pattern" class="parent">
               <h3>Inherited from <a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a></h3>
             </div><div name="scala.AnyRef" class="parent">

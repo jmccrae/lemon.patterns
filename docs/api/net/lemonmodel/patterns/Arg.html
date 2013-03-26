@@ -34,7 +34,7 @@
           <div class="superTypes hiddenContent">AnyRef, <span name="scala.Any" class="extype">Any</span></div>
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a name="net.lemonmodel.patterns.AdpositionalObject" class="extype" href="AdpositionalObject.html">AdpositionalObject</a>, <a name="net.lemonmodel.patterns.DirectObject" class="extype" href="DirectObject$.html">DirectObject</a>, <a name="net.lemonmodel.patterns.IndirectObject" class="extype" href="IndirectObject$.html">IndirectObject</a>, <a name="net.lemonmodel.patterns.PossessiveAdjunct" class="extype" href="PossessiveAdjunct$.html">PossessiveAdjunct</a>, <a name="net.lemonmodel.patterns.PostpositionalObject" class="extype" href="PostpositionalObject.html">PostpositionalObject</a>, <a name="net.lemonmodel.patterns.PrepositionalObject" class="extype" href="PrepositionalObject.html">PrepositionalObject</a>, <a name="net.lemonmodel.patterns.Subject" class="extype" href="Subject$.html">Subject</a></div>
+          <div class="subClasses hiddenContent"><a name="net.lemonmodel.patterns.ArgImpl" class="extype" href="ArgImpl.html">ArgImpl</a>, <a name="net.lemonmodel.patterns.CopulativeArg" class="extype" href="CopulativeArg$.html">CopulativeArg</a>, <a name="net.lemonmodel.patterns.CopulativeSubject" class="extype" href="CopulativeSubject$.html">CopulativeSubject</a>, <a name="net.lemonmodel.patterns.DirectObject" class="extype" href="DirectObject$.html">DirectObject</a>, <a name="net.lemonmodel.patterns.IndirectObject" class="extype" href="IndirectObject$.html">IndirectObject</a>, <a name="net.lemonmodel.patterns.PossessiveAdjunct" class="extype" href="PossessiveAdjunct$.html">PossessiveAdjunct</a>, <a name="net.lemonmodel.patterns.PostpositionalObject" class="extype" href="PostpositionalObject.html">PostpositionalObject</a>, <a name="net.lemonmodel.patterns.PrepositionalObject" class="extype" href="PrepositionalObject.html">PrepositionalObject</a>, <a name="net.lemonmodel.patterns.Subject" class="extype" href="Subject$.html">Subject</a></div>
         </div></div>
         
 
@@ -64,14 +64,58 @@
         
         <div class="values members" id="values">
               <h3>Abstract Value Members</h3>
-              <ol><li visbl="pub" name="net.lemonmodel.patterns.Arg#toXML" data-isabs="true">
-      <a id="toXML(URI,URINamer):NodeSeq"></a>
+              <ol><li visbl="pub" name="net.lemonmodel.patterns.Arg#isOptional" data-isabs="true">
+      <a id="isOptional:Boolean"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">isOptional</span>
+        
+        <span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Arg#optional" data-isabs="true">
+      <a id="optional:Arg"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">optional</span>
+        
+        <span class="result">: <a name="net.lemonmodel.patterns.Arg" class="extype" href="">Arg</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Arg#restrictedTo" data-isabs="true">
+      <a id="restrictedTo(URI):Arg"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">restrictedTo</span>
+        
+        <span class="params">(<span name="uri">uri: <span name="java.net.URI" class="extype">URI</span></span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Arg" class="extype" href="">Arg</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Arg#restriction" data-isabs="true">
+      <a id="restriction:Option[URI]"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">restriction</span>
+        
+        <span class="result">: <span name="scala.Option" class="extype">Option</span>[<span name="java.net.URI" class="extype">URI</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Arg#toXML" data-isabs="true">
+      <a id="toXML(URI,URINamer):Node"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">toXML</span>
         
-        <span class="params">(<span name="uri">uri: <span name="java.net.URI" class="extype">URI</span></span>, <span name="namer">namer: <a name="net.lemonmodel.patterns.URINamer" class="extype" href="URINamer.html">URINamer</a></span>)</span><span class="result">: <span name="scala.xml.NodeSeq" class="extype">NodeSeq</span></span>
+        <span class="params">(<span name="uri">uri: <span name="java.net.URI" class="extype">URI</span></span>, <span name="namer">namer: <a name="net.lemonmodel.patterns.URINamer" class="extype" href="URINamer.html">URINamer</a></span>)</span><span class="result">: <span name="scala.xml.Node" class="extype">Node</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd></dl></div>
