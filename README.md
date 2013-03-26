@@ -46,7 +46,7 @@ And used anywhere a full URI would be acceptable as follows
   
     dbpedia:Cat // Generates the URI http://dbpedia.org/resource/Cat
     
-The full syntax for the pattern language is [here](docs/parser.pdf)
+The full syntax for the pattern language is [here](docs/parser.pdf?raw=true)
 
 Catalogue
 ---------
