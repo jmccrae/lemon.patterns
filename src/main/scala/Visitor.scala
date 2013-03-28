@@ -416,7 +416,7 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
     }
 /* URI */
     def visit(p : Absyn.EQName, arg : collection.mutable.Map[String,String]) = URI.create(
-      arg.getOrElse(p.ident_1, { throw new IllegalArgumentException("Undeclared prefix \""+p.ident_1+"\"") }) + p.ident_1)
+      arg.getOrElse(p.ident_1, { throw new IllegalArgumentException("Undeclared prefix \""+p.ident_1+"\"") }) + p.ident_2)
     def visit(p : Absyn.EQName2, arg : collection.mutable.Map[String,String]) = URI.create(
       arg.getOrElse("base", "#") + p.ident_)
     def visit(p : Absyn.EURI, arg : collection.mutable.Map[String,String]) = URI.create(p.fulluri_.substring(1,p.fulluri_.length-1))

@@ -81,6 +81,8 @@ case class IntersectiveAdjective(val lemma : AP,
         <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
         <lexinfo:copulativeSubject rdf:resource={subjURI}/>
       </lemon:Frame>
+    </lemon:synBehavior> :+
+    <lemon:synBehavior>
       <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
         <lexinfo:attributiveArg rdf:resource={subjURI}/>
@@ -115,6 +117,8 @@ case class IntersectiveObjectPropertyAdjective(val lemma : AP,
         <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
         <lexinfo:copulativeSubject rdf:resource={subjURI}/>
       </lemon:Frame>
+    </lemon:synBehavior> :+
+    <lemon:synBehavior>
       <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
         <lexinfo:attributiveArg rdf:resource={subjURI}/>
@@ -149,6 +153,8 @@ case class IntersectiveDataPropertyAdjective(val lemma : AP,
         <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
         <lexinfo:copulativeSubject rdf:resource={subjURI}/>
       </lemon:Frame>
+    </lemon:synBehavior> :+
+    <lemon:synBehavior>
       <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
         <lexinfo:attributiveArg rdf:resource={subjURI}/>
@@ -291,6 +297,8 @@ case class ScalarAdjective(val lemma : AP,
         <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
         <lexinfo:copulativeSubject rdf:resource={subjURI}/>
       </lemon:Frame>
+    </lemon:synBehavior> :+
+    <lemon:synBehavior>
       <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
         <lexinfo:attributiveArg rdf:resource={subjURI}/>

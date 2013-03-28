@@ -311,7 +311,7 @@ case class ConsequenceVerb(val lemma : VP,
                <rdf:Description>
                  <owl:inverseOf rdf:resource={propSubj.property}/>
                </rdf:Description>
-               <rdf:Description rdf:resource={propObj.property}/>
+               <rdf:Description rdf:about={propObj.property}/>
              </owl:propertyChainAxiom>
           </rdf:Property>
         </lemon:reference>

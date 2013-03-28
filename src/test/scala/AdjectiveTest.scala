@@ -48,6 +48,8 @@ class AdjectiveTest extends FlatSpec with ShouldMatchers {
              <rdf:type rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#AdjectivePredicativeFrame"/>
              <lexinfo:copulativeSubject rdf:resource="file:example/Belgian-adjective#subject"/>
            </lemon:Frame>
+         </lemon:synBehavior>
+         <lemon:synBehavior>
            <lemon:Frame rdf:about="file:example/Belgian-adjective#attrFrame">
              <rdf:type rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#AdjectiveAttributiveFrame"/>
              <lexinfo:attributiveArg rdf:resource="file:example/Belgian-adjective#subject"/>
