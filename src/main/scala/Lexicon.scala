@@ -7,6 +7,14 @@ case class Lexicon(uri : URI, lang : String, patterns : Pattern*) {
   private var elems = collection.mutable.Set[String]()
   private def from(n : Int) : Stream[Int] = Stream.cons(n,from(n+1))
   
+  private def joinChar(s : String) = {
+    if((s endsWith "#") || (s endsWith "/")) {
+      ""
+    } else {
+      "#"
+    }
+  }
+  
   private val uriNamer = new URINamer {
     def apply(pos : String, form : String, element : Option[String] = None) = element match {
       case Some(e) => {
@@ -14,15 +22,15 @@ case class Lexicon(uri : URI, lang : String, patterns : Pattern*) {
         if((elems contains frag) && !(e equals "canonicalForm")) {
           val freeIdx = from(1) find { x => !elems.contains(frag+x) }
           elems += (frag+freeIdx.get)
-          URI.create(uri + "#" + frag + freeIdx.get)
+          URI.create(uri + joinChar(uri) + frag + freeIdx.get)
         } else {
           elems += frag 
-          URI.create(uri + "#" + frag)
+          URI.create(uri + joinChar(uri) + frag)
         }
       }
-      case None => URI.create(uri + "#" + URLEncoder.encode(form,"UTF-8") + "__" + pos)
+      case None => URI.create(uri + joinChar(uri) + URLEncoder.encode(form,"UTF-8") + "__" + pos)
     }
-    def auxiliaryEntry(form : String) = URI.create(uri + "#" + form)
+    def auxiliaryEntry(form : String) = URI.create(uri + joinChar(uri) + form)
   }
   
   def toXML() = {
