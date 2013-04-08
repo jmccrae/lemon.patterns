@@ -71,7 +71,7 @@ Class nouns represent genuses of objects from the domain, this includes most com
     
 Multiple word expressions can be introduced using a simple phrase pattern
 
-    ClassNoun("body"/"common noun" "of"/preposition "water"/"common noun",dbpedia:BodyOfWater)
+    ClassNoun(["body"/"common noun" "of"/preposition "water"/"common noun"],dbpedia:BodyOfWater)
   
 _Note: On the part of speech quotes are optional on single word values only_
 

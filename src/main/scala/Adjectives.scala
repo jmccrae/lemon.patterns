@@ -239,9 +239,10 @@ case class ScalarAdjective(val lemma : AP,
   protected def makeWithForms(otherForms : Seq[Form]) = ScalarAdjective(lemma,scalarMemberships,forms ++ otherForms)
   protected def senseXML(namer : URINamer) = {
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))
+    val scaleSubjURI = namer("adjective",lemma.toString(),Some("scaleSubj"))
+    val scaleObjURI = namer("adjective",lemma.toString(),Some("scaleObj"))
+    (for(ScalarMembership(property,forClass,boundary,direction,boundary2) <- scalarMemberships) yield {
     <lemon:sense>
-    {
-      for(ScalarMembership(property,forClass,boundary,direction,boundary2) <- scalarMemberships) yield {
       <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
          <lemon:reference>
             <owl:Class>
@@ -289,9 +290,15 @@ case class ScalarAdjective(val lemma : AP,
             <lemon:Argument rdf:about={subjURI}/>
          </lemon:isA>
        </lemon:LexicalSense>
-      }
-    }
     </lemon:sense> :+
+    <lemon:sense>
+      <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
+          <lemon:reference rdf:resource={property}/>
+          <lemon:subjOfProp rdf:resource={scaleSubjURI}/>
+          <lemon:objOfProp rdf:resource={scaleSubjURI}/>
+      </lemon:LexicalSense>
+    </lemon:sense>
+    }).flatten :+
     <lemon:synBehavior>
       <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("predFrame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
@@ -302,6 +309,13 @@ case class ScalarAdjective(val lemma : AP,
       <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
         <lexinfo:attributiveArg rdf:resource={subjURI}/>
+      </lemon:Frame>
+    </lemon:synBehavior> :+
+    <lemon:synBehavior>
+      <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectiveScaleFrame")}/>
+        <lexinfo:copulativeSubject rdf:resource={scaleSubjURI}/>
+        <lexinfo:adverbialComplement rdf:resource={scaleObjURI}/>
       </lemon:Frame>
     </lemon:synBehavior>
   }
