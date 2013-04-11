@@ -1,6 +1,9 @@
 #!/bin/bash
 
-LEMONPATTERNS_HOME=.
+if [[ -z "$LEMONPATTERNS_HOME" ]]
+then
+    LEMONPATTERNS_HOME=.
+fi
 
 die () {
     echo >&2 "$@"
