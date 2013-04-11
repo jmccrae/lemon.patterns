@@ -75,12 +75,12 @@ The reserved words used in parser are the following: \\
 {\reserved{optional}} &{\reserved{participle}} &{\reserved{particle}} \\
 {\reserved{past}} &{\reserved{plural}} &{\reserved{point}} \\
 {\reserved{postposition}} &{\reserved{preposition}} &{\reserved{present}} \\
-{\reserved{probObj}} &{\reserved{pronoun}} &{\reserved{propObj}} \\
-{\reserved{propSubj}} &{\reserved{property}} &{\reserved{punctuation}} \\
-{\reserved{relationalArg}} &{\reserved{restrictedTo}} &{\reserved{secondPerson}} \\
-{\reserved{semiColon}} &{\reserved{singular}} &{\reserved{slash}} \\
-{\reserved{subjunctive}} &{\reserved{superlative}} &{\reserved{telic}} \\
-{\reserved{thirdPerson}} &{\reserved{verb}} &{\reserved{with}} \\
+{\reserved{pronoun}} &{\reserved{propObj}} &{\reserved{propSubj}} \\
+{\reserved{property}} &{\reserved{punctuation}} &{\reserved{relationalArg}} \\
+{\reserved{restrictedTo}} &{\reserved{secondPerson}} &{\reserved{semiColon}} \\
+{\reserved{singular}} &{\reserved{slash}} &{\reserved{subjunctive}} \\
+{\reserved{superlative}} &{\reserved{telic}} &{\reserved{thirdPerson}} \\
+{\reserved{verb}} &{\reserved{with}} & \\
 \end{tabular}\\
 
 The symbols used in parser are the following: \\
@@ -136,7 +136,7 @@ All other symbols are terminals.\\
 \begin{tabular}{lll}
 {\nonterminal{VerbPattern}} & {\arrow}  &{\terminal{StateVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{StateVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{StateVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{,}} {\terminal{probObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{StateVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{telic}} {\nonterminal{VerbPattern2}}  \\
  & {\delimit}  &{\terminal{nontelic}} {\nonterminal{VerbPattern2}}  \\
  & {\delimit}  &{\nonterminal{VerbPattern3}}  \\

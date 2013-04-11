@@ -667,7 +667,7 @@ public class PrettyPrinter
        render("=");
        pp(_estateverb3.arg_1, 0);
        render(",");
-       render("probObj");
+       render("propObj");
        render("=");
        pp(_estateverb3.arg_2, 0);
        render(")");

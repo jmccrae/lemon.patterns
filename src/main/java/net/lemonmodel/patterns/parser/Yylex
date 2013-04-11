@@ -106,24 +106,23 @@ IDENT = ({LETTER}|{DIGIT}|['_])
 <YYINITIAL>postposition { return new Symbol(sym._SYMB_79); }
 <YYINITIAL>preposition { return new Symbol(sym._SYMB_80); }
 <YYINITIAL>present { return new Symbol(sym._SYMB_81); }
-<YYINITIAL>probObj { return new Symbol(sym._SYMB_82); }
-<YYINITIAL>pronoun { return new Symbol(sym._SYMB_83); }
-<YYINITIAL>propObj { return new Symbol(sym._SYMB_84); }
-<YYINITIAL>propSubj { return new Symbol(sym._SYMB_85); }
-<YYINITIAL>property { return new Symbol(sym._SYMB_86); }
-<YYINITIAL>punctuation { return new Symbol(sym._SYMB_87); }
-<YYINITIAL>relationalArg { return new Symbol(sym._SYMB_88); }
-<YYINITIAL>restrictedTo { return new Symbol(sym._SYMB_89); }
-<YYINITIAL>secondPerson { return new Symbol(sym._SYMB_90); }
-<YYINITIAL>semiColon { return new Symbol(sym._SYMB_91); }
-<YYINITIAL>singular { return new Symbol(sym._SYMB_92); }
-<YYINITIAL>slash { return new Symbol(sym._SYMB_93); }
-<YYINITIAL>subjunctive { return new Symbol(sym._SYMB_94); }
-<YYINITIAL>superlative { return new Symbol(sym._SYMB_95); }
-<YYINITIAL>telic { return new Symbol(sym._SYMB_96); }
-<YYINITIAL>thirdPerson { return new Symbol(sym._SYMB_97); }
-<YYINITIAL>verb { return new Symbol(sym._SYMB_98); }
-<YYINITIAL>with { return new Symbol(sym._SYMB_99); }
+<YYINITIAL>pronoun { return new Symbol(sym._SYMB_82); }
+<YYINITIAL>propObj { return new Symbol(sym._SYMB_83); }
+<YYINITIAL>propSubj { return new Symbol(sym._SYMB_84); }
+<YYINITIAL>property { return new Symbol(sym._SYMB_85); }
+<YYINITIAL>punctuation { return new Symbol(sym._SYMB_86); }
+<YYINITIAL>relationalArg { return new Symbol(sym._SYMB_87); }
+<YYINITIAL>restrictedTo { return new Symbol(sym._SYMB_88); }
+<YYINITIAL>secondPerson { return new Symbol(sym._SYMB_89); }
+<YYINITIAL>semiColon { return new Symbol(sym._SYMB_90); }
+<YYINITIAL>singular { return new Symbol(sym._SYMB_91); }
+<YYINITIAL>slash { return new Symbol(sym._SYMB_92); }
+<YYINITIAL>subjunctive { return new Symbol(sym._SYMB_93); }
+<YYINITIAL>superlative { return new Symbol(sym._SYMB_94); }
+<YYINITIAL>telic { return new Symbol(sym._SYMB_95); }
+<YYINITIAL>thirdPerson { return new Symbol(sym._SYMB_96); }
+<YYINITIAL>verb { return new Symbol(sym._SYMB_97); }
+<YYINITIAL>with { return new Symbol(sym._SYMB_98); }
 <YYINITIAL>"//"[^\n]*\n { /* BNFC single-line comment */ }
 <YYINITIAL>"/*" { yybegin(COMMENT); }
 <COMMENT>"*/" { yybegin(YYINITIAL); }

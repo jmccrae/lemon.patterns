@@ -1,7 +1,7 @@
 @prefix dbpedia: <http://dbpedia.org/ontology/> .
 @prefix base: <#> .
 
-Lexicon(<http://sc.cit-ec.uni-bielefeld.de/lexica/manuell/dbpedia>,"en",
+Lexicon(<http://lemon-model.net/lexica/dbpedia/places>,"en",
   // Classes
   ClassNoun("place",dbpedia:Place),
   ClassNoun("location",dbpedia:Place),
