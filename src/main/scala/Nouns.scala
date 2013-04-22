@@ -153,7 +153,6 @@ case class RelationalNoun(val lemma : NP,
          <lemon:objOfProp>
             <lemon:Argument rdf:about={objURI}/>
          </lemon:objOfProp>
-       </lemon:LexicalSense>
         { 
           if(propSubj.restriction != None) {
             <lemon:propertyDomain rdf:resource={propSubj.restriction.get}/>
@@ -164,6 +163,7 @@ case class RelationalNoun(val lemma : NP,
             <lemon:propertyRange rdf:resource={propObj.restriction.get}/>
           }
         }
+       </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
       <lemon:Frame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
@@ -280,7 +280,6 @@ case class ClassRelationalNoun(val lemma : NP,
          <lemon:objOfProp>
             <lemon:Argument rdf:about={objURI}/>
          </lemon:objOfProp>
-       </lemon:LexicalSense>
         { 
           if(propSubj.restriction != None) {
             <lemon:propertyDomain rdf:resource={propSubj.restriction.get}/>
@@ -291,6 +290,7 @@ case class ClassRelationalNoun(val lemma : NP,
             <lemon:propertyRange rdf:resource={propObj.restriction.get}/>
           }
         }
+      </lemon:LexicalSense>
       <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("senseClass"))}>
          <lemon:reference>
            <rdf:Property rdf:about={relationClass}/>
