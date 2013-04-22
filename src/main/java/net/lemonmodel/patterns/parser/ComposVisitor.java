@@ -20,6 +20,7 @@ public class ComposVisitor<A> implements
   net.lemonmodel.patterns.parser.Absyn.ScalarMembership.Visitor<net.lemonmodel.patterns.parser.Absyn.ScalarMembership,A>,
   net.lemonmodel.patterns.parser.Absyn.Category.Visitor<net.lemonmodel.patterns.parser.Absyn.Category,A>,
   net.lemonmodel.patterns.parser.Absyn.POSTag.Visitor<net.lemonmodel.patterns.parser.Absyn.POSTag,A>,
+  net.lemonmodel.patterns.parser.Absyn.Gender.Visitor<net.lemonmodel.patterns.parser.Absyn.Gender,A>,
   net.lemonmodel.patterns.parser.Absyn.URI.Visitor<net.lemonmodel.patterns.parser.Absyn.URI,A>
 {
 /* Statements */
@@ -70,6 +71,13 @@ public class ComposVisitor<A> implements
       NounPattern nounpattern_ = p.nounpattern_.accept(this, arg);
 
       return new net.lemonmodel.patterns.parser.Absyn.ENoun(nounpattern_);
+    }
+    public Pattern visit(net.lemonmodel.patterns.parser.Absyn.ENounWithGender p, A arg)
+    {
+      NounPattern nounpattern_ = p.nounpattern_.accept(this, arg);
+      Gender gender_ = p.gender_.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.ENounWithGender(nounpattern_, gender_);
     }
     public Pattern visit(net.lemonmodel.patterns.parser.Absyn.EVerb p, A arg)
     {
@@ -716,6 +724,33 @@ public class ComposVisitor<A> implements
       String string_ = p.string_;
 
       return new net.lemonmodel.patterns.parser.Absyn.EAnyPOS(string_);
+    }
+
+/* Gender */
+    public Gender visit(net.lemonmodel.patterns.parser.Absyn.EMascGender p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EMascGender();
+    }
+    public Gender visit(net.lemonmodel.patterns.parser.Absyn.EFemGender p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EFemGender();
+    }
+    public Gender visit(net.lemonmodel.patterns.parser.Absyn.ENeutGender p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ENeutGender();
+    }
+    public Gender visit(net.lemonmodel.patterns.parser.Absyn.ECommonGender p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ECommonGender();
+    }
+    public Gender visit(net.lemonmodel.patterns.parser.Absyn.EOtherGender p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EOtherGender();
     }
 
 /* URI */

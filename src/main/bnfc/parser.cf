@@ -11,6 +11,7 @@ separator Statement "" ;
 
 EPatternWithForm. Pattern ::= Pattern "with" [Category] String ;
 ENoun. Pattern ::= NounPattern ;
+ENounWithGender. Pattern ::= NounPattern Gender ;
 EVerb. Pattern ::= VerbPattern ;
 EAdjective. Pattern ::= AdjectivePattern ;
 
@@ -130,6 +131,12 @@ ESemiColonPOS. POSTag ::= "semiColon" ;
 ESlashPOS. POSTag ::= "slash" ;
 EVerbPOS. POSTag ::= "verb" ;
 EAnyPOS. POSTag ::= String ;
+
+EMascGender. Gender ::= "masculine" ;
+EFemGender. Gender ::= "feminine" ;
+ENeutGender. Gender ::= "neuter" ;
+ECommonGender. Gender ::= "commonGender" ;
+EOtherGender. Gender ::= "otherGender" ;
 
 EQName. URI ::= Ident ":" Ident ;
 EQName2. URI ::= ":" Ident ;

@@ -390,6 +390,21 @@ public class PrettyPrinter
     buf_.delete(0,buf_.length());
     return temp;
   }
+  public static String print(net.lemonmodel.patterns.parser.Absyn.Gender foo)
+  {
+    pp(foo, 0);
+    trim();
+    String temp = buf_.toString();
+    buf_.delete(0,buf_.length());
+    return temp;
+  }
+  public static String show(net.lemonmodel.patterns.parser.Absyn.Gender foo)
+  {
+    sh(foo);
+    String temp = buf_.toString();
+    buf_.delete(0,buf_.length());
+    return temp;
+  }
   public static String print(net.lemonmodel.patterns.parser.Absyn.URI foo)
   {
     pp(foo, 0);
@@ -477,6 +492,14 @@ public class PrettyPrinter
        net.lemonmodel.patterns.parser.Absyn.ENoun _enoun = (net.lemonmodel.patterns.parser.Absyn.ENoun) foo;
        if (_i_ > 0) render(_L_PAREN);
        pp(_enoun.nounpattern_, 0);
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ENounWithGender)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ENounWithGender _enounwithgender = (net.lemonmodel.patterns.parser.Absyn.ENounWithGender) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       pp(_enounwithgender.nounpattern_, 0);
+       pp(_enounwithgender.gender_, 0);
        if (_i_ > 0) render(_R_PAREN);
     }
     else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EVerb)
@@ -1521,6 +1544,45 @@ public class PrettyPrinter
     }
   }
 
+  private static void pp(net.lemonmodel.patterns.parser.Absyn.Gender foo, int _i_)
+  {
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EMascGender)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EMascGender _emascgender = (net.lemonmodel.patterns.parser.Absyn.EMascGender) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("masculine");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EFemGender)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EFemGender _efemgender = (net.lemonmodel.patterns.parser.Absyn.EFemGender) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("feminine");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ENeutGender)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ENeutGender _eneutgender = (net.lemonmodel.patterns.parser.Absyn.ENeutGender) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("neuter");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ECommonGender)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ECommonGender _ecommongender = (net.lemonmodel.patterns.parser.Absyn.ECommonGender) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("commonGender");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EOtherGender)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EOtherGender _eothergender = (net.lemonmodel.patterns.parser.Absyn.EOtherGender) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("otherGender");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+  }
+
   private static void pp(net.lemonmodel.patterns.parser.Absyn.URI foo, int _i_)
   {
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EQName)
@@ -1619,6 +1681,15 @@ public class PrettyPrinter
        render("(");
        render("ENoun");
        sh(_enoun.nounpattern_);
+       render(")");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ENounWithGender)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ENounWithGender _enounwithgender = (net.lemonmodel.patterns.parser.Absyn.ENounWithGender) foo;
+       render("(");
+       render("ENounWithGender");
+       sh(_enounwithgender.nounpattern_);
+       sh(_enounwithgender.gender_);
        render(")");
     }
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EVerb)
@@ -2431,6 +2502,35 @@ public class PrettyPrinter
        render("EAnyPOS");
        sh(_eanypos.string_);
        render(")");
+    }
+  }
+
+  private static void sh(net.lemonmodel.patterns.parser.Absyn.Gender foo)
+  {
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EMascGender)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EMascGender _emascgender = (net.lemonmodel.patterns.parser.Absyn.EMascGender) foo;
+       render("EMascGender");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EFemGender)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EFemGender _efemgender = (net.lemonmodel.patterns.parser.Absyn.EFemGender) foo;
+       render("EFemGender");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ENeutGender)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ENeutGender _eneutgender = (net.lemonmodel.patterns.parser.Absyn.ENeutGender) foo;
+       render("ENeutGender");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ECommonGender)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ECommonGender _ecommongender = (net.lemonmodel.patterns.parser.Absyn.ECommonGender) foo;
+       render("ECommonGender");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EOtherGender)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EOtherGender _eothergender = (net.lemonmodel.patterns.parser.Absyn.EOtherGender) foo;
+       render("EOtherGender");
     }
   }
 

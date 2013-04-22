@@ -5,6 +5,7 @@ public abstract class Pattern implements java.io.Serializable {
   public interface Visitor <R,A> {
     public R visit(net.lemonmodel.patterns.parser.Absyn.EPatternWithForm p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.ENoun p, A arg);
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ENounWithGender p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.EVerb p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.EAdjective p, A arg);
 

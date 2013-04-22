@@ -110,6 +110,14 @@ and a father.
 Note: `PossessiveAdjunct` is used to indicate arguments made with "of" or a genitive
 form, this allows constructions like "John is Betty's father" as well as 
 "John is the father of Betty".
+
+## Specifying Gender
+
+Gender may be specified by following the pattern with an appropriate label, e.g.,
+
+    ClassNoun("Katze",dbpedia:Cat) feminine with plural "Katzen"
+    
+The values for gender are `masculine`,`feminine`,`neuter`,`commonGender` and `otherGender`.
                          
 # Verbs
 

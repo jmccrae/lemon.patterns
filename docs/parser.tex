@@ -61,7 +61,8 @@ The reserved words used in parser are the following: \\
 {\reserved{RelationalMultivalentNoun}} &{\reserved{RelationalNoun}} \\
 {\reserved{ScalarAdjective}} &{\reserved{StateVerb}} \\
 {\reserved{Subject}} &{\reserved{accusative}} \\
-{\reserved{adjective}} &{\reserved{adposition}} &{\reserved{adverb}} \\
+{\reserved{adjective}} &{\reserved{adposition}} \\
+{\reserved{adverb}} & \\
 {\reserved{article}} &{\reserved{as}} \\{\reserved{bullet}} &
 {\reserved{central}} \\{\reserved{circumposition}} &{\reserved{class}} \\
 {\reserved{colon}} &{\reserved{comma}} \\
@@ -82,15 +83,17 @@ The reserved words used in parser are the following: \\
 {\reserved{past}} &{\reserved{plural}} \\
 {\reserved{point}} & {\reserved{postposition}} \\
 {\reserved{preposition}} &{\reserved{present}} \\
-&{\reserved{pronoun}} \\
+{\reserved{otherGender} &{\reserved{pronoun}} \\
 {\reserved{propObj}} & {\reserved{propSubj}} \\
 {\reserved{property}} &{\reserved{punctuation}} \\
-{\reserved{relationalArg}} &{\reserved{restrictedTo}} \\ \\{\reserved{secondPerson}} & {\reserved{semiColon}} \\
+{\reserved{relationalArg}} &{\reserved{restrictedTo}} \\ {\reserved{secondPerson}} & {\reserved{semiColon}} \\
 {\reserved{singular}} &{\reserved{slash}} \\
 {\reserved{subjunctive}} &{\reserved{superlative}} \\
 {\reserved{telic}} & {\reserved{thirdPerson}} \\
-{\reserved{verb}} &{\reserved{with}} & \\
-\end{tabular}\\ 
+{\reserved{verb}} &{\reserved{with}} \\
+{\reserved{masculine}} &{\reserved{feminine}} \\
+{\reserved{neuter}} &{\reserved{commonGender}} \\
+\end{tabular} 
 
 The symbols used in parser are the following: \\
 
@@ -128,6 +131,7 @@ All other symbols are terminals.\\
 \begin{tabular}{lll}
 {\nonterminal{Pattern}} & {\arrow}  &{\nonterminal{Pattern}} {\terminal{with}} {\nonterminal{ListCategory}} {\nonterminal{String}}  \\
  & {\delimit}  &{\nonterminal{NounPattern}}  \\
+ & {\delimit}  &{\nonterminal{NounPattern}} {\nonterminal{Gender}}  \\
  & {\delimit}  &{\nonterminal{VerbPattern}}  \\
  & {\delimit}  &{\nonterminal{AdjectivePattern}}  \\
 \end{tabular}\\
@@ -301,6 +305,14 @@ All other symbols are terminals.\\
  & {\delimit}  &{\terminal{slash}}  \\
  & {\delimit}  &{\terminal{verb}}  \\
  & {\delimit}  &{\nonterminal{String}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{Gender}} & {\arrow}  &{\terminal{masculine}}  \\
+ & {\delimit}  &{\terminal{feminine}}  \\
+ & {\delimit}  &{\terminal{neuter}}  \\
+ & {\delimit}  &{\terminal{commonGender}}  \\
+ & {\delimit}  &{\terminal{otherGender}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}

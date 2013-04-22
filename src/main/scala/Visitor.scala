@@ -20,6 +20,7 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
                              Absyn.ScalarMembership.Visitor[ScalarMembership,collection.mutable.Map[String,String]] with
                              Absyn.Category.Visitor[(URI,URI),collection.mutable.Map[String,String]] with
                              Absyn.POSTag.Visitor[POS,collection.mutable.Map[String,String]] with
+                             Absyn.Gender.Visitor[Gender,collection.mutable.Map[String,String]] with
                              Absyn.URI.Visitor[URI,collection.mutable.Map[String,String]] {
 /* Statements */
     def visit(p : Absyn.EStatments, arg : collection.mutable.Map[String,String]) = { 
@@ -42,6 +43,12 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
     }
     def visit(p : Absyn.ENoun, arg : collection.mutable.Map[String,String]) = { 
       p.nounpattern_.accept(this,arg)
+    }
+    def visit(p : Absyn.ENounWithGender, arg : collection.mutable.Map[String,String]) = {
+      p.nounpattern_.accept(this,arg) match {
+        case np : Noun => np withGender p.gender_.accept(this,arg)
+        case _ => throw new IllegalArgumentException("Gender on non-noun pattern")
+      }
     }
     def visit(p : Absyn.EVerb, arg : collection.mutable.Map[String,String]) = {
       p.verbpattern_.accept(this,arg)
@@ -414,6 +421,13 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
       case "slash" => pos. slash 
       case "verb" => pos. verb
     }
+/* Gender */
+    def visit(p : Absyn.EMascGender, arg : collection.mutable.Map[String,String]) = Masculine
+    def visit(p : Absyn.EFemGender, arg : collection.mutable.Map[String,String]) = Feminine
+    def visit(p : Absyn.ENeutGender, arg : collection.mutable.Map[String,String]) = Neuter
+    def visit(p : Absyn.ECommonGender, arg : collection.mutable.Map[String,String]) = CommonGender
+    def visit(p : Absyn.EOtherGender, arg : collection.mutable.Map[String,String]) = OtherGender
+    
 /* URI */
     def visit(p : Absyn.EQName, arg : collection.mutable.Map[String,String]) = URI.create(
       arg.getOrElse(p.ident_1, { throw new IllegalArgumentException("Undeclared prefix \""+p.ident_1+"\"") }) + p.ident_2)

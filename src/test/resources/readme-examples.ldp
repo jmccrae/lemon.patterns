@@ -38,3 +38,6 @@ Lexicon(<http://www.example.com/published/path>, // Here is where the ontology-l
       [ontology:size > 5.0 for ontology:Building])
 )
 
+Lexicon(<http://www.example.com/published/path_de>, "deu",
+  ClassNoun("Katze",dbpedia:Cat) feminine with plural "Katzen"
+)

@@ -67,6 +67,15 @@ public class VisitSkel
 
       return null;
     }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ENounWithGender p, A arg)
+    {
+      /* Code For ENounWithGender Goes Here */
+
+      p.nounpattern_.accept(new NounPatternVisitor<R,A>(), arg);
+      p.gender_.accept(new GenderVisitor<R,A>(), arg);
+
+      return null;
+    }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EVerb p, A arg)
     {
       /* Code For EVerb Goes Here */
@@ -922,6 +931,45 @@ public class VisitSkel
       /* Code For EAnyPOS Goes Here */
 
       //p.string_;
+
+      return null;
+    }
+
+  }
+  public class GenderVisitor<R,A> implements Gender.Visitor<R,A>
+  {
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EMascGender p, A arg)
+    {
+      /* Code For EMascGender Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EFemGender p, A arg)
+    {
+      /* Code For EFemGender Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ENeutGender p, A arg)
+    {
+      /* Code For ENeutGender Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ECommonGender p, A arg)
+    {
+      /* Code For ECommonGender Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EOtherGender p, A arg)
+    {
+      /* Code For EOtherGender Goes Here */
+
 
       return null;
     }

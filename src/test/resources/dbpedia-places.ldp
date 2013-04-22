@@ -120,9 +120,9 @@ Lexicon(<http://lemon-model.net/lexica/dbpedia/places>,"en",
     propSubj=PossessiveAdjunct,
     propObj=CopulativeArg),
     
-  ConsequenceVerb("open",dbpedia:dataUse,
+  ConsequenceVerb("open",dbpedia:dateUsed,
      propSubj=base:canal as Subject, 
-     propObj=base:dataOpened as PrepositionalObject("in")),
+     propObj=base:dateOpened as PrepositionalObject("in")),
 
   RelationalNoun(["postal"/adjective "code"/"common noun"],dbpedia:postalCode,
     propSubj=PossessiveAdjunct,

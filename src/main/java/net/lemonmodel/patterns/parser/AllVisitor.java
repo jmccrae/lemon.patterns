@@ -20,5 +20,6 @@ public interface AllVisitor<R,A> extends
   net.lemonmodel.patterns.parser.Absyn.ScalarMembership.Visitor<R,A>,
   net.lemonmodel.patterns.parser.Absyn.Category.Visitor<R,A>,
   net.lemonmodel.patterns.parser.Absyn.POSTag.Visitor<R,A>,
+  net.lemonmodel.patterns.parser.Absyn.Gender.Visitor<R,A>,
   net.lemonmodel.patterns.parser.Absyn.URI.Visitor<R,A>
 {}

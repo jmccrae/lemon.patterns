@@ -48,7 +48,7 @@ class BNFCTest extends FlatSpec with ShouldMatchers {
       val visitor = new PatternVisitor()
       val x = parse_tree.accept(visitor, collection.mutable.Map[String,String]())
       x should not be (null)
-      x.size should be (1)
+      x.size should be (2)
     } catch {
       case (e : Throwable) => {
         System.err.println("At line " + String.valueOf(l.line_num()) + ", near \"" + l.buff() + "\" :");
