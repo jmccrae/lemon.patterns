@@ -173,8 +173,8 @@ case class RelationalNoun(val lemma : NP,
     <lemon:synBehavior>
       <lemon:Frame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
         { (propSubj,propObj) match {
-          case (ArgImpl(_,_,"subject"),PrepositionalObject(_,_,_)) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
-            case (PrepositionalObject(_,_,_),ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+          case (ArgImpl(_,_,"copulativeArg"),PrepositionalObject(_,_,_)) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+            case (PrepositionalObject(_,_,_),ArgImpl(_,_,"copulativeArg")) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
             case (ArgImpl(_,_,"copulativeArg"),ArgImpl(_,_,"possessiveAdjunct")) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
             case (ArgImpl(_,_,"possessiveAdjunct"),ArgImpl(_,_,"copualtiveArg")) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
             case _ => <!--Unrecognised frame-->
