@@ -81,7 +81,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
   
   "The relation noun pattern" should "produce valid lemon" in {
     xmlCheck(RelationalNoun("agreement",ontology("agreeAbout"),
-                 propSubj=Subject,
+                 propSubj=CopulativeArg,
                  propObj=PrepositionalObject("about")),
        <lemon:LexicalEntry rdf:about="file:example/agreement-noun">
          <lemon:canonicalForm>
@@ -106,7 +106,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
          <lemon:synBehavior>
            <lemon:Frame rdf:about="file:example/agreement-noun#frame">
              <rdf:type rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#NounPPFrame"/>
-             <lexinfo:subject rdf:resource="file:example/agreement-noun#subject"/>
+             <lexinfo:copulativeArg rdf:resource="file:example/agreement-noun#subject"/>
              <lexinfo:prepositionalObject>
                <lemon:Argument rdf:about="file:example/agreement-noun#adpositionalObject">
                  <lemon:marker rdf:resource="file:example/about"/>
