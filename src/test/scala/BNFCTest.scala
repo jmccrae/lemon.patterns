@@ -78,7 +78,7 @@ class BNFCTest extends FlatSpec with ShouldMatchers {
   }
   
   "utf8" should "work" in {
-    val l = new Yylex(new StringReader("Lexicon(<test>,\"deu\",ClassNoun(\"\u00dcbung\",<ubung>))"))
+    val l = new Yylex(new StringReader("Lexicon(<test>,\"deu\",ClassNoun(\"\u00dcbung\",<uebung>))"))
     val p = new parser(l);
     try {
       val parse_tree = p.pStatements();
