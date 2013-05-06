@@ -3,7 +3,7 @@ package net.lemonmodel.patterns
 import java.net.URI
 import java.net.URLEncoder
 
-case class Lexicon(uri : URI, lang : String, patterns : Pattern*) {
+case class Lexicon(uri : URI, lang : String, val patterns : Pattern*) {
   private var elems = collection.mutable.Set[String]()
   private def from(n : Int) : Stream[Int] = Stream.cons(n,from(n+1))
   

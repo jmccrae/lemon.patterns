@@ -105,6 +105,7 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
     def visit(p : Absyn.EStateVerb2, arg : collection.mutable.Map[String,String]) = StateVerb( 
       p.vp_.accept(this,arg),
       p.uri_.accept(this,arg),
+      Subject,
       p.arg_.accept(this,arg)
     )
     def visit(p : Absyn.EStateVerb3, arg : collection.mutable.Map[String,String]) = StateVerb( 
