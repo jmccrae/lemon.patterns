@@ -60,7 +60,6 @@ class BNFCTest extends FlatSpec with ShouldMatchers {
   
   "another example" should "produce ipp frame" in {
     val l = new Yylex(new StringReader("Lexicon(<test>,\"nl\",StateVerb([\"vereist\"/verb \"inplanning\"/adverb], <http://www.beinformed.nl/owl/ontology#requiresScheduled>, propObj=PrepositionalObject(\"van\")))"))
-    
     val p = new parser(l);
     try {
       val parse_tree = p.pStatements();
@@ -76,6 +75,23 @@ class BNFCTest extends FlatSpec with ShouldMatchers {
         throw e
       }
     }
+  }
+  
+  "utf8" should "work" in {
+    val l = new Yylex(new StringReader("Lexicon(<test>,\"deu\",ClassNoun(\"\u00dcbung\",<ubung>))"))
+    val p = new parser(l);
+    try {
+      val parse_tree = p.pStatements();
+      val visitor = new PatternVisitor()
+      val x = parse_tree.accept(visitor, collection.mutable.Map[String,String]())
+      x(0).patterns(0).asInstanceOf[ClassNoun].lemma.toString should be ("\u00dcbung")
+    } catch {
+      case (e : Throwable) => {
+        System.err.println("At line " + String.valueOf(l.line_num()) + ", near \"" + l.buff() + "\" :");
+        throw e
+      }
+    }
+    
   }
 }
 

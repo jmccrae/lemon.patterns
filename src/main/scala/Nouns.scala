@@ -38,6 +38,11 @@ trait Noun extends Pattern {
           <lemon:writtenRep xml:lang={lang}>{lemma.toString()}</lemon:writtenRep>
         </lemon:LexicalForm>
       </lemon:canonicalForm>
+      {gender match {
+        case Some(g) => <lexinfo:gender rdf:about={lexinfo(g.toString()).toString()}/>
+        case None => 
+        }
+      }
       { lemma.toXML(namer,lang) }
       {
         for(form <- forms) yield {
@@ -61,11 +66,11 @@ trait Noun extends Pattern {
 
 sealed trait Gender
 
-object Masculine extends Gender
-object Feminine extends Gender
-object Neuter extends Gender
-object CommonGender extends Gender
-object OtherGender extends Gender
+object Masculine extends Gender { override def toString = "masculine" }
+object Feminine extends Gender { override def toString = "feminine" }
+object Neuter extends Gender { override def toString = "neuter" }
+object CommonGender extends Gender { override def toString = "commonGender" }
+object OtherGender extends Gender { override def toString = "otherGender" }
 
 /**
 * A name (proper noun) associated to a named individual in the ontology
