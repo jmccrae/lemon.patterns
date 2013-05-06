@@ -39,7 +39,7 @@ trait Noun extends Pattern {
         </lemon:LexicalForm>
       </lemon:canonicalForm>
       {gender match {
-        case Some(g) => <lexinfo:gender rdf:about={lexinfo(g.toString()).toString()}/>
+        case Some(g) => <lexinfo:gender rdf:resource={lexinfo(g.toString()).toString()}/>
         case None => 
         }
       }

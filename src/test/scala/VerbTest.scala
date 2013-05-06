@@ -196,4 +196,41 @@ class VerbTest extends FlatSpec with ShouldMatchers {
          </lemon:synBehavior>
        </lemon:LexicalEntry>)
   }
+  
+  "Intransitive PP Frame" should "generate lexinfo type" in {
+     xmlCheck(StateVerb("play",ontology("playsFor"),propObj=PrepositionalObject("for")),
+     <lemon:LexicalEntry rdf:about="file:example/play-verb">
+         <lemon:canonicalForm>
+           <lemon:LexicalForm rdf:about="file:example/play-verb#canonicalForm3">
+             <lemon:writtenRep xml:lang="en">play</lemon:writtenRep>
+           </lemon:LexicalForm>
+         </lemon:canonicalForm>
+         <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#verb"></lexinfo:partOfSpeech>
+         <lemon:sense>
+           <lemon:LexicalSense rdf:about="file:example/play-verb#sense3">
+             <lemon:reference>
+               <rdf:Property rdf:about="http://www.example.com/ontology#playsFor"/>
+             </lemon:reference>
+             <lemon:subjOfProp>
+               <lemon:Argument rdf:about="file:example/play-verb#subject2"/>
+             </lemon:subjOfProp>
+             <lemon:objOfProp>
+               <lemon:Argument rdf:about="file:example/play-verb#object2"/>
+             </lemon:objOfProp>
+           </lemon:LexicalSense>
+         </lemon:sense>
+         <lemon:synBehavior>
+           <lemon:Frame rdf:about="file:example/play-verb#frame3">
+             <rdf:type rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#IntransitivePPFrame"/>
+             <lexinfo:subject rdf:resource="file:example/play-verb#subject2"/>
+             <lexinfo:prepositionalObject>
+               <lemon:Argument rdf:about="file:example/play-verb#object2">
+                 <lemon:marker rdf:resource="file:example/for"/>
+               </lemon:Argument>
+             </lexinfo:prepositionalObject>
+           </lemon:Frame>
+         </lemon:synBehavior>
+      </lemon:LexicalEntry>)
+         
+  }
 }

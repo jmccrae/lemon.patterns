@@ -100,8 +100,8 @@ case class StateVerb(val lemma : VP,
         { (propSubj,propObj) match {
             case (ArgImpl(_,_,"subject"),ArgImpl(_,_,"directObject")) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
             case (ArgImpl(_,_,"directObject"),ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
-            case (ArgImpl(_,_,"subject"),ArgImpl(_,_,"prepositionalObject")) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
-            case (ArgImpl(_,_,"prepositionalObject"),ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case (ArgImpl(_,_,"subject"),PrepositionalObject(_,_,_)) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case (PrepositionalObject(_,_,_),ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
             case _ => <!--Unrecognised frame-->
            }
         }
@@ -332,8 +332,8 @@ case class ConsequenceVerb(val lemma : VP,
         { (propSubj.arg,propObj.arg) match {
             case (ArgImpl(_,_,"subject"),ArgImpl(_,_,"directObject")) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
             case (ArgImpl(_,_,"directObject"),ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
-            case (ArgImpl(_,_,"subject"),ArgImpl(_,_,"prepositionalObject")) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
-            case (ArgImpl(_,_,"prepositionalObject"), ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case (ArgImpl(_,_,"subject"),PrepositionalObject(_,_,_)) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case (PrepositionalObject(_,_,_), ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
             case _ => <!--Unrecognised frame-->
            }
         }
