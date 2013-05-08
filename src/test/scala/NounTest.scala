@@ -16,6 +16,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
       }))
     }
     def auxiliaryEntry(form : String) = URI.create("file:example/"+form)
+    def auxXML = Nil
   }
   
   def xmlCheck(pattern : Pattern, xml : Elem) {
@@ -26,9 +27,9 @@ class NounTest extends FlatSpec with ShouldMatchers {
     xmlCheck(Name("Microsoft","http://microsoft.com"),
        <lemon:LexicalEntry rdf:about="file:example/Microsoft-noun">
          <lemon:canonicalForm>
-           <lemon:LexicalForm rdf:about="file:example/Microsoft-noun#canonicalForm">
+           <lemon:Form rdf:about="file:example/Microsoft-noun#canonicalForm">
              <lemon:writtenRep xml:lang="en">Microsoft</lemon:writtenRep>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:canonicalForm>
          <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#properNoun"></lexinfo:partOfSpeech>
          <lemon:sense>
@@ -47,16 +48,16 @@ class NounTest extends FlatSpec with ShouldMatchers {
     xmlCheck(ClassNoun("cat",dbpedia("Cat")) withPlural "cats",
        <lemon:LexicalEntry rdf:about="file:example/cat-noun">
          <lemon:canonicalForm>
-           <lemon:LexicalForm rdf:about="file:example/cat-noun#canonicalForm">
+           <lemon:Form rdf:about="file:example/cat-noun#canonicalForm">
              <lemon:writtenRep xml:lang="en">cat</lemon:writtenRep>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:canonicalForm>
          <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#commonNoun"></lexinfo:partOfSpeech>
          <lemon:otherForm>
-           <lemon:LexicalForm rdf:about="file:example/cat-noun#form">
+           <lemon:Form rdf:about="file:example/cat-noun#form">
              <lemon:writtenRep xml:lang="en">cats</lemon:writtenRep>
              <lexinfo:number rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#plural" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"></lexinfo:number>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:otherForm>
          <lemon:sense>
            <lemon:LexicalSense rdf:about="file:example/cat-noun#sense">
@@ -85,9 +86,9 @@ class NounTest extends FlatSpec with ShouldMatchers {
                  propObj=PrepositionalObject("about")),
        <lemon:LexicalEntry rdf:about="file:example/agreement-noun">
          <lemon:canonicalForm>
-           <lemon:LexicalForm rdf:about="file:example/agreement-noun#canonicalForm">
+           <lemon:Form rdf:about="file:example/agreement-noun#canonicalForm">
              <lemon:writtenRep xml:lang="en">agreement</lemon:writtenRep>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:canonicalForm>
          <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#commonNoun"></lexinfo:partOfSpeech>
          <lemon:sense>
@@ -124,9 +125,9 @@ class NounTest extends FlatSpec with ShouldMatchers {
                        ontology("startOfEmployment") as PrepositionalObject("since") optional)),
        <lemon:LexicalEntry rdf:about="file:example/position-noun">
          <lemon:canonicalForm>
-           <lemon:LexicalForm rdf:about="file:example/position-noun#canonicalForm">
+           <lemon:Form rdf:about="file:example/position-noun#canonicalForm">
              <lemon:writtenRep xml:lang="en">position</lemon:writtenRep>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:canonicalForm>
          <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#commonNoun"></lexinfo:partOfSpeech>
          <lemon:sense>
@@ -193,5 +194,4 @@ class NounTest extends FlatSpec with ShouldMatchers {
          </lemon:synBehavior>
        </lemon:LexicalEntry>)
   }
-                       
 }

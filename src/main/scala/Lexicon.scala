@@ -10,12 +10,17 @@ case class Lexicon(uri : URI, lang : String, val patterns : Pattern*) {
   private def joinChar(s : String) = {
     if((s endsWith "#") || (s endsWith "/")) {
       ""
+    } else if(s contains "#") {
+      "/"
     } else {
       "#"
     }
   }
   
   private val uriNamer = new URINamer {
+    var auxNodes : List[xml.Node] = Nil
+    private var auxSet = collection.mutable.Set[String]()
+    
     def apply(pos : String, form : String, element : Option[String] = None) = element match {
       case Some(e) => {
         val frag = URLEncoder.encode(form,"UTF-8") + "__" + pos + "/" + e
@@ -30,16 +35,30 @@ case class Lexicon(uri : URI, lang : String, val patterns : Pattern*) {
       }
       case None => URI.create(uri + joinChar(uri) + URLEncoder.encode(form,"UTF-8") + "__" + pos)
     }
-    def auxiliaryEntry(form : String) = URI.create(uri + joinChar(uri) + form)
+    def auxiliaryEntry(form : String) = {
+      val auxURI = URI.create(uri + joinChar(uri) + form)
+      if(!(auxSet contains form)) {
+        auxSet += form
+        auxNodes ::= <lemon:entry><lemon:LexicalEntry rdf:about={auxURI}>
+        <lemon:canonicalForm>
+          <lemon:Form rdf:about={auxURI + joinChar(auxURI.toString()) + "canonicalForm"}>
+            <lemon:writtenRep xml:lang={lang}>{form}</lemon:writtenRep>
+          </lemon:Form>
+        </lemon:canonicalForm>
+      </lemon:LexicalEntry></lemon:entry>
+      }
+      auxURI
+    }
+    def auxXML = auxNodes
   }
   
   def toXML() = {
     <lemon:Lexicon rdf:about={uri.toString} lemon:language={lang}>
-      {for(pattern <- patterns) yield {
+      {(for(pattern <- patterns) yield {
         <lemon:entry>
         {pattern.toXML(uriNamer,lang)}
         </lemon:entry>
-     }}
+     } ++ uriNamer.auxXML)}
    </lemon:Lexicon>
   }
 }

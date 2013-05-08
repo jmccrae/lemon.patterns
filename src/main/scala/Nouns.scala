@@ -34,9 +34,9 @@ trait Noun extends Pattern {
   def forms : Seq[Form]
   def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer("noun",lemma.toString())}>
       <lemon:canonicalForm>
-        <lemon:LexicalForm rdf:about={namer("noun",lemma.toString(),Some("canonicalForm"))}>
+        <lemon:Form rdf:about={namer("noun",lemma.toString(),Some("canonicalForm"))}>
           <lemon:writtenRep xml:lang={lang}>{lemma.toString()}</lemon:writtenRep>
-        </lemon:LexicalForm>
+        </lemon:Form>
       </lemon:canonicalForm>
       {gender match {
         case Some(g) => <lexinfo:gender rdf:resource={lexinfo(g.toString()).toString()}/>
@@ -47,7 +47,7 @@ trait Noun extends Pattern {
       {
         for(form <- forms) yield {
           <lemon:otherForm>
-            <lemon:LexicalForm rdf:about={namer("noun",lemma.toString(),Some("form"))}>
+            <lemon:Form rdf:about={namer("noun",lemma.toString(),Some("form"))}>
               <lemon:writtenRep xml:lang={lang}>{form.writtenRep}</lemon:writtenRep>
               {
                 for((prop,propVal) <- form.props) yield {
@@ -56,7 +56,7 @@ trait Noun extends Pattern {
                     Attribute("","xmlns:"+prefix,prefixUri,Null)
                 }
               }
-            </lemon:LexicalForm>
+            </lemon:Form>
           </lemon:otherForm>
         }   
       }

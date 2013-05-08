@@ -53,6 +53,7 @@ package net.lemonmodel {
     trait URINamer {
       def apply(pos : String, form : String, element : Option[String] = None) : URI
       def auxiliaryEntry(form : String) : URI
+      def auxXML : Seq[Node]
     }
     
     trait Pattern {
@@ -135,6 +136,13 @@ package net.lemonmodel {
       }
       def optional = PrepositionalObject(true,restriction, preposition)
       def restrictedTo(uri : URI) = PrepositionalObject(isOptional,Some(uri),preposition)
+      def aux(uri : URI, namer : URINamer, lang : String) = Some(<lemon:LexicalEntry rdf:about={uri}>
+        <lemon:canonicalForm>
+          <lemon:Form>
+            <lemon:writtenRep xml:lang={lang}>{preposition}</lemon:writtenRep>
+          </lemon:Form>
+        </lemon:canonicalForm>
+      </lemon:LexicalEntry>)
     }
     
     object PrepositionalObject {
@@ -161,6 +169,13 @@ package net.lemonmodel {
       }
       def optional = PostpositionalObject(true,restriction, postposition)
       def restrictedTo(uri : URI) = PostpositionalObject(isOptional,Some(uri),postposition)
+      def aux(uri : URI, namer : URINamer, lang : String) = Some(<lemon:LexicalEntry rdf:about={uri}>
+        <lemon:canonicalForm>
+          <lemon:Form>
+            <lemon:writtenRep xml:lang={lang}>{postposition}</lemon:writtenRep>
+          </lemon:Form>
+        </lemon:canonicalForm>
+      </lemon:LexicalEntry>)
     }
     
     object PostpositionalObject {

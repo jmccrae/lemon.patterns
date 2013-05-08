@@ -34,15 +34,15 @@ trait Adjective extends Pattern {
   def forms : Seq[Form]
   def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer("adjective",lemma.toString())}>
       <lemon:canonicalForm>
-        <lemon:LexicalForm rdf:about={namer("adjective",lemma.toString(),Some("canonicalForm"))}>
+        <lemon:Form rdf:about={namer("adjective",lemma.toString(),Some("canonicalForm"))}>
           <lemon:writtenRep xml:lang={lang}>{lemma.toString()}</lemon:writtenRep>
-        </lemon:LexicalForm>
+        </lemon:Form>
       </lemon:canonicalForm> 
       <lexinfo:partOfSpeech rdf:resource={lexinfo("adjective")}/>
       {
         for(form <- forms) yield {
           <lemon:otherForm>
-            <lemon:LexicalForm rdf:about={namer("adjective",lemma.toString(),Some("form"))}>
+            <lemon:Form rdf:about={namer("adjective",lemma.toString(),Some("form"))}>
               <lemon:writtenRep xml:lang={lang}>{form.writtenRep}</lemon:writtenRep>
               {
                 for((prop,propVal) <- form.props) yield {
@@ -51,7 +51,7 @@ trait Adjective extends Pattern {
                     Attribute("","xmlns:"+prefix,prefixUri,Null)
                 }
               }
-            </lemon:LexicalForm>
+            </lemon:Form>
           </lemon:otherForm>
         }   
       }

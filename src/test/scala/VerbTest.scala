@@ -27,10 +27,16 @@ class VerbTest extends FlatSpec with ShouldMatchers {
       URI.create("file:example/"+form+"-"+pos+frag)
     }
     def auxiliaryEntry(form : String) = URI.create("file:example/"+form)
+    def auxXML = Nil
   }
   
   def xmlCheck(pattern : Pattern, xml : Elem, lang : String = "en") {
     trim(pattern.toXML(defaultNamer,lang)).toString() should equal (trim(xml).toString())
+  }
+  
+  
+  def xmlCheck(lexicon : Lexicon, xml : Elem) {
+    trim(lexicon.toXML()).toString() should equal (trim(xml).toString())
   }
   
   val ontology = Namespace("http://www.example.com/ontology#")
@@ -56,58 +62,58 @@ class VerbTest extends FlatSpec with ShouldMatchers {
     )),
     <lemon:LexicalEntry rdf:about="file:example/amare-verb">
          <lemon:canonicalForm>
-           <lemon:LexicalForm rdf:about="file:example/amare-verb#canonicalForm">
+           <lemon:Form rdf:about="file:example/amare-verb#canonicalForm">
              <lemon:writtenRep xml:lang="la">amare</lemon:writtenRep>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:canonicalForm>
          <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#verb"></lexinfo:partOfSpeech>
          <lemon:otherForm>
-           <lemon:LexicalForm rdf:about="file:example/amare-verb#form">
+           <lemon:Form rdf:about="file:example/amare-verb#form">
              <lemon:writtenRep xml:lang="la">amo</lemon:writtenRep>
              <lexinfo:tense rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
              <lexinfo:number rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#singular" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
              <lexinfo:person rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#firstPerson" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:otherForm>
          <lemon:otherForm>
-           <lemon:LexicalForm rdf:about="file:example/amare-verb#form2">
+           <lemon:Form rdf:about="file:example/amare-verb#form2">
              <lemon:writtenRep xml:lang="la">amas</lemon:writtenRep>
              <lexinfo:tense rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
              <lexinfo:number rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#singular" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
              <lexinfo:person rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#secondPerson" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:otherForm>
          <lemon:otherForm>
-           <lemon:LexicalForm rdf:about="file:example/amare-verb#form3">
+           <lemon:Form rdf:about="file:example/amare-verb#form3">
              <lemon:writtenRep xml:lang="la">amat</lemon:writtenRep>
              <lexinfo:tense rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
              <lexinfo:number rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#singular" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
              <lexinfo:person rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#thirdPerson" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:otherForm>
          <lemon:otherForm>
-           <lemon:LexicalForm rdf:about="file:example/amare-verb#form4">
+           <lemon:Form rdf:about="file:example/amare-verb#form4">
              <lemon:writtenRep xml:lang="la">amamus</lemon:writtenRep>
              <lexinfo:tense rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
              <lexinfo:number rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#plural" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
              <lexinfo:person rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#firstPerson" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:otherForm>
          <lemon:otherForm>
-           <lemon:LexicalForm rdf:about="file:example/amare-verb#form5">
+           <lemon:Form rdf:about="file:example/amare-verb#form5">
              <lemon:writtenRep xml:lang="la">amatis</lemon:writtenRep>
              <lexinfo:tense rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
              <lexinfo:number rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#plural" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
              <lexinfo:person rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#secondPerson" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:otherForm>
          <lemon:otherForm>
-           <lemon:LexicalForm rdf:about="file:example/amare-verb#form6">
+           <lemon:Form rdf:about="file:example/amare-verb#form6">
              <lemon:writtenRep xml:lang="la">amant</lemon:writtenRep>
              <lexinfo:tense rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
              <lexinfo:number rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#plural" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
              <lexinfo:person rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#thirdPerson" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"/>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:otherForm>
          <lemon:sense>
            <lemon:LexicalSense rdf:about="file:example/amare-verb#sense">
@@ -140,9 +146,9 @@ class VerbTest extends FlatSpec with ShouldMatchers {
                   ontology("givenObject") as IndirectObject)),
        <lemon:LexicalEntry rdf:about="file:example/give-verb">
          <lemon:canonicalForm>
-           <lemon:LexicalForm rdf:about="file:example/give-verb#canonicalForm2">
+           <lemon:Form rdf:about="file:example/give-verb#canonicalForm2">
              <lemon:writtenRep xml:lang="en">give</lemon:writtenRep>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:canonicalForm>
          <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#verb"></lexinfo:partOfSpeech>
          <lemon:sense>
@@ -201,9 +207,9 @@ class VerbTest extends FlatSpec with ShouldMatchers {
      xmlCheck(StateVerb("play",ontology("playsFor"),propObj=PrepositionalObject("for")),
      <lemon:LexicalEntry rdf:about="file:example/play-verb">
          <lemon:canonicalForm>
-           <lemon:LexicalForm rdf:about="file:example/play-verb#canonicalForm3">
+           <lemon:Form rdf:about="file:example/play-verb#canonicalForm3">
              <lemon:writtenRep xml:lang="en">play</lemon:writtenRep>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:canonicalForm>
          <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#verb"></lexinfo:partOfSpeech>
          <lemon:sense>
@@ -232,5 +238,56 @@ class VerbTest extends FlatSpec with ShouldMatchers {
          </lemon:synBehavior>
       </lemon:LexicalEntry>)
          
+  }
+  
+  
+  "lexicon" should "generate auxiliary entries" in {
+    xmlCheck(Lexicon("file:example/","eng",StateVerb("play",ontology("playsFor"),propObj=PrepositionalObject("for"))),
+      <lemon:Lexicon rdf:about="file:example/" lemon:language="eng">
+        <lemon:entry>
+    <lemon:LexicalEntry rdf:about="file:example/play__verb">
+         <lemon:canonicalForm>
+           <lemon:Form rdf:about="file:example/play__verb/canonicalForm">
+             <lemon:writtenRep xml:lang="eng">play</lemon:writtenRep>
+           </lemon:Form>
+         </lemon:canonicalForm>
+         <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#verb"></lexinfo:partOfSpeech>
+         <lemon:sense>
+           <lemon:LexicalSense rdf:about="file:example/play__verb/sense">
+             <lemon:reference>
+               <rdf:Property rdf:about="http://www.example.com/ontology#playsFor"/>
+             </lemon:reference>
+             <lemon:subjOfProp>
+               <lemon:Argument rdf:about="file:example/play__verb/subject"/>
+             </lemon:subjOfProp>
+             <lemon:objOfProp>
+               <lemon:Argument rdf:about="file:example/play__verb/object"/>
+             </lemon:objOfProp>
+           </lemon:LexicalSense>
+         </lemon:sense>
+         <lemon:synBehavior>
+           <lemon:Frame rdf:about="file:example/play__verb/frame">
+             <rdf:type rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#IntransitivePPFrame"/>
+             <lexinfo:subject rdf:resource="file:example/play__verb/subject"/>
+             <lexinfo:prepositionalObject>
+               <lemon:Argument rdf:about="file:example/play__verb/object">
+                 <lemon:marker rdf:resource="file:example/for"/>
+               </lemon:Argument>
+             </lexinfo:prepositionalObject>
+           </lemon:Frame>
+         </lemon:synBehavior>
+      </lemon:LexicalEntry>
+      </lemon:entry>
+      <lemon:entry>
+        <lemon:LexicalEntry rdf:about="file:example/for">
+          <lemon:canonicalForm>
+            <lemon:Form rdf:about="file:example/for#canonicalForm">
+              <lemon:writtenRep xml:lang="eng">for</lemon:writtenRep>
+            </lemon:Form>
+          </lemon:canonicalForm>
+        </lemon:LexicalEntry>
+      </lemon:entry>
+      </lemon:Lexicon>
+      )
   }
 }

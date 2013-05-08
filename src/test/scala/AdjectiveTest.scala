@@ -16,6 +16,7 @@ class AdjectiveTest extends FlatSpec with ShouldMatchers {
       }))
     }
     def auxiliaryEntry(form : String) = URI.create("file:example/"+form)
+    def auxXML = Nil
   }
   
   def xmlCheck(pattern : Pattern, xml : Elem) {
@@ -28,9 +29,9 @@ class AdjectiveTest extends FlatSpec with ShouldMatchers {
     xmlCheck(IntersectiveAdjective("Belgian",ontology("Belgian")),
        <lemon:LexicalEntry rdf:about="file:example/Belgian-adjective">
          <lemon:canonicalForm>
-           <lemon:LexicalForm rdf:about="file:example/Belgian-adjective#canonicalForm">
+           <lemon:Form rdf:about="file:example/Belgian-adjective#canonicalForm">
              <lemon:writtenRep xml:lang="en">Belgian</lemon:writtenRep>
-           </lemon:LexicalForm>
+           </lemon:Form>
          </lemon:canonicalForm>
          <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#adjective"></lexinfo:partOfSpeech>
          <lemon:sense>
