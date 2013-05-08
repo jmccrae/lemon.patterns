@@ -26,7 +26,7 @@ class VerbTest extends FlatSpec with ShouldMatchers {
       })
       URI.create("file:example/"+form+"-"+pos+frag)
     }
-    def auxiliaryEntry(form : String) = URI.create("file:example/"+form)
+    def auxiliaryEntry(form : String, pos : String) = URI.create("file:example/"+form)
     def auxXML = Nil
   }
   
@@ -271,7 +271,7 @@ class VerbTest extends FlatSpec with ShouldMatchers {
              <lexinfo:subject rdf:resource="file:example/play__verb/subject"/>
              <lexinfo:prepositionalObject>
                <lemon:Argument rdf:about="file:example/play__verb/object">
-                 <lemon:marker rdf:resource="file:example/for"/>
+                 <lemon:marker rdf:resource="file:example/for__preposition"/>
                </lemon:Argument>
              </lexinfo:prepositionalObject>
            </lemon:Frame>
@@ -279,9 +279,10 @@ class VerbTest extends FlatSpec with ShouldMatchers {
       </lemon:LexicalEntry>
       </lemon:entry>
       <lemon:entry>
-        <lemon:LexicalEntry rdf:about="file:example/for">
+        <lemon:LexicalEntry rdf:about="file:example/for__preposition">
+          <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#preposition"/>
           <lemon:canonicalForm>
-            <lemon:Form rdf:about="file:example/for#canonicalForm">
+            <lemon:Form rdf:about="file:example/for__preposition#canonicalForm">
               <lemon:writtenRep xml:lang="eng">for</lemon:writtenRep>
             </lemon:Form>
           </lemon:canonicalForm>

@@ -15,7 +15,7 @@ class AdjectiveTest extends FlatSpec with ShouldMatchers {
         case None => ""
       }))
     }
-    def auxiliaryEntry(form : String) = URI.create("file:example/"+form)
+    def auxiliaryEntry(form : String, pos : String) = URI.create("file:example/"+form)
     def auxXML = Nil
   }
   

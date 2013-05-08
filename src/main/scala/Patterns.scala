@@ -52,7 +52,7 @@ package net.lemonmodel {
     
     trait URINamer {
       def apply(pos : String, form : String, element : Option[String] = None) : URI
-      def auxiliaryEntry(form : String) : URI
+      def auxiliaryEntry(form : String, pos : String) : URI
       def auxXML : Seq[Node]
     }
     
@@ -123,14 +123,14 @@ package net.lemonmodel {
       def toXML(uri : URI, namer : URINamer) = if(isOptional) {
         <lexinfo:prepositionalObject>
           <lemon:Argument rdf:about={uri}>
-            <lemon:marker rdf:resource={namer.auxiliaryEntry(preposition)}/>
+            <lemon:marker rdf:resource={namer.auxiliaryEntry(preposition,"preposition")}/>
             <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
            </lemon:Argument>
         </lexinfo:prepositionalObject>
       } else {
         <lexinfo:prepositionalObject>
           <lemon:Argument rdf:about={uri}>
-            <lemon:marker rdf:resource={namer.auxiliaryEntry(preposition)}/>
+            <lemon:marker rdf:resource={namer.auxiliaryEntry(preposition,"preposition")}/>
            </lemon:Argument>
         </lexinfo:prepositionalObject>
       }
@@ -156,14 +156,14 @@ package net.lemonmodel {
       def toXML(uri : URI, namer : URINamer) = if(isOptional) {
         <lexinfo:postpositionalObject>
           <lemon:Argument rdf:about={uri}>
-            <lemon:marker rdf:resource={namer.auxiliaryEntry(postposition)}/>
+            <lemon:marker rdf:resource={namer.auxiliaryEntry(postposition,"postposition")}/>
             <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
            </lemon:Argument>
         </lexinfo:postpositionalObject>
       } else {
         <lexinfo:postpositionalObject>
           <lemon:Argument rdf:about={uri}>
-            <lemon:marker rdf:resource={namer.auxiliaryEntry(postposition)}/>
+            <lemon:marker rdf:resource={namer.auxiliaryEntry(postposition,"postposition")}/>
            </lemon:Argument>
         </lexinfo:postpositionalObject>
       }

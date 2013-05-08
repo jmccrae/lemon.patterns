@@ -35,11 +35,12 @@ case class Lexicon(uri : URI, lang : String, val patterns : Pattern*) {
       }
       case None => URI.create(uri + joinChar(uri) + URLEncoder.encode(form,"UTF-8") + "__" + pos)
     }
-    def auxiliaryEntry(form : String) = {
-      val auxURI = URI.create(uri + joinChar(uri) + form)
+    def auxiliaryEntry(form : String, pos : String) = {
+      val auxURI = URI.create(uri + joinChar(uri) + form + "__" + pos)
       if(!(auxSet contains form)) {
         auxSet += form
         auxNodes ::= <lemon:entry><lemon:LexicalEntry rdf:about={auxURI}>
+        <lexinfo:partOfSpeech rdf:resource={lexinfo(pos)}/>
         <lemon:canonicalForm>
           <lemon:Form rdf:about={auxURI + joinChar(auxURI.toString()) + "canonicalForm"}>
             <lemon:writtenRep xml:lang={lang}>{form}</lemon:writtenRep>
