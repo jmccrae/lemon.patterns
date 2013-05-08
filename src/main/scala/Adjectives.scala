@@ -38,7 +38,7 @@ trait Adjective extends Pattern {
           <lemon:writtenRep xml:lang={lang}>{lemma.toString()}</lemon:writtenRep>
         </lemon:Form>
       </lemon:canonicalForm> 
-      <lexinfo:partOfSpeech rdf:resource={lexinfo("adjective")}/>
+      { lemma.toXML(namer,lang) }
       {
         for(form <- forms) yield {
           <lemon:otherForm>

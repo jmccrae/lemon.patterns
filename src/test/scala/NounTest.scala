@@ -10,7 +10,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
   
   val defaultNamer = new URINamer {
     def apply(pos : String, form : String, element : Option[String] = None) = {
-      URI.create("file:example/"+form+"-"+pos+(element match {
+      URI.create("file:example/"+java.net.URLEncoder.encode(form,"UTF-8")+"-"+pos+(element match {
         case Some(elem) => "#" + elem
         case None => ""
       }))
@@ -34,6 +34,51 @@ class NounTest extends FlatSpec with ShouldMatchers {
          <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#properNoun"></lexinfo:partOfSpeech>
          <lemon:sense>
            <lemon:LexicalSense rdf:about="file:example/Microsoft-noun#sense">
+             <lemon:reference>
+               <owl:NamedIndividual rdf:about="http://microsoft.com"/>
+             </lemon:reference>
+           </lemon:LexicalSense>
+         </lemon:sense>
+       </lemon:LexicalEntry>)
+  }
+  
+  "The name pattern for MWEs" should "produce valid lemon" in {
+    xmlCheck(Name(PNP("Microsoft"/pos.properNoun,"Windows"/pos.properNoun),"http://microsoft.com"),
+       <lemon:LexicalEntry rdf:about="file:example/Microsoft+Windows-noun">
+         <lemon:canonicalForm>
+           <lemon:Form rdf:about="file:example/Microsoft+Windows-noun#canonicalForm">
+             <lemon:writtenRep xml:lang="en">Microsoft Windows</lemon:writtenRep>
+           </lemon:Form>
+         </lemon:canonicalForm>
+         <rdf:type rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#NounPhrase"></rdf:type>
+         <lemon:decomposition rdf:parseType="Collection">
+           <lemon:Component rdf:about="file:example/Microsoft-properNoun#element_0">
+             <lemon:element>
+               <lemon:LexicalEntry rdf:about="file:example/Microsoft-properNoun">
+                 <lemon:canonicalForm>
+                   <lemon:Form>
+                     <lemon:writtenRep xml:lang="en">Microsoft</lemon:writtenRep>
+                   </lemon:Form>
+                 </lemon:canonicalForm>
+                 <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#properNoun"/>
+               </lemon:LexicalEntry>
+             </lemon:element>
+           </lemon:Component>
+         <lemon:Component rdf:about="file:example/Windows-properNoun#element_1">
+           <lemon:element>
+             <lemon:LexicalEntry rdf:about="file:example/Windows-properNoun">
+               <lemon:canonicalForm>
+                 <lemon:Form>
+                   <lemon:writtenRep xml:lang="en">Windows</lemon:writtenRep>
+                 </lemon:Form>
+               </lemon:canonicalForm>
+             <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#properNoun"/>
+           </lemon:LexicalEntry>
+         </lemon:element>
+         </lemon:Component>
+         </lemon:decomposition>
+         <lemon:sense>
+           <lemon:LexicalSense rdf:about="file:example/Microsoft+Windows-noun#sense">
              <lemon:reference>
                <owl:NamedIndividual rdf:about="http://microsoft.com"/>
              </lemon:reference>

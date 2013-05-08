@@ -21,11 +21,7 @@ case class Word(val lemma : String, val pos : POS) {
 
 class AbstractPhrase(words : Seq[Word], lexinfoType : String) {
   def toXML(namer : URINamer, lang : String) = if(words.length == 1) {
-    if(words(0).pos == pos.properNoun) {
-      <lexinfo:partOfSpeech rdf:resource={lexinfo("properNoun")}/>
-    } else {
-      <lexinfo:partOfSpeech rdf:resource={lexinfo("commonNoun")}/>
-    }
+    <lexinfo:partOfSpeech rdf:resource={lexinfo(words(0).pos.toString)}/>
   } else {
     <rdf:type rdf:resource={lexinfo(lexinfoType)}/> +:
     <lemon:decomposition rdf:parseType="Collection">{
