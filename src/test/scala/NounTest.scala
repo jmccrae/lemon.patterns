@@ -116,7 +116,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
          </lemon:sense>
          <lemon:synBehavior>
            <lemon:Frame rdf:about="file:example/cat-noun#frame">
-             <rdf:type rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#NounPredicativeFrame"/>
+             <rdf:type rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#NounPredicateFrame"/>
              <lexinfo:subject rdf:resource="file:example/cat-noun#subject"/>
            </lemon:Frame>
          </lemon:synBehavior>

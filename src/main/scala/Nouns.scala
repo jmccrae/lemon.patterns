@@ -120,7 +120,7 @@ case class ClassNoun(val lemma : NP,
     </lemon:sense> :+
     <lemon:synBehavior>
       <lemon:Frame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
-        <rdf:type rdf:resource={lexinfo("NounPredicativeFrame")}/>
+        <rdf:type rdf:resource={lexinfo("NounPredicateFrame")}/>
         <lexinfo:subject rdf:resource={subjURI}/>
       </lemon:Frame>
     </lemon:synBehavior>
