@@ -421,6 +421,7 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
       case "semiColon" => pos. semiColon 
       case "slash" => pos. slash 
       case "verb" => pos. verb
+      case _ => throw new RuntimeException(p.string_ + " is not in LexInfo")
     }
 /* Gender */
     def visit(p : Absyn.EMascGender, arg : collection.mutable.Map[String,String]) = Masculine

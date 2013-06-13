@@ -11,7 +11,7 @@ trait POS {
 case class Word(val lemma : String, val pos : POS) {
   def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer(pos.toString,lemma)}>
      <lemon:canonicalForm>
-       <lemon:Form>
+       <lemon:Form rdf:about={namer(pos.toString,lemma.toString(),Some("canonicalForm"))}>
          <lemon:writtenRep xml:lang={lang}>{lemma}</lemon:writtenRep>
        </lemon:Form>
      </lemon:canonicalForm>
