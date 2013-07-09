@@ -31,7 +31,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
              <lemon:writtenRep xml:lang="en">Microsoft</lemon:writtenRep>
            </lemon:Form>
          </lemon:canonicalForm>
-         <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#properNoun"></lexinfo:partOfSpeech>
+         <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#properNoun"></lexinfo:partOfSpeech>
          <lemon:sense>
            <lemon:LexicalSense rdf:about="file:example/Microsoft-noun#sense">
              <lemon:reference>
@@ -50,7 +50,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
              <lemon:writtenRep xml:lang="en">Microsoft Windows</lemon:writtenRep>
            </lemon:Form>
          </lemon:canonicalForm>
-         <rdf:type rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#NounPhrase"></rdf:type>
+         <rdf:type rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#NounPhrase"></rdf:type>
          <lemon:decomposition rdf:parseType="Collection">
            <lemon:Component rdf:about="file:example/Microsoft-properNoun#element_0">
              <lemon:element>
@@ -60,7 +60,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
                      <lemon:writtenRep xml:lang="en">Microsoft</lemon:writtenRep>
                    </lemon:Form>
                  </lemon:canonicalForm>
-                 <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#properNoun"/>
+                 <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#properNoun"/>
                </lemon:LexicalEntry>
              </lemon:element>
            </lemon:Component>
@@ -72,7 +72,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
                    <lemon:writtenRep xml:lang="en">Windows</lemon:writtenRep>
                  </lemon:Form>
                </lemon:canonicalForm>
-             <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#properNoun"/>
+             <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#properNoun"/>
            </lemon:LexicalEntry>
          </lemon:element>
          </lemon:Component>
@@ -97,11 +97,11 @@ class NounTest extends FlatSpec with ShouldMatchers {
              <lemon:writtenRep xml:lang="en">cat</lemon:writtenRep>
            </lemon:Form>
          </lemon:canonicalForm>
-         <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#commonNoun"></lexinfo:partOfSpeech>
+         <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#commonNoun"></lexinfo:partOfSpeech>
          <lemon:otherForm>
            <lemon:Form rdf:about="file:example/cat-noun#form">
              <lemon:writtenRep xml:lang="en">cats</lemon:writtenRep>
-             <lexinfo:number rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#plural" xmlns:lexinfo="http://lexinfo.net/ontology/2.0/lexinfo#"></lexinfo:number>
+             <lexinfo:number rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#plural" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"></lexinfo:number>
            </lemon:Form>
          </lemon:otherForm>
          <lemon:sense>
@@ -116,7 +116,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
          </lemon:sense>
          <lemon:synBehavior>
            <lemon:Frame rdf:about="file:example/cat-noun#frame">
-             <rdf:type rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#NounPredicateFrame"/>
+             <rdf:type rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#NounPredicateFrame"/>
              <lexinfo:subject rdf:resource="file:example/cat-noun#subject"/>
            </lemon:Frame>
          </lemon:synBehavior>
@@ -135,7 +135,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
              <lemon:writtenRep xml:lang="en">agreement</lemon:writtenRep>
            </lemon:Form>
          </lemon:canonicalForm>
-         <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#commonNoun"></lexinfo:partOfSpeech>
+         <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#commonNoun"></lexinfo:partOfSpeech>
          <lemon:sense>
            <lemon:LexicalSense rdf:about="file:example/agreement-noun#sense">
              <lemon:reference>
@@ -151,7 +151,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
          </lemon:sense>
          <lemon:synBehavior>
            <lemon:Frame rdf:about="file:example/agreement-noun#frame">
-             <rdf:type rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#NounPPFrame"/>
+             <rdf:type rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#NounPPFrame"/>
              <lexinfo:copulativeArg rdf:resource="file:example/agreement-noun#subject"/>
              <lexinfo:prepositionalObject>
                <lemon:Argument rdf:about="file:example/agreement-noun#adpositionalObject">
@@ -174,7 +174,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
              <lemon:writtenRep xml:lang="en">position</lemon:writtenRep>
            </lemon:Form>
          </lemon:canonicalForm>
-         <lexinfo:partOfSpeech rdf:resource="http://lexinfo.net/ontology/2.0/lexinfo#commonNoun"></lexinfo:partOfSpeech>
+         <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#commonNoun"></lexinfo:partOfSpeech>
          <lemon:sense>
            <lemon:LexicalSense rdf:about="file:example/position-noun#sense">
              <lemon:reference>
