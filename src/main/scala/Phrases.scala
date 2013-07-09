@@ -19,14 +19,14 @@ case class Word(val lemma : String, val pos : POS) {
    </lemon:LexicalEntry>
 }
 
-class AbstractPhrase(words : Seq[Word], lexinfoType : String) {
+class AbstractPhrase(words : Seq[Word], lexinfoType : String, pos : String) {
   def toXML(namer : URINamer, lang : String) = if(words.length == 1) {
     <lexinfo:partOfSpeech rdf:resource={lexinfo(words(0).pos.toString)}/>
   } else {
     <rdf:type rdf:resource={lexinfo(lexinfoType)}/> +:
     <lemon:decomposition rdf:parseType="Collection">{
       for((word,idx) <- words.zipWithIndex) yield {
-        <lemon:Component rdf:about={namer(word.pos.toString,word.lemma,Some("element_"+idx))}>
+        <lemon:Component rdf:about={namer(pos,toString(),Some("element_"+idx))}>
           <lemon:element>{word.toXML(namer,lang)}</lemon:element>
         </lemon:Component>
       }
@@ -37,13 +37,13 @@ class AbstractPhrase(words : Seq[Word], lexinfoType : String) {
 
 trait NounPhrase extends Phrase
 
-case class NP(words : Word*) extends AbstractPhrase(words.toSeq,"NounPhrase") with NounPhrase
+case class NP(words : Word*) extends AbstractPhrase(words.toSeq,"NounPhrase","noun") with NounPhrase
 
-case class PNP(words : Word*) extends AbstractPhrase(words.toSeq,"NounPhrase") with NounPhrase
+case class PNP(words : Word*) extends AbstractPhrase(words.toSeq,"NounPhrase","noun") with NounPhrase
 
-case class VP(words : Word*) extends AbstractPhrase(words.toSeq,"VerbPhrase")
+case class VP(words : Word*) extends AbstractPhrase(words.toSeq,"VerbPhrase","verb")
 
-case class AP(words : Word*) extends AbstractPhrase(words.toSeq,"AdjectivePhrase")
+case class AP(words : Word*) extends AbstractPhrase(words.toSeq,"AdjectivePhrase","adjective")
 
 package pos {
  object adverbialPronoun extends POS

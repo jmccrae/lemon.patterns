@@ -52,7 +52,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
          </lemon:canonicalForm>
          <rdf:type rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#NounPhrase"></rdf:type>
          <lemon:decomposition rdf:parseType="Collection">
-           <lemon:Component rdf:about="file:example/Microsoft-properNoun#element_0">
+           <lemon:Component rdf:about="file:example/Microsoft+Windows-noun#element_0">
              <lemon:element>
                <lemon:LexicalEntry rdf:about="file:example/Microsoft-properNoun">
                  <lemon:canonicalForm>
@@ -64,7 +64,7 @@ class NounTest extends FlatSpec with ShouldMatchers {
                </lemon:LexicalEntry>
              </lemon:element>
            </lemon:Component>
-         <lemon:Component rdf:about="file:example/Windows-properNoun#element_1">
+         <lemon:Component rdf:about="file:example/Microsoft+Windows-noun#element_1">
            <lemon:element>
              <lemon:LexicalEntry rdf:about="file:example/Windows-properNoun">
                <lemon:canonicalForm>
