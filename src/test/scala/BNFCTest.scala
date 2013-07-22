@@ -157,6 +157,8 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3
                 </owl:propertyChainAxiom>
               </rdf:Property>
             </lemon:reference>
+            <lemon:subjOfProp rdf:resource="test#write__verb/subject"></lemon:subjOfProp>
+            <lemon:objOfProp rdf:resource="test#write__verb/object"></lemon:objOfProp>
           </lemon:LexicalSense>
         </lemon:sense>
         <lemon:synBehavior>

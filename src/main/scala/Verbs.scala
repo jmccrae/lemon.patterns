@@ -325,6 +325,8 @@ case class ConsequenceVerb(val lemma : VP,
             <lemon:propertyRange rdf:resource={propObj.arg.restriction.get}/>
           }
         }
+        <lemon:subjOfProp rdf:resource={subjURI}/>
+        <lemon:objOfProp rdf:resource={objURI}/>
       </lemon:LexicalSense>
     </lemon:sense> :+
     <lemon:synBehavior>
