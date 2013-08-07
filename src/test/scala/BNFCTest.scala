@@ -192,5 +192,20 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3
 </rdf:RDF>
 """)
   }
+
+  "consequence verb" should "work in short form" in {
+   val l = new Yylex(new StringReader("""@prefix dbpedia: <http://dbpedia.org/resource/> .
+      @prefix lex: <http://www.example.com/lex#> .
+
+      Lexicon(<test>,"eng", 
+        ConsequenceVerb("bear",dbpedia:birthYear,
+         propObj = PrepositionalObject("in")))"""))
+    val p = new parser(l)
+    val parse_tree = p.pStatements();
+    val visitor = new PatternVisitor();
+    val lexicons = parse_tree.accept(visitor,collection.mutable.Map[String,String]())
+    val x = WriteAsRDF.apply(for(lexicon <- lexicons) yield { lexicon.toXML() })
+  }
+
 }
 

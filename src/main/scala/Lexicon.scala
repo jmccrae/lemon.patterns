@@ -51,6 +51,16 @@ case class Lexicon(uri : URI, lang : String, val patterns : Pattern*) {
       auxURI
     }
     def auxXML = auxNodes
+    private val anonURIs = collection.mutable.Map[Any,URI]()
+    private def randomID = (math.random * 10000000000l).toLong.toString
+    def anonURI(ref : Any) = anonURIs.get(ref) match {
+      case Some(x) => x
+      case None => {
+        val anon = URI.create(uri + joinChar(uri) + randomID)
+        anonURIs.put(ref,anon)
+        anon
+      }
+    }
   }
   
   def toXML() = {

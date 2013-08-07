@@ -42,6 +42,12 @@ public class AbstractVisitor<R,A> implements AllVisitor<R,A> {
     public R visit(net.lemonmodel.patterns.parser.Absyn.EDunnotelicEventVerb p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1 p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2 p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb3 p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb4 p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb5 p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb6 p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb7 p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb8 p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EDurativeEventVerb p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EInstantEventVerb p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EEventVerb p, A arg) { return visitDefault(p, arg); }
@@ -74,6 +80,7 @@ public class AbstractVisitor<R,A> implements AllVisitor<R,A> {
     }
 /* OntologyFrameElement */
     public R visit(net.lemonmodel.patterns.parser.Absyn.EURIAsSynArg p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EArgAsOFE p, A arg) { return visitDefault(p, arg); }
     public R visitDefault(net.lemonmodel.patterns.parser.Absyn.OntologyFrameElement p, A arg) {
       throw new IllegalArgumentException(this.getClass().getName() + ": " + p);
     }

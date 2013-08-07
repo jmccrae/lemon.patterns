@@ -259,8 +259,7 @@ case class ScalarAdjective(val lemma : AP,
                   <owl:someValuesForm>
                     <rdfs:Datatype>
                       <owl:withRestrictions rdf:parseType="Collection">
-                        <rdf:Description>{
-                          if(direction == positive) {
+                        <rdf:Description>{            if(direction == positive) {
                             <xsd:minExclusive>{boundary}</xsd:minExclusive>
                           } else if(direction == central) {
                             <xsd:minExclusive>{boundary}</xsd:minExclusive>
@@ -321,7 +320,7 @@ case class ScalarAdjective(val lemma : AP,
   }
 }
 
-case class ScalarQuantifyingAdjective(val lemma : AP,
+/*case class ScalarQuantifyingAdjective(val lemma : AP,
                                       val scalarMembership : ScalarMembership,
                                       val forms : Seq[Form] = Nil) extends Adjective {
   def makeWithForm(form : Form) = ScalarQuantifyingAdjective(lemma,scalarMembership,forms :+ form)
@@ -373,7 +372,7 @@ case class ScalarQuantifyingAdjective(val lemma : AP,
       </lemon:Frame>
     </lemon:synBehavior>
   }
-}
+}*/
 /*
 case class ScalarParticleAdjective(val lemma : AP,
                            val scalarMemberships : Seq[ScalarMembership] = Nil,

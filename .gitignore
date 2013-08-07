@@ -5,5 +5,7 @@ project/target/
 lib/*.jar
 docs/*.aux
 docs/*.log
-
-
+*.swp
+*.swo
+places.xml
+test-utf8.ldp

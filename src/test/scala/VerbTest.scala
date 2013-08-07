@@ -28,6 +28,16 @@ class VerbTest extends FlatSpec with ShouldMatchers {
     }
     def auxiliaryEntry(form : String, pos : String) = URI.create("file:example/"+form)
     def auxXML = Nil
+    private val anonURIs = collection.mutable.Map[Any,URI]()
+    private def randomID = (math.random * 10000000000l).toLong.toString
+    def anonURI(ref : Any) = anonURIs.get(ref) match {
+      case Some(x) => x
+      case None => {
+        val anon = URI.create("file:example/" + randomID)
+        anonURIs.put(ref,anon)
+        anon
+      }
+    }
   }
   
   def xmlCheck(pattern : Pattern, xml : Elem, lang : String = "en") {

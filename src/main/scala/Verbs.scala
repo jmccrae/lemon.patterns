@@ -167,7 +167,7 @@ case class EventVerb(val lemma : VP,
                   }
                 </lemon:objOfProp>
                 <lemon:reference>
-                  <rdf:Property rdf:about={arg.property}/>
+                  <rdf:Property rdf:about={arg.property.getOrElse(namer.anonURI(arg))}/>
                 </lemon:reference>
         { 
           if(arg.arg.restriction != None) {
@@ -254,8 +254,8 @@ object ActivityVerb {
 
 case class ConsequenceVerb(val lemma : VP,
                            val conseqProp : URI,
-                           val propSubj : OntologyFrameElement, 
-                           val propObj : OntologyFrameElement, 
+                           val propSubj : OntologyFrameElement = OntologyFrameElement(None,Subject), 
+                           val propObj : OntologyFrameElement = OntologyFrameElement(None,DirectObject), 
                            val eventClass : URI = null,
                            val forms : Seq[Form] = Nil) extends Verb {
   def makeWithForm(form : Form) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms :+ form)
@@ -274,7 +274,7 @@ case class ConsequenceVerb(val lemma : VP,
          <lemon:subsense>
            <lemon:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
              <lemon:reference>
-               <rdf:Property rdf:about={propSubj.property}/>
+               <rdf:Property rdf:about={propSubj.property.getOrElse(namer.anonURI(propSubj))}/>
              </lemon:reference>
              <lemon:objOfProp>
                <lemon:Argument rdf:about={subjURI}/>
@@ -289,7 +289,7 @@ case class ConsequenceVerb(val lemma : VP,
          <lemon:subsense>
            <lemon:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
              <lemon:reference>
-               <rdf:Property rdf:about={propObj.property}/>
+               <rdf:Property rdf:about={propObj.property.getOrElse(namer.anonURI(propObj))}/>
              </lemon:reference>
              <lemon:objOfProp>
                <lemon:Argument rdf:about={objURI}/>
@@ -309,9 +309,9 @@ case class ConsequenceVerb(val lemma : VP,
           <rdf:Property rdf:about={conseqProp}>
              <owl:propertyChainAxiom rdf:parseType="Collection">
                <rdf:Description>
-                 <owl:inverseOf rdf:resource={propSubj.property}/>
+                 <owl:inverseOf rdf:resource={propSubj.property.getOrElse(namer.anonURI(propSubj))}/>
                </rdf:Description>
-               <rdf:Description rdf:about={propObj.property}/>
+               <rdf:Description rdf:about={propObj.property.getOrElse(namer.anonURI(propObj))}/>
              </owl:propertyChainAxiom>
           </rdf:Property>
         </lemon:reference>

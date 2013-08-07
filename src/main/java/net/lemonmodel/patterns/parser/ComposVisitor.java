@@ -217,6 +217,55 @@ public class ComposVisitor<A> implements
 
       return new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2(vp_, uri_, ontologyframeelement_1, ontologyframeelement_2);
     }
+    public VerbPattern visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb3 p, A arg)
+    {
+      VP vp_ = p.vp_.accept(this, arg);
+      URI uri_1 = p.uri_1.accept(this, arg);
+      OntologyFrameElement ontologyframeelement_ = p.ontologyframeelement_.accept(this, arg);
+      URI uri_2 = p.uri_2.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb3(vp_, uri_1, ontologyframeelement_, uri_2);
+    }
+    public VerbPattern visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb4 p, A arg)
+    {
+      VP vp_ = p.vp_.accept(this, arg);
+      URI uri_ = p.uri_.accept(this, arg);
+      OntologyFrameElement ontologyframeelement_ = p.ontologyframeelement_.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb4(vp_, uri_, ontologyframeelement_);
+    }
+    public VerbPattern visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb5 p, A arg)
+    {
+      VP vp_ = p.vp_.accept(this, arg);
+      URI uri_1 = p.uri_1.accept(this, arg);
+      OntologyFrameElement ontologyframeelement_ = p.ontologyframeelement_.accept(this, arg);
+      URI uri_2 = p.uri_2.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb5(vp_, uri_1, ontologyframeelement_, uri_2);
+    }
+    public VerbPattern visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb6 p, A arg)
+    {
+      VP vp_ = p.vp_.accept(this, arg);
+      URI uri_ = p.uri_.accept(this, arg);
+      OntologyFrameElement ontologyframeelement_ = p.ontologyframeelement_.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb6(vp_, uri_, ontologyframeelement_);
+    }
+    public VerbPattern visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb7 p, A arg)
+    {
+      VP vp_ = p.vp_.accept(this, arg);
+      URI uri_1 = p.uri_1.accept(this, arg);
+      URI uri_2 = p.uri_2.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb7(vp_, uri_1, uri_2);
+    }
+    public VerbPattern visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb8 p, A arg)
+    {
+      VP vp_ = p.vp_.accept(this, arg);
+      URI uri_ = p.uri_.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb8(vp_, uri_);
+    }
     public VerbPattern visit(net.lemonmodel.patterns.parser.Absyn.EDurativeEventVerb p, A arg)
     {
       VerbPattern verbpattern_ = p.verbpattern_.accept(this, arg);
@@ -355,6 +404,12 @@ public class ComposVisitor<A> implements
       Arg arg_ = p.arg_.accept(this, arg);
 
       return new net.lemonmodel.patterns.parser.Absyn.EURIAsSynArg(uri_, arg_);
+    }
+    public OntologyFrameElement visit(net.lemonmodel.patterns.parser.Absyn.EArgAsOFE p, A arg)
+    {
+      Arg arg_ = p.arg_.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.EArgAsOFE(arg_);
     }
 
 /* PNP */

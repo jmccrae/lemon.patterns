@@ -159,6 +159,37 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
       p.ontologyframeelement_1.accept(this,arg),
       p.ontologyframeelement_2.accept(this,arg)
     )
+    def visit(p : Absyn.EConsequenceVerb3, arg : collection.mutable.Map[String,String]) =  ConsequenceVerb(
+      p.vp_.accept(this,arg),
+      p.uri_1.accept(this,arg),
+      p.ontologyframeelement_.accept(this,arg),
+      eventClass = p.uri_2.accept(this,arg)
+    )
+    def visit(p : Absyn.EConsequenceVerb4, arg : collection.mutable.Map[String,String]) =  ConsequenceVerb(
+      p.vp_.accept(this,arg),
+      p.uri_.accept(this,arg),
+      p.ontologyframeelement_.accept(this,arg)
+    )
+    def visit(p : Absyn.EConsequenceVerb5, arg : collection.mutable.Map[String,String]) =  ConsequenceVerb(
+      p.vp_.accept(this,arg),
+      p.uri_1.accept(this,arg),
+      propObj = p.ontologyframeelement_.accept(this,arg),
+      eventClass = p.uri_2.accept(this,arg)
+    )
+    def visit(p : Absyn.EConsequenceVerb6, arg : collection.mutable.Map[String,String]) =  ConsequenceVerb(
+      p.vp_.accept(this,arg),
+      p.uri_.accept(this,arg),
+      propObj = p.ontologyframeelement_.accept(this,arg)
+    )
+    def visit(p : Absyn.EConsequenceVerb7, arg : collection.mutable.Map[String,String]) =  ConsequenceVerb(
+      p.vp_.accept(this,arg),
+      p.uri_1.accept(this,arg),
+      eventClass = p.uri_2.accept(this,arg)
+    )
+    def visit(p : Absyn.EConsequenceVerb8, arg : collection.mutable.Map[String,String]) =  ConsequenceVerb(
+      p.vp_.accept(this,arg),
+      p.uri_.accept(this,arg)
+    )
 /* AdjectivePattern */
     def visit(p : Absyn.EIntersectiveAdjective, arg : collection.mutable.Map[String,String]) = IntersectiveAdjective(
       p.ap_.accept(this,arg),
@@ -200,7 +231,11 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
     def visit(p : Absyn.EPossessiveAdjunct, arg : collection.mutable.Map[String,String]) = PossessiveAdjunct
 /* OntologyFrameElement */
     def visit(p : Absyn.EURIAsSynArg, arg : collection.mutable.Map[String,String]) = OntologyFrameElement(
-      p.uri_.accept(this,arg),
+      Some(p.uri_.accept(this,arg)),
+      p.arg_.accept(this,arg)
+    )
+    def visit(p : Absyn.EArgAsOFE, arg : collection.mutable.Map[String,String]) = OntologyFrameElement(
+      None,
       p.arg_.accept(this,arg)
     )
 /* PNP */

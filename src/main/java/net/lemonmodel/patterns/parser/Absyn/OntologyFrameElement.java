@@ -4,6 +4,7 @@ public abstract class OntologyFrameElement implements java.io.Serializable {
   public abstract <R,A> R accept(OntologyFrameElement.Visitor<R,A> v, A arg);
   public interface Visitor <R,A> {
     public R visit(net.lemonmodel.patterns.parser.Absyn.EURIAsSynArg p, A arg);
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EArgAsOFE p, A arg);
 
   }
 

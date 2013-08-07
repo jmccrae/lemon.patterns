@@ -6,12 +6,12 @@ package net.lemonmodel {
  
   package object patterns {
     implicit def pimpStr(uri : String) = new {
-      def as(arg : Arg) : OntologyFrameElement = OntologyFrameElement(URI.create(uri), arg)
+      def as(arg : Arg) : OntologyFrameElement = OntologyFrameElement(Some(URI.create(uri)), arg)
       def greaterThan(boundary : Double) : ScalarMembershipSlashClass = new ScalarMembershipSlashClass(URI.create(uri),boundary,positive)
       def lessThan(boundary : Double) : ScalarMembershipSlashClass = new ScalarMembershipSlashClass(URI.create(uri),boundary,negative)
     }
     implicit def pimpStr(uri : URI) = new {
-      def as(arg : Arg) : OntologyFrameElement = OntologyFrameElement(uri, arg)
+      def as(arg : Arg) : OntologyFrameElement = OntologyFrameElement(Some(uri), arg)
       def greaterThan(boundary : Double) : ScalarMembershipSlashClass = new ScalarMembershipSlashClass(uri,boundary,positive)
       def lessThan(boundary : Double) : ScalarMembershipSlashClass = new ScalarMembershipSlashClass(uri,boundary,negative)
       def covariant : ScalarMembershipSimpleClass = new ScalarMembershipSimpleClass(uri,positive)
@@ -54,6 +54,7 @@ package net.lemonmodel {
       def apply(pos : String, form : String, element : Option[String] = None) : URI
       def auxiliaryEntry(form : String, pos : String) : URI
       def auxXML : Seq[Node]
+      def anonURI(ref : Any) : URI
     }
     
     trait Pattern {
@@ -188,7 +189,7 @@ package net.lemonmodel {
      * An element of a multivalent frame in the ontology. Normally constructed
      * using the {@code as} implicit, e.g., {@code "http://www.example.com/ontology#property" as Subject}
      */
-    case class OntologyFrameElement(val property : URI, val arg : Arg) {
+    case class OntologyFrameElement(val property : Option[URI], val arg : Arg) {
       def optional = OntologyFrameElement(property,arg optional)
     }
       

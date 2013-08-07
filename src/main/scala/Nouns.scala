@@ -228,7 +228,7 @@ case class RelationalMultivalentNoun(val lemma : NP,
                  </lemon:Argument>
                 </lemon:objOfProp>
                 <lemon:reference>
-                  <rdf:Property rdf:about={arg.property}/>
+                  <rdf:Property rdf:about={arg.property.getOrElse(namer.anonURI(arg))}/>
                 </lemon:reference>
                 {
                   if(arg.arg.restriction != None) {

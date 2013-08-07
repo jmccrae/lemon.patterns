@@ -34,6 +34,12 @@ EInstantEventVerb. VerbPattern2 ::= "instant" VerbPattern3 ;
 EEventVerb. VerbPattern3 ::= "EventVerb" "(" VP "," URI "," "[" [OntologyFrameElement] "]" ")" ;
 EConsequenceVerb1. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," "propSubj" "=" OntologyFrameElement "," "propObj" "=" OntologyFrameElement "," URI ")" ;
 EConsequenceVerb2. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," "propSubj" "=" OntologyFrameElement "," "propObj" "=" OntologyFrameElement ")" ;
+EConsequenceVerb3. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," "propSubj" "=" OntologyFrameElement "," URI ")" ;
+EConsequenceVerb4. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," "propSubj" "=" OntologyFrameElement ")" ;
+EConsequenceVerb5. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," "propObj" "=" OntologyFrameElement "," URI ")" ;
+EConsequenceVerb6. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," "propObj" "=" OntologyFrameElement ")" ;
+EConsequenceVerb7. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," "," URI ")" ;
+EConsequenceVerb8. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," ")" ;
 
 EIntersectiveAdjective. AdjectivePattern ::= "IntersectiveAdjective" "(" AP "," URI ")" ;
 EIntersectiveObjectPropertyAdjective. AdjectivePattern ::= "IntersectiveObjectPropertyAdjective" "(" AP "," URI "," URI ")" ;
@@ -56,6 +62,7 @@ EPostpositionalObject. Arg ::= "PostpositionalObject" "(" String ")" ;
 EPossessiveAdjunct. Arg ::= "PossessiveAdjunct" ;
 
 EURIAsSynArg. OntologyFrameElement ::= URI "as" Arg ;
+EArgAsOFE. OntologyFrameElement ::= Arg ;
 separator OntologyFrameElement "," ;
 
 EPNPSimple. PNP ::= String ;

@@ -14,6 +14,12 @@ public abstract class VerbPattern implements java.io.Serializable {
     public R visit(net.lemonmodel.patterns.parser.Absyn.EEventVerb p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1 p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2 p, A arg);
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb3 p, A arg);
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb4 p, A arg);
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb5 p, A arg);
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb6 p, A arg);
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb7 p, A arg);
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb8 p, A arg);
 
   }
 
