@@ -1188,7 +1188,18 @@ public class PrettyPrinter
 
   private static void pp(net.lemonmodel.patterns.parser.Absyn.POSTaggedWord foo, int _i_)
   {
-    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord)
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EPOSTaggedHeadWord)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EPOSTaggedHeadWord _epostaggedheadword = (net.lemonmodel.patterns.parser.Absyn.EPOSTaggedHeadWord) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       printQuoted(_epostaggedheadword.string_);
+       render("/");
+       pp(_epostaggedheadword.postag_, 0);
+       render("=");
+       render("head");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord)
     {
        net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord _epostaggedword = (net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord) foo;
        if (_i_ > 0) render(_L_PAREN);
@@ -2322,6 +2333,15 @@ public class PrettyPrinter
 
   private static void sh(net.lemonmodel.patterns.parser.Absyn.POSTaggedWord foo)
   {
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EPOSTaggedHeadWord)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EPOSTaggedHeadWord _epostaggedheadword = (net.lemonmodel.patterns.parser.Absyn.EPOSTaggedHeadWord) foo;
+       render("(");
+       render("EPOSTaggedHeadWord");
+       sh(_epostaggedheadword.string_);
+       sh(_epostaggedheadword.postag_);
+       render(")");
+    }
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord)
     {
        net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord _epostaggedword = (net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord) foo;

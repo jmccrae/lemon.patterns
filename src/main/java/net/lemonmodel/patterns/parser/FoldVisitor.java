@@ -389,6 +389,11 @@ public abstract class FoldVisitor<R,A> implements AllVisitor<R,A> {
     }
 
 /* POSTaggedWord */
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EPOSTaggedHeadWord p, A arg) {
+      R r = leaf(arg);
+      r = combine(p.postag_.accept(this, arg), r, arg);
+      return r;
+    }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord p, A arg) {
       R r = leaf(arg);
       r = combine(p.postag_.accept(this, arg), r, arg);

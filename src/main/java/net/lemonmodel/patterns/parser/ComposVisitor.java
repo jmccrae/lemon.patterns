@@ -481,6 +481,13 @@ public class ComposVisitor<A> implements
     }
 
 /* POSTaggedWord */
+    public POSTaggedWord visit(net.lemonmodel.patterns.parser.Absyn.EPOSTaggedHeadWord p, A arg)
+    {
+      String string_ = p.string_;
+      POSTag postag_ = p.postag_.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.EPOSTaggedHeadWord(string_, postag_);
+    }
     public POSTaggedWord visit(net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord p, A arg)
     {
       String string_ = p.string_;

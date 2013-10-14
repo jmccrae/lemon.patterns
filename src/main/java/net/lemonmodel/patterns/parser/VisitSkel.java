@@ -588,6 +588,15 @@ public class VisitSkel
   }
   public class POSTaggedWordVisitor<R,A> implements POSTaggedWord.Visitor<R,A>
   {
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EPOSTaggedHeadWord p, A arg)
+    {
+      /* Code For EPOSTaggedHeadWord Goes Here */
+
+      //p.string_;
+      p.postag_.accept(new POSTagVisitor<R,A>(), arg);
+
+      return null;
+    }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord p, A arg)
     {
       /* Code For EPOSTaggedWord Goes Here */

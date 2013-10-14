@@ -77,6 +77,7 @@ EVPComplex. VP ::= "[" [POSTaggedWord] "]" ;
 EAPSimple. AP ::= String ;
 EAPComplex. AP ::= "[" [POSTaggedWord] "]" ;
 
+EPOSTaggedHeadWord. POSTaggedWord ::= String "/" POSTag "=" "head" ;
 EPOSTaggedWord. POSTaggedWord ::= String "/" POSTag ;
 separator POSTaggedWord "" ;
 

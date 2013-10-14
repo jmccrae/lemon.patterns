@@ -207,5 +207,22 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3
     val x = WriteAsRDF.apply(for(lexicon <- lexicons) yield { lexicon.toXML() })
   }
 
+  "head pattern" should "Generates a head" in {
+    val l = new Yylex(new StringReader("Lexicon(<test>,\"deu\",ClassNoun([\"siamesisch\"/adjective \"Zwilling\"/noun=head],<test>))"))
+    val p = new parser(l);
+    try {
+      val parse_tree = p.pStatements();
+      val visitor = new PatternVisitor()
+      val x = parse_tree.accept(visitor, collection.mutable.Map[String,String]())
+      x(0).patterns(0).asInstanceOf[ClassNoun].lemma.head should not be (None)
+    } catch {
+      case (e : Throwable) => {
+        System.err.println("At line " + String.valueOf(l.line_num()) + ", near \"" + l.buff() + "\" :");
+        throw e
+      }
+    }
+  }
+
+
 }
 

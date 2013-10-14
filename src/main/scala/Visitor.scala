@@ -16,7 +16,7 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
                              Absyn.NP.Visitor[NP,collection.mutable.Map[String,String]] with
                              Absyn.VP.Visitor[VP,collection.mutable.Map[String,String]] with
                              Absyn.AP.Visitor[AP,collection.mutable.Map[String,String]] with
-                             Absyn.POSTaggedWord.Visitor[Word,collection.mutable.Map[String,String]] with
+                             Absyn.POSTaggedWord.Visitor[(Word,Boolean),collection.mutable.Map[String,String]] with
                              Absyn.ScalarMembership.Visitor[ScalarMembership,collection.mutable.Map[String,String]] with
                              Absyn.Category.Visitor[(URI,URI),collection.mutable.Map[String,String]] with
                              Absyn.POSTag.Visitor[POS,collection.mutable.Map[String,String]] with
@@ -240,21 +240,50 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
     )
 /* PNP */
     def visit(p : Absyn.EPNPSimple, arg : collection.mutable.Map[String,String]) = PNP(p.string_ / pos.properNoun)
-    def visit(p : Absyn.EPNPComplex, arg : collection.mutable.Map[String,String]) = PNP((p.listpostaggedword_.map{_.accept(this,arg)}):_*)
+    def visit(p : Absyn.EPNPComplex, arg : collection.mutable.Map[String,String]) = {
+      val words = p.listpostaggedword_.map{_.accept(this,arg)}
+      words.find(_._2) match {
+        case Some(w) => new PNP(Some(w._1),words.map(_._1):_*)
+        case None => new PNP(None,words.map(_._1):_*)
+      }
+    }
 /* NP */
     def visit(p : Absyn.ENPSimple, arg : collection.mutable.Map[String,String]) = NP(p.string_ / pos.commonNoun)
-    def visit(p : Absyn.ENPComplex, arg : collection.mutable.Map[String,String]) = NP((p.listpostaggedword_.map{_.accept(this,arg)}):_*)
+    def visit(p : Absyn.ENPComplex, arg : collection.mutable.Map[String,String]) = {
+      val words = p.listpostaggedword_.map{_.accept(this,arg)}
+      words.find(_._2) match {
+        case Some(w) => new NP(Some(w._1),words.map(_._1):_*)
+        case None => new NP(None,words.map(_._1):_*)
+      }
+    }
 /* VP */
     def visit(p : Absyn.EVPSimple, arg : collection.mutable.Map[String,String]) = VP(p.string_ / pos.verb)
-    def visit(p : Absyn.EVPComplex, arg : collection.mutable.Map[String,String]) = VP((p.listpostaggedword_.map{_.accept(this,arg)}):_*)
+    def visit(p : Absyn.EVPComplex, arg : collection.mutable.Map[String,String]) = {
+      val words = p.listpostaggedword_.map{_.accept(this,arg)}
+      words.find(_._2) match {
+        case Some(w) => new VP(Some(w._1),words.map(_._1):_*)
+        case None => new VP(None,words.map(_._1):_*)
+      }
+    }
 /* AP */
     def visit(p : Absyn.EAPSimple, arg : collection.mutable.Map[String,String]) = AP(p.string_ / pos.adjective)
-    def visit(p : Absyn.EAPComplex, arg : collection.mutable.Map[String,String]) = AP((p.listpostaggedword_.map{_.accept(this,arg)}):_*)
+    def visit(p : Absyn.EAPComplex, arg : collection.mutable.Map[String,String]) = {
+      val words = p.listpostaggedword_.map{_.accept(this,arg)}
+      words.find(_._2) match {
+        case Some(w) => new AP(Some(w._1),words.map(_._1):_*)
+        case None => new AP(None,words.map(_._1):_*)
+      }
+    }
 /* POSTaggedWord */
-    def visit(p : Absyn.EPOSTaggedWord, arg : collection.mutable.Map[String,String]) = Word(
+    def visit(p : Absyn.EPOSTaggedWord, arg : collection.mutable.Map[String,String]) = (Word(
       p.string_,
       p.postag_.accept(this,arg)
-    )
+    ),false)
+    def visit(p : Absyn.EPOSTaggedHeadWord, arg : collection.mutable.Map[String,String]) = (Word(
+      p.string_,
+      p.postag_.accept(this,arg)
+    ),true)
+
 /* ScalarMembership */
     def visit(p : Absyn.CovariantScalarMembership, arg : collection.mutable.Map[String,String]) = ScalarMembership(
       p.uri_.accept(this,arg),

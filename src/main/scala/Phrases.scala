@@ -17,10 +17,11 @@ case class Word(val lemma : String, val pos : POS) {
      </lemon:canonicalForm>
      <lexinfo:partOfSpeech rdf:resource={lexinfo(pos.toString)}/>
    </lemon:LexicalEntry>
+  def name(namer : URINamer) = namer(pos.toString,lemma) 
 }
 
-class AbstractPhrase(words : Seq[Word], lexinfoType : String, pos : String) {
-  def toXML(namer : URINamer, lang : String) = if(words.length == 1) {
+class AbstractPhrase(words : Seq[Word], lexinfoType : String, pos : String, val head : Option[Word]) {
+  def toXML(namer : URINamer, lang : String) : xml.NodeSeq = if(words.length == 1) {
     <lexinfo:partOfSpeech rdf:resource={lexinfo(words(0).pos.toString)}/>
   } else {
     <rdf:type rdf:resource={lexinfo(lexinfoType)}/> +:
@@ -30,20 +31,33 @@ class AbstractPhrase(words : Seq[Word], lexinfoType : String, pos : String) {
           <lemon:element>{word.toXML(namer,lang)}</lemon:element>
         </lemon:Component>
       }
-    }</lemon:decomposition>
+    }</lemon:decomposition> ++:
+    (head match {
+      case Some(w) => List(<lexinfo:head rdf:resource={w.name(namer)}/>)
+      case None => Nil
+    })
   }
   override def toString() = words.map(_.lemma).mkString(" ")
 }
 
 trait NounPhrase extends Phrase
 
-case class NP(words : Word*) extends AbstractPhrase(words.toSeq,"NounPhrase","noun") with NounPhrase
+class NP(head : Option[Word], words : Word*) extends AbstractPhrase(words.toSeq,"NounPhrase","noun",head) with NounPhrase
 
-case class PNP(words : Word*) extends AbstractPhrase(words.toSeq,"NounPhrase","noun") with NounPhrase
+class PNP(head : Option[Word], words : Word*) extends AbstractPhrase(words.toSeq,"NounPhrase","noun",head) with NounPhrase
 
-case class VP(words : Word*) extends AbstractPhrase(words.toSeq,"VerbPhrase","verb")
+class VP(head : Option[Word], words : Word*) extends AbstractPhrase(words.toSeq,"VerbPhrase","verb",head)
 
-case class AP(words : Word*) extends AbstractPhrase(words.toSeq,"AdjectivePhrase","adjective")
+class AP(head : Option[Word], words : Word*) extends AbstractPhrase(words.toSeq,"AdjectivePhrase","adjective",head)
+
+object NP { def apply(words : Word*) = new NP(None,words:_*) }
+
+object PNP { def apply(words : Word*) = new PNP(None,words:_*) }
+
+object VP { def apply(words : Word*) = new VP(None,words:_*) }
+
+object AP { def apply(words : Word*) = new AP(None,words:_*) }
+
 
 package pos {
  object adverbialPronoun extends POS
