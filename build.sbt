@@ -1,3 +1,7 @@
+import AssemblyKeys._
+
+assemblySettings
+
 name := "lemon-patterns"
 
 version := "1.12.9"
