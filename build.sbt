@@ -17,3 +17,4 @@ scalacOptions ++= Seq("-unchecked", "-deprecation")
 
 compileOrder := CompileOrder.JavaThenScala
 
+mainClass := Some("net.lemonmodel.patterns.ConvertPatterns")

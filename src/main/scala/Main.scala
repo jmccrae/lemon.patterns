@@ -7,7 +7,17 @@ object ConvertPatterns {
   def main(args : Array[String]) {
     val l = try {
       if(args.length == 0) {
-        new Yylex(System.in)
+/*      Seems broken obviously due to Yylex bug
+        val in = new BufferedReader(new InputStreamReader(System.in))
+        val buf = new StringBuffer()
+        var s = ""
+        while({s = in.readLine();s} != null) {
+          buf.append(s + System.getProperty("line.separator"))
+        }
+        System.err.println(buf.toString())
+        new Yylex(new StringReader(buf.toString()))*/
+       System.err.println("Please specify an input file")
+       return
       } else {
         new Yylex(new FileReader(args(0)))
       }
