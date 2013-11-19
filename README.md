@@ -75,6 +75,10 @@ Multiple word expressions can be introduced using a simple phrase pattern
   
 _Note: On the part of speech quotes are optional on single word values only_
 
+If one of more of the words in the expression are inflected the lemmatized form should be given, for example:
+
+    ClassNoun(["variedad"/"common noun" "cultivada"/"cultivado"/adjective],dbpedia:CultivatedVariety)
+
 ## Relational Nouns
 
 ![The relational noun pattern](https://raw.github.com/jmccrae/lemon.patterns/master/images/RelationalNoun.png)

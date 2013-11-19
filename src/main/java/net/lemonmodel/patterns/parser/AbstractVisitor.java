@@ -111,6 +111,8 @@ public class AbstractVisitor<R,A> implements AllVisitor<R,A> {
 /* POSTaggedWord */
     public R visit(net.lemonmodel.patterns.parser.Absyn.EPOSTaggedHeadWord p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedHeadWord p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedWord p, A arg) { return visitDefault(p, arg); }
     public R visitDefault(net.lemonmodel.patterns.parser.Absyn.POSTaggedWord p, A arg) {
       throw new IllegalArgumentException(this.getClass().getName() + ": " + p);
     }

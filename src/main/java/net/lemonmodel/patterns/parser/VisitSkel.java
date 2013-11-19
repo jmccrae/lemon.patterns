@@ -606,6 +606,26 @@ public class VisitSkel
 
       return null;
     }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedHeadWord p, A arg)
+    {
+      /* Code For ELemmaPOSTaggedHeadWord Goes Here */
+
+      //p.string_1;
+      //p.string_2;
+      p.postag_.accept(new POSTagVisitor<R,A>(), arg);
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedWord p, A arg)
+    {
+      /* Code For ELemmaPOSTaggedWord Goes Here */
+
+      //p.string_1;
+      //p.string_2;
+      p.postag_.accept(new POSTagVisitor<R,A>(), arg);
+
+      return null;
+    }
 
   }
   public class ScalarMembershipVisitor<R,A> implements ScalarMembership.Visitor<R,A>

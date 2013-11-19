@@ -8,16 +8,27 @@ trait POS {
   override def toString() = this.getClass().getSimpleName().dropRight(1)
 }
 
-case class Word(val lemma : String, val pos : POS) {
+case class Word(val lemma : String, val pos : POS, _form : Option[String] = None) {
   def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer(pos.toString,lemma)}>
      <lemon:canonicalForm>
        <lemon:Form rdf:about={namer(pos.toString,lemma.toString(),Some("canonicalForm"))}>
          <lemon:writtenRep xml:lang={lang}>{lemma}</lemon:writtenRep>
        </lemon:Form>
      </lemon:canonicalForm>
+     {if(_form != None && _form.get != lemma) {
+       <lemon:otherForm>
+         <lemon:Form rdf:about={namer(pos.toString,lemma.toString(),Some("otherForm"))}>
+           <lemon:writtenRep xml:lang={lang}>{_form.get}</lemon:writtenRep>
+         </lemon:Form>
+       </lemon:otherForm>
+     } }
      <lexinfo:partOfSpeech rdf:resource={lexinfo(pos.toString)}/>
    </lemon:LexicalEntry>
   def name(namer : URINamer) = namer(pos.toString,lemma) 
+  def form = _form match {
+    case Some(f) => f
+    case None => lemma
+  }
 }
 
 class AbstractPhrase(words : Seq[Word], lexinfoType : String, pos : String, val head : Option[Word]) {
@@ -37,7 +48,7 @@ class AbstractPhrase(words : Seq[Word], lexinfoType : String, pos : String, val 
       case None => Nil
     })
   }
-  override def toString() = words.map(_.lemma).mkString(" ")
+  override def toString() = words.map(_.form).mkString(" ")
 }
 
 trait NounPhrase extends Phrase

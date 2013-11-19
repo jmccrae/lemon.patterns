@@ -32,8 +32,11 @@ package net.lemonmodel {
     implicit def str2VP(lemma : String) : VP = VP(Word(lemma,pos.verb))
     implicit def str2AP(lemma : String) : AP = AP(Word(lemma,pos.adjective))
         
-    implicit def str2Word(lemma : String) = new {
-      def /(pos : POS) = Word(lemma,pos)
+    implicit def str2Word(form : String) = new {
+      def /(pos : POS) = Word(form,pos)
+      def /(lemma : String) = new {
+        def /(pos :POS) = Word(lemma,pos,Some(form))
+      }
     }
     
     val lexinfo = Namespace("http://www.lexinfo.net/ontology/2.0/lexinfo#")

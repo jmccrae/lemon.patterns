@@ -79,6 +79,8 @@ EAPComplex. AP ::= "[" [POSTaggedWord] "]" ;
 
 EPOSTaggedHeadWord. POSTaggedWord ::= String "/" POSTag "=" "head" ;
 EPOSTaggedWord. POSTaggedWord ::= String "/" POSTag ;
+ELemmaPOSTaggedHeadWord. POSTaggedWord ::= String "/" String "/" POSTag "=" "head" ;
+ELemmaPOSTaggedWord. POSTaggedWord ::= String "/" String "/" POSTag ;
 separator POSTaggedWord "" ;
 
 CovariantScalarMembership. ScalarMembership ::= URI "covariant" ;

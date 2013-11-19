@@ -283,6 +283,17 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
       p.string_,
       p.postag_.accept(this,arg)
     ),true)
+     def visit(p : Absyn.ELemmaPOSTaggedWord, arg : collection.mutable.Map[String,String]) = (Word(
+      p.string_2,
+      p.postag_.accept(this,arg),
+      Some(p.string_1)
+    ),false)
+    def visit(p : Absyn.ELemmaPOSTaggedHeadWord, arg : collection.mutable.Map[String,String]) = (Word(
+      p.string_2,
+      p.postag_.accept(this,arg),
+      Some(p.string_1)
+    ),true)
+    
 
 /* ScalarMembership */
     def visit(p : Absyn.CovariantScalarMembership, arg : collection.mutable.Map[String,String]) = ScalarMembership(

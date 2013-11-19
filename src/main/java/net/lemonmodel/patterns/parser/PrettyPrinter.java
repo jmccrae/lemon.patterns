@@ -1208,6 +1208,30 @@ public class PrettyPrinter
        pp(_epostaggedword.postag_, 0);
        if (_i_ > 0) render(_R_PAREN);
     }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedHeadWord)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedHeadWord _elemmapostaggedheadword = (net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedHeadWord) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       printQuoted(_elemmapostaggedheadword.string_1);
+       render("/");
+       printQuoted(_elemmapostaggedheadword.string_2);
+       render("/");
+       pp(_elemmapostaggedheadword.postag_, 0);
+       render("=");
+       render("head");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedWord)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedWord _elemmapostaggedword = (net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedWord) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       printQuoted(_elemmapostaggedword.string_1);
+       render("/");
+       printQuoted(_elemmapostaggedword.string_2);
+       render("/");
+       pp(_elemmapostaggedword.postag_, 0);
+       if (_i_ > 0) render(_R_PAREN);
+    }
   }
 
   private static void pp(net.lemonmodel.patterns.parser.Absyn.ListPOSTaggedWord foo, int _i_)
@@ -2349,6 +2373,26 @@ public class PrettyPrinter
        render("EPOSTaggedWord");
        sh(_epostaggedword.string_);
        sh(_epostaggedword.postag_);
+       render(")");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedHeadWord)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedHeadWord _elemmapostaggedheadword = (net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedHeadWord) foo;
+       render("(");
+       render("ELemmaPOSTaggedHeadWord");
+       sh(_elemmapostaggedheadword.string_1);
+       sh(_elemmapostaggedheadword.string_2);
+       sh(_elemmapostaggedheadword.postag_);
+       render(")");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedWord)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedWord _elemmapostaggedword = (net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedWord) foo;
+       render("(");
+       render("ELemmaPOSTaggedWord");
+       sh(_elemmapostaggedword.string_1);
+       sh(_elemmapostaggedword.string_2);
+       sh(_elemmapostaggedword.postag_);
        render(")");
     }
   }

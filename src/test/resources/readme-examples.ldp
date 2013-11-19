@@ -7,6 +7,7 @@ Lexicon(<http://www.example.com/published/path>, // Here is where the ontology-l
   Name("Microsoft",<http://microsoft.com>),
   ClassNoun("cat",dbpedia:Cat) with plural "cats",
   ClassNoun(["body"/"common noun" "of"/preposition "water"/"common noun"],dbpedia:BodyOfWater),
+  ClassNoun(["variedad"/"common noun" "cultivada"/"cultivado"/adjective],dbpedia:CultivatedVariety),
   RelationalNoun("agreement",ontology:agreeAbout,
                    propSubj=Subject,
                    propObj=PrepositionalObject("about")),

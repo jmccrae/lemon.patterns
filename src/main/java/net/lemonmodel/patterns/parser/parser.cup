@@ -252,6 +252,8 @@ AP ::= _STRING_:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAPSim
 ;
 POSTaggedWord ::= _STRING_:p_1 _SYMB_9 POSTag:p_3 _SYMB_6 _SYMB_65  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPOSTaggedHeadWord(p_1,p_3); :} 
   | _STRING_:p_1 _SYMB_9 POSTag:p_3  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord(p_1,p_3); :}
+  | _STRING_:p_1 _SYMB_9 _STRING_:p_3 _SYMB_9 POSTag:p_5 _SYMB_6 _SYMB_65  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedHeadWord(p_1,p_3,p_5); :}
+  | _STRING_:p_1 _SYMB_9 _STRING_:p_3 _SYMB_9 POSTag:p_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedWord(p_1,p_3,p_5); :}
 ;
 ListPOSTaggedWord ::=  /* empty */  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListPOSTaggedWord(); :} 
   | ListPOSTaggedWord:p_1 POSTaggedWord:p_2  {: RESULT = p_1; p_1.addLast(p_2); :}

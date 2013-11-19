@@ -495,6 +495,22 @@ public class ComposVisitor<A> implements
 
       return new net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord(string_, postag_);
     }
+    public POSTaggedWord visit(net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedHeadWord p, A arg)
+    {
+      String string_1 = p.string_1;
+      String string_2 = p.string_2;
+      POSTag postag_ = p.postag_.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedHeadWord(string_1, string_2, postag_);
+    }
+    public POSTaggedWord visit(net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedWord p, A arg)
+    {
+      String string_1 = p.string_1;
+      String string_2 = p.string_2;
+      POSTag postag_ = p.postag_.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedWord(string_1, string_2, postag_);
+    }
 
 /* ScalarMembership */
     public ScalarMembership visit(net.lemonmodel.patterns.parser.Absyn.CovariantScalarMembership p, A arg)
