@@ -50,7 +50,7 @@ package net.lemonmodel {
     }
     
     object WriteAsRDF {
-      def apply(ns : Seq[Node]) = new PrettyPrinter(80,2).format(<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:lemon="http://www.monnet-project.eu/lemon#" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:oils="http://lemon-model.net/oils#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">{for(n <- ns) yield n}</rdf:RDF>)
+      def apply(ns : Seq[Node]) = new PrettyPrinter(80,2).format(<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:lemon="http://www.monnet-project.eu/lemon#" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:oils="http://lemon-model.net/oils#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">{for(n <- ns) yield n}</rdf:RDF>)
     }
     
     trait URINamer {
