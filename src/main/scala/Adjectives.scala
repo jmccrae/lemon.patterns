@@ -294,7 +294,7 @@ case class ScalarAdjective(val lemma : AP,
       <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
           <lemon:reference rdf:resource={property}/>
           <lemon:subjOfProp rdf:resource={scaleSubjURI}/>
-          <lemon:objOfProp rdf:resource={scaleSubjURI}/>
+          <lemon:objOfProp rdf:resource={scaleObjURI}/>
       </lemon:LexicalSense>
     </lemon:sense>
     }).flatten :+
