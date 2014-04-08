@@ -256,7 +256,7 @@ case class ScalarAdjective(val lemma : AP,
               <owl:equivalentClass>
                 <owl:Restriction>
                   <owl:onProperty rdf:resource={property}/>
-                  <owl:someValuesForm>
+                  <owl:someValuesFrom>
                     <rdfs:Datatype>
                       <owl:withRestrictions rdf:parseType="Collection">
                         <rdf:Description>{            if(direction == positive) {
@@ -270,7 +270,7 @@ case class ScalarAdjective(val lemma : AP,
                         }</rdf:Description>
                       </owl:withRestrictions>
                     </rdfs:Datatype>
-                  </owl:someValuesForm>
+                  </owl:someValuesFrom>
                 </owl:Restriction>
               </owl:equivalentClass>
                 }
