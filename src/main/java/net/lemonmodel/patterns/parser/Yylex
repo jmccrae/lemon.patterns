@@ -136,7 +136,7 @@ IDENT = ({LETTER}|{DIGIT}|['_])
 <COMMENT>[\n] { }
 
 
-<YYINITIAL>[<][^>]*[>] { return new Symbol(sym.FullURI, yytext().intern()); }
+<YYINITIAL>[<][^> ]*[>] { return new Symbol(sym.FullURI, yytext().intern()); }
 
 <YYINITIAL>"\"" { yybegin(STRING); }
 <STRING>\\ { yybegin(ESCAPED); }

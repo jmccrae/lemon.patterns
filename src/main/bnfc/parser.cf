@@ -1,4 +1,4 @@
-token FullURI (["<"] ["^>"]* [">"]) ;
+token FullURI (["<"] ["^> "]* [">"]) ;
 
 comment "//" ;
 comment "/*" "*/" ;
