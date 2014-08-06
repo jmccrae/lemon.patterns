@@ -106,7 +106,7 @@ class BNFCTest extends FlatSpec with ShouldMatchers {
     val visitor = new PatternVisitor();
     val lexicons = parse_tree.accept(visitor,collection.mutable.Map[String,String]())
     val x = WriteAsRDF.apply(for(lexicon <- lexicons) yield { lexicon.toXML() })
-    x should equal("""<rdf:RDF 
+    x.replaceAll("\\s","") should equal("""<rdf:RDF 
 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:lemon="http://www.monnet-project.eu/lemon#" xmlns:oils="http://lemon-model.net/oils#" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
   <lemon:Lexicon lemon:language="eng" rdf:about="test">
     <lemon:entry>
@@ -190,7 +190,7 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3
     </lemon:entry>
   </lemon:Lexicon>
 </rdf:RDF>
-""")
+""".replaceAll("\\s",""))
   }
 
   "consequence verb" should "work in short form" in {
