@@ -6,6 +6,7 @@ import scala.collection.JavaConversions._
 
 class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mutable.Map[String,String]] with
                              Absyn.Statement.Visitor[Option[Lexicon],collection.mutable.Map[String,String]] with
+                             Absyn.PatternType.Visitor[Pattern,collection.mutable.Map[String,String]] with
                              Absyn.Pattern.Visitor[Pattern,collection.mutable.Map[String,String]] with
                              Absyn.NounPattern.Visitor[Pattern,collection.mutable.Map[String,String]] with
                              Absyn.VerbPattern.Visitor[Pattern,collection.mutable.Map[String,String]] with
@@ -32,8 +33,15 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
       None
     }
     def visit(p : Absyn.ELexicon, arg : collection.mutable.Map[String,String]) = {
-      val patterns : Seq[Pattern] = p.listpattern_.map { _.accept(this,arg) }
+      val patterns : Seq[Pattern] = p.listpatterntype_.map { _.accept(this,arg) }
       Some(Lexicon(p.uri_.accept(this,arg), p.string_, patterns:_*))
+    }
+/* PatternType */
+    def visit(p : Absyn.EPatternWithRegister, arg : collection.mutable.Map[String,String]) = {
+      p.pattern_.accept(this,arg)
+    }
+    def visit(p : Absyn.ECorePattern, arg : collection.mutable.Map[String,String]) = {
+      p.pattern_.accept(this,arg)
     }
 /* Pattern */
     def visit(p : Absyn.EPatternWithForm, arg : collection.mutable.Map[String,String]) = { 

@@ -13,6 +13,12 @@ public class AbstractVisitor<R,A> implements AllVisitor<R,A> {
     public R visitDefault(net.lemonmodel.patterns.parser.Absyn.Statement p, A arg) {
       throw new IllegalArgumentException(this.getClass().getName() + ": " + p);
     }
+/* PatternType */
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EPatternWithRegister p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ECorePattern p, A arg) { return visitDefault(p, arg); }
+    public R visitDefault(net.lemonmodel.patterns.parser.Absyn.PatternType p, A arg) {
+      throw new IllegalArgumentException(this.getClass().getName() + ": " + p);
+    }
 /* Pattern */
     public R visit(net.lemonmodel.patterns.parser.Absyn.EPatternWithForm p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.ENoun p, A arg) { return visitDefault(p, arg); }
@@ -189,6 +195,21 @@ public class AbstractVisitor<R,A> implements AllVisitor<R,A> {
     public R visit(net.lemonmodel.patterns.parser.Absyn.ECommonGender p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EOtherGender p, A arg) { return visitDefault(p, arg); }
     public R visitDefault(net.lemonmodel.patterns.parser.Absyn.Gender p, A arg) {
+      throw new IllegalArgumentException(this.getClass().getName() + ": " + p);
+    }
+/* Register */
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EBenchLevelRegister p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EDialectRegister p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EFacetiousRegister p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EFormalRegister p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EInHouseRegister p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EIronicRegister p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ENeutralRegister p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ESlangRegister p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ETabooRegister p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ETechnicalRegister p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EVulgarRegister p, A arg) { return visitDefault(p, arg); }
+    public R visitDefault(net.lemonmodel.patterns.parser.Absyn.Register p, A arg) {
       throw new IllegalArgumentException(this.getClass().getName() + ": " + p);
     }
 /* URI */

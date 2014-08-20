@@ -27,9 +27,22 @@ public abstract class FoldVisitor<R,A> implements AllVisitor<R,A> {
     public R visit(net.lemonmodel.patterns.parser.Absyn.ELexicon p, A arg) {
       R r = leaf(arg);
       r = combine(p.uri_.accept(this, arg), r, arg);
-      for (Pattern x : p.listpattern_) {
+      for (PatternType x : p.listpatterntype_) {
         r = combine(x.accept(this,arg), r, arg);
       }
+      return r;
+    }
+
+/* PatternType */
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EPatternWithRegister p, A arg) {
+      R r = leaf(arg);
+      r = combine(p.pattern_.accept(this, arg), r, arg);
+      r = combine(p.register_.accept(this, arg), r, arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ECorePattern p, A arg) {
+      R r = leaf(arg);
+      r = combine(p.pattern_.accept(this, arg), r, arg);
       return r;
     }
 
@@ -661,6 +674,52 @@ public abstract class FoldVisitor<R,A> implements AllVisitor<R,A> {
       return r;
     }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EOtherGender p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+
+/* Register */
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EBenchLevelRegister p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EDialectRegister p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EFacetiousRegister p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EFormalRegister p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EInHouseRegister p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EIronicRegister p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ENeutralRegister p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ESlangRegister p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ETabooRegister p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ETechnicalRegister p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EVulgarRegister p, A arg) {
       R r = leaf(arg);
       return r;
     }
