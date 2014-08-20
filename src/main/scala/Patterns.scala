@@ -237,3 +237,16 @@ package net.lemonmodel {
                                 val boundary2 : Double = Double.NaN)
   }
 }
+
+sealed trait Register
+object BenchLevelRegister extends Register { override def toString = "benchLevelRegister" }
+object DialectRegister extends Register { override def toString = "dialectRegister" }
+object FacetiousRegister extends Register { override def toString = "facetiousRegister" }
+object FormalRegister extends Register { override def toString = "formalRegister" }
+object InHouseRegister extends Register { override def toString = "inHouseRegister" }
+object IronicRegister extends Register { override def toString = "ironicRegister" }
+object NeutralRegister extends Register { override def toString = "neutralRegister" }
+object SlangRegister extends Register { override def toString = "slangRegister" }
+object TabooRegister extends Register { override def toString = "tabooRegister" }
+object TechnicalRegister extends Register { override def toString = "technicalRegister" }
+object VulgarRegister extends Register { override def toString = "vulgarRegister" }

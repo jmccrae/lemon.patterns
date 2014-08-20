@@ -38,7 +38,7 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
     }
 /* PatternType */
     def visit(p : Absyn.EPatternWithRegister, arg : collection.mutable.Map[String,String]) = {
-      p.pattern_.accept(this,arg)
+      p.pattern_.accept(this,arg + ("register" -> p.register_.accept(this,arg).toString))
     }
     def visit(p : Absyn.ECorePattern, arg : collection.mutable.Map[String,String]) = {
       p.pattern_.accept(this,arg)
