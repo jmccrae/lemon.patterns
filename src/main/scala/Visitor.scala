@@ -210,17 +210,20 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
 /* AdjectivePattern */
     def visit(p : Absyn.EIntersectiveAdjective, arg : collection.mutable.Map[String,String]) = IntersectiveAdjective(
       p.ap_.accept(this,arg),
-      p.uri_.accept(this,arg)
+      p.uri_.accept(this,arg),
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.EIntersectiveObjectPropertyAdjective, arg : collection.mutable.Map[String,String]) = IntersectiveObjectPropertyAdjective(
       p.ap_.accept(this,arg),
       p.uri_1.accept(this,arg),
-      p.uri_2.accept(this,arg)
+      p.uri_2.accept(this,arg),
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.EIntersectiveDataPropertyAdjective, arg : collection.mutable.Map[String,String]) =  IntersectiveDataPropertyAdjective(
       p.ap_.accept(this,arg),
       p.uri_.accept(this,arg),
-      p.string_
+      p.string_,
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.EPropertyModifyingAdjective, arg : collection.mutable.Map[String,String]) = PropertyModifyingAdjective(
       p.ap_.accept(this,arg),
@@ -229,11 +232,13 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
     def visit(p : Absyn.ERelationalAdjective, arg : collection.mutable.Map[String,String]) = RelationalAdjective(
       p.ap_.accept(this,arg),
       p.uri_.accept(this,arg),
-      p.arg_.accept(this,arg)
+      p.arg_.accept(this,arg),
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.EScalarAdjective, arg : collection.mutable.Map[String,String]) = ScalarAdjective(
       p.ap_.accept(this,arg),
-      p.listscalarmembership_.map{_.accept(this,arg)}
+      p.listscalarmembership_.map{_.accept(this,arg)},
+      register = str2Register(arg get "register")
     )
 /* Arg */ 
     def visit(p : Absyn.EOptionalArg, arg : collection.mutable.Map[String,String]) = p.arg_.accept(this,arg).optional

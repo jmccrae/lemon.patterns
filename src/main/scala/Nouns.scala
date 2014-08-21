@@ -90,11 +90,7 @@ case class Name(val lemma : PNP,
          <lemon:reference>
            <owl:NamedIndividual rdf:about={sense}/>
          </lemon:reference>
-         {register match {
-	    case Some(r) => <lexinfo:register ref:resource={lexinfo(r.toString()).toString()}/>
-	    case None =>
-	  }
-         }
+         {registerXML(register)}
        </lemon:LexicalSense>
     </lemon:sense>
    protected override def isProper = true
@@ -120,11 +116,7 @@ case class ClassNoun(val lemma : NP,
          <lemon:reference>
            <owl:Class rdf:about={sense}/>
          </lemon:reference>
-         {register match {
-	    case Some(r) => <lexinfo:register ref:resource={lexinfo(r.toString()).toString()}/>
-	    case None =>
-	  }
-         }
+         {registerXML(register)}
          <lemon:isA>
             <lemon:Argument rdf:about={subjURI}/>
          </lemon:isA>
@@ -165,11 +157,7 @@ case class RelationalNoun(val lemma : NP,
          <lemon:reference>
            <rdf:Property rdf:about={sense}/>
          </lemon:reference>
-         {register match {
-	    case Some(r) => <lexinfo:register ref:resource={lexinfo(r.toString()).toString()}/>
-	    case None =>
-	  }
-         }
+         {registerXML(register)}
          <lemon:subjOfProp>
             <lemon:Argument rdf:about={subjURI}/>
          </lemon:subjOfProp>
@@ -231,11 +219,7 @@ case class RelationalMultivalentNoun(val lemma : NP,
              <rdfs:subClassOf rdf:resource="http://www.lemon-model.net/oils#Relationship"/>
            </rdfs:Class>
          </lemon:reference>
-         {register match {
-	    case Some(r) => <lexinfo:register ref:resource={lexinfo(r.toString()).toString()}/>
-	    case None =>
-	  }
-         }
+         {registerXML(register)}
          {
            for((arg,i) <- args.zipWithIndex) yield {
             <lemon:subsense>
@@ -304,11 +288,7 @@ case class ClassRelationalNoun(val lemma : NP,
          <lemon:reference>
            <rdf:Property rdf:about={relation}/>
          </lemon:reference>
-         {register match {
-	    case Some(r) => <lexinfo:register ref:resource={lexinfo(r.toString()).toString()}/>
-	    case None =>
-	  }
-         }
+         {registerXML(register)}
          <lemon:subjOfProp>
             <lemon:Argument rdf:about={subjURI}/>
          </lemon:subjOfProp>
