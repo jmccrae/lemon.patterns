@@ -65,6 +65,7 @@ case class IntersectiveAdjective(val lemma : AP,
                                       val register : Option[Register] = None) extends Adjective {
   def makeWithForm(form : Form) = IntersectiveAdjective(lemma,sense,forms :+ form,register)
   protected def makeWithForms(otherForms : Seq[Form]) = IntersectiveAdjective(lemma,sense, forms ++ otherForms,register)
+  def withRegister(register : Register) = IntersectiveAdjective(lemma,sense,forms,Some(register))
   protected def senseXML(namer : URINamer) = {
   val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     <lemon:sense>
@@ -100,6 +101,7 @@ case class IntersectiveObjectPropertyAdjective(val lemma : AP,
                                                val register : Option[Register] = None) extends Adjective {
   def makeWithForm(form : Form) = IntersectiveObjectPropertyAdjective(lemma,property,value,forms :+ form,register)
   protected def makeWithForms(otherForms : Seq[Form]) = IntersectiveObjectPropertyAdjective(lemma,property,value, forms ++ otherForms,register)
+  def withRegister(register : Register) = IntersectiveObjectPropertyAdjective(lemma,property,value,forms,Some(register))
   protected def senseXML(namer : URINamer) = {
   val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     <lemon:sense>
@@ -138,6 +140,7 @@ case class IntersectiveDataPropertyAdjective(val lemma : AP,
                                              val register : Option[Register] = None) extends Adjective {
   def makeWithForm(form : Form) = IntersectiveDataPropertyAdjective(lemma,property,value,forms :+ form,register)
   protected def makeWithForms(otherForms : Seq[Form]) = IntersectiveDataPropertyAdjective(lemma,property,value, forms ++ otherForms,register)
+  def withRegister(register : Register) = IntersectiveDataPropertyAdjective(lemma,property,value,forms,Some(register))
   protected def senseXML(namer : URINamer) = {
   val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     <lemon:sense>
@@ -175,6 +178,7 @@ case class PropertyModifyingAdjective(val lemma : AP,
                                       val register : Option[Register] = None) extends Adjective {
   def makeWithForm(form : Form) = PropertyModifyingAdjective(lemma,property,forms :+ form, register)
   protected def makeWithForms(otherForms : Seq[Form]) = PropertyModifyingAdjective(lemma,property,forms ++ otherForms,register)
+  def withRegister(register : Register) = PropertyModifyingAdjective(lemma,property,forms,Some(register))
   protected def senseXML(namer : URINamer) = {
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     val objURI = namer("adjective",lemma.toString(),Some("attributive"))
@@ -209,6 +213,7 @@ case class RelationalAdjective(val lemma : AP,
                                val register : Option[Register] = None) extends Adjective {
   def makeWithForm(form : Form) = RelationalAdjective(lemma,property,relationalArg,forms :+ form,register)
   protected def makeWithForms(otherForms : Seq[Form]) = RelationalAdjective(lemma,property,relationalArg,forms ++ otherForms,register)
+  def withRegister(register : Register) = RelationalAdjective(lemma,property,relationalArg,forms,Some(register))
   protected def senseXML(namer : URINamer) = {
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     val objURI = namer("adjective",lemma.toString(),Some("attributive"))
@@ -248,6 +253,7 @@ case class ScalarAdjective(val lemma : AP,
                            val register : Option[Register] = None) extends Adjective {   
   def makeWithForm(form : Form) = ScalarAdjective(lemma,scalarMemberships,forms :+ form,register)
   protected def makeWithForms(otherForms : Seq[Form]) = ScalarAdjective(lemma,scalarMemberships,forms ++ otherForms,register)
+  def withRegister(register : Register) = ScalarAdjective(lemma,scalarMemberships,forms,Some(register))
   protected def senseXML(namer : URINamer) = {
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     val scaleSubjURI = namer("adjective",lemma.toString(),Some("scaleSubj"))

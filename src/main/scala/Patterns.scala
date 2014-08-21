@@ -67,6 +67,7 @@ package net.lemonmodel {
     
     trait Pattern {
       def makeWithForm(form : Form) : Pattern
+      def withRegister(register : Register) : Pattern
       def toXML(namer : URINamer, lang : String)  : Node
       def registerXML(register : Option[Register]) = {
 	{register match {

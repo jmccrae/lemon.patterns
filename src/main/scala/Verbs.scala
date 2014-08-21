@@ -70,6 +70,7 @@ case class StateVerb(val lemma : VP,
                      val register : Option[Register] = None) extends Verb {
   def makeWithForm(form : Form) = StateVerb(lemma,sense,propSubj,propObj,forms :+ form,register)
   protected def makeWithForms(extraForms : Seq[Form]) = StateVerb(lemma,sense,propSubj,propObj,forms ++ extraForms,register)
+  def withRegister(register : Register) = StateVerb(lemma,sense,propSubj,propObj,forms,Some(register))
   protected def senseXML(namer : URINamer) = {
      val subjURI = namer("verb",lemma.toString(),Some("subject"))
      val objURI = namer("verb",lemma.toString(),Some("object"))
@@ -144,6 +145,7 @@ case class EventVerb(val lemma : VP,
     }
     case None => URI.create("http://www.lemon-model.net/oils#Event")
   }
+  def withRegister(register : Register) = EventVerb(lemma,eventClass,args,telic,durative,forms,Some(register))
   protected def senseXML(namer : URINamer) = {
      val argURI = (for((arg,i) <- args.zipWithIndex) yield {
        arg -> namer("verb",lemma.toString(),Some("arg"+(i+1)))
@@ -267,8 +269,9 @@ case class ConsequenceVerb(val lemma : VP,
                            val eventClass : URI = null,
                            val forms : Seq[Form] = Nil,
                            val register : Option[Register] = None) extends Verb {
-  def makeWithForm(form : Form) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms :+ form)
-  protected def makeWithForms(extraForms : Seq[Form]) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms ++ extraForms)
+  def makeWithForm(form : Form) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms :+ form,register)
+  protected def makeWithForms(extraForms : Seq[Form]) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms ++ extraForms,register)
+  def withRegister(register : Register) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms,Some(register))
   protected def senseXML(namer : URINamer) = {
      val subjURI = namer("verb",lemma.toString(),Some("subject"))
      val objURI = namer("verb",lemma.toString(),Some("object"))
@@ -325,6 +328,7 @@ case class ConsequenceVerb(val lemma : VP,
              </owl:propertyChainAxiom>
           </rdf:Property>
         </lemon:reference>
+        {registerXML(register)}
         { 
           if(propSubj.arg.restriction != None) {
             <lemon:propertyDomain rdf:resource={propSubj.arg.restriction.get}/>
