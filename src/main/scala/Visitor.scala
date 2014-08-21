@@ -22,6 +22,7 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
                              Absyn.Category.Visitor[(URI,URI),collection.mutable.Map[String,String]] with
                              Absyn.POSTag.Visitor[POS,collection.mutable.Map[String,String]] with
                              Absyn.Gender.Visitor[Gender,collection.mutable.Map[String,String]] with
+                             Absyn.Register.Visitor[Register,collection.mutable.Map[String,String]] with
                              Absyn.URI.Visitor[URI,collection.mutable.Map[String,String]] {
 /* Statements */
     def visit(p : Absyn.EStatments, arg : collection.mutable.Map[String,String]) = { 
@@ -512,6 +513,19 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
     def visit(p : Absyn.ENeutGender, arg : collection.mutable.Map[String,String]) = Neuter
     def visit(p : Absyn.ECommonGender, arg : collection.mutable.Map[String,String]) = CommonGender
     def visit(p : Absyn.EOtherGender, arg : collection.mutable.Map[String,String]) = OtherGender
+    
+/* Register */
+    def visit(p : Absyn.EBenchLevelRegister, arg : collection.mutable.Map[String,String]) = BenchLevelRegister
+    def visit(p : Absyn.EDialectRegister, arg : collection.mutable.Map[String,String]) = DialectRegister
+    def visit(p : Absyn.EFacetiousRegister, arg : collection.mutable.Map[String,String]) = FacetiousRegister
+    def visit(p : Absyn.EFormalRegister, arg : collection.mutable.Map[String,String]) = FormalRegister
+    def visit(p : Absyn.EInHouseRegister, arg : collection.mutable.Map[String,String]) = InHouseRegister
+    def visit(p : Absyn.EIronicRegister, arg : collection.mutable.Map[String,String]) = IronicRegister
+    def visit(p : Absyn.ENeutralRegister, arg : collection.mutable.Map[String,String]) = NeutralRegister
+    def visit(p : Absyn.ESlangRegister, arg : collection.mutable.Map[String,String]) = SlangRegister
+    def visit(p : Absyn.ETabooRegister, arg : collection.mutable.Map[String,String]) = TabooRegister
+    def visit(p : Absyn.ETechnicalRegister, arg : collection.mutable.Map[String,String]) = TechnicalRegister
+    def visit(p : Absyn.EVulgarRegister, arg : collection.mutable.Map[String,String]) = VulgarRegister
     
 /* URI */
     def visit(p : Absyn.EQName, arg : collection.mutable.Map[String,String]) = URI.create(
