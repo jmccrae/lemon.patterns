@@ -117,29 +117,32 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
 /* VerbPattern */
     def visit(p : Absyn.EStateVerb1, arg : collection.mutable.Map[String,String]) = StateVerb( 
       p.vp_.accept(this,arg),
-      p.uri_.accept(this,arg)
+      p.uri_.accept(this,arg),
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.EStateVerb2, arg : collection.mutable.Map[String,String]) = StateVerb( 
       p.vp_.accept(this,arg),
       p.uri_.accept(this,arg),
       Subject,
-      p.arg_.accept(this,arg)
+      p.arg_.accept(this,arg),
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.EStateVerb3, arg : collection.mutable.Map[String,String]) = StateVerb( 
       p.vp_.accept(this,arg),
       p.uri_.accept(this,arg),
       p.arg_1.accept(this,arg),
-      p.arg_2.accept(this,arg)
+      p.arg_2.accept(this,arg),
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.ETelicEventVerb, arg : collection.mutable.Map[String,String]) = { 
       p.verbpattern_.accept(this,arg) match {
-        case EventVerb(lemma,eventClass,args,_,durative,forms,register) => EventVerb(lemma,eventClass,args,Some(true),durative,forms,register)
+        case EventVerb(lemma,eventClass,args,_,durative,forms,register) => EventVerb(lemma,eventClass,args,Some(true),durative,forms,register = str2Register(arg get "register"))
         case _ => throw new IllegalArgumentException("telic annotation on non-event verb")
       }
     }
     def visit(p : Absyn.ENontelicEventVerb, arg : collection.mutable.Map[String,String]) = { 
       p.verbpattern_.accept(this,arg) match {
-        case EventVerb(lemma,eventClass,args,_,durative,forms,register) => EventVerb(lemma,eventClass,args,Some(false),durative,forms,register)
+        case EventVerb(lemma,eventClass,args,_,durative,forms,register) => EventVerb(lemma,eventClass,args,Some(false),durative,forms,register = str2Register(arg get "register"))
         case _ => throw new IllegalArgumentException("telic annotation on non-event verb")
       }
     } 
@@ -148,64 +151,73 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
     }
     def visit(p : Absyn.EDurativeEventVerb, arg : collection.mutable.Map[String,String]) = { 
       p.verbpattern_.accept(this,arg) match {
-        case EventVerb(lemma,eventClass,args,telic,_,forms,register) => EventVerb(lemma,eventClass,args,telic,Some(true),forms,register)
+        case EventVerb(lemma,eventClass,args,telic,_,forms,register) => EventVerb(lemma,eventClass,args,telic,Some(true),forms,register = str2Register(arg get "register"))
         case _ => throw new IllegalArgumentException("telic annotation on non-event verb")
       }
     }
     def visit(p : Absyn.EInstantEventVerb, arg : collection.mutable.Map[String,String]) = { 
       p.verbpattern_.accept(this,arg) match {
-        case EventVerb(lemma,eventClass,args,telic,_,forms,register) => EventVerb(lemma,eventClass,args,telic,Some(false),forms,register)
+        case EventVerb(lemma,eventClass,args,telic,_,forms,register) => EventVerb(lemma,eventClass,args,telic,Some(false),forms,register = str2Register(arg get "register"))
         case _ => throw new IllegalArgumentException("telic annotation on non-event verb")
       }
     }
     def visit(p : Absyn.EEventVerb, arg : collection.mutable.Map[String,String]) = EventVerb(
       p.vp_.accept(this,arg),
       p.uri_.accept(this,arg),
-      p.listontologyframeelement_.map{_.accept(this,arg)}
+      p.listontologyframeelement_.map{_.accept(this,arg)},
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.EConsequenceVerb1, arg : collection.mutable.Map[String,String]) = ConsequenceVerb(
       p.vp_.accept(this,arg),
       p.uri_1.accept(this,arg),
       p.ontologyframeelement_1.accept(this,arg),
       p.ontologyframeelement_2.accept(this,arg),
-      p.uri_2.accept(this,arg)
+      p.uri_2.accept(this,arg),
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.EConsequenceVerb2, arg : collection.mutable.Map[String,String]) =  ConsequenceVerb(
       p.vp_.accept(this,arg),
       p.uri_.accept(this,arg),
       p.ontologyframeelement_1.accept(this,arg),
-      p.ontologyframeelement_2.accept(this,arg)
+      p.ontologyframeelement_2.accept(this,arg),
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.EConsequenceVerb3, arg : collection.mutable.Map[String,String]) =  ConsequenceVerb(
       p.vp_.accept(this,arg),
       p.uri_1.accept(this,arg),
       p.ontologyframeelement_.accept(this,arg),
-      eventClass = p.uri_2.accept(this,arg)
+      eventClass = p.uri_2.accept(this,arg),
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.EConsequenceVerb4, arg : collection.mutable.Map[String,String]) =  ConsequenceVerb(
       p.vp_.accept(this,arg),
       p.uri_.accept(this,arg),
-      p.ontologyframeelement_.accept(this,arg)
+      p.ontologyframeelement_.accept(this,arg),
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.EConsequenceVerb5, arg : collection.mutable.Map[String,String]) =  ConsequenceVerb(
       p.vp_.accept(this,arg),
       p.uri_1.accept(this,arg),
       propObj = p.ontologyframeelement_.accept(this,arg),
-      eventClass = p.uri_2.accept(this,arg)
+      eventClass = p.uri_2.accept(this,arg),
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.EConsequenceVerb6, arg : collection.mutable.Map[String,String]) =  ConsequenceVerb(
       p.vp_.accept(this,arg),
       p.uri_.accept(this,arg),
-      propObj = p.ontologyframeelement_.accept(this,arg)
+      propObj = p.ontologyframeelement_.accept(this,arg),
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.EConsequenceVerb7, arg : collection.mutable.Map[String,String]) =  ConsequenceVerb(
       p.vp_.accept(this,arg),
       p.uri_1.accept(this,arg),
-      eventClass = p.uri_2.accept(this,arg)
+      eventClass = p.uri_2.accept(this,arg),
+      register = str2Register(arg get "register")
     )
     def visit(p : Absyn.EConsequenceVerb8, arg : collection.mutable.Map[String,String]) =  ConsequenceVerb(
       p.vp_.accept(this,arg),
-      p.uri_.accept(this,arg)
+      p.uri_.accept(this,arg),
+      register = str2Register(arg get "register")
     )
 /* AdjectivePattern */
     def visit(p : Absyn.EIntersectiveAdjective, arg : collection.mutable.Map[String,String]) = IntersectiveAdjective(

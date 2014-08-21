@@ -68,9 +68,8 @@ case class StateVerb(val lemma : VP,
                      val propObj : Arg = DirectObject, 
                      val forms : Seq[Form] = Nil,
                      val register : Option[Register] = None) extends Verb {
-  def makeWithForm(form : Form) = StateVerb(lemma,sense,propSubj,propObj,forms :+ form)
-  protected def makeWithForms(extraForms : Seq[Form]) = StateVerb(lemma,sense,propSubj,propObj,forms ++ extraForms)
-  def withRegister(register : Register) = StateVerb(lemma,sense,propSubj,propObj,forms,Some(register))
+  def makeWithForm(form : Form) = StateVerb(lemma,sense,propSubj,propObj,forms :+ form,register)
+  protected def makeWithForms(extraForms : Seq[Form]) = StateVerb(lemma,sense,propSubj,propObj,forms ++ extraForms,register)
   protected def senseXML(namer : URINamer) = {
      val subjURI = namer("verb",lemma.toString(),Some("subject"))
      val objURI = namer("verb",lemma.toString(),Some("object"))
@@ -79,6 +78,7 @@ case class StateVerb(val lemma : VP,
          <lemon:reference>
            <rdf:Property rdf:about={sense}/>
          </lemon:reference>
+         {registerXML(register)}
          <lemon:subjOfProp>
             <lemon:Argument rdf:about={subjURI}/>
          </lemon:subjOfProp>
@@ -129,9 +129,8 @@ case class EventVerb(val lemma : VP,
                      val forms : Seq[Form] = Nil,
                      val register : Option[Register] = None) extends Verb {
                        
-  def makeWithForm(form : Form) = EventVerb(lemma,eventClass,args,telic,durative,forms :+ form)
-  protected def makeWithForms(extraForms : Seq[Form]) = EventVerb(lemma,eventClass,args,telic,durative,forms ++ extraForms)
-  def withRegister(register : Register) = EventVerb(lemma,eventClass,args,telic,durative,forms,Some(register))
+  def makeWithForm(form : Form) = EventVerb(lemma,eventClass,args,telic,durative,forms :+ form,register)
+  protected def makeWithForms(extraForms : Seq[Form]) = EventVerb(lemma,eventClass,args,telic,durative,forms ++ extraForms,register)
   protected def oilsURI = telic match {
     case Some(true) => durative match {
       case Some(true) => URI.create("http://www.lemon-model.net/oils#Accomplishment")
@@ -155,7 +154,8 @@ case class EventVerb(val lemma : VP,
            <rdfs:Class rdf:about={eventClass}>
            <rdfs:subClassOf rdf:resource={oilsURI}/>
            </rdfs:Class>
-         </lemon:reference>                        
+         </lemon:reference> 
+         {registerXML(register)}
          {
            for((arg,i) <- args.zipWithIndex) yield {
             <lemon:subsense>
@@ -269,7 +269,6 @@ case class ConsequenceVerb(val lemma : VP,
                            val register : Option[Register] = None) extends Verb {
   def makeWithForm(form : Form) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms :+ form)
   protected def makeWithForms(extraForms : Seq[Form]) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms ++ extraForms)
-  def withRegister(register : Register) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms,Some(register))
   protected def senseXML(namer : URINamer) = {
      val subjURI = namer("verb",lemma.toString(),Some("subject"))
      val objURI = namer("verb",lemma.toString(),Some("object"))
@@ -281,6 +280,7 @@ case class ConsequenceVerb(val lemma : VP,
              </lemon:reference>
            }
          }
+         {registerXML(register)}
          <lemon:subsense>
            <lemon:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
              <lemon:reference>
