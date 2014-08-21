@@ -81,14 +81,20 @@ object OtherGender extends Gender { override def toString = "otherGender" }
 case class Name(val lemma : PNP, 
                 val sense : URI = null, 
                 val forms : Seq[Form] = Nil,
-                val gender : Option[Gender] = None) extends Noun {
-  def makeWithForm(form : Form) = Name(lemma,sense, forms :+ form,gender)
-  def withGender(gender : Gender) = Name(lemma,sense,forms,Some(gender))
+                val gender : Option[Gender] = None,
+                val register : Option[Register] = None) extends Noun {
+  def makeWithForm(form : Form) = Name(lemma,sense, forms :+ form,gender,register)
+  def withGender(gender : Gender) = Name(lemma,sense,forms,Some(gender),register)
   protected def senseXML(namer : URINamer) = <lemon:sense>
        <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("sense"))}>
          <lemon:reference>
            <owl:NamedIndividual rdf:about={sense}/>
          </lemon:reference>
+         {register match {
+	    case Some(r) => <lexinfo:register ref:resource={lexinfo(r.toString()).toString()}/>
+	    case None =>
+	  }
+         }
        </lemon:LexicalSense>
     </lemon:sense>
    protected override def isProper = true
@@ -103,7 +109,8 @@ case class Name(val lemma : PNP,
 case class ClassNoun(val lemma : NP, 
                      val sense : URI = null, 
                      val forms : Seq[Form] = Nil,
-                     val gender : Option[Gender] = None) extends Noun {
+                     val gender : Option[Gender] = None,
+                     val register : Option[Register] = None) extends Noun {
   def makeWithForm(form : Form) = ClassNoun(lemma,sense,forms :+ form,gender)
   def withGender(gender : Gender) = ClassNoun(lemma,sense,forms,Some(gender))
   def senseXML(namer : URINamer) = {
@@ -113,6 +120,11 @@ case class ClassNoun(val lemma : NP,
          <lemon:reference>
            <owl:Class rdf:about={sense}/>
          </lemon:reference>
+         {register match {
+	    case Some(r) => <lexinfo:register ref:resource={lexinfo(r.toString()).toString()}/>
+	    case None =>
+	  }
+         }
          <lemon:isA>
             <lemon:Argument rdf:about={subjURI}/>
          </lemon:isA>
@@ -141,7 +153,8 @@ case class RelationalNoun(val lemma : NP,
                           val propSubj : Arg = CopulativeArg, 
                           val propObj : Arg, 
                           val forms : Seq[Form] = Nil,
-                          val gender : Option[Gender] = None) extends Noun {
+                          val gender : Option[Gender] = None,
+                          val register : Option[Register] = None) extends Noun {
    def makeWithForm(inflForm : Form) = RelationalNoun(lemma,sense,propSubj,propObj,forms :+ inflForm,gender)
    def withGender(gender : Gender) = RelationalNoun(lemma,sense,propSubj,propObj,forms,Some(gender))
    protected def senseXML(namer : URINamer) = {
@@ -152,6 +165,11 @@ case class RelationalNoun(val lemma : NP,
          <lemon:reference>
            <rdf:Property rdf:about={sense}/>
          </lemon:reference>
+         {register match {
+	    case Some(r) => <lexinfo:register ref:resource={lexinfo(r.toString()).toString()}/>
+	    case None =>
+	  }
+         }
          <lemon:subjOfProp>
             <lemon:Argument rdf:about={subjURI}/>
          </lemon:subjOfProp>
@@ -198,7 +216,8 @@ case class RelationalMultivalentNoun(val lemma : NP,
                                      val relationClass : URI = null,
                                      val args : Seq[OntologyFrameElement],
                                      val forms : Seq[Form] = Nil,
-                                     val gender : Option[Gender] = None) extends Noun {
+                                     val gender : Option[Gender] = None,
+                                     val register : Option[Register] = None) extends Noun {
    def makeWithForm(form : Form) = RelationalMultivalentNoun(lemma,relationClass,args,forms :+ form,gender)
    def withGender(gender : Gender) = RelationalMultivalentNoun(lemma,relationClass,args,forms,Some(gender))
    protected def senseXML(namer : URINamer) = {
@@ -212,6 +231,11 @@ case class RelationalMultivalentNoun(val lemma : NP,
              <rdfs:subClassOf rdf:resource="http://www.lemon-model.net/oils#Relationship"/>
            </rdfs:Class>
          </lemon:reference>
+         {register match {
+	    case Some(r) => <lexinfo:register ref:resource={lexinfo(r.toString()).toString()}/>
+	    case None =>
+	  }
+         }
          {
            for((arg,i) <- args.zipWithIndex) yield {
             <lemon:subsense>
@@ -268,9 +292,10 @@ case class ClassRelationalNoun(val lemma : NP,
                                val propSubj : Arg = CopulativeArg,
                                val propObj : Arg,
                                val forms : Seq[Form] = Nil,
-                               val gender : Option[Gender] = None) extends Noun {
-   def makeWithForm(form : Form) = ClassRelationalNoun(lemma,relationClass,relation,propSubj,propObj,forms :+ form,gender)
-   def withGender(gender : Gender) = ClassRelationalNoun(lemma,relationClass,relation,propSubj,propObj,forms,Some(gender))
+                               val gender : Option[Gender] = None,
+                               val register : Option[Register] = None) extends Noun {
+   def makeWithForm(form : Form) = ClassRelationalNoun(lemma,relationClass,relation,propSubj,propObj,forms :+ form,gender,register)
+   def withGender(gender : Gender) = ClassRelationalNoun(lemma,relationClass,relation,propSubj,propObj,forms,Some(gender),register)
    protected def senseXML(namer : URINamer) = {
      val subjURI = namer("noun",lemma.toString(),Some("subject"))
      val objURI = namer("noun",lemma.toString(),Some("adpositionalObject"))
@@ -279,6 +304,11 @@ case class ClassRelationalNoun(val lemma : NP,
          <lemon:reference>
            <rdf:Property rdf:about={relation}/>
          </lemon:reference>
+         {register match {
+	    case Some(r) => <lexinfo:register ref:resource={lexinfo(r.toString()).toString()}/>
+	    case None =>
+	  }
+         }
          <lemon:subjOfProp>
             <lemon:Argument rdf:about={subjURI}/>
          </lemon:subjOfProp>
