@@ -7,6 +7,9 @@
 \title{The Lemon Design Patterns Language}
 \setlength{\parindent}{0mm}
 \setlength{\parskip}{1mm}
+
+\usepackage{longtable}
+
 \begin{document}
 
 \maketitle
@@ -52,7 +55,7 @@ The set of reserved words is the set of terminals appearing in the grammar. Thos
 
 The reserved words used in parser are the following: \\
 
-\begin{tabular}{ll}
+\begin{longtable}{ll}
 {\reserved{ClassNoun}} &{\reserved{ClassRelationalNoun}} \\ {\reserved{ConsequenceVerb}} & {\reserved{CopulativeArg}} \\ {\reserved{CopulativeSubject}} &{\reserved{DirectObject}} \\
 {\reserved{EventVerb}} &{\reserved{IndirectObject}}\\ {\reserved{IntersectiveAdjective}}&{\reserved{IntersectiveDataPropertyAdjective}}\\
 {\reserved{IntersectiveObjectPropertyAdjective}} &{\reserved{Lexicon}} \\
@@ -83,7 +86,7 @@ The reserved words used in parser are the following: \\
 {\reserved{past}} &{\reserved{plural}} \\
 {\reserved{point}} & {\reserved{postposition}} \\
 {\reserved{preposition}} &{\reserved{present}} \\
-{\reserved{otherGender} &{\reserved{pronoun}} \\
+{\reserved{otherGender}} &{\reserved{pronoun}} \\
 {\reserved{propObj}} & {\reserved{propSubj}} \\
 {\reserved{property}} &{\reserved{punctuation}} \\
 {\reserved{relationalArg}} &{\reserved{restrictedTo}} \\ {\reserved{secondPerson}} & {\reserved{semiColon}} \\
@@ -93,7 +96,12 @@ The reserved words used in parser are the following: \\
 {\reserved{verb}} &{\reserved{with}} \\
 {\reserved{masculine}} &{\reserved{feminine}} \\
 {\reserved{neuter}} &{\reserved{commonGender}} \\
-\end{tabular} 
+{\reserved{dialectRegister}} &{\reserved{facetiousRegister}} \\
+{\reserved{formalRegister}} &{\reserved{inHouseRegister}} \\
+{\reserved{ironicRegister}} &{\reserved{neutralRegister}} \\
+{\reserved{slangRegister}} &{\reserved{tabooRegister}} \\
+{\reserved{technicalRegister}}&{\reserved{vulgarRegister}} \\
+\end{longtable} 
 
 The symbols used in parser are the following: \\
 
@@ -120,12 +128,17 @@ All other symbols are terminals.\\
 
 \begin{tabular}{lll}
 {\nonterminal{Statement}} & {\arrow}  &{\terminal{@prefix}} {\nonterminal{Ident}} {\terminal{:}} {\nonterminal{FullURI}} {\terminal{.}}  \\
- & {\delimit}  &{\terminal{Lexicon}} {\terminal{(}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{String}} {\terminal{,}} {\nonterminal{ListPattern}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{Lexicon}} {\terminal{(}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{String}} {\terminal{,}} {\nonterminal{ListPatternType}} {\terminal{)}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
 {\nonterminal{ListStatement}} & {\arrow}  &{\emptyP} \\
  & {\delimit}  &{\nonterminal{Statement}} {\nonterminal{ListStatement}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{PatternType}} & {\arrow}  &{\nonterminal{Pattern}} {\nonterminal{Register}}  \\
+ & {\delimit}  &{\nonterminal{Pattern}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -155,6 +168,12 @@ All other symbols are terminals.\\
  & {\delimit}  &{\nonterminal{VerbPattern3}}  \\
  & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} \\&&{\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{,}} \\&&{\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} \\&&{\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{,}} \\&&{\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} \\&&{\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{,}} \\&&{\nonterminal{URI}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} \\&&{\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} \\&&{\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{,}} \\&&{\nonterminal{URI}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} \\&&{\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} \\&&{\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} \\&&{\terminal{)}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -176,9 +195,9 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{ListPattern}} & {\arrow}  &{\emptyP} \\
- & {\delimit}  &{\nonterminal{Pattern}}  \\
- & {\delimit}  &{\nonterminal{Pattern}} {\terminal{,}} {\nonterminal{ListPattern}}  \\
+{\nonterminal{ListPatternType}} & {\arrow}  &{\emptyP} \\
+ & {\delimit}  &{\nonterminal{PatternType}}  \\
+ & {\delimit}  &{\nonterminal{PatternType}} {\terminal{,}} {\nonterminal{ListPatternType}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -196,6 +215,7 @@ All other symbols are terminals.\\
 
 \begin{tabular}{lll}
 {\nonterminal{OntologyFrameElement}} & {\arrow}  &{\nonterminal{URI}} {\terminal{as}} {\nonterminal{Arg}}  \\
+ & {\delimit}  &{\nonterminal{Arg}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -225,7 +245,10 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{POSTaggedWord}} & {\arrow}  &{\nonterminal{String}} {\terminal{/}} {\nonterminal{POSTag}}  \\
+{\nonterminal{POSTaggedWord}} & {\arrow}  &{\nonterminal{String}} {\terminal{/}} {\nonterminal{POSTag}} {\terminal{{$=$}}} {\terminal{head}}  \\
+ & {\delimit}  &{\nonterminal{String}} {\terminal{/}} {\nonterminal{POSTag}}  \\
+ & {\delimit}  &{\nonterminal{String}} {\terminal{/}} {\nonterminal{String}} {\terminal{/}} {\nonterminal{POSTag}} {\terminal{{$=$}}} {\terminal{head}}  \\
+ & {\delimit}  &{\nonterminal{String}} {\terminal{/}} {\nonterminal{String}} {\terminal{/}} {\nonterminal{POSTag}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -313,6 +336,20 @@ All other symbols are terminals.\\
  & {\delimit}  &{\terminal{neuter}}  \\
  & {\delimit}  &{\terminal{commonGender}}  \\
  & {\delimit}  &{\terminal{otherGender}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{Register}} & {\arrow}  &{\terminal{benchLevelRegister}}  \\
+ & {\delimit}  &{\terminal{dialectRegister}}  \\
+ & {\delimit}  &{\terminal{facetiousRegister}}  \\
+ & {\delimit}  &{\terminal{formalRegister}}  \\
+ & {\delimit}  &{\terminal{inHouseRegister}}  \\
+ & {\delimit}  &{\terminal{ironicRegister}}  \\
+ & {\delimit}  &{\terminal{neutralRegister}}  \\
+ & {\delimit}  &{\terminal{slangRegister}}  \\
+ & {\delimit}  &{\terminal{tabooRegister}}  \\
+ & {\delimit}  &{\terminal{technicalRegister}}  \\
+ & {\delimit}  &{\terminal{vulgarRegister}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}

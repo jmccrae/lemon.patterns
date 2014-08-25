@@ -38,9 +38,7 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
       Some(Lexicon(p.uri_.accept(this,arg), p.string_, patterns:_*))
     }
 /* PatternType */
-    def visit(p : Absyn.EPatternWithRegister, arg : collection.mutable.Map[String,String]) = {
-      //p.pattern_.accept(this,arg + ("register" -> p.register_.accept(this,arg).toString))
-      //p.pattern_.accept(this,arg) withRegister p.register_.accept(this,arg) 
+    def visit(p : Absyn.EPatternWithRegister, arg : collection.mutable.Map[String,String]) = { 
       val basePattern : Pattern = p.pattern_.accept(this,arg)
       val register : Register = p.register_.accept(this,arg)
       basePattern withRegister register
@@ -530,24 +528,6 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
     def visit(p : Absyn.ETabooRegister, arg : collection.mutable.Map[String,String]) = TabooRegister
     def visit(p : Absyn.ETechnicalRegister, arg : collection.mutable.Map[String,String]) = TechnicalRegister
     def visit(p : Absyn.EVulgarRegister, arg : collection.mutable.Map[String,String]) = VulgarRegister
-    
-    /*def str2Register(register : Option[String]) : Option[Register] = {
-	register match {
-	  case Some("benchLevelRegister") => Some(BenchLevelRegister)
-	  case Some("dialectRegister") => Some(DialectRegister)
-	  case Some("facetiousRegister") => Some(FacetiousRegister)
-	  case Some("formalRegister") => Some(FormalRegister)
-	  case Some("inHouseRegister") => Some(InHouseRegister)
-	  case Some("ironicRegister") => Some(IronicRegister)
-	  case Some("neutralRegister") => Some(NeutralRegister)
-	  case Some("slangRegister") => Some(SlangRegister)
-	  case Some("tabooRegister") => Some(TabooRegister)
-	  case Some("technicalRegister") => Some(TechnicalRegister)
-	  case Some("vulgarRegister") => Some(VulgarRegister)
-	  case None => None
-	  case _ => throw new IllegalArgumentException("No register name where one was expected")
-	}
-    }*/
     
 /* URI */
     def visit(p : Absyn.EQName, arg : collection.mutable.Map[String,String]) = URI.create(
