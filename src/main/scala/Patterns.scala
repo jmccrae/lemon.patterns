@@ -51,7 +51,7 @@ package net.lemonmodel {
     
     object WriteAsRDF {
       def apply(ns : Seq[Node]) = (<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-        xmlns:lemon="http://www.monnet-project.eu/lemon#" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"
+        xmlns:lemon="http://lemon-model.net/lemon#" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"
         xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:oils="http://lemon-model.net/oils#"
         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">{for(n <- ns) yield
         n}
