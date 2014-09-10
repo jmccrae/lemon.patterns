@@ -61,28 +61,32 @@ The reserved words used in parser are the following: \\
 {\reserved{RelationalMultivalentNoun}} &{\reserved{RelationalNoun}} &{\reserved{ScalarAdjective}} \\
 {\reserved{StateVerb}} &{\reserved{Subject}} &{\reserved{accusative}} \\
 {\reserved{adjective}} &{\reserved{adposition}} &{\reserved{adverb}} \\
-{\reserved{article}} &{\reserved{as}} &{\reserved{bullet}} \\
-{\reserved{central}} &{\reserved{circumposition}} &{\reserved{class}} \\
-{\reserved{colon}} &{\reserved{comma}} &{\reserved{commonGender}} \\
-{\reserved{comparative}} &{\reserved{conditional}} &{\reserved{conjunction}} \\
-{\reserved{contravariant}} &{\reserved{copula}} &{\reserved{covariant}} \\
-{\reserved{dative}} &{\reserved{determiner}} &{\reserved{dual}} \\
-{\reserved{durative}} &{\reserved{feminine}} &{\reserved{firstPerson}} \\
-{\reserved{for}} &{\reserved{future}} &{\reserved{genitive}} \\
-{\reserved{gerundive}} &{\reserved{head}} &{\reserved{imperative}} \\
-{\reserved{imperfect}} &{\reserved{indicative}} &{\reserved{infinitive}} \\
-{\reserved{instant}} &{\reserved{interjection}} &{\reserved{masculine}} \\
-{\reserved{neuter}} &{\reserved{nominative}} &{\reserved{nontelic}} \\
-{\reserved{noun}} &{\reserved{numeral}} &{\reserved{optional}} \\
-{\reserved{otherGender}} &{\reserved{participle}} &{\reserved{particle}} \\
-{\reserved{past}} &{\reserved{plural}} &{\reserved{point}} \\
-{\reserved{postposition}} &{\reserved{preposition}} &{\reserved{present}} \\
-{\reserved{pronoun}} &{\reserved{propObj}} &{\reserved{propSubj}} \\
-{\reserved{property}} &{\reserved{punctuation}} &{\reserved{relationalArg}} \\
-{\reserved{restrictedTo}} &{\reserved{secondPerson}} &{\reserved{semiColon}} \\
-{\reserved{singular}} &{\reserved{slash}} &{\reserved{subjunctive}} \\
-{\reserved{superlative}} &{\reserved{telic}} &{\reserved{thirdPerson}} \\
-{\reserved{verb}} &{\reserved{with}} & \\
+{\reserved{article}} &{\reserved{as}} &{\reserved{benchLevelRegister}} \\
+{\reserved{bullet}} &{\reserved{central}} &{\reserved{circumposition}} \\
+{\reserved{class}} &{\reserved{colon}} &{\reserved{comma}} \\
+{\reserved{commonGender}} &{\reserved{comparative}} &{\reserved{conditional}} \\
+{\reserved{conjunction}} &{\reserved{contravariant}} &{\reserved{copula}} \\
+{\reserved{covariant}} &{\reserved{dative}} &{\reserved{determiner}} \\
+{\reserved{dialectRegister}} &{\reserved{dual}} &{\reserved{durative}} \\
+{\reserved{facetiousRegister}} &{\reserved{feminine}} &{\reserved{firstPerson}} \\
+{\reserved{for}} &{\reserved{formalRegister}} &{\reserved{future}} \\
+{\reserved{genitive}} &{\reserved{gerundive}} &{\reserved{head}} \\
+{\reserved{imperative}} &{\reserved{imperfect}} &{\reserved{inHouseRegister}} \\
+{\reserved{indicative}} &{\reserved{infinitive}} &{\reserved{instant}} \\
+{\reserved{interjection}} &{\reserved{ironicRegister}} &{\reserved{masculine}} \\
+{\reserved{neuter}} &{\reserved{neutralRegister}} &{\reserved{nominative}} \\
+{\reserved{nontelic}} &{\reserved{noun}} &{\reserved{numeral}} \\
+{\reserved{optional}} &{\reserved{otherGender}} &{\reserved{participle}} \\
+{\reserved{particle}} &{\reserved{past}} &{\reserved{plural}} \\
+{\reserved{point}} &{\reserved{postposition}} &{\reserved{preposition}} \\
+{\reserved{present}} &{\reserved{pronoun}} &{\reserved{propObj}} \\
+{\reserved{propSubj}} &{\reserved{property}} &{\reserved{punctuation}} \\
+{\reserved{relationalArg}} &{\reserved{restrictedTo}} &{\reserved{secondPerson}} \\
+{\reserved{semiColon}} &{\reserved{singular}} &{\reserved{slangRegister}} \\
+{\reserved{slash}} &{\reserved{subjunctive}} &{\reserved{superlative}} \\
+{\reserved{tabooRegister}} &{\reserved{technicalRegister}} &{\reserved{telic}} \\
+{\reserved{thirdPerson}} &{\reserved{verb}} &{\reserved{vulgarRegister}} \\
+{\reserved{with}} & & \\
 \end{tabular}\\
 
 The symbols used in parser are the following: \\
@@ -110,12 +114,17 @@ All other symbols are terminals.\\
 
 \begin{tabular}{lll}
 {\nonterminal{Statement}} & {\arrow}  &{\terminal{@prefix}} {\nonterminal{Ident}} {\terminal{:}} {\nonterminal{FullURI}} {\terminal{.}}  \\
- & {\delimit}  &{\terminal{Lexicon}} {\terminal{(}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{String}} {\terminal{,}} {\nonterminal{ListPattern}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{Lexicon}} {\terminal{(}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{String}} {\terminal{,}} {\nonterminal{ListPatternType}} {\terminal{)}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
 {\nonterminal{ListStatement}} & {\arrow}  &{\emptyP} \\
  & {\delimit}  &{\nonterminal{Statement}} {\nonterminal{ListStatement}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{PatternType}} & {\arrow}  &{\nonterminal{Pattern}} {\nonterminal{Register}}  \\
+ & {\delimit}  &{\nonterminal{Pattern}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -172,9 +181,9 @@ All other symbols are terminals.\\
 \end{tabular}\\
 
 \begin{tabular}{lll}
-{\nonterminal{ListPattern}} & {\arrow}  &{\emptyP} \\
- & {\delimit}  &{\nonterminal{Pattern}}  \\
- & {\delimit}  &{\nonterminal{Pattern}} {\terminal{,}} {\nonterminal{ListPattern}}  \\
+{\nonterminal{ListPatternType}} & {\arrow}  &{\emptyP} \\
+ & {\delimit}  &{\nonterminal{PatternType}}  \\
+ & {\delimit}  &{\nonterminal{PatternType}} {\terminal{,}} {\nonterminal{ListPatternType}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -313,6 +322,20 @@ All other symbols are terminals.\\
  & {\delimit}  &{\terminal{neuter}}  \\
  & {\delimit}  &{\terminal{commonGender}}  \\
  & {\delimit}  &{\terminal{otherGender}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{Register}} & {\arrow}  &{\terminal{benchLevelRegister}}  \\
+ & {\delimit}  &{\terminal{dialectRegister}}  \\
+ & {\delimit}  &{\terminal{facetiousRegister}}  \\
+ & {\delimit}  &{\terminal{formalRegister}}  \\
+ & {\delimit}  &{\terminal{inHouseRegister}}  \\
+ & {\delimit}  &{\terminal{ironicRegister}}  \\
+ & {\delimit}  &{\terminal{neutralRegister}}  \\
+ & {\delimit}  &{\terminal{slangRegister}}  \\
+ & {\delimit}  &{\terminal{tabooRegister}}  \\
+ & {\delimit}  &{\terminal{technicalRegister}}  \\
+ & {\delimit}  &{\terminal{vulgarRegister}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}

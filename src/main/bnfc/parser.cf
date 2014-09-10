@@ -6,9 +6,11 @@ comment "/*" "*/" ;
 EStatments. Statements ::= [Statement] ;
 
 EPrefix. Statement ::= "@prefix" Ident ":" FullURI "." ;
-ELexicon. Statement ::= "Lexicon" "(" URI "," String "," [Pattern] ")" ;
+ELexicon. Statement ::= "Lexicon" "(" URI "," String "," [PatternType] ")" ;
 separator Statement "" ;
 
+EPatternWithRegister. PatternType ::= Pattern Register ;
+ECorePattern. PatternType ::= Pattern ;
 EPatternWithForm. Pattern ::= Pattern "with" [Category] String ;
 ENoun. Pattern ::= NounPattern ;
 ENounWithGender. Pattern ::= NounPattern Gender ;
@@ -48,7 +50,7 @@ EPropertyModifyingAdjective. AdjectivePattern ::= "PropertyModifyingAdjective" "
 ERelationalAdjective. AdjectivePattern ::= "RelationalAdjective" "(" AP "," URI "," "relationalArg" "=" Arg ")" ;
 EScalarAdjective. AdjectivePattern ::= "ScalarAdjective" "(" AP "," "[" [ScalarMembership] "]" ")" ;
 
-separator Pattern "," ;
+separator PatternType "," ;
 
 EOptionalArg. Arg ::= Arg "optional" ;
 ERestrictedArg. Arg ::= Arg "restrictedTo" URI ;
@@ -117,6 +119,8 @@ EParticiple. Category ::= "participle" ;
 EAnyCat. Category ::= URI "=>" URI ;
 separator Category "" ;
 
+
+
 EAdjectivePOS. POSTag ::= "adjective" ;
 EAdpositionPOS. POSTag ::= "adposition" ; 
 EAdverbPOS. POSTag ::= "adverb" ;
@@ -147,6 +151,18 @@ EFemGender. Gender ::= "feminine" ;
 ENeutGender. Gender ::= "neuter" ;
 ECommonGender. Gender ::= "commonGender" ;
 EOtherGender. Gender ::= "otherGender" ;
+
+EBenchLevelRegister. Register ::= "benchLevelRegister" ;
+EDialectRegister. Register ::= "dialectRegister" ;
+EFacetiousRegister. Register ::= "facetiousRegister" ;
+EFormalRegister. Register ::= "formalRegister" ;
+EInHouseRegister. Register ::= "inHouseRegister" ;
+EIronicRegister. Register ::= "ironicRegister" ;
+ENeutralRegister. Register ::= "neutralRegister" ;
+ESlangRegister. Register ::= "slangRegister" ;
+ETabooRegister. Register ::= "tabooRegister" ;
+ETechnicalRegister. Register ::= "technicalRegister" ;
+EVulgarRegister. Register ::= "vulgarRegister" ;
 
 EQName. URI ::= Ident ":" Ident ;
 EQName2. URI ::= ":" Ident ;

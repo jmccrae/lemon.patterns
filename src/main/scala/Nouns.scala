@@ -81,14 +81,17 @@ object OtherGender extends Gender { override def toString = "otherGender" }
 case class Name(val lemma : PNP, 
                 val sense : URI = null, 
                 val forms : Seq[Form] = Nil,
-                val gender : Option[Gender] = None) extends Noun {
-  def makeWithForm(form : Form) = Name(lemma,sense, forms :+ form,gender)
-  def withGender(gender : Gender) = Name(lemma,sense,forms,Some(gender))
+                val gender : Option[Gender] = None,
+                val register : Option[Register] = None) extends Noun {
+  def makeWithForm(form : Form) = Name(lemma,sense, forms :+ form,gender,register)
+  def withGender(gender : Gender) = Name(lemma,sense,forms,Some(gender),register)
+  def withRegister(register : Register) = Name(lemma,sense,forms,gender,Some(register))
   protected def senseXML(namer : URINamer) = <lemon:sense>
        <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("sense"))}>
          <lemon:reference>
            <owl:NamedIndividual rdf:about={sense}/>
          </lemon:reference>
+         {registerXML(register)}
        </lemon:LexicalSense>
     </lemon:sense>
    protected override def isProper = true
@@ -103,9 +106,11 @@ case class Name(val lemma : PNP,
 case class ClassNoun(val lemma : NP, 
                      val sense : URI = null, 
                      val forms : Seq[Form] = Nil,
-                     val gender : Option[Gender] = None) extends Noun {
-  def makeWithForm(form : Form) = ClassNoun(lemma,sense,forms :+ form,gender)
-  def withGender(gender : Gender) = ClassNoun(lemma,sense,forms,Some(gender))
+                     val gender : Option[Gender] = None,
+                     val register : Option[Register] = None) extends Noun {
+  def makeWithForm(form : Form) = ClassNoun(lemma,sense,forms :+ form,gender,register)
+  def withGender(gender : Gender) = ClassNoun(lemma,sense,forms,Some(gender),register)
+  def withRegister(register : Register) = ClassNoun(lemma,sense,forms,gender,Some(register))
   def senseXML(namer : URINamer) = {
   val subjURI = namer("noun",lemma.toString(),Some("subject"))
     <lemon:sense>
@@ -113,6 +118,7 @@ case class ClassNoun(val lemma : NP,
          <lemon:reference>
            <owl:Class rdf:about={sense}/>
          </lemon:reference>
+         {registerXML(register)}
          <lemon:isA>
             <lemon:Argument rdf:about={subjURI}/>
          </lemon:isA>
@@ -141,9 +147,11 @@ case class RelationalNoun(val lemma : NP,
                           val propSubj : Arg = CopulativeArg, 
                           val propObj : Arg, 
                           val forms : Seq[Form] = Nil,
-                          val gender : Option[Gender] = None) extends Noun {
-   def makeWithForm(inflForm : Form) = RelationalNoun(lemma,sense,propSubj,propObj,forms :+ inflForm,gender)
-   def withGender(gender : Gender) = RelationalNoun(lemma,sense,propSubj,propObj,forms,Some(gender))
+                          val gender : Option[Gender] = None,
+                          val register : Option[Register] = None) extends Noun {
+   def makeWithForm(inflForm : Form) = RelationalNoun(lemma,sense,propSubj,propObj,forms :+ inflForm,gender,register)
+   def withGender(gender : Gender) = RelationalNoun(lemma,sense,propSubj,propObj,forms,Some(gender),register)
+   def withRegister(register : Register) = RelationalNoun(lemma,sense,propSubj,propObj,forms,gender,Some(register))
    protected def senseXML(namer : URINamer) = {
      val subjURI = namer("noun",lemma.toString(),Some("subject"))
      val objURI = namer("noun",lemma.toString(),Some("adpositionalObject"))
@@ -152,6 +160,7 @@ case class RelationalNoun(val lemma : NP,
          <lemon:reference>
            <rdf:Property rdf:about={sense}/>
          </lemon:reference>
+         {registerXML(register)}
          <lemon:subjOfProp>
             <lemon:Argument rdf:about={subjURI}/>
          </lemon:subjOfProp>
@@ -198,9 +207,11 @@ case class RelationalMultivalentNoun(val lemma : NP,
                                      val relationClass : URI = null,
                                      val args : Seq[OntologyFrameElement],
                                      val forms : Seq[Form] = Nil,
-                                     val gender : Option[Gender] = None) extends Noun {
-   def makeWithForm(form : Form) = RelationalMultivalentNoun(lemma,relationClass,args,forms :+ form,gender)
-   def withGender(gender : Gender) = RelationalMultivalentNoun(lemma,relationClass,args,forms,Some(gender))
+                                     val gender : Option[Gender] = None,
+                                     val register : Option[Register] = None) extends Noun {
+   def makeWithForm(form : Form) = RelationalMultivalentNoun(lemma,relationClass,args,forms :+ form,gender,register)
+   def withGender(gender : Gender) = RelationalMultivalentNoun(lemma,relationClass,args,forms,Some(gender),register)
+   def withRegister(register : Register) = RelationalMultivalentNoun(lemma,relationClass,args,forms,gender,Some(register))
    protected def senseXML(namer : URINamer) = {
      val argURI = (for((arg,i) <- args.zipWithIndex) yield {
        arg -> namer("noun",lemma.toString(),Some("arg"+(i+1)))
@@ -212,6 +223,7 @@ case class RelationalMultivalentNoun(val lemma : NP,
              <rdfs:subClassOf rdf:resource="http://www.lemon-model.net/oils#Relationship"/>
            </rdfs:Class>
          </lemon:reference>
+         {registerXML(register)}
          {
            for((arg,i) <- args.zipWithIndex) yield {
             <lemon:subsense>
@@ -268,9 +280,11 @@ case class ClassRelationalNoun(val lemma : NP,
                                val propSubj : Arg = CopulativeArg,
                                val propObj : Arg,
                                val forms : Seq[Form] = Nil,
-                               val gender : Option[Gender] = None) extends Noun {
-   def makeWithForm(form : Form) = ClassRelationalNoun(lemma,relationClass,relation,propSubj,propObj,forms :+ form,gender)
-   def withGender(gender : Gender) = ClassRelationalNoun(lemma,relationClass,relation,propSubj,propObj,forms,Some(gender))
+                               val gender : Option[Gender] = None,
+                               val register : Option[Register] = None) extends Noun {
+   def makeWithForm(form : Form) = ClassRelationalNoun(lemma,relationClass,relation,propSubj,propObj,forms :+ form,gender,register)
+   def withGender(gender : Gender) = ClassRelationalNoun(lemma,relationClass,relation,propSubj,propObj,forms,Some(gender),register)
+   def withRegister(register : Register) = ClassRelationalNoun(lemma,relationClass,relation,propSubj,propObj,forms,gender,Some(register))
    protected def senseXML(namer : URINamer) = {
      val subjURI = namer("noun",lemma.toString(),Some("subject"))
      val objURI = namer("noun",lemma.toString(),Some("adpositionalObject"))
@@ -279,6 +293,7 @@ case class ClassRelationalNoun(val lemma : NP,
          <lemon:reference>
            <rdf:Property rdf:about={relation}/>
          </lemon:reference>
+         {registerXML(register)}
          <lemon:subjOfProp>
             <lemon:Argument rdf:about={subjURI}/>
          </lemon:subjOfProp>

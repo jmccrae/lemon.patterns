@@ -23,7 +23,7 @@ public class Test
     p = new parser(l);
     /* The default parser is the first-defined entry point. */
     /* You may want to change this. Other options are: */
-    /* pStatement, pListStatement, pPattern, pNounPattern, pVerbPattern, pAdjectivePattern, pListPattern, pArg, pOntologyFrameElement, pListOntologyFrameElement, pPNP, pNP, pVP, pAP, pPOSTaggedWord, pListPOSTaggedWord, pScalarMembership, pListScalarMembership, pCategory, pListCategory, pPOSTag, pGender, pURI */
+    /* pStatement, pListStatement, pPatternType, pPattern, pNounPattern, pVerbPattern, pAdjectivePattern, pListPatternType, pArg, pOntologyFrameElement, pListOntologyFrameElement, pPNP, pNP, pVP, pAP, pPOSTaggedWord, pListPOSTaggedWord, pScalarMembership, pListScalarMembership, pCategory, pListCategory, pPOSTag, pGender, pRegister, pURI */
     try
     {
       net.lemonmodel.patterns.parser.Absyn.Statements parse_tree = p.pStatements();

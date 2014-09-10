@@ -6,6 +6,7 @@ import net.lemonmodel.patterns.parser.Absyn.*;
 public class ComposVisitor<A> implements
   net.lemonmodel.patterns.parser.Absyn.Statements.Visitor<net.lemonmodel.patterns.parser.Absyn.Statements,A>,
   net.lemonmodel.patterns.parser.Absyn.Statement.Visitor<net.lemonmodel.patterns.parser.Absyn.Statement,A>,
+  net.lemonmodel.patterns.parser.Absyn.PatternType.Visitor<net.lemonmodel.patterns.parser.Absyn.PatternType,A>,
   net.lemonmodel.patterns.parser.Absyn.Pattern.Visitor<net.lemonmodel.patterns.parser.Absyn.Pattern,A>,
   net.lemonmodel.patterns.parser.Absyn.NounPattern.Visitor<net.lemonmodel.patterns.parser.Absyn.NounPattern,A>,
   net.lemonmodel.patterns.parser.Absyn.VerbPattern.Visitor<net.lemonmodel.patterns.parser.Absyn.VerbPattern,A>,
@@ -21,6 +22,7 @@ public class ComposVisitor<A> implements
   net.lemonmodel.patterns.parser.Absyn.Category.Visitor<net.lemonmodel.patterns.parser.Absyn.Category,A>,
   net.lemonmodel.patterns.parser.Absyn.POSTag.Visitor<net.lemonmodel.patterns.parser.Absyn.POSTag,A>,
   net.lemonmodel.patterns.parser.Absyn.Gender.Visitor<net.lemonmodel.patterns.parser.Absyn.Gender,A>,
+  net.lemonmodel.patterns.parser.Absyn.Register.Visitor<net.lemonmodel.patterns.parser.Absyn.Register,A>,
   net.lemonmodel.patterns.parser.Absyn.URI.Visitor<net.lemonmodel.patterns.parser.Absyn.URI,A>
 {
 /* Statements */
@@ -46,12 +48,27 @@ public class ComposVisitor<A> implements
     {
       URI uri_ = p.uri_.accept(this, arg);
       String string_ = p.string_;
-      ListPattern listpattern_ = new ListPattern();
-      for (Pattern x : p.listpattern_) {
-        listpattern_.add(x.accept(this,arg));
+      ListPatternType listpatterntype_ = new ListPatternType();
+      for (PatternType x : p.listpatterntype_) {
+        listpatterntype_.add(x.accept(this,arg));
       }
 
-      return new net.lemonmodel.patterns.parser.Absyn.ELexicon(uri_, string_, listpattern_);
+      return new net.lemonmodel.patterns.parser.Absyn.ELexicon(uri_, string_, listpatterntype_);
+    }
+
+/* PatternType */
+    public PatternType visit(net.lemonmodel.patterns.parser.Absyn.EPatternWithRegister p, A arg)
+    {
+      Pattern pattern_ = p.pattern_.accept(this, arg);
+      Register register_ = p.register_.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.EPatternWithRegister(pattern_, register_);
+    }
+    public PatternType visit(net.lemonmodel.patterns.parser.Absyn.ECorePattern p, A arg)
+    {
+      Pattern pattern_ = p.pattern_.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.ECorePattern(pattern_);
     }
 
 /* Pattern */
@@ -829,6 +846,63 @@ public class ComposVisitor<A> implements
     {
 
       return new net.lemonmodel.patterns.parser.Absyn.EOtherGender();
+    }
+
+/* Register */
+    public Register visit(net.lemonmodel.patterns.parser.Absyn.EBenchLevelRegister p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EBenchLevelRegister();
+    }
+    public Register visit(net.lemonmodel.patterns.parser.Absyn.EDialectRegister p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EDialectRegister();
+    }
+    public Register visit(net.lemonmodel.patterns.parser.Absyn.EFacetiousRegister p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EFacetiousRegister();
+    }
+    public Register visit(net.lemonmodel.patterns.parser.Absyn.EFormalRegister p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EFormalRegister();
+    }
+    public Register visit(net.lemonmodel.patterns.parser.Absyn.EInHouseRegister p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EInHouseRegister();
+    }
+    public Register visit(net.lemonmodel.patterns.parser.Absyn.EIronicRegister p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EIronicRegister();
+    }
+    public Register visit(net.lemonmodel.patterns.parser.Absyn.ENeutralRegister p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ENeutralRegister();
+    }
+    public Register visit(net.lemonmodel.patterns.parser.Absyn.ESlangRegister p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ESlangRegister();
+    }
+    public Register visit(net.lemonmodel.patterns.parser.Absyn.ETabooRegister p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ETabooRegister();
+    }
+    public Register visit(net.lemonmodel.patterns.parser.Absyn.ETechnicalRegister p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ETechnicalRegister();
+    }
+    public Register visit(net.lemonmodel.patterns.parser.Absyn.EVulgarRegister p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EVulgarRegister();
     }
 
 /* URI */

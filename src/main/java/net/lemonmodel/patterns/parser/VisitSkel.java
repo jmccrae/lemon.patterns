@@ -39,8 +39,29 @@ public class VisitSkel
 
       p.uri_.accept(new URIVisitor<R,A>(), arg);
       //p.string_;
-      for (Pattern x : p.listpattern_) {
+      for (PatternType x : p.listpatterntype_) {
       }
+
+      return null;
+    }
+
+  }
+  public class PatternTypeVisitor<R,A> implements PatternType.Visitor<R,A>
+  {
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EPatternWithRegister p, A arg)
+    {
+      /* Code For EPatternWithRegister Goes Here */
+
+      p.pattern_.accept(new PatternVisitor<R,A>(), arg);
+      p.register_.accept(new RegisterVisitor<R,A>(), arg);
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ECorePattern p, A arg)
+    {
+      /* Code For ECorePattern Goes Here */
+
+      p.pattern_.accept(new PatternVisitor<R,A>(), arg);
 
       return null;
     }
@@ -1067,6 +1088,87 @@ public class VisitSkel
     public R visit(net.lemonmodel.patterns.parser.Absyn.EOtherGender p, A arg)
     {
       /* Code For EOtherGender Goes Here */
+
+
+      return null;
+    }
+
+  }
+  public class RegisterVisitor<R,A> implements Register.Visitor<R,A>
+  {
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EBenchLevelRegister p, A arg)
+    {
+      /* Code For EBenchLevelRegister Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EDialectRegister p, A arg)
+    {
+      /* Code For EDialectRegister Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EFacetiousRegister p, A arg)
+    {
+      /* Code For EFacetiousRegister Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EFormalRegister p, A arg)
+    {
+      /* Code For EFormalRegister Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EInHouseRegister p, A arg)
+    {
+      /* Code For EInHouseRegister Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EIronicRegister p, A arg)
+    {
+      /* Code For EIronicRegister Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ENeutralRegister p, A arg)
+    {
+      /* Code For ENeutralRegister Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ESlangRegister p, A arg)
+    {
+      /* Code For ESlangRegister Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ETabooRegister p, A arg)
+    {
+      /* Code For ETabooRegister Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ETechnicalRegister p, A arg)
+    {
+      /* Code For ETechnicalRegister Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EVulgarRegister p, A arg)
+    {
+      /* Code For EVulgarRegister Goes Here */
 
 
       return null;
