@@ -6,6 +6,7 @@ import net.lemonmodel.patterns.parser.Absyn.*;
 public interface AllVisitor<R,A> extends
   net.lemonmodel.patterns.parser.Absyn.Statements.Visitor<R,A>,
   net.lemonmodel.patterns.parser.Absyn.Statement.Visitor<R,A>,
+  net.lemonmodel.patterns.parser.Absyn.PatternType.Visitor<R,A>,
   net.lemonmodel.patterns.parser.Absyn.Pattern.Visitor<R,A>,
   net.lemonmodel.patterns.parser.Absyn.NounPattern.Visitor<R,A>,
   net.lemonmodel.patterns.parser.Absyn.VerbPattern.Visitor<R,A>,
@@ -21,5 +22,6 @@ public interface AllVisitor<R,A> extends
   net.lemonmodel.patterns.parser.Absyn.Category.Visitor<R,A>,
   net.lemonmodel.patterns.parser.Absyn.POSTag.Visitor<R,A>,
   net.lemonmodel.patterns.parser.Absyn.Gender.Visitor<R,A>,
+  net.lemonmodel.patterns.parser.Absyn.Register.Visitor<R,A>,
   net.lemonmodel.patterns.parser.Absyn.URI.Visitor<R,A>
 {}

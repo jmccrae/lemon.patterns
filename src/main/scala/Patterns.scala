@@ -67,8 +67,29 @@ package net.lemonmodel {
     
     trait Pattern {
       def makeWithForm(form : Form) : Pattern
+      def withRegister(register : Register) : Pattern
       def toXML(namer : URINamer, lang : String)  : Node
+      def registerXML(register : Option[Register]) = {
+	{register match {
+	    case Some(r) => <lexinfo:register ref:resource={lexinfo(r.toString()).toString()}/>
+	    case None =>
+	  }
+         }
+      } 
     }
+    
+   sealed trait Register
+    object BenchLevelRegister extends Register { override def toString = "benchLevelRegister" }
+    object DialectRegister extends Register { override def toString = "dialectRegister" }
+    object FacetiousRegister extends Register { override def toString = "facetiousRegister" }
+    object FormalRegister extends Register { override def toString = "formalRegister" }
+    object InHouseRegister extends Register { override def toString = "inHouseRegister" }
+    object IronicRegister extends Register { override def toString = "ironicRegister" }
+    object NeutralRegister extends Register { override def toString = "neutralRegister" }
+    object SlangRegister extends Register { override def toString = "slangRegister" }
+    object TabooRegister extends Register { override def toString = "tabooRegister" }
+    object TechnicalRegister extends Register { override def toString = "technicalRegister" }
+    object VulgarRegister extends Register { override def toString = "vulgarRegister" }
     
     /**
     * An other (non-canonical) form of a word

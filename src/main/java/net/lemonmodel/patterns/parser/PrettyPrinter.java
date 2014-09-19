@@ -105,6 +105,21 @@ public class PrettyPrinter
     buf_.delete(0,buf_.length());
     return temp;
   }
+  public static String print(net.lemonmodel.patterns.parser.Absyn.PatternType foo)
+  {
+    pp(foo, 0);
+    trim();
+    String temp = buf_.toString();
+    buf_.delete(0,buf_.length());
+    return temp;
+  }
+  public static String show(net.lemonmodel.patterns.parser.Absyn.PatternType foo)
+  {
+    sh(foo);
+    String temp = buf_.toString();
+    buf_.delete(0,buf_.length());
+    return temp;
+  }
   public static String print(net.lemonmodel.patterns.parser.Absyn.Pattern foo)
   {
     pp(foo, 0);
@@ -165,7 +180,7 @@ public class PrettyPrinter
     buf_.delete(0,buf_.length());
     return temp;
   }
-  public static String print(net.lemonmodel.patterns.parser.Absyn.ListPattern foo)
+  public static String print(net.lemonmodel.patterns.parser.Absyn.ListPatternType foo)
   {
     pp(foo, 0);
     trim();
@@ -173,7 +188,7 @@ public class PrettyPrinter
     buf_.delete(0,buf_.length());
     return temp;
   }
-  public static String show(net.lemonmodel.patterns.parser.Absyn.ListPattern foo)
+  public static String show(net.lemonmodel.patterns.parser.Absyn.ListPatternType foo)
   {
     sh(foo);
     String temp = buf_.toString();
@@ -405,6 +420,21 @@ public class PrettyPrinter
     buf_.delete(0,buf_.length());
     return temp;
   }
+  public static String print(net.lemonmodel.patterns.parser.Absyn.Register foo)
+  {
+    pp(foo, 0);
+    trim();
+    String temp = buf_.toString();
+    buf_.delete(0,buf_.length());
+    return temp;
+  }
+  public static String show(net.lemonmodel.patterns.parser.Absyn.Register foo)
+  {
+    sh(foo);
+    String temp = buf_.toString();
+    buf_.delete(0,buf_.length());
+    return temp;
+  }
   public static String print(net.lemonmodel.patterns.parser.Absyn.URI foo)
   {
     pp(foo, 0);
@@ -456,7 +486,7 @@ public class PrettyPrinter
        render(",");
        printQuoted(_elexicon.string_);
        render(",");
-       pp(_elexicon.listpattern_, 0);
+       pp(_elexicon.listpatterntype_, 0);
        render(")");
        if (_i_ > 0) render(_R_PAREN);
     }
@@ -473,6 +503,25 @@ public class PrettyPrinter
          render("");
        }
      }
+  }
+
+  private static void pp(net.lemonmodel.patterns.parser.Absyn.PatternType foo, int _i_)
+  {
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EPatternWithRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EPatternWithRegister _epatternwithregister = (net.lemonmodel.patterns.parser.Absyn.EPatternWithRegister) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       pp(_epatternwithregister.pattern_, 0);
+       pp(_epatternwithregister.register_, 0);
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ECorePattern)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ECorePattern _ecorepattern = (net.lemonmodel.patterns.parser.Absyn.ECorePattern) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       pp(_ecorepattern.pattern_, 0);
+       if (_i_ > 0) render(_R_PAREN);
+    }
   }
 
   private static void pp(net.lemonmodel.patterns.parser.Absyn.Pattern foo, int _i_)
@@ -977,9 +1026,9 @@ public class PrettyPrinter
     }
   }
 
-  private static void pp(net.lemonmodel.patterns.parser.Absyn.ListPattern foo, int _i_)
+  private static void pp(net.lemonmodel.patterns.parser.Absyn.ListPatternType foo, int _i_)
   {
-     for (java.util.Iterator<Pattern> it = foo.iterator(); it.hasNext();)
+     for (java.util.Iterator<PatternType> it = foo.iterator(); it.hasNext();)
      {
        pp(it.next(), 0);
        if (it.hasNext()) {
@@ -1721,6 +1770,87 @@ public class PrettyPrinter
     }
   }
 
+  private static void pp(net.lemonmodel.patterns.parser.Absyn.Register foo, int _i_)
+  {
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EBenchLevelRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EBenchLevelRegister _ebenchlevelregister = (net.lemonmodel.patterns.parser.Absyn.EBenchLevelRegister) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("benchLevelRegister");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EDialectRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EDialectRegister _edialectregister = (net.lemonmodel.patterns.parser.Absyn.EDialectRegister) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("dialectRegister");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EFacetiousRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EFacetiousRegister _efacetiousregister = (net.lemonmodel.patterns.parser.Absyn.EFacetiousRegister) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("facetiousRegister");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EFormalRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EFormalRegister _eformalregister = (net.lemonmodel.patterns.parser.Absyn.EFormalRegister) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("formalRegister");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EInHouseRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EInHouseRegister _einhouseregister = (net.lemonmodel.patterns.parser.Absyn.EInHouseRegister) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("inHouseRegister");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EIronicRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EIronicRegister _eironicregister = (net.lemonmodel.patterns.parser.Absyn.EIronicRegister) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("ironicRegister");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ENeutralRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ENeutralRegister _eneutralregister = (net.lemonmodel.patterns.parser.Absyn.ENeutralRegister) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("neutralRegister");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ESlangRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ESlangRegister _eslangregister = (net.lemonmodel.patterns.parser.Absyn.ESlangRegister) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("slangRegister");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ETabooRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ETabooRegister _etabooregister = (net.lemonmodel.patterns.parser.Absyn.ETabooRegister) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("tabooRegister");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ETechnicalRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ETechnicalRegister _etechnicalregister = (net.lemonmodel.patterns.parser.Absyn.ETechnicalRegister) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("technicalRegister");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EVulgarRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EVulgarRegister _evulgarregister = (net.lemonmodel.patterns.parser.Absyn.EVulgarRegister) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("vulgarRegister");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+  }
+
   private static void pp(net.lemonmodel.patterns.parser.Absyn.URI foo, int _i_)
   {
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EQName)
@@ -1783,7 +1913,7 @@ public class PrettyPrinter
        sh(_elexicon.uri_);
        sh(_elexicon.string_);
        render("[");
-       sh(_elexicon.listpattern_);
+       sh(_elexicon.listpatterntype_);
        render("]");
        render(")");
     }
@@ -1797,6 +1927,27 @@ public class PrettyPrinter
        if (it.hasNext())
          render(",");
      }
+  }
+
+  private static void sh(net.lemonmodel.patterns.parser.Absyn.PatternType foo)
+  {
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EPatternWithRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EPatternWithRegister _epatternwithregister = (net.lemonmodel.patterns.parser.Absyn.EPatternWithRegister) foo;
+       render("(");
+       render("EPatternWithRegister");
+       sh(_epatternwithregister.pattern_);
+       sh(_epatternwithregister.register_);
+       render(")");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ECorePattern)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ECorePattern _ecorepattern = (net.lemonmodel.patterns.parser.Absyn.ECorePattern) foo;
+       render("(");
+       render("ECorePattern");
+       sh(_ecorepattern.pattern_);
+       render(")");
+    }
   }
 
   private static void sh(net.lemonmodel.patterns.parser.Absyn.Pattern foo)
@@ -2159,9 +2310,9 @@ public class PrettyPrinter
     }
   }
 
-  private static void sh(net.lemonmodel.patterns.parser.Absyn.ListPattern foo)
+  private static void sh(net.lemonmodel.patterns.parser.Absyn.ListPatternType foo)
   {
-     for (java.util.Iterator<Pattern> it = foo.iterator(); it.hasNext();)
+     for (java.util.Iterator<PatternType> it = foo.iterator(); it.hasNext();)
      {
        sh(it.next());
        if (it.hasNext())
@@ -2767,6 +2918,65 @@ public class PrettyPrinter
     {
        net.lemonmodel.patterns.parser.Absyn.EOtherGender _eothergender = (net.lemonmodel.patterns.parser.Absyn.EOtherGender) foo;
        render("EOtherGender");
+    }
+  }
+
+  private static void sh(net.lemonmodel.patterns.parser.Absyn.Register foo)
+  {
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EBenchLevelRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EBenchLevelRegister _ebenchlevelregister = (net.lemonmodel.patterns.parser.Absyn.EBenchLevelRegister) foo;
+       render("EBenchLevelRegister");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EDialectRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EDialectRegister _edialectregister = (net.lemonmodel.patterns.parser.Absyn.EDialectRegister) foo;
+       render("EDialectRegister");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EFacetiousRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EFacetiousRegister _efacetiousregister = (net.lemonmodel.patterns.parser.Absyn.EFacetiousRegister) foo;
+       render("EFacetiousRegister");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EFormalRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EFormalRegister _eformalregister = (net.lemonmodel.patterns.parser.Absyn.EFormalRegister) foo;
+       render("EFormalRegister");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EInHouseRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EInHouseRegister _einhouseregister = (net.lemonmodel.patterns.parser.Absyn.EInHouseRegister) foo;
+       render("EInHouseRegister");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EIronicRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EIronicRegister _eironicregister = (net.lemonmodel.patterns.parser.Absyn.EIronicRegister) foo;
+       render("EIronicRegister");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ENeutralRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ENeutralRegister _eneutralregister = (net.lemonmodel.patterns.parser.Absyn.ENeutralRegister) foo;
+       render("ENeutralRegister");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ESlangRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ESlangRegister _eslangregister = (net.lemonmodel.patterns.parser.Absyn.ESlangRegister) foo;
+       render("ESlangRegister");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ETabooRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ETabooRegister _etabooregister = (net.lemonmodel.patterns.parser.Absyn.ETabooRegister) foo;
+       render("ETabooRegister");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ETechnicalRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ETechnicalRegister _etechnicalregister = (net.lemonmodel.patterns.parser.Absyn.ETechnicalRegister) foo;
+       render("ETechnicalRegister");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EVulgarRegister)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EVulgarRegister _evulgarregister = (net.lemonmodel.patterns.parser.Absyn.EVulgarRegister) foo;
+       render("EVulgarRegister");
     }
   }
 
