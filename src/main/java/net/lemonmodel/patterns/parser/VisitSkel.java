@@ -742,9 +742,23 @@ public class VisitSkel
 
       return null;
     }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.ENominative p, A arg)
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAbessive p, A arg)
     {
-      /* Code For ENominative Goes Here */
+      /* Code For EAbessive Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAblative p, A arg)
+    {
+      /* Code For EAblative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAbsolutive p, A arg)
+    {
+      /* Code For EAbsolutive Goes Here */
 
 
       return null;
@@ -756,9 +770,44 @@ public class VisitSkel
 
       return null;
     }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EGenitive p, A arg)
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAdessive p, A arg)
     {
-      /* Code For EGenitive Goes Here */
+      /* Code For EAdessive Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAditive p, A arg)
+    {
+      /* Code For EAditive Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAllative p, A arg)
+    {
+      /* Code For EAllative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EBenefactive p, A arg)
+    {
+      /* Code For EBenefactive Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ECausative p, A arg)
+    {
+      /* Code For ECausative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EComitative p, A arg)
+    {
+      /* Code For EComitative Goes Here */
 
 
       return null;
@@ -766,6 +815,153 @@ public class VisitSkel
     public R visit(net.lemonmodel.patterns.parser.Absyn.EDative p, A arg)
     {
       /* Code For EDative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EDelative p, A arg)
+    {
+      /* Code For EDelative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EElative p, A arg)
+    {
+      /* Code For EElative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EEquative p, A arg)
+    {
+      /* Code For EEquative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EErgative p, A arg)
+    {
+      /* Code For EErgative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EEssive p, A arg)
+    {
+      /* Code For EEssive Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EGenitive p, A arg)
+    {
+      /* Code For EGenitive Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EIllative p, A arg)
+    {
+      /* Code For EIllative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EInessive p, A arg)
+    {
+      /* Code For EInessive Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EInstrumental p, A arg)
+    {
+      /* Code For EInstrumental Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ELative p, A arg)
+    {
+      /* Code For ELative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ELocative p, A arg)
+    {
+      /* Code For ELocative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ENominative p, A arg)
+    {
+      /* Code For ENominative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EOblique p, A arg)
+    {
+      /* Code For EOblique Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EPartitive p, A arg)
+    {
+      /* Code For EPartitive Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EProlative p, A arg)
+    {
+      /* Code For EProlative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ESociative p, A arg)
+    {
+      /* Code For ESociative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ESublative p, A arg)
+    {
+      /* Code For ESublative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ESuperessive p, A arg)
+    {
+      /* Code For ESuperessive Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ETerminative p, A arg)
+    {
+      /* Code For ETerminative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ETranslative p, A arg)
+    {
+      /* Code For ETranslative Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EVocative p, A arg)
+    {
+      /* Code For EVocative Goes Here */
 
 
       return null;

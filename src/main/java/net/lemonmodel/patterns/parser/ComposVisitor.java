@@ -599,25 +599,165 @@ public class ComposVisitor<A> implements
 
       return new net.lemonmodel.patterns.parser.Absyn.EPlural();
     }
-    public Category visit(net.lemonmodel.patterns.parser.Absyn.ENominative p, A arg)
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EAbessive p, A arg)
     {
 
-      return new net.lemonmodel.patterns.parser.Absyn.ENominative();
+      return new net.lemonmodel.patterns.parser.Absyn.EAbessive();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EAblative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EAblative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EAbsolutive p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EAbsolutive();
     }
     public Category visit(net.lemonmodel.patterns.parser.Absyn.EAccusative p, A arg)
     {
 
       return new net.lemonmodel.patterns.parser.Absyn.EAccusative();
     }
-    public Category visit(net.lemonmodel.patterns.parser.Absyn.EGenitive p, A arg)
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EAdessive p, A arg)
     {
 
-      return new net.lemonmodel.patterns.parser.Absyn.EGenitive();
+      return new net.lemonmodel.patterns.parser.Absyn.EAdessive();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EAditive p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EAditive();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EAllative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EAllative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EBenefactive p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EBenefactive();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.ECausative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ECausative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EComitative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EComitative();
     }
     public Category visit(net.lemonmodel.patterns.parser.Absyn.EDative p, A arg)
     {
 
       return new net.lemonmodel.patterns.parser.Absyn.EDative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EDelative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EDelative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EElative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EElative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EEquative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EEquative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EErgative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EErgative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EEssive p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EEssive();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EGenitive p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EGenitive();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EIllative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EIllative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EInessive p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EInessive();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EInstrumental p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EInstrumental();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.ELative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ELative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.ELocative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ELocative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.ENominative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ENominative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EOblique p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EOblique();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EPartitive p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EPartitive();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EProlative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EProlative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.ESociative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ESociative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.ESublative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ESublative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.ESuperessive p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ESuperessive();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.ETerminative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ETerminative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.ETranslative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.ETranslative();
+    }
+    public Category visit(net.lemonmodel.patterns.parser.Absyn.EVocative p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EVocative();
     }
     public Category visit(net.lemonmodel.patterns.parser.Absyn.EComparative p, A arg)
     {

@@ -478,7 +478,15 @@ public abstract class FoldVisitor<R,A> implements AllVisitor<R,A> {
       R r = leaf(arg);
       return r;
     }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.ENominative p, A arg) {
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAbessive p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAblative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAbsolutive p, A arg) {
       R r = leaf(arg);
       return r;
     }
@@ -486,11 +494,115 @@ public abstract class FoldVisitor<R,A> implements AllVisitor<R,A> {
       R r = leaf(arg);
       return r;
     }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EGenitive p, A arg) {
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAdessive p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAditive p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAllative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EBenefactive p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ECausative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EComitative p, A arg) {
       R r = leaf(arg);
       return r;
     }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EDative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EDelative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EElative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EEquative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EErgative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EEssive p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EGenitive p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EIllative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EInessive p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EInstrumental p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ELative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ELocative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ENominative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EOblique p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EPartitive p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EProlative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ESociative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ESublative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ESuperessive p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ETerminative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.ETranslative p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EVocative p, A arg) {
       R r = leaf(arg);
       return r;
     }

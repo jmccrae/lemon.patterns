@@ -60,33 +60,42 @@ The reserved words used in parser are the following: \\
 {\reserved{PossessiveAdjunct}} &{\reserved{PostpositionalObject}} &{\reserved{PrepositionalObject}} \\
 {\reserved{RelationalAdjective}} &{\reserved{RelationalMultivalentNoun}} &{\reserved{RelationalNoun}} \\
 {\reserved{ScalarAdjective}} &{\reserved{StateVerb}} &{\reserved{Subject}} \\
-{\reserved{accusative}} &{\reserved{adjective}} &{\reserved{adposition}} \\
-{\reserved{adverb}} &{\reserved{article}} &{\reserved{as}} \\
-{\reserved{benchLevelRegister}} &{\reserved{bullet}} &{\reserved{central}} \\
-{\reserved{circumposition}} &{\reserved{class}} &{\reserved{colon}} \\
+{\reserved{abessive}} &{\reserved{ablative}} &{\reserved{absolutive}} \\
+{\reserved{accusative}} &{\reserved{adessive}} &{\reserved{aditive}} \\
+{\reserved{adjective}} &{\reserved{adposition}} &{\reserved{adverb}} \\
+{\reserved{allative}} &{\reserved{article}} &{\reserved{as}} \\
+{\reserved{benchLevelRegister}} &{\reserved{benefactive}} &{\reserved{bullet}} \\
+{\reserved{causative}} &{\reserved{central}} &{\reserved{circumposition}} \\
+{\reserved{class}} &{\reserved{colon}} &{\reserved{comitative}} \\
 {\reserved{comma}} &{\reserved{commonGender}} &{\reserved{comparative}} \\
 {\reserved{conditional}} &{\reserved{conjunction}} &{\reserved{contravariant}} \\
 {\reserved{copula}} &{\reserved{covariant}} &{\reserved{dative}} \\
-{\reserved{determiner}} &{\reserved{dialectRegister}} &{\reserved{dual}} \\
-{\reserved{durative}} &{\reserved{facetiousRegister}} &{\reserved{feminine}} \\
-{\reserved{firstPerson}} &{\reserved{for}} &{\reserved{formalRegister}} \\
-{\reserved{future}} &{\reserved{genitive}} &{\reserved{gerundive}} \\
-{\reserved{head}} &{\reserved{imperative}} &{\reserved{imperfect}} \\
-{\reserved{inHouseRegister}} &{\reserved{indicative}} &{\reserved{infinitive}} \\
-{\reserved{instant}} &{\reserved{interjection}} &{\reserved{ironicRegister}} \\
-{\reserved{masculine}} &{\reserved{neuter}} &{\reserved{neutralRegister}} \\
-{\reserved{nominative}} &{\reserved{nontelic}} &{\reserved{noun}} \\
-{\reserved{numeral}} &{\reserved{optional}} &{\reserved{otherGender}} \\
-{\reserved{participle}} &{\reserved{particle}} &{\reserved{past}} \\
+{\reserved{delative}} &{\reserved{determiner}} &{\reserved{dialectRegister}} \\
+{\reserved{dual}} &{\reserved{durative}} &{\reserved{elative}} \\
+{\reserved{equative}} &{\reserved{ergative}} &{\reserved{essive}} \\
+{\reserved{facetiousRegister}} &{\reserved{feminine}} &{\reserved{firstPerson}} \\
+{\reserved{for}} &{\reserved{formalRegister}} &{\reserved{future}} \\
+{\reserved{genitive}} &{\reserved{gerundive}} &{\reserved{head}} \\
+{\reserved{illative}} &{\reserved{imperative}} &{\reserved{imperfect}} \\
+{\reserved{inHouseRegister}} &{\reserved{indicative}} &{\reserved{inessive}} \\
+{\reserved{infinitive}} &{\reserved{instant}} &{\reserved{instrumental}} \\
+{\reserved{interjection}} &{\reserved{ironicRegister}} &{\reserved{lative}} \\
+{\reserved{locative}} &{\reserved{masculine}} &{\reserved{neuter}} \\
+{\reserved{neutralRegister}} &{\reserved{nominative}} &{\reserved{nontelic}} \\
+{\reserved{noun}} &{\reserved{numeral}} &{\reserved{oblique}} \\
+{\reserved{optional}} &{\reserved{otherGender}} &{\reserved{participle}} \\
+{\reserved{particle}} &{\reserved{partitive}} &{\reserved{past}} \\
 {\reserved{plural}} &{\reserved{point}} &{\reserved{postposition}} \\
-{\reserved{preposition}} &{\reserved{present}} &{\reserved{pronoun}} \\
-{\reserved{propObj}} &{\reserved{propSubj}} &{\reserved{property}} \\
-{\reserved{punctuation}} &{\reserved{relationalArg}} &{\reserved{restrictedTo}} \\
-{\reserved{secondPerson}} &{\reserved{semiColon}} &{\reserved{singular}} \\
-{\reserved{slangRegister}} &{\reserved{slash}} &{\reserved{subjunctive}} \\
-{\reserved{superlative}} &{\reserved{tabooRegister}} &{\reserved{technicalRegister}} \\
-{\reserved{telic}} &{\reserved{thirdPerson}} &{\reserved{verb}} \\
-{\reserved{vulgarRegister}} &{\reserved{with}} & \\
+{\reserved{preposition}} &{\reserved{present}} &{\reserved{prolative}} \\
+{\reserved{pronoun}} &{\reserved{propObj}} &{\reserved{propSubj}} \\
+{\reserved{property}} &{\reserved{punctuation}} &{\reserved{relationalArg}} \\
+{\reserved{restrictedTo}} &{\reserved{secondPerson}} &{\reserved{semiColon}} \\
+{\reserved{singular}} &{\reserved{slangRegister}} &{\reserved{slash}} \\
+{\reserved{sociative}} &{\reserved{subjunctive}} &{\reserved{sublative}} \\
+{\reserved{superessive}} &{\reserved{superlative}} &{\reserved{tabooRegister}} \\
+{\reserved{technicalRegister}} &{\reserved{telic}} &{\reserved{terminative}} \\
+{\reserved{thirdPerson}} &{\reserved{translative}} &{\reserved{verb}} \\
+{\reserved{vocative}} &{\reserved{vulgarRegister}} &{\reserved{with}} \\
 \end{tabular}\\
 
 The symbols used in parser are the following: \\
@@ -262,10 +271,38 @@ All other symbols are terminals.\\
 {\nonterminal{Category}} & {\arrow}  &{\terminal{singular}}  \\
  & {\delimit}  &{\terminal{dual}}  \\
  & {\delimit}  &{\terminal{plural}}  \\
- & {\delimit}  &{\terminal{nominative}}  \\
+ & {\delimit}  &{\terminal{abessive}}  \\
+ & {\delimit}  &{\terminal{ablative}}  \\
+ & {\delimit}  &{\terminal{absolutive}}  \\
  & {\delimit}  &{\terminal{accusative}}  \\
- & {\delimit}  &{\terminal{genitive}}  \\
+ & {\delimit}  &{\terminal{adessive}}  \\
+ & {\delimit}  &{\terminal{aditive}}  \\
+ & {\delimit}  &{\terminal{allative}}  \\
+ & {\delimit}  &{\terminal{benefactive}}  \\
+ & {\delimit}  &{\terminal{causative}}  \\
+ & {\delimit}  &{\terminal{comitative}}  \\
  & {\delimit}  &{\terminal{dative}}  \\
+ & {\delimit}  &{\terminal{delative}}  \\
+ & {\delimit}  &{\terminal{elative}}  \\
+ & {\delimit}  &{\terminal{equative}}  \\
+ & {\delimit}  &{\terminal{ergative}}  \\
+ & {\delimit}  &{\terminal{essive}}  \\
+ & {\delimit}  &{\terminal{genitive}}  \\
+ & {\delimit}  &{\terminal{illative}}  \\
+ & {\delimit}  &{\terminal{inessive}}  \\
+ & {\delimit}  &{\terminal{instrumental}}  \\
+ & {\delimit}  &{\terminal{lative}}  \\
+ & {\delimit}  &{\terminal{locative}}  \\
+ & {\delimit}  &{\terminal{nominative}}  \\
+ & {\delimit}  &{\terminal{oblique}}  \\
+ & {\delimit}  &{\terminal{partitive}}  \\
+ & {\delimit}  &{\terminal{prolative}}  \\
+ & {\delimit}  &{\terminal{sociative}}  \\
+ & {\delimit}  &{\terminal{sublative}}  \\
+ & {\delimit}  &{\terminal{superessive}}  \\
+ & {\delimit}  &{\terminal{terminative}}  \\
+ & {\delimit}  &{\terminal{translative}}  \\
+ & {\delimit}  &{\terminal{vocative}}  \\
  & {\delimit}  &{\terminal{comparative}}  \\
  & {\delimit}  &{\terminal{superlative}}  \\
  & {\delimit}  &{\terminal{present}}  \\

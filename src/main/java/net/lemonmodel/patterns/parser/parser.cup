@@ -88,86 +88,114 @@ terminal _SYMB_33;    //   RelationalNoun
 terminal _SYMB_34;    //   ScalarAdjective
 terminal _SYMB_35;    //   StateVerb
 terminal _SYMB_36;    //   Subject
-terminal _SYMB_37;    //   accusative
-terminal _SYMB_38;    //   adjective
-terminal _SYMB_39;    //   adposition
-terminal _SYMB_40;    //   adverb
-terminal _SYMB_41;    //   article
-terminal _SYMB_42;    //   as
-terminal _SYMB_43;    //   benchLevelRegister
-terminal _SYMB_44;    //   bullet
-terminal _SYMB_45;    //   central
-terminal _SYMB_46;    //   circumposition
-terminal _SYMB_47;    //   class
-terminal _SYMB_48;    //   colon
-terminal _SYMB_49;    //   comma
-terminal _SYMB_50;    //   commonGender
-terminal _SYMB_51;    //   comparative
-terminal _SYMB_52;    //   conditional
-terminal _SYMB_53;    //   conjunction
-terminal _SYMB_54;    //   contravariant
-terminal _SYMB_55;    //   copula
-terminal _SYMB_56;    //   covariant
-terminal _SYMB_57;    //   dative
-terminal _SYMB_58;    //   determiner
-terminal _SYMB_59;    //   dialectRegister
-terminal _SYMB_60;    //   dual
-terminal _SYMB_61;    //   durative
-terminal _SYMB_62;    //   facetiousRegister
-terminal _SYMB_63;    //   feminine
-terminal _SYMB_64;    //   firstPerson
-terminal _SYMB_65;    //   for
-terminal _SYMB_66;    //   formalRegister
-terminal _SYMB_67;    //   future
-terminal _SYMB_68;    //   genitive
-terminal _SYMB_69;    //   gerundive
-terminal _SYMB_70;    //   head
-terminal _SYMB_71;    //   imperative
-terminal _SYMB_72;    //   imperfect
-terminal _SYMB_73;    //   inHouseRegister
-terminal _SYMB_74;    //   indicative
-terminal _SYMB_75;    //   infinitive
-terminal _SYMB_76;    //   instant
-terminal _SYMB_77;    //   interjection
-terminal _SYMB_78;    //   ironicRegister
-terminal _SYMB_79;    //   masculine
-terminal _SYMB_80;    //   neuter
-terminal _SYMB_81;    //   neutralRegister
-terminal _SYMB_82;    //   nominative
-terminal _SYMB_83;    //   nontelic
-terminal _SYMB_84;    //   noun
-terminal _SYMB_85;    //   numeral
-terminal _SYMB_86;    //   optional
-terminal _SYMB_87;    //   otherGender
-terminal _SYMB_88;    //   participle
-terminal _SYMB_89;    //   particle
-terminal _SYMB_90;    //   past
-terminal _SYMB_91;    //   plural
-terminal _SYMB_92;    //   point
-terminal _SYMB_93;    //   postposition
-terminal _SYMB_94;    //   preposition
-terminal _SYMB_95;    //   present
-terminal _SYMB_96;    //   pronoun
-terminal _SYMB_97;    //   propObj
-terminal _SYMB_98;    //   propSubj
-terminal _SYMB_99;    //   property
-terminal _SYMB_100;    //   punctuation
-terminal _SYMB_101;    //   relationalArg
-terminal _SYMB_102;    //   restrictedTo
-terminal _SYMB_103;    //   secondPerson
-terminal _SYMB_104;    //   semiColon
-terminal _SYMB_105;    //   singular
-terminal _SYMB_106;    //   slangRegister
-terminal _SYMB_107;    //   slash
-terminal _SYMB_108;    //   subjunctive
-terminal _SYMB_109;    //   superlative
-terminal _SYMB_110;    //   tabooRegister
-terminal _SYMB_111;    //   technicalRegister
-terminal _SYMB_112;    //   telic
-terminal _SYMB_113;    //   thirdPerson
-terminal _SYMB_114;    //   verb
-terminal _SYMB_115;    //   vulgarRegister
-terminal _SYMB_116;    //   with
+terminal _SYMB_37;    //   abessive
+terminal _SYMB_38;    //   ablative
+terminal _SYMB_39;    //   absolutive
+terminal _SYMB_40;    //   accusative
+terminal _SYMB_41;    //   adessive
+terminal _SYMB_42;    //   aditive
+terminal _SYMB_43;    //   adjective
+terminal _SYMB_44;    //   adposition
+terminal _SYMB_45;    //   adverb
+terminal _SYMB_46;    //   allative
+terminal _SYMB_47;    //   article
+terminal _SYMB_48;    //   as
+terminal _SYMB_49;    //   benchLevelRegister
+terminal _SYMB_50;    //   benefactive
+terminal _SYMB_51;    //   bullet
+terminal _SYMB_52;    //   causative
+terminal _SYMB_53;    //   central
+terminal _SYMB_54;    //   circumposition
+terminal _SYMB_55;    //   class
+terminal _SYMB_56;    //   colon
+terminal _SYMB_57;    //   comitative
+terminal _SYMB_58;    //   comma
+terminal _SYMB_59;    //   commonGender
+terminal _SYMB_60;    //   comparative
+terminal _SYMB_61;    //   conditional
+terminal _SYMB_62;    //   conjunction
+terminal _SYMB_63;    //   contravariant
+terminal _SYMB_64;    //   copula
+terminal _SYMB_65;    //   covariant
+terminal _SYMB_66;    //   dative
+terminal _SYMB_67;    //   delative
+terminal _SYMB_68;    //   determiner
+terminal _SYMB_69;    //   dialectRegister
+terminal _SYMB_70;    //   dual
+terminal _SYMB_71;    //   durative
+terminal _SYMB_72;    //   elative
+terminal _SYMB_73;    //   equative
+terminal _SYMB_74;    //   ergative
+terminal _SYMB_75;    //   essive
+terminal _SYMB_76;    //   facetiousRegister
+terminal _SYMB_77;    //   feminine
+terminal _SYMB_78;    //   firstPerson
+terminal _SYMB_79;    //   for
+terminal _SYMB_80;    //   formalRegister
+terminal _SYMB_81;    //   future
+terminal _SYMB_82;    //   genitive
+terminal _SYMB_83;    //   gerundive
+terminal _SYMB_84;    //   head
+terminal _SYMB_85;    //   illative
+terminal _SYMB_86;    //   imperative
+terminal _SYMB_87;    //   imperfect
+terminal _SYMB_88;    //   inHouseRegister
+terminal _SYMB_89;    //   indicative
+terminal _SYMB_90;    //   inessive
+terminal _SYMB_91;    //   infinitive
+terminal _SYMB_92;    //   instant
+terminal _SYMB_93;    //   instrumental
+terminal _SYMB_94;    //   interjection
+terminal _SYMB_95;    //   ironicRegister
+terminal _SYMB_96;    //   lative
+terminal _SYMB_97;    //   locative
+terminal _SYMB_98;    //   masculine
+terminal _SYMB_99;    //   neuter
+terminal _SYMB_100;    //   neutralRegister
+terminal _SYMB_101;    //   nominative
+terminal _SYMB_102;    //   nontelic
+terminal _SYMB_103;    //   noun
+terminal _SYMB_104;    //   numeral
+terminal _SYMB_105;    //   oblique
+terminal _SYMB_106;    //   optional
+terminal _SYMB_107;    //   otherGender
+terminal _SYMB_108;    //   participle
+terminal _SYMB_109;    //   particle
+terminal _SYMB_110;    //   partitive
+terminal _SYMB_111;    //   past
+terminal _SYMB_112;    //   plural
+terminal _SYMB_113;    //   point
+terminal _SYMB_114;    //   postposition
+terminal _SYMB_115;    //   preposition
+terminal _SYMB_116;    //   present
+terminal _SYMB_117;    //   prolative
+terminal _SYMB_118;    //   pronoun
+terminal _SYMB_119;    //   propObj
+terminal _SYMB_120;    //   propSubj
+terminal _SYMB_121;    //   property
+terminal _SYMB_122;    //   punctuation
+terminal _SYMB_123;    //   relationalArg
+terminal _SYMB_124;    //   restrictedTo
+terminal _SYMB_125;    //   secondPerson
+terminal _SYMB_126;    //   semiColon
+terminal _SYMB_127;    //   singular
+terminal _SYMB_128;    //   slangRegister
+terminal _SYMB_129;    //   slash
+terminal _SYMB_130;    //   sociative
+terminal _SYMB_131;    //   subjunctive
+terminal _SYMB_132;    //   sublative
+terminal _SYMB_133;    //   superessive
+terminal _SYMB_134;    //   superlative
+terminal _SYMB_135;    //   tabooRegister
+terminal _SYMB_136;    //   technicalRegister
+terminal _SYMB_137;    //   telic
+terminal _SYMB_138;    //   terminative
+terminal _SYMB_139;    //   thirdPerson
+terminal _SYMB_140;    //   translative
+terminal _SYMB_141;    //   verb
+terminal _SYMB_142;    //   vocative
+terminal _SYMB_143;    //   vulgarRegister
+terminal _SYMB_144;    //   with
 
 terminal String _STRING_;
 
@@ -192,7 +220,7 @@ ListStatement ::=  /* empty */  {: RESULT = new net.lemonmodel.patterns.parser.A
 PatternType ::= Pattern:p_1 Register:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPatternWithRegister(p_1,p_2); :} 
   | Pattern:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ECorePattern(p_1); :}
 ;
-Pattern ::= Pattern:p_1 _SYMB_116 ListCategory:p_3 _STRING_:p_4  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPatternWithForm(p_1,p_3,p_4); :} 
+Pattern ::= Pattern:p_1 _SYMB_144 ListCategory:p_3 _STRING_:p_4  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPatternWithForm(p_1,p_3,p_4); :} 
   | NounPattern:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENoun(p_1); :}
   | NounPattern:p_1 Gender:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENounWithGender(p_1,p_2); :}
   | VerbPattern:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EVerb(p_1); :}
@@ -202,44 +230,44 @@ NounPattern ::= _SYMB_26 _SYMB_3 PNP:p_3 _SYMB_4 URI:p_5 _SYMB_5  {: RESULT = ne
   | _SYMB_13 _SYMB_3 NP:p_3 _SYMB_4 URI:p_5 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EClassNoun(p_3,p_5); :}
   | _SYMB_27 _SYMB_3 NP:p_3 _SYMB_4 URI:p_5 _SYMB_4 URI:p_7 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EObjectPropertyNoun(p_3,p_5,p_7); :}
   | _SYMB_18 _SYMB_3 NP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _STRING_:p_7 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDataPropertyNoun(p_3,p_5,p_7); :}
-  | _SYMB_33 _SYMB_3 NP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_98 _SYMB_6 Arg:p_9 _SYMB_4 _SYMB_97 _SYMB_6 Arg:p_13 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1(p_3,p_5,p_9,p_13); :}
-  | _SYMB_33 _SYMB_3 NP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_97 _SYMB_6 Arg:p_9 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalNoun2(p_3,p_5,p_9); :}
+  | _SYMB_33 _SYMB_3 NP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_120 _SYMB_6 Arg:p_9 _SYMB_4 _SYMB_119 _SYMB_6 Arg:p_13 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1(p_3,p_5,p_9,p_13); :}
+  | _SYMB_33 _SYMB_3 NP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_119 _SYMB_6 Arg:p_9 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalNoun2(p_3,p_5,p_9); :}
   | _SYMB_32 _SYMB_3 NP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_7 ListOntologyFrameElement:p_8 _SYMB_8 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalMultivalentNoun(p_3,p_5,p_8); :}
-  | _SYMB_14 _SYMB_3 NP:p_3 _SYMB_4 _SYMB_47 _SYMB_6 URI:p_7 _SYMB_4 _SYMB_99 _SYMB_6 URI:p_11 _SYMB_4 _SYMB_98 _SYMB_6 Arg:p_15 _SYMB_4 _SYMB_97 _SYMB_6 Arg:p_19 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EClassRelationalNoun1(p_3,p_7,p_11,p_15,p_19); :}
-  | _SYMB_14 _SYMB_3 NP:p_3 _SYMB_4 _SYMB_47 _SYMB_6 URI:p_7 _SYMB_4 _SYMB_99 _SYMB_6 URI:p_11 _SYMB_4 _SYMB_97 _SYMB_6 Arg:p_15 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EClassRelationalNoun2(p_3,p_7,p_11,p_15); :}
+  | _SYMB_14 _SYMB_3 NP:p_3 _SYMB_4 _SYMB_55 _SYMB_6 URI:p_7 _SYMB_4 _SYMB_121 _SYMB_6 URI:p_11 _SYMB_4 _SYMB_120 _SYMB_6 Arg:p_15 _SYMB_4 _SYMB_119 _SYMB_6 Arg:p_19 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EClassRelationalNoun1(p_3,p_7,p_11,p_15,p_19); :}
+  | _SYMB_14 _SYMB_3 NP:p_3 _SYMB_4 _SYMB_55 _SYMB_6 URI:p_7 _SYMB_4 _SYMB_121 _SYMB_6 URI:p_11 _SYMB_4 _SYMB_119 _SYMB_6 Arg:p_15 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EClassRelationalNoun2(p_3,p_7,p_11,p_15); :}
 ;
 VerbPattern ::= _SYMB_35 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EStateVerb1(p_3,p_5); :} 
-  | _SYMB_35 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_97 _SYMB_6 Arg:p_9 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EStateVerb2(p_3,p_5,p_9); :}
-  | _SYMB_35 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_98 _SYMB_6 Arg:p_9 _SYMB_4 _SYMB_97 _SYMB_6 Arg:p_13 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EStateVerb3(p_3,p_5,p_9,p_13); :}
-  | _SYMB_112 VerbPattern2:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ETelicEventVerb(p_2); :}
-  | _SYMB_83 VerbPattern2:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENontelicEventVerb(p_2); :}
+  | _SYMB_35 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_119 _SYMB_6 Arg:p_9 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EStateVerb2(p_3,p_5,p_9); :}
+  | _SYMB_35 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_120 _SYMB_6 Arg:p_9 _SYMB_4 _SYMB_119 _SYMB_6 Arg:p_13 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EStateVerb3(p_3,p_5,p_9,p_13); :}
+  | _SYMB_137 VerbPattern2:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ETelicEventVerb(p_2); :}
+  | _SYMB_102 VerbPattern2:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENontelicEventVerb(p_2); :}
   | VerbPattern3:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDunnotelicEventVerb(p_1); :}
-  | _SYMB_15 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_98 _SYMB_6 OntologyFrameElement:p_9 _SYMB_4 _SYMB_97 _SYMB_6 OntologyFrameElement:p_13 _SYMB_4 URI:p_15 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1(p_3,p_5,p_9,p_13,p_15); :}
-  | _SYMB_15 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_98 _SYMB_6 OntologyFrameElement:p_9 _SYMB_4 _SYMB_97 _SYMB_6 OntologyFrameElement:p_13 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2(p_3,p_5,p_9,p_13); :}
-  | _SYMB_15 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_98 _SYMB_6 OntologyFrameElement:p_9 _SYMB_4 URI:p_11 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb3(p_3,p_5,p_9,p_11); :}
-  | _SYMB_15 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_98 _SYMB_6 OntologyFrameElement:p_9 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb4(p_3,p_5,p_9); :}
-  | _SYMB_15 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_97 _SYMB_6 OntologyFrameElement:p_9 _SYMB_4 URI:p_11 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb5(p_3,p_5,p_9,p_11); :}
-  | _SYMB_15 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_97 _SYMB_6 OntologyFrameElement:p_9 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb6(p_3,p_5,p_9); :}
+  | _SYMB_15 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_120 _SYMB_6 OntologyFrameElement:p_9 _SYMB_4 _SYMB_119 _SYMB_6 OntologyFrameElement:p_13 _SYMB_4 URI:p_15 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb1(p_3,p_5,p_9,p_13,p_15); :}
+  | _SYMB_15 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_120 _SYMB_6 OntologyFrameElement:p_9 _SYMB_4 _SYMB_119 _SYMB_6 OntologyFrameElement:p_13 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb2(p_3,p_5,p_9,p_13); :}
+  | _SYMB_15 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_120 _SYMB_6 OntologyFrameElement:p_9 _SYMB_4 URI:p_11 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb3(p_3,p_5,p_9,p_11); :}
+  | _SYMB_15 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_120 _SYMB_6 OntologyFrameElement:p_9 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb4(p_3,p_5,p_9); :}
+  | _SYMB_15 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_119 _SYMB_6 OntologyFrameElement:p_9 _SYMB_4 URI:p_11 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb5(p_3,p_5,p_9,p_11); :}
+  | _SYMB_15 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_119 _SYMB_6 OntologyFrameElement:p_9 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb6(p_3,p_5,p_9); :}
   | _SYMB_15 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 URI:p_7 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb7(p_3,p_5,p_7); :}
   | _SYMB_15 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConsequenceVerb8(p_3,p_5); :}
 ;
-VerbPattern2 ::= _SYMB_61 VerbPattern3:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDurativeEventVerb(p_2); :} 
-  | _SYMB_76 VerbPattern3:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EInstantEventVerb(p_2); :}
+VerbPattern2 ::= _SYMB_71 VerbPattern3:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDurativeEventVerb(p_2); :} 
+  | _SYMB_92 VerbPattern3:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EInstantEventVerb(p_2); :}
 ;
 VerbPattern3 ::= _SYMB_20 _SYMB_3 VP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_7 ListOntologyFrameElement:p_8 _SYMB_8 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EEventVerb(p_3,p_5,p_8); :} 
 ;
 AdjectivePattern ::= _SYMB_22 _SYMB_3 AP:p_3 _SYMB_4 URI:p_5 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIntersectiveAdjective(p_3,p_5); :} 
   | _SYMB_24 _SYMB_3 AP:p_3 _SYMB_4 URI:p_5 _SYMB_4 URI:p_7 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIntersectiveObjectPropertyAdjective(p_3,p_5,p_7); :}
   | _SYMB_23 _SYMB_3 AP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _STRING_:p_7 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIntersectiveDataPropertyAdjective(p_3,p_5,p_7); :}
-  | _SYMB_31 _SYMB_3 AP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_101 _SYMB_6 Arg:p_9 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalAdjective(p_3,p_5,p_9); :}
+  | _SYMB_31 _SYMB_3 AP:p_3 _SYMB_4 URI:p_5 _SYMB_4 _SYMB_123 _SYMB_6 Arg:p_9 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERelationalAdjective(p_3,p_5,p_9); :}
   | _SYMB_34 _SYMB_3 AP:p_3 _SYMB_4 _SYMB_7 ListScalarMembership:p_6 _SYMB_8 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EScalarAdjective(p_3,p_6); :}
 ;
 ListPatternType ::=  /* empty */  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListPatternType(); :} 
   | PatternType:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListPatternType(); RESULT.addLast(p_1); :}
   | PatternType:p_1 _SYMB_4 ListPatternType:p_3  {: RESULT = p_3; p_3.addFirst(p_1); :}
 ;
-Arg ::= Arg:p_1 _SYMB_86  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EOptionalArg(p_1); :} 
-  | Arg:p_1 _SYMB_102 URI:p_3  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERestrictedArg(p_1,p_3); :}
+Arg ::= Arg:p_1 _SYMB_106  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EOptionalArg(p_1); :} 
+  | Arg:p_1 _SYMB_124 URI:p_3  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ERestrictedArg(p_1,p_3); :}
   | _SYMB_36  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESubject(); :}
   | _SYMB_19  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDirectObject(); :}
   | _SYMB_21  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIndirectObject(); :}
@@ -249,7 +277,7 @@ Arg ::= Arg:p_1 _SYMB_86  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.E
   | _SYMB_29 _SYMB_3 _STRING_:p_3 _SYMB_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPostpositionalObject(p_3); :}
   | _SYMB_28  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPossessiveAdjunct(); :}
 ;
-OntologyFrameElement ::= URI:p_1 _SYMB_42 Arg:p_3  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EURIAsSynArg(p_1,p_3); :} 
+OntologyFrameElement ::= URI:p_1 _SYMB_48 Arg:p_3  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EURIAsSynArg(p_1,p_3); :} 
   | Arg:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EArgAsOFE(p_1); :}
 ;
 ListOntologyFrameElement ::=  /* empty */  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListOntologyFrameElement(); :} 
@@ -268,95 +296,123 @@ VP ::= _STRING_:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EVPSim
 AP ::= _STRING_:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAPSimple(p_1); :} 
   | _SYMB_7 ListPOSTaggedWord:p_2 _SYMB_8  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAPComplex(p_2); :}
 ;
-POSTaggedWord ::= _STRING_:p_1 _SYMB_9 POSTag:p_3 _SYMB_6 _SYMB_70  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPOSTaggedHeadWord(p_1,p_3); :} 
+POSTaggedWord ::= _STRING_:p_1 _SYMB_9 POSTag:p_3 _SYMB_6 _SYMB_84  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPOSTaggedHeadWord(p_1,p_3); :} 
   | _STRING_:p_1 _SYMB_9 POSTag:p_3  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPOSTaggedWord(p_1,p_3); :}
-  | _STRING_:p_1 _SYMB_9 _STRING_:p_3 _SYMB_9 POSTag:p_5 _SYMB_6 _SYMB_70  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedHeadWord(p_1,p_3,p_5); :}
+  | _STRING_:p_1 _SYMB_9 _STRING_:p_3 _SYMB_9 POSTag:p_5 _SYMB_6 _SYMB_84  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedHeadWord(p_1,p_3,p_5); :}
   | _STRING_:p_1 _SYMB_9 _STRING_:p_3 _SYMB_9 POSTag:p_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ELemmaPOSTaggedWord(p_1,p_3,p_5); :}
 ;
 ListPOSTaggedWord ::=  /* empty */  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListPOSTaggedWord(); :} 
   | ListPOSTaggedWord:p_1 POSTaggedWord:p_2  {: RESULT = p_1; p_1.addLast(p_2); :}
 ;
-ScalarMembership ::= URI:p_1 _SYMB_56  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.CovariantScalarMembership(p_1); :} 
-  | URI:p_1 _SYMB_54  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ContravariantScalarMembership(p_1); :}
-  | URI:p_1 _SYMB_45  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.CentralScalarMembership(p_1); :}
-  | URI:p_1 _SYMB_10 _DOUBLE_:p_3 _SYMB_65 URI:p_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.GreaterThanScalarMembership(p_1,p_3,p_5); :}
-  | URI:p_1 _SYMB_11 _DOUBLE_:p_3 _SYMB_65 URI:p_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.LessThanScalarMembership(p_1,p_3,p_5); :}
-  | _DOUBLE_:p_1 _SYMB_11 URI:p_3 _SYMB_11 _DOUBLE_:p_5 _SYMB_65 URI:p_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.BoundedScalarMembership(p_1,p_3,p_5,p_7); :}
+ScalarMembership ::= URI:p_1 _SYMB_65  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.CovariantScalarMembership(p_1); :} 
+  | URI:p_1 _SYMB_63  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ContravariantScalarMembership(p_1); :}
+  | URI:p_1 _SYMB_53  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.CentralScalarMembership(p_1); :}
+  | URI:p_1 _SYMB_10 _DOUBLE_:p_3 _SYMB_79 URI:p_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.GreaterThanScalarMembership(p_1,p_3,p_5); :}
+  | URI:p_1 _SYMB_11 _DOUBLE_:p_3 _SYMB_79 URI:p_5  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.LessThanScalarMembership(p_1,p_3,p_5); :}
+  | _DOUBLE_:p_1 _SYMB_11 URI:p_3 _SYMB_11 _DOUBLE_:p_5 _SYMB_79 URI:p_7  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.BoundedScalarMembership(p_1,p_3,p_5,p_7); :}
 ;
 ListScalarMembership ::=  /* empty */  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListScalarMembership(); :} 
   | ScalarMembership:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListScalarMembership(); RESULT.addLast(p_1); :}
   | ScalarMembership:p_1 _SYMB_4 ListScalarMembership:p_3  {: RESULT = p_3; p_3.addFirst(p_1); :}
 ;
-Category ::= _SYMB_105  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESingular(); :} 
-  | _SYMB_60  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDual(); :}
-  | _SYMB_91  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPlural(); :}
-  | _SYMB_82  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENominative(); :}
-  | _SYMB_37  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAccusative(); :}
-  | _SYMB_68  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EGenitive(); :}
-  | _SYMB_57  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDative(); :}
-  | _SYMB_51  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EComparative(); :}
-  | _SYMB_109  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESuperlative(); :}
-  | _SYMB_95  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPresent(); :}
-  | _SYMB_90  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPast(); :}
-  | _SYMB_67  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EFuture(); :}
-  | _SYMB_64  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EFirstPerson(); :}
-  | _SYMB_103  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESecondPerson(); :}
-  | _SYMB_113  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EThirdPerson(); :}
-  | _SYMB_72  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EImperfect(); :}
-  | _SYMB_71  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EImperative(); :}
-  | _SYMB_74  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIndicative(); :}
-  | _SYMB_108  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESubjunctive(); :}
-  | _SYMB_52  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConditional(); :}
-  | _SYMB_69  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EGerundive(); :}
-  | _SYMB_75  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EInfinitive(); :}
-  | _SYMB_88  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EParticiple(); :}
+Category ::= _SYMB_127  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESingular(); :} 
+  | _SYMB_70  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDual(); :}
+  | _SYMB_112  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPlural(); :}
+  | _SYMB_37  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAbessive(); :}
+  | _SYMB_38  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAblative(); :}
+  | _SYMB_39  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAbsolutive(); :}
+  | _SYMB_40  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAccusative(); :}
+  | _SYMB_41  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAdessive(); :}
+  | _SYMB_42  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAditive(); :}
+  | _SYMB_46  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAllative(); :}
+  | _SYMB_50  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EBenefactive(); :}
+  | _SYMB_52  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ECausative(); :}
+  | _SYMB_57  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EComitative(); :}
+  | _SYMB_66  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDative(); :}
+  | _SYMB_67  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDelative(); :}
+  | _SYMB_72  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EElative(); :}
+  | _SYMB_73  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EEquative(); :}
+  | _SYMB_74  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EErgative(); :}
+  | _SYMB_75  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EEssive(); :}
+  | _SYMB_82  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EGenitive(); :}
+  | _SYMB_85  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIllative(); :}
+  | _SYMB_90  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EInessive(); :}
+  | _SYMB_93  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EInstrumental(); :}
+  | _SYMB_96  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ELative(); :}
+  | _SYMB_97  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ELocative(); :}
+  | _SYMB_101  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENominative(); :}
+  | _SYMB_105  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EOblique(); :}
+  | _SYMB_110  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPartitive(); :}
+  | _SYMB_117  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EProlative(); :}
+  | _SYMB_130  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESociative(); :}
+  | _SYMB_132  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESublative(); :}
+  | _SYMB_133  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESuperessive(); :}
+  | _SYMB_138  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ETerminative(); :}
+  | _SYMB_140  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ETranslative(); :}
+  | _SYMB_142  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EVocative(); :}
+  | _SYMB_60  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EComparative(); :}
+  | _SYMB_134  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESuperlative(); :}
+  | _SYMB_116  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPresent(); :}
+  | _SYMB_111  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPast(); :}
+  | _SYMB_81  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EFuture(); :}
+  | _SYMB_78  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EFirstPerson(); :}
+  | _SYMB_125  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESecondPerson(); :}
+  | _SYMB_139  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EThirdPerson(); :}
+  | _SYMB_87  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EImperfect(); :}
+  | _SYMB_86  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EImperative(); :}
+  | _SYMB_89  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIndicative(); :}
+  | _SYMB_131  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESubjunctive(); :}
+  | _SYMB_61  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConditional(); :}
+  | _SYMB_83  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EGerundive(); :}
+  | _SYMB_91  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EInfinitive(); :}
+  | _SYMB_108  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EParticiple(); :}
   | URI:p_1 _SYMB_12 URI:p_3  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAnyCat(p_1,p_3); :}
 ;
 ListCategory ::=  /* empty */  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ListCategory(); :} 
   | ListCategory:p_1 Category:p_2  {: RESULT = p_1; p_1.addLast(p_2); :}
 ;
-POSTag ::= _SYMB_38  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAdjectivePOS(); :} 
-  | _SYMB_39  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAdpositionPOS(); :}
-  | _SYMB_40  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAdverbPOS(); :}
-  | _SYMB_41  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EArticlePOS(); :}
-  | _SYMB_44  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EBulletPOS(); :}
-  | _SYMB_46  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ECircumpositionPOS(); :}
-  | _SYMB_48  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EColonPOSPOS(); :}
-  | _SYMB_49  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ECommaPOS(); :}
-  | _SYMB_53  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConjunctionPOS(); :}
-  | _SYMB_55  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ECopulaPOS(); :}
-  | _SYMB_58  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDeterminerPOS(); :}
-  | _SYMB_77  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EInterjectionPOS(); :}
-  | _SYMB_84  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENounPOS(); :}
-  | _SYMB_85  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENumeralPOS(); :}
-  | _SYMB_89  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EParticlePOS(); :}
-  | _SYMB_92  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPointPOS(); :}
-  | _SYMB_93  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPostpositionPOS(); :}
-  | _SYMB_94  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPrepositionPOS(); :}
-  | _SYMB_96  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPronounPOS(); :}
-  | _SYMB_100  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPunctuationPOS(); :}
-  | _SYMB_104  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESemiColonPOS(); :}
-  | _SYMB_107  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESlashPOS(); :}
-  | _SYMB_114  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EVerbPOS(); :}
+POSTag ::= _SYMB_43  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAdjectivePOS(); :} 
+  | _SYMB_44  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAdpositionPOS(); :}
+  | _SYMB_45  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAdverbPOS(); :}
+  | _SYMB_47  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EArticlePOS(); :}
+  | _SYMB_51  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EBulletPOS(); :}
+  | _SYMB_54  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ECircumpositionPOS(); :}
+  | _SYMB_56  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EColonPOSPOS(); :}
+  | _SYMB_58  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ECommaPOS(); :}
+  | _SYMB_62  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EConjunctionPOS(); :}
+  | _SYMB_64  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ECopulaPOS(); :}
+  | _SYMB_68  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDeterminerPOS(); :}
+  | _SYMB_94  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EInterjectionPOS(); :}
+  | _SYMB_103  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENounPOS(); :}
+  | _SYMB_104  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENumeralPOS(); :}
+  | _SYMB_109  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EParticlePOS(); :}
+  | _SYMB_113  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPointPOS(); :}
+  | _SYMB_114  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPostpositionPOS(); :}
+  | _SYMB_115  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPrepositionPOS(); :}
+  | _SYMB_118  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPronounPOS(); :}
+  | _SYMB_122  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EPunctuationPOS(); :}
+  | _SYMB_126  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESemiColonPOS(); :}
+  | _SYMB_129  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESlashPOS(); :}
+  | _SYMB_141  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EVerbPOS(); :}
   | _STRING_:p_1  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EAnyPOS(p_1); :}
 ;
-Gender ::= _SYMB_79  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EMascGender(); :} 
-  | _SYMB_63  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EFemGender(); :}
-  | _SYMB_80  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENeutGender(); :}
-  | _SYMB_50  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ECommonGender(); :}
-  | _SYMB_87  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EOtherGender(); :}
+Gender ::= _SYMB_98  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EMascGender(); :} 
+  | _SYMB_77  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EFemGender(); :}
+  | _SYMB_99  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENeutGender(); :}
+  | _SYMB_59  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ECommonGender(); :}
+  | _SYMB_107  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EOtherGender(); :}
 ;
-Register ::= _SYMB_43  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EBenchLevelRegister(); :} 
-  | _SYMB_59  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDialectRegister(); :}
-  | _SYMB_62  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EFacetiousRegister(); :}
-  | _SYMB_66  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EFormalRegister(); :}
-  | _SYMB_73  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EInHouseRegister(); :}
-  | _SYMB_78  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIronicRegister(); :}
-  | _SYMB_81  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENeutralRegister(); :}
-  | _SYMB_106  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESlangRegister(); :}
-  | _SYMB_110  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ETabooRegister(); :}
-  | _SYMB_111  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ETechnicalRegister(); :}
-  | _SYMB_115  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EVulgarRegister(); :}
+Register ::= _SYMB_49  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EBenchLevelRegister(); :} 
+  | _SYMB_69  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EDialectRegister(); :}
+  | _SYMB_76  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EFacetiousRegister(); :}
+  | _SYMB_80  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EFormalRegister(); :}
+  | _SYMB_88  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EInHouseRegister(); :}
+  | _SYMB_95  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EIronicRegister(); :}
+  | _SYMB_100  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ENeutralRegister(); :}
+  | _SYMB_128  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ESlangRegister(); :}
+  | _SYMB_135  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ETabooRegister(); :}
+  | _SYMB_136  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.ETechnicalRegister(); :}
+  | _SYMB_143  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EVulgarRegister(); :}
 ;
 URI ::= _IDENT_:p_1 _SYMB_1 _IDENT_:p_3  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EQName(p_1,p_3); :} 
   | _SYMB_1 _IDENT_:p_2  {: RESULT = new net.lemonmodel.patterns.parser.Absyn.EQName2(p_2); :}

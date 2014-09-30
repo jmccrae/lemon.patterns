@@ -1409,11 +1409,25 @@ public class PrettyPrinter
        render("plural");
        if (_i_ > 0) render(_R_PAREN);
     }
-    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ENominative)
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAbessive)
     {
-       net.lemonmodel.patterns.parser.Absyn.ENominative _enominative = (net.lemonmodel.patterns.parser.Absyn.ENominative) foo;
+       net.lemonmodel.patterns.parser.Absyn.EAbessive _eabessive = (net.lemonmodel.patterns.parser.Absyn.EAbessive) foo;
        if (_i_ > 0) render(_L_PAREN);
-       render("nominative");
+       render("abessive");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAblative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EAblative _eablative = (net.lemonmodel.patterns.parser.Absyn.EAblative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("ablative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAbsolutive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EAbsolutive _eabsolutive = (net.lemonmodel.patterns.parser.Absyn.EAbsolutive) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("absolutive");
        if (_i_ > 0) render(_R_PAREN);
     }
     else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAccusative)
@@ -1423,11 +1437,46 @@ public class PrettyPrinter
        render("accusative");
        if (_i_ > 0) render(_R_PAREN);
     }
-    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EGenitive)
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAdessive)
     {
-       net.lemonmodel.patterns.parser.Absyn.EGenitive _egenitive = (net.lemonmodel.patterns.parser.Absyn.EGenitive) foo;
+       net.lemonmodel.patterns.parser.Absyn.EAdessive _eadessive = (net.lemonmodel.patterns.parser.Absyn.EAdessive) foo;
        if (_i_ > 0) render(_L_PAREN);
-       render("genitive");
+       render("adessive");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAditive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EAditive _eaditive = (net.lemonmodel.patterns.parser.Absyn.EAditive) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("aditive");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAllative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EAllative _eallative = (net.lemonmodel.patterns.parser.Absyn.EAllative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("allative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EBenefactive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EBenefactive _ebenefactive = (net.lemonmodel.patterns.parser.Absyn.EBenefactive) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("benefactive");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ECausative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ECausative _ecausative = (net.lemonmodel.patterns.parser.Absyn.ECausative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("causative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EComitative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EComitative _ecomitative = (net.lemonmodel.patterns.parser.Absyn.EComitative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("comitative");
        if (_i_ > 0) render(_R_PAREN);
     }
     else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EDative)
@@ -1435,6 +1484,153 @@ public class PrettyPrinter
        net.lemonmodel.patterns.parser.Absyn.EDative _edative = (net.lemonmodel.patterns.parser.Absyn.EDative) foo;
        if (_i_ > 0) render(_L_PAREN);
        render("dative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EDelative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EDelative _edelative = (net.lemonmodel.patterns.parser.Absyn.EDelative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("delative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EElative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EElative _eelative = (net.lemonmodel.patterns.parser.Absyn.EElative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("elative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EEquative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EEquative _eequative = (net.lemonmodel.patterns.parser.Absyn.EEquative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("equative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EErgative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EErgative _eergative = (net.lemonmodel.patterns.parser.Absyn.EErgative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("ergative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EEssive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EEssive _eessive = (net.lemonmodel.patterns.parser.Absyn.EEssive) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("essive");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EGenitive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EGenitive _egenitive = (net.lemonmodel.patterns.parser.Absyn.EGenitive) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("genitive");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EIllative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EIllative _eillative = (net.lemonmodel.patterns.parser.Absyn.EIllative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("illative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EInessive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EInessive _einessive = (net.lemonmodel.patterns.parser.Absyn.EInessive) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("inessive");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EInstrumental)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EInstrumental _einstrumental = (net.lemonmodel.patterns.parser.Absyn.EInstrumental) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("instrumental");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ELative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ELative _elative = (net.lemonmodel.patterns.parser.Absyn.ELative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("lative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ELocative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ELocative _elocative = (net.lemonmodel.patterns.parser.Absyn.ELocative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("locative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ENominative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ENominative _enominative = (net.lemonmodel.patterns.parser.Absyn.ENominative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("nominative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EOblique)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EOblique _eoblique = (net.lemonmodel.patterns.parser.Absyn.EOblique) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("oblique");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EPartitive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EPartitive _epartitive = (net.lemonmodel.patterns.parser.Absyn.EPartitive) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("partitive");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EProlative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EProlative _eprolative = (net.lemonmodel.patterns.parser.Absyn.EProlative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("prolative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ESociative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ESociative _esociative = (net.lemonmodel.patterns.parser.Absyn.ESociative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("sociative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ESublative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ESublative _esublative = (net.lemonmodel.patterns.parser.Absyn.ESublative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("sublative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ESuperessive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ESuperessive _esuperessive = (net.lemonmodel.patterns.parser.Absyn.ESuperessive) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("superessive");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ETerminative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ETerminative _eterminative = (net.lemonmodel.patterns.parser.Absyn.ETerminative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("terminative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ETranslative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ETranslative _etranslative = (net.lemonmodel.patterns.parser.Absyn.ETranslative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("translative");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EVocative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EVocative _evocative = (net.lemonmodel.patterns.parser.Absyn.EVocative) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("vocative");
        if (_i_ > 0) render(_R_PAREN);
     }
     else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EComparative)
@@ -2669,25 +2865,165 @@ public class PrettyPrinter
        net.lemonmodel.patterns.parser.Absyn.EPlural _eplural = (net.lemonmodel.patterns.parser.Absyn.EPlural) foo;
        render("EPlural");
     }
-    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ENominative)
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAbessive)
     {
-       net.lemonmodel.patterns.parser.Absyn.ENominative _enominative = (net.lemonmodel.patterns.parser.Absyn.ENominative) foo;
-       render("ENominative");
+       net.lemonmodel.patterns.parser.Absyn.EAbessive _eabessive = (net.lemonmodel.patterns.parser.Absyn.EAbessive) foo;
+       render("EAbessive");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAblative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EAblative _eablative = (net.lemonmodel.patterns.parser.Absyn.EAblative) foo;
+       render("EAblative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAbsolutive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EAbsolutive _eabsolutive = (net.lemonmodel.patterns.parser.Absyn.EAbsolutive) foo;
+       render("EAbsolutive");
     }
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAccusative)
     {
        net.lemonmodel.patterns.parser.Absyn.EAccusative _eaccusative = (net.lemonmodel.patterns.parser.Absyn.EAccusative) foo;
        render("EAccusative");
     }
-    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EGenitive)
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAdessive)
     {
-       net.lemonmodel.patterns.parser.Absyn.EGenitive _egenitive = (net.lemonmodel.patterns.parser.Absyn.EGenitive) foo;
-       render("EGenitive");
+       net.lemonmodel.patterns.parser.Absyn.EAdessive _eadessive = (net.lemonmodel.patterns.parser.Absyn.EAdessive) foo;
+       render("EAdessive");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAditive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EAditive _eaditive = (net.lemonmodel.patterns.parser.Absyn.EAditive) foo;
+       render("EAditive");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAllative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EAllative _eallative = (net.lemonmodel.patterns.parser.Absyn.EAllative) foo;
+       render("EAllative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EBenefactive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EBenefactive _ebenefactive = (net.lemonmodel.patterns.parser.Absyn.EBenefactive) foo;
+       render("EBenefactive");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ECausative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ECausative _ecausative = (net.lemonmodel.patterns.parser.Absyn.ECausative) foo;
+       render("ECausative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EComitative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EComitative _ecomitative = (net.lemonmodel.patterns.parser.Absyn.EComitative) foo;
+       render("EComitative");
     }
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EDative)
     {
        net.lemonmodel.patterns.parser.Absyn.EDative _edative = (net.lemonmodel.patterns.parser.Absyn.EDative) foo;
        render("EDative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EDelative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EDelative _edelative = (net.lemonmodel.patterns.parser.Absyn.EDelative) foo;
+       render("EDelative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EElative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EElative _eelative = (net.lemonmodel.patterns.parser.Absyn.EElative) foo;
+       render("EElative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EEquative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EEquative _eequative = (net.lemonmodel.patterns.parser.Absyn.EEquative) foo;
+       render("EEquative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EErgative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EErgative _eergative = (net.lemonmodel.patterns.parser.Absyn.EErgative) foo;
+       render("EErgative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EEssive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EEssive _eessive = (net.lemonmodel.patterns.parser.Absyn.EEssive) foo;
+       render("EEssive");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EGenitive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EGenitive _egenitive = (net.lemonmodel.patterns.parser.Absyn.EGenitive) foo;
+       render("EGenitive");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EIllative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EIllative _eillative = (net.lemonmodel.patterns.parser.Absyn.EIllative) foo;
+       render("EIllative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EInessive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EInessive _einessive = (net.lemonmodel.patterns.parser.Absyn.EInessive) foo;
+       render("EInessive");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EInstrumental)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EInstrumental _einstrumental = (net.lemonmodel.patterns.parser.Absyn.EInstrumental) foo;
+       render("EInstrumental");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ELative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ELative _elative = (net.lemonmodel.patterns.parser.Absyn.ELative) foo;
+       render("ELative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ELocative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ELocative _elocative = (net.lemonmodel.patterns.parser.Absyn.ELocative) foo;
+       render("ELocative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ENominative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ENominative _enominative = (net.lemonmodel.patterns.parser.Absyn.ENominative) foo;
+       render("ENominative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EOblique)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EOblique _eoblique = (net.lemonmodel.patterns.parser.Absyn.EOblique) foo;
+       render("EOblique");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EPartitive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EPartitive _epartitive = (net.lemonmodel.patterns.parser.Absyn.EPartitive) foo;
+       render("EPartitive");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EProlative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EProlative _eprolative = (net.lemonmodel.patterns.parser.Absyn.EProlative) foo;
+       render("EProlative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ESociative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ESociative _esociative = (net.lemonmodel.patterns.parser.Absyn.ESociative) foo;
+       render("ESociative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ESublative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ESublative _esublative = (net.lemonmodel.patterns.parser.Absyn.ESublative) foo;
+       render("ESublative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ESuperessive)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ESuperessive _esuperessive = (net.lemonmodel.patterns.parser.Absyn.ESuperessive) foo;
+       render("ESuperessive");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ETerminative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ETerminative _eterminative = (net.lemonmodel.patterns.parser.Absyn.ETerminative) foo;
+       render("ETerminative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ETranslative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.ETranslative _etranslative = (net.lemonmodel.patterns.parser.Absyn.ETranslative) foo;
+       render("ETranslative");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EVocative)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EVocative _evocative = (net.lemonmodel.patterns.parser.Absyn.EVocative) foo;
+       render("EVocative");
     }
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EComparative)
     {
