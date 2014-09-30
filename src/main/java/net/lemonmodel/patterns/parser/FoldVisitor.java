@@ -90,14 +90,14 @@ public abstract class FoldVisitor<R,A> implements AllVisitor<R,A> {
       r = combine(p.uri_.accept(this, arg), r, arg);
       return r;
     }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun p, A arg) {
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EObjectPropertyNoun p, A arg) {
       R r = leaf(arg);
       r = combine(p.np_.accept(this, arg), r, arg);
       r = combine(p.uri_1.accept(this, arg), r, arg);
       r = combine(p.uri_2.accept(this, arg), r, arg);
       return r;
     }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun p, A arg) {
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EDataPropertyNoun p, A arg) {
       R r = leaf(arg);
       r = combine(p.np_.accept(this, arg), r, arg);
       r = combine(p.uri_.accept(this, arg), r, arg);

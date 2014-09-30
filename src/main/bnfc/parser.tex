@@ -52,11 +52,11 @@ The set of reserved words is the set of terminals appearing in the grammar. Thos
 The reserved words used in parser are the following: \\
 
 \begin{tabular}{lll}
-{\reserved{ClassDataPropertyNoun}} &{\reserved{ClassNoun}} &{\reserved{ClassObjectPropertyNoun}} \\
-{\reserved{ClassRelationalNoun}} &{\reserved{ConsequenceVerb}} &{\reserved{CopulativeArg}} \\
-{\reserved{CopulativeSubject}} &{\reserved{DirectObject}} &{\reserved{EventVerb}} \\
-{\reserved{IndirectObject}} &{\reserved{IntersectiveAdjective}} &{\reserved{IntersectiveDataPropertyAdjective}} \\
-{\reserved{IntersectiveObjectPropertyAdjective}} &{\reserved{Lexicon}} &{\reserved{Name}} \\
+{\reserved{ClassNoun}} &{\reserved{ClassRelationalNoun}} &{\reserved{ConsequenceVerb}} \\
+{\reserved{CopulativeArg}} &{\reserved{CopulativeSubject}} &{\reserved{DataPropertyNoun}} \\
+{\reserved{DirectObject}} &{\reserved{EventVerb}} &{\reserved{IndirectObject}} \\
+{\reserved{IntersectiveAdjective}} &{\reserved{IntersectiveDataPropertyAdjective}} &{\reserved{IntersectiveObjectPropertyAdjective}} \\
+{\reserved{Lexicon}} &{\reserved{Name}} &{\reserved{ObjectPropertyNoun}} \\
 {\reserved{PossessiveAdjunct}} &{\reserved{PostpositionalObject}} &{\reserved{PrepositionalObject}} \\
 {\reserved{RelationalAdjective}} &{\reserved{RelationalMultivalentNoun}} &{\reserved{RelationalNoun}} \\
 {\reserved{ScalarAdjective}} &{\reserved{StateVerb}} &{\reserved{Subject}} \\
@@ -138,8 +138,8 @@ All other symbols are terminals.\\
 \begin{tabular}{lll}
 {\nonterminal{NounPattern}} & {\arrow}  &{\terminal{Name}} {\terminal{(}} {\nonterminal{PNP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{ClassNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{ClassObjectPropertyNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{ClassDataPropertyNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{String}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{ObjectPropertyNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{DataPropertyNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{String}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{RelationalNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{RelationalNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{RelationalMultivalentNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{[}} {\nonterminal{ListOntologyFrameElement}} {\terminal{]}} {\terminal{)}}  \\

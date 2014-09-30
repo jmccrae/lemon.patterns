@@ -76,12 +76,12 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
       p.np_.accept(this,arg),
       p.uri_.accept(this,arg)
     ) 
-    def visit(p : Absyn.EClassObjectPropertyNoun, arg : collection.mutable.Map[String,String]) = ClassObjectPropertyNoun(
+    def visit(p : Absyn.EObjectPropertyNoun, arg : collection.mutable.Map[String,String]) = ObjectPropertyNoun(
       p.np_.accept(this,arg),
       p.uri_1.accept(this,arg),
       p.uri_2.accept(this,arg)
     )
-    def visit(p : Absyn.EClassDataPropertyNoun, arg : collection.mutable.Map[String,String]) = ClassDataPropertyNoun(
+    def visit(p : Absyn.EDataPropertyNoun, arg : collection.mutable.Map[String,String]) = DataPropertyNoun(
       p.np_.accept(this,arg),
       p.uri_.accept(this,arg),
       p.string_

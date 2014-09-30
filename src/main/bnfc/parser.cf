@@ -19,8 +19,8 @@ EAdjective. Pattern ::= AdjectivePattern ;
 
 EName. NounPattern ::= "Name" "(" PNP "," URI ")" ;
 EClassNoun. NounPattern ::= "ClassNoun" "(" NP "," URI ")" ;
-EClassObjectPropertyNoun. NounPattern ::= "ClassObjectPropertyNoun" "(" NP "," URI "," URI ")" ;
-EClassDataPropertyNoun. NounPattern ::= "ClassDataPropertyNoun" "(" NP "," URI "," String ")" ;
+EObjectPropertyNoun. NounPattern ::= "ObjectPropertyNoun" "(" NP "," URI "," URI ")" ;
+EDataPropertyNoun. NounPattern ::= "DataPropertyNoun" "(" NP "," URI "," String ")" ;
 ERelationalNoun1. NounPattern ::= "RelationalNoun" "(" NP "," URI "," "propSubj" "=" Arg "," "propObj" "=" Arg ")" ;
 ERelationalNoun2. NounPattern ::= "RelationalNoun" "(" NP "," URI "," "propObj" "=" Arg ")" ;
 ERelationalMultivalentNoun. NounPattern ::= "RelationalMultivalentNoun" "(" NP "," URI "," "[" [OntologyFrameElement] "]" ")" ;

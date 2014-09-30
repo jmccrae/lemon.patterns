@@ -150,14 +150,14 @@ case class ClassNoun(val lemma : NP,
  * @param sense The URI to be associated with
  * @param forms The set of other forms
  */
-case class ClassObjectPropertyNoun(val lemma : NP, 
+case class ObjectPropertyNoun(val lemma : NP, 
                      val prop : URI, val obj : URI,
                      val forms : Seq[Form] = Nil,
                      val gender : Option[Gender] = None,
                      val register : Option[Register] = None) extends AbsClassNoun {
-  def makeWithForm(form : Form) = ClassObjectPropertyNoun(lemma,prop,obj,forms :+ form,gender,register)
-  def withGender(gender : Gender) = ClassObjectPropertyNoun(lemma,prop,obj,forms,Some(gender),register)
-  def withRegister(register : Register) = ClassObjectPropertyNoun(lemma,prop,obj,forms,gender,Some(register))
+  def makeWithForm(form : Form) = ObjectPropertyNoun(lemma,prop,obj,forms :+ form,gender,register)
+  def withGender(gender : Gender) = ObjectPropertyNoun(lemma,prop,obj,forms,Some(gender),register)
+  def withRegister(register : Register) = ObjectPropertyNoun(lemma,prop,obj,forms,gender,Some(register))
   def referenceXML(name : URINamer) = <owl:Restriction rdf:about={name("noun",lemma.toString(), Some("sense"))}>
     <owl:onProperty rdf:resource={prop}/>
     <owl:hasValue rdf:resource={obj}/>
@@ -170,14 +170,14 @@ case class ClassObjectPropertyNoun(val lemma : NP,
  * @param sense The URI to be associated with
  * @param forms The set of other forms
  */
-case class ClassDataPropertyNoun(val lemma : NP, 
+case class DataPropertyNoun(val lemma : NP, 
                      val prop : URI, val value : String,
                      val forms : Seq[Form] = Nil,
                      val gender : Option[Gender] = None,
                      val register : Option[Register] = None) extends AbsClassNoun {
-  def makeWithForm(form : Form) = ClassDataPropertyNoun(lemma,prop,value,forms :+ form,gender,register)
-  def withGender(gender : Gender) = ClassDataPropertyNoun(lemma,prop,value,forms,Some(gender),register)
-  def withRegister(register : Register) = ClassDataPropertyNoun(lemma,prop,value,forms,gender,Some(register))
+  def makeWithForm(form : Form) = DataPropertyNoun(lemma,prop,value,forms :+ form,gender,register)
+  def withGender(gender : Gender) = DataPropertyNoun(lemma,prop,value,forms,Some(gender),register)
+  def withRegister(register : Register) = DataPropertyNoun(lemma,prop,value,forms,gender,Some(register))
   def referenceXML(name : URINamer) = <owl:Restriction rdf:about={name("noun",lemma.toString(), Some("sense"))}>
     <owl:onProperty rdf:resource={prop}/>
     <owl:hasValue>{value}</owl:hasValue>

@@ -31,8 +31,8 @@ public class AbstractVisitor<R,A> implements AllVisitor<R,A> {
 /* NounPattern */
     public R visit(net.lemonmodel.patterns.parser.Absyn.EName p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EClassNoun p, A arg) { return visitDefault(p, arg); }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun p, A arg) { return visitDefault(p, arg); }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EObjectPropertyNoun p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EDataPropertyNoun p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1 p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.ERelationalNoun2 p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.ERelationalMultivalentNoun p, A arg) { return visitDefault(p, arg); }

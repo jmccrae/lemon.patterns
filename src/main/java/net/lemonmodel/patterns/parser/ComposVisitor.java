@@ -124,21 +124,21 @@ public class ComposVisitor<A> implements
 
       return new net.lemonmodel.patterns.parser.Absyn.EClassNoun(np_, uri_);
     }
-    public NounPattern visit(net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun p, A arg)
+    public NounPattern visit(net.lemonmodel.patterns.parser.Absyn.EObjectPropertyNoun p, A arg)
     {
       NP np_ = p.np_.accept(this, arg);
       URI uri_1 = p.uri_1.accept(this, arg);
       URI uri_2 = p.uri_2.accept(this, arg);
 
-      return new net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun(np_, uri_1, uri_2);
+      return new net.lemonmodel.patterns.parser.Absyn.EObjectPropertyNoun(np_, uri_1, uri_2);
     }
-    public NounPattern visit(net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun p, A arg)
+    public NounPattern visit(net.lemonmodel.patterns.parser.Absyn.EDataPropertyNoun p, A arg)
     {
       NP np_ = p.np_.accept(this, arg);
       URI uri_ = p.uri_.accept(this, arg);
       String string_ = p.string_;
 
-      return new net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun(np_, uri_, string_);
+      return new net.lemonmodel.patterns.parser.Absyn.EDataPropertyNoun(np_, uri_, string_);
     }
     public NounPattern visit(net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1 p, A arg)
     {

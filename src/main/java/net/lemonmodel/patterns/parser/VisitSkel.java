@@ -135,9 +135,9 @@ public class VisitSkel
 
       return null;
     }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun p, A arg)
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EObjectPropertyNoun p, A arg)
     {
-      /* Code For EClassObjectPropertyNoun Goes Here */
+      /* Code For EObjectPropertyNoun Goes Here */
 
       p.np_.accept(new NPVisitor<R,A>(), arg);
       p.uri_1.accept(new URIVisitor<R,A>(), arg);
@@ -145,9 +145,9 @@ public class VisitSkel
 
       return null;
     }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun p, A arg)
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EDataPropertyNoun p, A arg)
     {
-      /* Code For EClassDataPropertyNoun Goes Here */
+      /* Code For EDataPropertyNoun Goes Here */
 
       p.np_.accept(new NPVisitor<R,A>(), arg);
       p.uri_.accept(new URIVisitor<R,A>(), arg);

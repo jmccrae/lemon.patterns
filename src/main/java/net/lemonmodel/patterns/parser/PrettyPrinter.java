@@ -593,31 +593,31 @@ public class PrettyPrinter
        render(")");
        if (_i_ > 0) render(_R_PAREN);
     }
-    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun)
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EObjectPropertyNoun)
     {
-       net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun _eclassobjectpropertynoun = (net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun) foo;
+       net.lemonmodel.patterns.parser.Absyn.EObjectPropertyNoun _eobjectpropertynoun = (net.lemonmodel.patterns.parser.Absyn.EObjectPropertyNoun) foo;
        if (_i_ > 0) render(_L_PAREN);
-       render("ClassObjectPropertyNoun");
+       render("ObjectPropertyNoun");
        render("(");
-       pp(_eclassobjectpropertynoun.np_, 0);
+       pp(_eobjectpropertynoun.np_, 0);
        render(",");
-       pp(_eclassobjectpropertynoun.uri_1, 0);
+       pp(_eobjectpropertynoun.uri_1, 0);
        render(",");
-       pp(_eclassobjectpropertynoun.uri_2, 0);
+       pp(_eobjectpropertynoun.uri_2, 0);
        render(")");
        if (_i_ > 0) render(_R_PAREN);
     }
-    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun)
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EDataPropertyNoun)
     {
-       net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun _eclassdatapropertynoun = (net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun) foo;
+       net.lemonmodel.patterns.parser.Absyn.EDataPropertyNoun _edatapropertynoun = (net.lemonmodel.patterns.parser.Absyn.EDataPropertyNoun) foo;
        if (_i_ > 0) render(_L_PAREN);
-       render("ClassDataPropertyNoun");
+       render("DataPropertyNoun");
        render("(");
-       pp(_eclassdatapropertynoun.np_, 0);
+       pp(_edatapropertynoun.np_, 0);
        render(",");
-       pp(_eclassdatapropertynoun.uri_, 0);
+       pp(_edatapropertynoun.uri_, 0);
        render(",");
-       printQuoted(_eclassdatapropertynoun.string_);
+       printQuoted(_edatapropertynoun.string_);
        render(")");
        if (_i_ > 0) render(_R_PAREN);
     }
@@ -2033,24 +2033,24 @@ public class PrettyPrinter
        sh(_eclassnoun.uri_);
        render(")");
     }
-    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun)
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EObjectPropertyNoun)
     {
-       net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun _eclassobjectpropertynoun = (net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun) foo;
+       net.lemonmodel.patterns.parser.Absyn.EObjectPropertyNoun _eobjectpropertynoun = (net.lemonmodel.patterns.parser.Absyn.EObjectPropertyNoun) foo;
        render("(");
-       render("EClassObjectPropertyNoun");
-       sh(_eclassobjectpropertynoun.np_);
-       sh(_eclassobjectpropertynoun.uri_1);
-       sh(_eclassobjectpropertynoun.uri_2);
+       render("EObjectPropertyNoun");
+       sh(_eobjectpropertynoun.np_);
+       sh(_eobjectpropertynoun.uri_1);
+       sh(_eobjectpropertynoun.uri_2);
        render(")");
     }
-    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun)
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EDataPropertyNoun)
     {
-       net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun _eclassdatapropertynoun = (net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun) foo;
+       net.lemonmodel.patterns.parser.Absyn.EDataPropertyNoun _edatapropertynoun = (net.lemonmodel.patterns.parser.Absyn.EDataPropertyNoun) foo;
        render("(");
-       render("EClassDataPropertyNoun");
-       sh(_eclassdatapropertynoun.np_);
-       sh(_eclassdatapropertynoun.uri_);
-       sh(_eclassdatapropertynoun.string_);
+       render("EDataPropertyNoun");
+       sh(_edatapropertynoun.np_);
+       sh(_edatapropertynoun.uri_);
+       sh(_edatapropertynoun.string_);
        render(")");
     }
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1)
