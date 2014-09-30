@@ -8,6 +8,9 @@ Lexicon(<http://www.example.com/published/path>, // Here is where the ontology-l
   ClassNoun("cat",dbpedia:Cat) with plural "cats",
   ClassNoun(["body"/"common noun" "of"/preposition "water"/"common noun"],dbpedia:BodyOfWater),
   ClassNoun(["variedad"/"common noun" "cultivada"/"cultivado"/adjective],dbpedia:CultivatedVariety),
+  
+  ObjectPropertyNoun("historian",dbpedia:profession,dbpedia:Historian),
+  DataPropertyNoun("historian",ontology:profession,"Historian"),
   RelationalNoun("agreement",ontology:agreeAbout,
                    propSubj=Subject,
                    propObj=PrepositionalObject("about")),
@@ -19,6 +22,7 @@ Lexicon(<http://www.example.com/published/path>, // Here is where the ontology-l
                       class = ontology:Father,
                       property = ontology:fatherOf,
                       propObj = PossessiveAdjunct),    
+  ClassNoun("emesis",dbpedia:Vomiting) technicalRegister,
   StateVerb("amare",ontology:loves) 
       with present singular firstPerson  "amo"
       with present singular secondPerson "amas"
@@ -26,6 +30,12 @@ Lexicon(<http://www.example.com/published/path>, // Here is where the ontology-l
       with present plural   firstPerson  "amamus"
       with present plural   secondPerson "amatis"
       with present plural   thirdPerson  "amant",
+  ConsequenceVerb("die",ontology:deathDate,
+        propSubj = ontology:deadPerson as Subject,
+        propObj  = ontology:time as PrepositionalObject("on"),
+        ontology:DeathEvent),
+  ConsequenceVerb("die",dbpedia:deathDate,
+        propObj = PrepositionalObject("on")),
   telic durative EventVerb("give",ontology:GivingEvent,
          [ontology:giver as Subject,
           ontology:recipient as DirectObject,

@@ -79,6 +79,11 @@ If one of more of the words in the expression are inflected the lemmatized form 
 
     ClassNoun(["variedad"/"common noun" "cultivada"/"cultivado"/adjective],dbpedia:CultivatedVariety)
 
+In addition two patterns are provided that classes that are not named but refer to having a particular value
+
+    ObjectPropertyNoun("historian",dbpedia:profession,dbpedia:Historian)
+    DataPropertyNoun("historian",ontology:profession,"Historian")
+
 ## Relational Nouns
 
 ![The relational noun pattern](https://raw.github.com/jmccrae/lemon.patterns/master/images/RelationalNoun.png)
@@ -122,7 +127,12 @@ Gender may be specified by following the pattern with an appropriate label, e.g.
     ClassNoun("Katze",dbpedia:Cat) feminine with plural "Katzen"
     
 The values for gender are `masculine`,`feminine`,`neuter`,`commonGender` and `otherGender`.
+Gender must be specified before any inflectional variants
                          
+In a similar manner register may be specified 
+
+    ClassNoun("emesis",dbpedia:Vomiting) technicalRegister
+
 # Verbs
 
 ## State Verb
@@ -140,6 +150,28 @@ with any verb pattern
       with present plural   firstPerson  "amamus"
       with present plural   secondPerson "amatis"
       with present plural   thirdPerson  "amant"
+
+**In general, state verbs are expressed in the present tense**
+
+## Consequence Verb
+
+![The consequence verb pattern](https//raw.github.com/jmccrae/lemon.patterns/master/image/ConsequenceVerb.png)
+
+Represents a verb which after it is completed results in a fact being true about an
+entity. These may typically be invoked with an event, e.g.,
+
+    ConsequenceVerb("die",ontology:deathDate,
+      propSubj = ontology:deadPerson as Subject,
+      propObj  = ontology:time as PrepositionalObject("on"),
+      ontology:DeathEvent)
+
+If there is no event it is possible to use the frame without giving an event using the
+same syntax as a state verb
+
+    ConsequenceVerb("die",dbpedia:deathDate,
+      propObj = PrepositionalObject("on"))
+
+**In general, consequence verbs are expressed in the past tense**
     
 ## Event Verbs
 
@@ -178,15 +210,6 @@ patterns are for object and datatype properties
 
     IntersectiveDataPropertyAdjective("green",ontology:color,"green")
     
-## Property-modifying Adjectives
-
-Property-modifying adjectives alter the meaning of the noun they are attributed to. They can normally
-only be used in an attributive manner. In the ontology they are generally mappable to object properties
-
-    PropertyModifyingAdjective("former",ontology:heldRole)
-    
-This works as _"X is a former Y"_ means `X heldRole Y`
-
 ## Relational Adjectives
 
 Relational adjectives constitute a relationship between two individuals and as such
@@ -202,3 +225,166 @@ ontology as datatype ranges
 
     ScalarAdjective("big",
       [ontology:size > 5.0 for ontology:Building])
+
+# Annotations
+
+## Part of speeches
+
+Multi-word names must be quoted with double quotes.
+
+* adverbial pronoun
+* affirmative particule
+* affixed personal pronoun
+* allusive pronoun
+* cardinal numeral
+* close parenthesis
+* collective pronoun
+* comparative particle
+* compound preposition
+* conditional particule
+* conditional pronoun
+* coordinating conjunction
+* coordination particle
+* deficient verb
+* definite article
+* demonstrative determiner
+* demonstrative pronoun
+* diminutive noun
+* distinctive particle
+* emphatic pronoun
+* exclamative determiner
+* exclamative point
+* exclamative pronoun
+* existential pronoun
+* fused preposition determiner
+* fused preposition pronoun
+* fused preposition
+* fused pronounAuxiliary
+* future particle
+* general adverb
+* generalization word
+* generic numeral
+* impersonal pronoun
+* indefinite article
+* indefinite cardinal numeral
+* indefinite determiner
+* indefinite multiplicative numeral
+* indefinite ordinal numeral
+* indefinite pronoun
+* infinitive particle
+* interrogative cardinal numeral
+* interrogative determiner
+* interrogative multiplicative numeral
+* interrogative ordinal numeral
+* interrogative particle
+* interrogative pronoun
+* interrogative relative pronoun
+* inverted comma
+* irreflexive personal pronoun
+* light verb
+* main verb
+* multiplicative numeral
+* negative particle
+* negative pronoun
+* numeral fraction
+* open parenthesis
+* ordinal adjective
+* participle adjective
+* partitive article
+* past participle adjective
+* personal pronoun
+* plain verb
+* possessive adjective
+* possessive determiner
+* possessive particle
+* possessive pronoun
+* possessive relative pronoun
+* prepositional adverb
+* present participle adjective
+* presentative pronoun
+* pronominal adverb
+* qualifier adjective
+* question mark
+* reciprocal pronoun
+* reflexive adjective
+* reflexive personal pronoun
+* reflexive possessive pronoun
+* relation noun
+* relative determiner
+* relative particle
+* relative pronoun
+* strong personal pronoun
+* subordinating conjunction
+* superlative particle
+* suspension points
+* unclassified particle
+* weak personal pronoun
+* adjective
+* adposition
+* adverb
+* article
+* bullet
+* circumposition
+* colon
+* comma
+* common noun
+* conjunction
+* copula
+* determiner
+* interjection
+* modal
+* noun
+* numeral
+* particle
+* point
+* postposition
+* preposition
+* pronoun
+* proper noun
+* punctuation
+* semiColon
+* slash
+* verb
+
+## Grammatical Categories
+
+* singular
+* dual
+* plural
+* nominative
+* accusative
+* genitive
+* dative
+* comparative
+* superlative
+* present
+* past
+* future
+* firstPerson
+* secondPerson
+* thirdPerson
+* imperfect
+* imperative
+* indicative
+* subjunctive
+* conditional
+* gerundive
+* infinitive
+* participle
+* Alternatively any URI may be given as follows:
+    * _URI_ `=>` _URI_
+    * e.g., `lexinfo:gender => lexinfo:masculine`
+
+## Registers
+
+* benchLevelRegister
+* dialectRegister
+* facetiousRegister
+* formalRegister
+* inHouseRegister
+* ironicRegister
+* neutralRegister
+* slangRegister
+* tabooRegister
+* technicalRegister
+* vulgarRegister
