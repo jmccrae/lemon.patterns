@@ -593,6 +593,34 @@ public class PrettyPrinter
        render(")");
        if (_i_ > 0) render(_R_PAREN);
     }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun _eclassobjectpropertynoun = (net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("ClassObjectPropertyNoun");
+       render("(");
+       pp(_eclassobjectpropertynoun.np_, 0);
+       render(",");
+       pp(_eclassobjectpropertynoun.uri_1, 0);
+       render(",");
+       pp(_eclassobjectpropertynoun.uri_2, 0);
+       render(")");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun _eclassdatapropertynoun = (net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("ClassDataPropertyNoun");
+       render("(");
+       pp(_eclassdatapropertynoun.np_, 0);
+       render(",");
+       pp(_eclassdatapropertynoun.uri_, 0);
+       render(",");
+       printQuoted(_eclassdatapropertynoun.string_);
+       render(")");
+       if (_i_ > 0) render(_R_PAREN);
+    }
     else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1)
     {
        net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1 _erelationalnoun1 = (net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1) foo;
@@ -888,7 +916,6 @@ public class PrettyPrinter
        render(",");
        pp(_econsequenceverb7.uri_1, 0);
        render(",");
-       render(",");
        pp(_econsequenceverb7.uri_2, 0);
        render(")");
        if (_i_ > 0) render(_R_PAREN);
@@ -902,7 +929,6 @@ public class PrettyPrinter
        pp(_econsequenceverb8.vp_, 0);
        render(",");
        pp(_econsequenceverb8.uri_, 0);
-       render(",");
        render(")");
        if (_i_ > 0) render(_R_PAREN);
     }
@@ -979,18 +1005,6 @@ public class PrettyPrinter
        pp(_eintersectivedatapropertyadjective.uri_, 0);
        render(",");
        printQuoted(_eintersectivedatapropertyadjective.string_);
-       render(")");
-       if (_i_ > 0) render(_R_PAREN);
-    }
-    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EPropertyModifyingAdjective)
-    {
-       net.lemonmodel.patterns.parser.Absyn.EPropertyModifyingAdjective _epropertymodifyingadjective = (net.lemonmodel.patterns.parser.Absyn.EPropertyModifyingAdjective) foo;
-       if (_i_ > 0) render(_L_PAREN);
-       render("PropertyModifyingAdjective");
-       render("(");
-       pp(_epropertymodifyingadjective.ap_, 0);
-       render(",");
-       pp(_epropertymodifyingadjective.uri_, 0);
        render(")");
        if (_i_ > 0) render(_R_PAREN);
     }
@@ -2019,6 +2033,26 @@ public class PrettyPrinter
        sh(_eclassnoun.uri_);
        render(")");
     }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun _eclassobjectpropertynoun = (net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun) foo;
+       render("(");
+       render("EClassObjectPropertyNoun");
+       sh(_eclassobjectpropertynoun.np_);
+       sh(_eclassobjectpropertynoun.uri_1);
+       sh(_eclassobjectpropertynoun.uri_2);
+       render(")");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun _eclassdatapropertynoun = (net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun) foo;
+       render("(");
+       render("EClassDataPropertyNoun");
+       sh(_eclassdatapropertynoun.np_);
+       sh(_eclassdatapropertynoun.uri_);
+       sh(_eclassdatapropertynoun.string_);
+       render(")");
+    }
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1)
     {
        net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1 _erelationalnoun1 = (net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1) foo;
@@ -2276,15 +2310,6 @@ public class PrettyPrinter
        sh(_eintersectivedatapropertyadjective.ap_);
        sh(_eintersectivedatapropertyadjective.uri_);
        sh(_eintersectivedatapropertyadjective.string_);
-       render(")");
-    }
-    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EPropertyModifyingAdjective)
-    {
-       net.lemonmodel.patterns.parser.Absyn.EPropertyModifyingAdjective _epropertymodifyingadjective = (net.lemonmodel.patterns.parser.Absyn.EPropertyModifyingAdjective) foo;
-       render("(");
-       render("EPropertyModifyingAdjective");
-       sh(_epropertymodifyingadjective.ap_);
-       sh(_epropertymodifyingadjective.uri_);
        render(")");
     }
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.ERelationalAdjective)

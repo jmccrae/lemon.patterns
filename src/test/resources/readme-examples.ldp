@@ -32,7 +32,6 @@ Lexicon(<http://www.example.com/published/path>, // Here is where the ontology-l
           ontology:givenObject as IndirectObject]),    
   IntersectiveAdjective("Belgian",ontology:Belgian),
   IntersectiveDataPropertyAdjective("green",ontology:color,"green"),
-  PropertyModifyingAdjective("former",ontology:heldRole),
   RelationalAdjective("related",ontology:isRelatedTo,
        relationalArg = PrepositionalObject("to")),
   ScalarAdjective("big",

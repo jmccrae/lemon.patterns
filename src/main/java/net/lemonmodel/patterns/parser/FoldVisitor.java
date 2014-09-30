@@ -90,6 +90,19 @@ public abstract class FoldVisitor<R,A> implements AllVisitor<R,A> {
       r = combine(p.uri_.accept(this, arg), r, arg);
       return r;
     }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun p, A arg) {
+      R r = leaf(arg);
+      r = combine(p.np_.accept(this, arg), r, arg);
+      r = combine(p.uri_1.accept(this, arg), r, arg);
+      r = combine(p.uri_2.accept(this, arg), r, arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun p, A arg) {
+      R r = leaf(arg);
+      r = combine(p.np_.accept(this, arg), r, arg);
+      r = combine(p.uri_.accept(this, arg), r, arg);
+      return r;
+    }
     public R visit(net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1 p, A arg) {
       R r = leaf(arg);
       r = combine(p.np_.accept(this, arg), r, arg);
@@ -264,12 +277,6 @@ public abstract class FoldVisitor<R,A> implements AllVisitor<R,A> {
       return r;
     }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EIntersectiveDataPropertyAdjective p, A arg) {
-      R r = leaf(arg);
-      r = combine(p.ap_.accept(this, arg), r, arg);
-      r = combine(p.uri_.accept(this, arg), r, arg);
-      return r;
-    }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EPropertyModifyingAdjective p, A arg) {
       R r = leaf(arg);
       r = combine(p.ap_.accept(this, arg), r, arg);
       r = combine(p.uri_.accept(this, arg), r, arg);

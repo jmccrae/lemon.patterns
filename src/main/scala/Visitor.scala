@@ -76,6 +76,16 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
       p.np_.accept(this,arg),
       p.uri_.accept(this,arg)
     ) 
+    def visit(p : Absyn.EClassObjectPropertyNoun, arg : collection.mutable.Map[String,String]) = ClassObjectPropertyNoun(
+      p.np_.accept(this,arg),
+      p.uri_1.accept(this,arg),
+      p.uri_2.accept(this,arg)
+    )
+    def visit(p : Absyn.EClassDataPropertyNoun, arg : collection.mutable.Map[String,String]) = ClassDataPropertyNoun(
+      p.np_.accept(this,arg),
+      p.uri_.accept(this,arg),
+      p.string_
+    )
     def visit(p : Absyn.ERelationalNoun1, arg : collection.mutable.Map[String,String]) = RelationalNoun(
       p.np_.accept(this,arg),
       p.uri_.accept(this,arg),
@@ -216,10 +226,10 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
       p.uri_.accept(this,arg),
       p.string_
     )
-    def visit(p : Absyn.EPropertyModifyingAdjective, arg : collection.mutable.Map[String,String]) = PropertyModifyingAdjective(
+    /*def visit(p : Absyn.EPropertyModifyingAdjective, arg : collection.mutable.Map[String,String]) = PropertyModifyingAdjective(
       p.ap_.accept(this,arg),
       p.uri_.accept(this,arg)
-    )
+    )*/
     def visit(p : Absyn.ERelationalAdjective, arg : collection.mutable.Map[String,String]) = RelationalAdjective(
       p.ap_.accept(this,arg),
       p.uri_.accept(this,arg),

@@ -135,6 +135,26 @@ public class VisitSkel
 
       return null;
     }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun p, A arg)
+    {
+      /* Code For EClassObjectPropertyNoun Goes Here */
+
+      p.np_.accept(new NPVisitor<R,A>(), arg);
+      p.uri_1.accept(new URIVisitor<R,A>(), arg);
+      p.uri_2.accept(new URIVisitor<R,A>(), arg);
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun p, A arg)
+    {
+      /* Code For EClassDataPropertyNoun Goes Here */
+
+      p.np_.accept(new NPVisitor<R,A>(), arg);
+      p.uri_.accept(new URIVisitor<R,A>(), arg);
+      //p.string_;
+
+      return null;
+    }
     public R visit(net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1 p, A arg)
     {
       /* Code For ERelationalNoun1 Goes Here */
@@ -389,15 +409,6 @@ public class VisitSkel
       p.ap_.accept(new APVisitor<R,A>(), arg);
       p.uri_.accept(new URIVisitor<R,A>(), arg);
       //p.string_;
-
-      return null;
-    }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EPropertyModifyingAdjective p, A arg)
-    {
-      /* Code For EPropertyModifyingAdjective Goes Here */
-
-      p.ap_.accept(new APVisitor<R,A>(), arg);
-      p.uri_.accept(new URIVisitor<R,A>(), arg);
 
       return null;
     }

@@ -19,6 +19,8 @@ EAdjective. Pattern ::= AdjectivePattern ;
 
 EName. NounPattern ::= "Name" "(" PNP "," URI ")" ;
 EClassNoun. NounPattern ::= "ClassNoun" "(" NP "," URI ")" ;
+EClassObjectPropertyNoun. NounPattern ::= "ClassObjectPropertyNoun" "(" NP "," URI "," URI ")" ;
+EClassDataPropertyNoun. NounPattern ::= "ClassDataPropertyNoun" "(" NP "," URI "," String ")" ;
 ERelationalNoun1. NounPattern ::= "RelationalNoun" "(" NP "," URI "," "propSubj" "=" Arg "," "propObj" "=" Arg ")" ;
 ERelationalNoun2. NounPattern ::= "RelationalNoun" "(" NP "," URI "," "propObj" "=" Arg ")" ;
 ERelationalMultivalentNoun. NounPattern ::= "RelationalMultivalentNoun" "(" NP "," URI "," "[" [OntologyFrameElement] "]" ")" ;
@@ -40,13 +42,12 @@ EConsequenceVerb3. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," "propSub
 EConsequenceVerb4. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," "propSubj" "=" OntologyFrameElement ")" ;
 EConsequenceVerb5. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," "propObj" "=" OntologyFrameElement "," URI ")" ;
 EConsequenceVerb6. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," "propObj" "=" OntologyFrameElement ")" ;
-EConsequenceVerb7. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," "," URI ")" ;
-EConsequenceVerb8. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," ")" ;
+EConsequenceVerb7. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI "," URI ")" ;
+EConsequenceVerb8. VerbPattern ::= "ConsequenceVerb" "(" VP "," URI ")" ;
 
 EIntersectiveAdjective. AdjectivePattern ::= "IntersectiveAdjective" "(" AP "," URI ")" ;
 EIntersectiveObjectPropertyAdjective. AdjectivePattern ::= "IntersectiveObjectPropertyAdjective" "(" AP "," URI "," URI ")" ;
 EIntersectiveDataPropertyAdjective. AdjectivePattern ::= "IntersectiveDataPropertyAdjective" "(" AP "," URI "," String ")" ;
-EPropertyModifyingAdjective. AdjectivePattern ::= "PropertyModifyingAdjective" "(" AP "," URI ")" ;
 ERelationalAdjective. AdjectivePattern ::= "RelationalAdjective" "(" AP "," URI "," "relationalArg" "=" Arg ")" ;
 EScalarAdjective. AdjectivePattern ::= "ScalarAdjective" "(" AP "," "[" [ScalarMembership] "]" ")" ;
 

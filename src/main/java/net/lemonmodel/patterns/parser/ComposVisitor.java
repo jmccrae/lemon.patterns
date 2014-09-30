@@ -124,6 +124,22 @@ public class ComposVisitor<A> implements
 
       return new net.lemonmodel.patterns.parser.Absyn.EClassNoun(np_, uri_);
     }
+    public NounPattern visit(net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun p, A arg)
+    {
+      NP np_ = p.np_.accept(this, arg);
+      URI uri_1 = p.uri_1.accept(this, arg);
+      URI uri_2 = p.uri_2.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun(np_, uri_1, uri_2);
+    }
+    public NounPattern visit(net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun p, A arg)
+    {
+      NP np_ = p.np_.accept(this, arg);
+      URI uri_ = p.uri_.accept(this, arg);
+      String string_ = p.string_;
+
+      return new net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun(np_, uri_, string_);
+    }
     public NounPattern visit(net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1 p, A arg)
     {
       NP np_ = p.np_.accept(this, arg);
@@ -330,13 +346,6 @@ public class ComposVisitor<A> implements
       String string_ = p.string_;
 
       return new net.lemonmodel.patterns.parser.Absyn.EIntersectiveDataPropertyAdjective(ap_, uri_, string_);
-    }
-    public AdjectivePattern visit(net.lemonmodel.patterns.parser.Absyn.EPropertyModifyingAdjective p, A arg)
-    {
-      AP ap_ = p.ap_.accept(this, arg);
-      URI uri_ = p.uri_.accept(this, arg);
-
-      return new net.lemonmodel.patterns.parser.Absyn.EPropertyModifyingAdjective(ap_, uri_);
     }
     public AdjectivePattern visit(net.lemonmodel.patterns.parser.Absyn.ERelationalAdjective p, A arg)
     {

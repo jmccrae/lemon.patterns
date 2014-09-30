@@ -98,25 +98,17 @@ case class Name(val lemma : PNP,
 }
 
 /**
-* A noun representing a genus of object associated with an ontology class
-* @param form The canonical form of the noun (required)
-* @param sense The URI to be associated with
-* @param forms The set of other forms
-*/
-case class ClassNoun(val lemma : NP, 
-                     val sense : URI = null, 
-                     val forms : Seq[Form] = Nil,
-                     val gender : Option[Gender] = None,
-                     val register : Option[Register] = None) extends Noun {
-  def makeWithForm(form : Form) = ClassNoun(lemma,sense,forms :+ form,gender,register)
-  def withGender(gender : Gender) = ClassNoun(lemma,sense,forms,Some(gender),register)
-  def withRegister(register : Register) = ClassNoun(lemma,sense,forms,gender,Some(register))
+ * Abstract class noun
+ */
+trait AbsClassNoun extends Noun {
+  def register : Option[Register]
+  def referenceXML(namer : URINamer) : Elem
   def senseXML(namer : URINamer) = {
   val subjURI = namer("noun",lemma.toString(),Some("subject"))
     <lemon:sense>
       <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("sense"))}>
          <lemon:reference>
-           <owl:Class rdf:about={sense}/>
+         {referenceXML(namer)}
          </lemon:reference>
          {registerXML(register)}
          <lemon:isA>
@@ -133,10 +125,70 @@ case class ClassNoun(val lemma : NP,
   }
 }
 
+  
+
+/**
+* A noun representing a genus of object associated with an ontology class
+* @param lemma The canonical form of the noun (required)
+* @param sense The URI to be associated with
+* @param forms The set of other forms
+*/
+case class ClassNoun(val lemma : NP, 
+                     val sense : URI = null, 
+                     val forms : Seq[Form] = Nil,
+                     val gender : Option[Gender] = None,
+                     val register : Option[Register] = None) extends AbsClassNoun {
+  def makeWithForm(form : Form) = ClassNoun(lemma,sense,forms :+ form,gender,register)
+  def withGender(gender : Gender) = ClassNoun(lemma,sense,forms,Some(gender),register)
+  def withRegister(register : Register) = ClassNoun(lemma,sense,forms,gender,Some(register))
+  def referenceXML(name : URINamer) = <owl:Class rdf:about={sense}/>
+}
+
+/**
+ * A noun representing a genus of object associated with an anonymous ontology class defined by a property and a value
+ * @param lemma The canonical form of the noun (required)
+ * @param sense The URI to be associated with
+ * @param forms The set of other forms
+ */
+case class ClassObjectPropertyNoun(val lemma : NP, 
+                     val prop : URI, val obj : URI,
+                     val forms : Seq[Form] = Nil,
+                     val gender : Option[Gender] = None,
+                     val register : Option[Register] = None) extends AbsClassNoun {
+  def makeWithForm(form : Form) = ClassObjectPropertyNoun(lemma,prop,obj,forms :+ form,gender,register)
+  def withGender(gender : Gender) = ClassObjectPropertyNoun(lemma,prop,obj,forms,Some(gender),register)
+  def withRegister(register : Register) = ClassObjectPropertyNoun(lemma,prop,obj,forms,gender,Some(register))
+  def referenceXML(name : URINamer) = <owl:Restriction rdf:about={name("noun",lemma.toString(), Some("sense"))}>
+    <owl:onProperty rdf:resource={prop}/>
+    <owl:hasValue rdf:resource={obj}/>
+  </owl:Restriction>
+}
+
+/**
+ * A noun representing a genus of object associated with an anonymous ontology class defined by a property and a value
+ * @param lemma The canonical form of the noun (required)
+ * @param sense The URI to be associated with
+ * @param forms The set of other forms
+ */
+case class ClassDataPropertyNoun(val lemma : NP, 
+                     val prop : URI, val value : String,
+                     val forms : Seq[Form] = Nil,
+                     val gender : Option[Gender] = None,
+                     val register : Option[Register] = None) extends AbsClassNoun {
+  def makeWithForm(form : Form) = ClassDataPropertyNoun(lemma,prop,value,forms :+ form,gender,register)
+  def withGender(gender : Gender) = ClassDataPropertyNoun(lemma,prop,value,forms,Some(gender),register)
+  def withRegister(register : Register) = ClassDataPropertyNoun(lemma,prop,value,forms,gender,Some(register))
+  def referenceXML(name : URINamer) = <owl:Restriction rdf:about={name("noun",lemma.toString(), Some("sense"))}>
+    <owl:onProperty rdf:resource={prop}/>
+    <owl:hasValue>{value}</owl:hasValue>
+  </owl:Restriction>
+}
+
+
 /**
  * A noun representing a bivalent relationship associated with an object property
  * in the ontology
- * @param form The canonical form of the noun (required)
+ * @param lemma The canonical form of the noun (required)
  * @param sense The URI to be associated with
  * @param propSubj Indicates the argument that fills the subject (domain) of the object property
  * @param propObj Indicates the argument that fills the object (range) of the object property (required)

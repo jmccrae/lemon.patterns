@@ -1,0 +1,9 @@
+@prefix boston: <http://ontosem.net/ontology/BostonHousing#> .
+
+Lexicon(<http://ontosem.net/lexicon/Boston_Housing_en#>,"en",
+
+   ScalarAdjective("expensive",[boston:housePrice > 10000.0 for boston:Suburb]),
+   ScalarAdjective("cheap",[boston:housePrice < 80000.0 for boston:Suburb]),
+   ScalarAdjective("unsafe",[boston:crim > 0.1 for boston:Suburb])
+
+)

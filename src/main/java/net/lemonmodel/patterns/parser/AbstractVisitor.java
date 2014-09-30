@@ -31,6 +31,8 @@ public class AbstractVisitor<R,A> implements AllVisitor<R,A> {
 /* NounPattern */
     public R visit(net.lemonmodel.patterns.parser.Absyn.EName p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EClassNoun p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun p, A arg) { return visitDefault(p, arg); }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1 p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.ERelationalNoun2 p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.ERelationalMultivalentNoun p, A arg) { return visitDefault(p, arg); }
@@ -64,7 +66,6 @@ public class AbstractVisitor<R,A> implements AllVisitor<R,A> {
     public R visit(net.lemonmodel.patterns.parser.Absyn.EIntersectiveAdjective p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EIntersectiveObjectPropertyAdjective p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EIntersectiveDataPropertyAdjective p, A arg) { return visitDefault(p, arg); }
-    public R visit(net.lemonmodel.patterns.parser.Absyn.EPropertyModifyingAdjective p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.ERelationalAdjective p, A arg) { return visitDefault(p, arg); }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EScalarAdjective p, A arg) { return visitDefault(p, arg); }
     public R visitDefault(net.lemonmodel.patterns.parser.Absyn.AdjectivePattern p, A arg) {

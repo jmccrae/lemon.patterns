@@ -5,6 +5,8 @@ public abstract class NounPattern implements java.io.Serializable {
   public interface Visitor <R,A> {
     public R visit(net.lemonmodel.patterns.parser.Absyn.EName p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.EClassNoun p, A arg);
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EClassObjectPropertyNoun p, A arg);
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EClassDataPropertyNoun p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.ERelationalNoun1 p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.ERelationalNoun2 p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.ERelationalMultivalentNoun p, A arg);

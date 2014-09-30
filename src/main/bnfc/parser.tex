@@ -52,41 +52,41 @@ The set of reserved words is the set of terminals appearing in the grammar. Thos
 The reserved words used in parser are the following: \\
 
 \begin{tabular}{lll}
-{\reserved{ClassNoun}} &{\reserved{ClassRelationalNoun}} &{\reserved{ConsequenceVerb}} \\
-{\reserved{CopulativeArg}} &{\reserved{CopulativeSubject}} &{\reserved{DirectObject}} \\
-{\reserved{EventVerb}} &{\reserved{IndirectObject}} &{\reserved{IntersectiveAdjective}} \\
-{\reserved{IntersectiveDataPropertyAdjective}} &{\reserved{IntersectiveObjectPropertyAdjective}} &{\reserved{Lexicon}} \\
-{\reserved{Name}} &{\reserved{PossessiveAdjunct}} &{\reserved{PostpositionalObject}} \\
-{\reserved{PrepositionalObject}} &{\reserved{PropertyModifyingAdjective}} &{\reserved{RelationalAdjective}} \\
-{\reserved{RelationalMultivalentNoun}} &{\reserved{RelationalNoun}} &{\reserved{ScalarAdjective}} \\
-{\reserved{StateVerb}} &{\reserved{Subject}} &{\reserved{accusative}} \\
-{\reserved{adjective}} &{\reserved{adposition}} &{\reserved{adverb}} \\
-{\reserved{article}} &{\reserved{as}} &{\reserved{benchLevelRegister}} \\
-{\reserved{bullet}} &{\reserved{central}} &{\reserved{circumposition}} \\
-{\reserved{class}} &{\reserved{colon}} &{\reserved{comma}} \\
-{\reserved{commonGender}} &{\reserved{comparative}} &{\reserved{conditional}} \\
-{\reserved{conjunction}} &{\reserved{contravariant}} &{\reserved{copula}} \\
-{\reserved{covariant}} &{\reserved{dative}} &{\reserved{determiner}} \\
-{\reserved{dialectRegister}} &{\reserved{dual}} &{\reserved{durative}} \\
-{\reserved{facetiousRegister}} &{\reserved{feminine}} &{\reserved{firstPerson}} \\
-{\reserved{for}} &{\reserved{formalRegister}} &{\reserved{future}} \\
-{\reserved{genitive}} &{\reserved{gerundive}} &{\reserved{head}} \\
-{\reserved{imperative}} &{\reserved{imperfect}} &{\reserved{inHouseRegister}} \\
-{\reserved{indicative}} &{\reserved{infinitive}} &{\reserved{instant}} \\
-{\reserved{interjection}} &{\reserved{ironicRegister}} &{\reserved{masculine}} \\
-{\reserved{neuter}} &{\reserved{neutralRegister}} &{\reserved{nominative}} \\
-{\reserved{nontelic}} &{\reserved{noun}} &{\reserved{numeral}} \\
-{\reserved{optional}} &{\reserved{otherGender}} &{\reserved{participle}} \\
-{\reserved{particle}} &{\reserved{past}} &{\reserved{plural}} \\
-{\reserved{point}} &{\reserved{postposition}} &{\reserved{preposition}} \\
-{\reserved{present}} &{\reserved{pronoun}} &{\reserved{propObj}} \\
-{\reserved{propSubj}} &{\reserved{property}} &{\reserved{punctuation}} \\
-{\reserved{relationalArg}} &{\reserved{restrictedTo}} &{\reserved{secondPerson}} \\
-{\reserved{semiColon}} &{\reserved{singular}} &{\reserved{slangRegister}} \\
-{\reserved{slash}} &{\reserved{subjunctive}} &{\reserved{superlative}} \\
-{\reserved{tabooRegister}} &{\reserved{technicalRegister}} &{\reserved{telic}} \\
-{\reserved{thirdPerson}} &{\reserved{verb}} &{\reserved{vulgarRegister}} \\
-{\reserved{with}} & & \\
+{\reserved{ClassDataPropertyNoun}} &{\reserved{ClassNoun}} &{\reserved{ClassObjectPropertyNoun}} \\
+{\reserved{ClassRelationalNoun}} &{\reserved{ConsequenceVerb}} &{\reserved{CopulativeArg}} \\
+{\reserved{CopulativeSubject}} &{\reserved{DirectObject}} &{\reserved{EventVerb}} \\
+{\reserved{IndirectObject}} &{\reserved{IntersectiveAdjective}} &{\reserved{IntersectiveDataPropertyAdjective}} \\
+{\reserved{IntersectiveObjectPropertyAdjective}} &{\reserved{Lexicon}} &{\reserved{Name}} \\
+{\reserved{PossessiveAdjunct}} &{\reserved{PostpositionalObject}} &{\reserved{PrepositionalObject}} \\
+{\reserved{RelationalAdjective}} &{\reserved{RelationalMultivalentNoun}} &{\reserved{RelationalNoun}} \\
+{\reserved{ScalarAdjective}} &{\reserved{StateVerb}} &{\reserved{Subject}} \\
+{\reserved{accusative}} &{\reserved{adjective}} &{\reserved{adposition}} \\
+{\reserved{adverb}} &{\reserved{article}} &{\reserved{as}} \\
+{\reserved{benchLevelRegister}} &{\reserved{bullet}} &{\reserved{central}} \\
+{\reserved{circumposition}} &{\reserved{class}} &{\reserved{colon}} \\
+{\reserved{comma}} &{\reserved{commonGender}} &{\reserved{comparative}} \\
+{\reserved{conditional}} &{\reserved{conjunction}} &{\reserved{contravariant}} \\
+{\reserved{copula}} &{\reserved{covariant}} &{\reserved{dative}} \\
+{\reserved{determiner}} &{\reserved{dialectRegister}} &{\reserved{dual}} \\
+{\reserved{durative}} &{\reserved{facetiousRegister}} &{\reserved{feminine}} \\
+{\reserved{firstPerson}} &{\reserved{for}} &{\reserved{formalRegister}} \\
+{\reserved{future}} &{\reserved{genitive}} &{\reserved{gerundive}} \\
+{\reserved{head}} &{\reserved{imperative}} &{\reserved{imperfect}} \\
+{\reserved{inHouseRegister}} &{\reserved{indicative}} &{\reserved{infinitive}} \\
+{\reserved{instant}} &{\reserved{interjection}} &{\reserved{ironicRegister}} \\
+{\reserved{masculine}} &{\reserved{neuter}} &{\reserved{neutralRegister}} \\
+{\reserved{nominative}} &{\reserved{nontelic}} &{\reserved{noun}} \\
+{\reserved{numeral}} &{\reserved{optional}} &{\reserved{otherGender}} \\
+{\reserved{participle}} &{\reserved{particle}} &{\reserved{past}} \\
+{\reserved{plural}} &{\reserved{point}} &{\reserved{postposition}} \\
+{\reserved{preposition}} &{\reserved{present}} &{\reserved{pronoun}} \\
+{\reserved{propObj}} &{\reserved{propSubj}} &{\reserved{property}} \\
+{\reserved{punctuation}} &{\reserved{relationalArg}} &{\reserved{restrictedTo}} \\
+{\reserved{secondPerson}} &{\reserved{semiColon}} &{\reserved{singular}} \\
+{\reserved{slangRegister}} &{\reserved{slash}} &{\reserved{subjunctive}} \\
+{\reserved{superlative}} &{\reserved{tabooRegister}} &{\reserved{technicalRegister}} \\
+{\reserved{telic}} &{\reserved{thirdPerson}} &{\reserved{verb}} \\
+{\reserved{vulgarRegister}} &{\reserved{with}} & \\
 \end{tabular}\\
 
 The symbols used in parser are the following: \\
@@ -138,6 +138,8 @@ All other symbols are terminals.\\
 \begin{tabular}{lll}
 {\nonterminal{NounPattern}} & {\arrow}  &{\terminal{Name}} {\terminal{(}} {\nonterminal{PNP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{ClassNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{ClassObjectPropertyNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{ClassDataPropertyNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{String}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{RelationalNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{RelationalNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{RelationalMultivalentNoun}} {\terminal{(}} {\nonterminal{NP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{[}} {\nonterminal{ListOntologyFrameElement}} {\terminal{]}} {\terminal{)}}  \\
@@ -158,8 +160,8 @@ All other symbols are terminals.\\
  & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propSubj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{propObj}} {\terminal{{$=$}}} {\nonterminal{OntologyFrameElement}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
+ & {\delimit}  &{\terminal{ConsequenceVerb}} {\terminal{(}} {\nonterminal{VP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -175,7 +177,6 @@ All other symbols are terminals.\\
 {\nonterminal{AdjectivePattern}} & {\arrow}  &{\terminal{IntersectiveAdjective}} {\terminal{(}} {\nonterminal{AP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{IntersectiveObjectPropertyAdjective}} {\terminal{(}} {\nonterminal{AP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{IntersectiveDataPropertyAdjective}} {\terminal{(}} {\nonterminal{AP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\nonterminal{String}} {\terminal{)}}  \\
- & {\delimit}  &{\terminal{PropertyModifyingAdjective}} {\terminal{(}} {\nonterminal{AP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{RelationalAdjective}} {\terminal{(}} {\nonterminal{AP}} {\terminal{,}} {\nonterminal{URI}} {\terminal{,}} {\terminal{relationalArg}} {\terminal{{$=$}}} {\nonterminal{Arg}} {\terminal{)}}  \\
  & {\delimit}  &{\terminal{ScalarAdjective}} {\terminal{(}} {\nonterminal{AP}} {\terminal{,}} {\terminal{[}} {\nonterminal{ListScalarMembership}} {\terminal{]}} {\terminal{)}}  \\
 \end{tabular}\\
