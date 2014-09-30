@@ -107,7 +107,7 @@ case class IntersectiveObjectPropertyAdjective(val lemma : AP,
     <lemon:sense>
       <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
          <lemon:reference>
-           <owl:Restriction>
+           <owl:Restriction rdf:about={namer("adjective",lemma.toString(),Some("reference"))}>
              <owl:onProperty rdf:resource={property}/>
              <owl:hasValue rdf:resource={value}/>
            </owl:Restriction>
@@ -146,7 +146,7 @@ case class IntersectiveDataPropertyAdjective(val lemma : AP,
     <lemon:sense>
       <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
          <lemon:reference>
-           <owl:Restriction>
+           <owl:Restriction rdf:about={namer("adjective",lemma.toString(),Some("reference"))}>
              <owl:onProperty rdf:resource={property}/>
              <owl:hasValue>{value}</owl:hasValue>
            </owl:Restriction>
@@ -262,7 +262,7 @@ case class ScalarAdjective(val lemma : AP,
     <lemon:sense>
       <lemon:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
          <lemon:reference>
-            <owl:Class>
+            <owl:Class rdf:about={namer("adjective",lemma.toString(),Some("reference"))}>
               { 
                 if(forClass != null) {
                  <rdfs:subClassOf rdf:resource={forClass}/>
