@@ -41,9 +41,13 @@ class PatternsServlet extends HttpServlet {
           out.close
         } catch {
           case (e : Throwable) => {
-            System.err.println("At line " + String.valueOf(l.line_num()) + ", near \"" + l.buff() + "\" :");
-            System.err.println("     " + e.getMessage());
-            resp.sendError(400,"Parse Error" + pattern)
+            resp.setStatus(400)
+            resp.setContentType("text/html")
+            val out = resp.getWriter()
+            out.write(error(e,l,pattern).toString)
+            out.flush
+            out.close
+            return
           }
         }
       case "/lemonpatterns/bootstrap.min.css" =>
@@ -140,6 +144,35 @@ Lexicon(&lt;http://www.example.org/lexicon&gt;, "en",
             <p>For documentation please see <a href="https://github.com/jmccrae/lemon.patterns">project at GitHub</a></p>
             <p>&copy; 2014. This software was developed by John P. M<sup>c</sup>Crae for the 
             <a href="http://www.lider-project.eu/">LIDER</a> Project and is available under the Apache License</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  }
+
+  def error(e : Throwable, l : Yylex, document : String) = {
+    <html>
+      <head>
+        <title>Lemon Design Patterns Compiler</title>
+        <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="/lemonpatterns/bootstrap.min.css"/>
+      </head>
+      <body>
+        <div class="container">
+          <div class="row">
+            <div class="page-header">
+              <h1>An error occurred</h1>
+            </div>
+            <h3>{"At line " + String.valueOf(l.line_num()) + ", near \"" + l.buff() + "\" :"}</h3>
+            <div class="alert alert-danger">{
+              e.getMessage().split("\n").map(text => <p>{text}</p>)
+            }</div>
+            <h3>Original document</h3>
+            <table style="font-family: Source Code Pro;">{
+              document.replaceAll(" ","\u00a0").split("\n").zipWithIndex.map{
+                case (text,id) => <tr><td style="width:30px;text-align:right;color:#ccc;padding-right:3px;">{id+1}</td><td>{text}</td></tr>
+              }
+            }</table>
           </div>
         </div>
       </body>

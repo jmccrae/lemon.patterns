@@ -71,7 +71,7 @@ package net.lemonmodel {
       def toXML(namer : URINamer, lang : String)  : Node
       def registerXML(register : Option[Register]) = {
 	{register match {
-	    case Some(r) => <lexinfo:register ref:resource={lexinfo(r.toString()).toString()}/>
+	    case Some(r) => <lexinfo:register rdf:resource={lexinfo(r.toString()).toString()}/>
 	    case None =>
 	  }
          }
