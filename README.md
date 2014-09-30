@@ -155,7 +155,7 @@ with any verb pattern
 
 ## Consequence Verb
 
-![The consequence verb pattern](https//raw.github.com/jmccrae/lemon.patterns/master/image/ConsequenceVerb.png)
+![The consequence verb pattern](https://raw.github.com/jmccrae/lemon.patterns/master/images/ConsequenceVerb.png)
 
 Represents a verb which after it is completed results in a fact being true about an
 entity. These may typically be invoked with an event, e.g.,
