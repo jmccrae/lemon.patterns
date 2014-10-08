@@ -34,7 +34,7 @@
           <div class="superTypes hiddenContent"><a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a name="net.lemonmodel.patterns.ClassNoun" class="extype" href="ClassNoun.html">ClassNoun</a>, <a name="net.lemonmodel.patterns.ClassRelationalNoun" class="extype" href="ClassRelationalNoun.html">ClassRelationalNoun</a>, <a name="net.lemonmodel.patterns.Name" class="extype" href="Name.html">Name</a>, <a name="net.lemonmodel.patterns.RelationalMultivalentNoun" class="extype" href="RelationalMultivalentNoun.html">RelationalMultivalentNoun</a>, <a name="net.lemonmodel.patterns.RelationalNoun" class="extype" href="RelationalNoun.html">RelationalNoun</a></div>
+          <div class="subClasses hiddenContent"><a name="net.lemonmodel.patterns.AbsClassNoun" class="extype" href="AbsClassNoun.html">AbsClassNoun</a>, <a name="net.lemonmodel.patterns.ClassNoun" class="extype" href="ClassNoun.html">ClassNoun</a>, <a name="net.lemonmodel.patterns.ClassRelationalNoun" class="extype" href="ClassRelationalNoun.html">ClassRelationalNoun</a>, <a name="net.lemonmodel.patterns.DataPropertyNoun" class="extype" href="DataPropertyNoun.html">DataPropertyNoun</a>, <a name="net.lemonmodel.patterns.Name" class="extype" href="Name.html">Name</a>, <a name="net.lemonmodel.patterns.ObjectPropertyNoun" class="extype" href="ObjectPropertyNoun.html">ObjectPropertyNoun</a>, <a name="net.lemonmodel.patterns.RelationalMultivalentNoun" class="extype" href="RelationalMultivalentNoun.html">RelationalMultivalentNoun</a>, <a name="net.lemonmodel.patterns.RelationalNoun" class="extype" href="RelationalNoun.html">RelationalNoun</a></div>
         </div></div>
         
 
@@ -75,6 +75,17 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#gender" data-isabs="true">
+      <a id="gender:Option[Gender]"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">gender</span>
+        
+        <span class="result">: <span name="scala.Option" class="extype">Option</span>[<a name="net.lemonmodel.patterns.Gender" class="extype" href="Gender.html">Gender</a>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#lemma" data-isabs="true">
       <a id="lemma:NounPhrase"></a>
       <h4 class="signature">
@@ -108,6 +119,28 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected abstract </dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withGender" data-isabs="true">
+      <a id="withGender(Gender):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withGender</span>
+        
+        <span class="params">(<span name="gender">gender: <a name="net.lemonmodel.patterns.Gender" class="extype" href="Gender.html">Gender</a></span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Pattern#withRegister" data-isabs="true">
+      <a id="withRegister(Register):Pattern"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withRegister</span>
+        
+        <span class="params">(<span name="register">register: <a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a></span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd><dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a></dd></dl></div>
     </li></ol>
             </div>
 
@@ -193,6 +226,17 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#commonGender" data-isabs="false">
+      <a id="commonGender:Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">commonGender</span>
+        
+        <span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.AnyRef#eq" data-isabs="false">
       <a id="eq(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -215,6 +259,17 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#feminine" data-isabs="false">
+      <a id="feminine:Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">feminine</span>
+        
+        <span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="prt" name="scala.AnyRef#finalize" data-isabs="false">
       <a id="finalize():Unit"></a>
       <h4 class="signature">
@@ -273,6 +328,17 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#masculine" data-isabs="false">
+      <a id="masculine:Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">masculine</span>
+        
+        <span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.AnyRef#ne" data-isabs="false">
       <a id="ne(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -284,6 +350,17 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>final </dd><dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#neuter" data-isabs="false">
+      <a id="neuter:Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">neuter</span>
+        
+        <span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.AnyRef#notify" data-isabs="false">
       <a id="notify():Unit"></a>
       <h4 class="signature">
@@ -306,6 +383,28 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>final </dd><dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#otherGender" data-isabs="false">
+      <a id="otherGender:Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">otherGender</span>
+        
+        <span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Pattern#registerXML" data-isabs="false">
+      <a id="registerXML(Option[Register]):Any"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">registerXML</span>
+        
+        <span class="params">(<span name="register">register: <span name="scala.Option" class="extype">Option</span>[<a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a>]</span>)</span><span class="result">: <span name="scala.Any" class="extype">Any</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a></dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">
       <a id="synchronized[T0](⇒ T0):T0"></a>
       <h4 class="signature">
@@ -381,12 +480,155 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAbessive" data-isabs="false">
+      <a id="withAbessive(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAbessive</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAbessiveDual" data-isabs="false">
+      <a id="withAbessiveDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAbessiveDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAbessivePlural" data-isabs="false">
+      <a id="withAbessivePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAbessivePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAbessiveSingular" data-isabs="false">
+      <a id="withAbessiveSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAbessiveSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAblative" data-isabs="false">
+      <a id="withAblative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAblative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAblativeDual" data-isabs="false">
+      <a id="withAblativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAblativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAblativePlural" data-isabs="false">
+      <a id="withAblativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAblativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAblativeSingular" data-isabs="false">
+      <a id="withAblativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAblativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAbsolutive" data-isabs="false">
+      <a id="withAbsolutive(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAbsolutive</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAbsolutiveDual" data-isabs="false">
+      <a id="withAbsolutiveDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAbsolutiveDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAbsolutivePlural" data-isabs="false">
+      <a id="withAbsolutivePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAbsolutivePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAbsolutiveSingular" data-isabs="false">
+      <a id="withAbsolutiveSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAbsolutiveSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAccusative" data-isabs="false">
       <a id="withAccusative(String):Noun"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">withAccusative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAccusativeDual" data-isabs="false">
+      <a id="withAccusativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAccusativeDual</span>
         
         <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
       </span>
@@ -414,12 +656,287 @@
       </span>
       </h4>
       
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAdessive" data-isabs="false">
+      <a id="withAdessive(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAdessive</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAdessiveDual" data-isabs="false">
+      <a id="withAdessiveDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAdessiveDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAdessivePlural" data-isabs="false">
+      <a id="withAdessivePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAdessivePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAdessiveSingular" data-isabs="false">
+      <a id="withAdessiveSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAdessiveSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAditive" data-isabs="false">
+      <a id="withAditive(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAditive</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAditiveDual" data-isabs="false">
+      <a id="withAditiveDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAditiveDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAditivePlural" data-isabs="false">
+      <a id="withAditivePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAditivePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAditiveSingular" data-isabs="false">
+      <a id="withAditiveSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAditiveSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAllative" data-isabs="false">
+      <a id="withAllative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAllative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAllativeDual" data-isabs="false">
+      <a id="withAllativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAllativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAllativePlural" data-isabs="false">
+      <a id="withAllativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAllativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withAllativeSingular" data-isabs="false">
+      <a id="withAllativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withAllativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withBenefactive" data-isabs="false">
+      <a id="withBenefactive(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withBenefactive</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withBenefactiveDual" data-isabs="false">
+      <a id="withBenefactiveDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withBenefactiveDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withBenefactivePlural" data-isabs="false">
+      <a id="withBenefactivePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withBenefactivePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withBenefactiveSingular" data-isabs="false">
+      <a id="withBenefactiveSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withBenefactiveSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withCausative" data-isabs="false">
+      <a id="withCausative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withCausative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withCausativeDual" data-isabs="false">
+      <a id="withCausativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withCausativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withCausativePlural" data-isabs="false">
+      <a id="withCausativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withCausativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withCausativeSingular" data-isabs="false">
+      <a id="withCausativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withCausativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withComitative" data-isabs="false">
+      <a id="withComitative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withComitative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withComitativeDual" data-isabs="false">
+      <a id="withComitativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withComitativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withComitativePlural" data-isabs="false">
+      <a id="withComitativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withComitativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withComitativeSingular" data-isabs="false">
+      <a id="withComitativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withComitativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withDative" data-isabs="false">
       <a id="withDative(String):Noun"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">withDative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withDativeDual" data-isabs="false">
+      <a id="withDativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withDativeDual</span>
         
         <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
       </span>
@@ -447,12 +964,243 @@
       </span>
       </h4>
       
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withDelative" data-isabs="false">
+      <a id="withDelative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withDelative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withDelativeDual" data-isabs="false">
+      <a id="withDelativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withDelativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withDelativePlural" data-isabs="false">
+      <a id="withDelativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withDelativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withDelativeSingular" data-isabs="false">
+      <a id="withDelativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withDelativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withElative" data-isabs="false">
+      <a id="withElative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withElative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withElativeDual" data-isabs="false">
+      <a id="withElativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withElativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withElativePlural" data-isabs="false">
+      <a id="withElativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withElativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withElativeSingular" data-isabs="false">
+      <a id="withElativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withElativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withEquative" data-isabs="false">
+      <a id="withEquative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withEquative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withEquativeDual" data-isabs="false">
+      <a id="withEquativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withEquativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withEquativePlural" data-isabs="false">
+      <a id="withEquativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withEquativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withEquativeSingular" data-isabs="false">
+      <a id="withEquativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withEquativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withErgative" data-isabs="false">
+      <a id="withErgative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withErgative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withErgativeDual" data-isabs="false">
+      <a id="withErgativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withErgativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withErgativePlural" data-isabs="false">
+      <a id="withErgativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withErgativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withErgativeSingular" data-isabs="false">
+      <a id="withErgativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withErgativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withEssive" data-isabs="false">
+      <a id="withEssive(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withEssive</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withEssiveDual" data-isabs="false">
+      <a id="withEssiveDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withEssiveDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withEssivePlural" data-isabs="false">
+      <a id="withEssivePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withEssivePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withEssiveSingular" data-isabs="false">
+      <a id="withEssiveSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withEssiveSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withGenitive" data-isabs="false">
       <a id="withGenitive(String):Noun"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">withGenitive</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withGenitiveDual" data-isabs="false">
+      <a id="withGenitiveDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withGenitiveDual</span>
         
         <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
       </span>
@@ -480,6 +1228,237 @@
       </span>
       </h4>
       
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withIllative" data-isabs="false">
+      <a id="withIllative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withIllative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withIllativeDual" data-isabs="false">
+      <a id="withIllativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withIllativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withIllativePlural" data-isabs="false">
+      <a id="withIllativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withIllativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withIllativeSingular" data-isabs="false">
+      <a id="withIllativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withIllativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withInessive" data-isabs="false">
+      <a id="withInessive(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withInessive</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withInessiveDual" data-isabs="false">
+      <a id="withInessiveDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withInessiveDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withInessivePlural" data-isabs="false">
+      <a id="withInessivePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withInessivePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withInessiveSingular" data-isabs="false">
+      <a id="withInessiveSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withInessiveSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withInstrumental" data-isabs="false">
+      <a id="withInstrumental(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withInstrumental</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withInstrumentalDual" data-isabs="false">
+      <a id="withInstrumentalDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withInstrumentalDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withInstrumentalPlural" data-isabs="false">
+      <a id="withInstrumentalPlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withInstrumentalPlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withInstrumentalSingular" data-isabs="false">
+      <a id="withInstrumentalSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withInstrumentalSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withLative" data-isabs="false">
+      <a id="withLative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withLative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withLativeDual" data-isabs="false">
+      <a id="withLativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withLativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withLativePlural" data-isabs="false">
+      <a id="withLativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withLativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withLativeSingular" data-isabs="false">
+      <a id="withLativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withLativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withLocative" data-isabs="false">
+      <a id="withLocative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withLocative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withLocativeDual" data-isabs="false">
+      <a id="withLocativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withLocativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withLocativePlural" data-isabs="false">
+      <a id="withLocativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withLocativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withLocativeSingular" data-isabs="false">
+      <a id="withLocativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withLocativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withNominativeDual" data-isabs="false">
+      <a id="withNominativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withNominativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withNominativePlural" data-isabs="false">
       <a id="withNominativePlural(String):Noun"></a>
       <h4 class="signature">
@@ -502,12 +1481,408 @@
       </span>
       </h4>
       
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withOblique" data-isabs="false">
+      <a id="withOblique(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withOblique</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withObliqueDual" data-isabs="false">
+      <a id="withObliqueDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withObliqueDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withObliquePlural" data-isabs="false">
+      <a id="withObliquePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withObliquePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withObliqueSingular" data-isabs="false">
+      <a id="withObliqueSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withObliqueSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withPartitive" data-isabs="false">
+      <a id="withPartitive(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withPartitive</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withPartitiveDual" data-isabs="false">
+      <a id="withPartitiveDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withPartitiveDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withPartitivePlural" data-isabs="false">
+      <a id="withPartitivePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withPartitivePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withPartitiveSingular" data-isabs="false">
+      <a id="withPartitiveSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withPartitiveSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withPlural" data-isabs="false">
       <a id="withPlural(String):Noun"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">withPlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withProlative" data-isabs="false">
+      <a id="withProlative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withProlative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withProlativeDual" data-isabs="false">
+      <a id="withProlativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withProlativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withProlativePlural" data-isabs="false">
+      <a id="withProlativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withProlativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withProlativeSingular" data-isabs="false">
+      <a id="withProlativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withProlativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withSociative" data-isabs="false">
+      <a id="withSociative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withSociative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withSociativeDual" data-isabs="false">
+      <a id="withSociativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withSociativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withSociativePlural" data-isabs="false">
+      <a id="withSociativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withSociativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withSociativeSingular" data-isabs="false">
+      <a id="withSociativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withSociativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withSublative" data-isabs="false">
+      <a id="withSublative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withSublative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withSublativeDual" data-isabs="false">
+      <a id="withSublativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withSublativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withSublativePlural" data-isabs="false">
+      <a id="withSublativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withSublativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withSublativeSingular" data-isabs="false">
+      <a id="withSublativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withSublativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withSuperessive" data-isabs="false">
+      <a id="withSuperessive(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withSuperessive</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withSuperessiveDual" data-isabs="false">
+      <a id="withSuperessiveDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withSuperessiveDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withSuperessivePlural" data-isabs="false">
+      <a id="withSuperessivePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withSuperessivePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withSuperessiveSingular" data-isabs="false">
+      <a id="withSuperessiveSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withSuperessiveSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withTerminative" data-isabs="false">
+      <a id="withTerminative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withTerminative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withTerminativeDual" data-isabs="false">
+      <a id="withTerminativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withTerminativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withTerminativePlural" data-isabs="false">
+      <a id="withTerminativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withTerminativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withTerminativeSingular" data-isabs="false">
+      <a id="withTerminativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withTerminativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withTranslative" data-isabs="false">
+      <a id="withTranslative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withTranslative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withTranslativeDual" data-isabs="false">
+      <a id="withTranslativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withTranslativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withTranslativePlural" data-isabs="false">
+      <a id="withTranslativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withTranslativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withTranslativeSingular" data-isabs="false">
+      <a id="withTranslativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withTranslativeSingular</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withVocative" data-isabs="false">
+      <a id="withVocative(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withVocative</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withVocativeDual" data-isabs="false">
+      <a id="withVocativeDual(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withVocativeDual</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withVocativePlural" data-isabs="false">
+      <a id="withVocativePlural(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withVocativePlural</span>
+        
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Noun#withVocativeSingular" data-isabs="false">
+      <a id="withVocativeSingular(String):Noun"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withVocativeSingular</span>
         
         <span class="params">(<span name="form">form: String</span>)</span><span class="result">: <a name="net.lemonmodel.patterns.Noun" class="extype" href="">Noun</a></span>
       </span>

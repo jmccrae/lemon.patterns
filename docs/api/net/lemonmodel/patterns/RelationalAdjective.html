@@ -24,7 +24,7 @@
       <span class="symbol"> 
         <span class="name">RelationalAdjective</span>
         
-        <span class="params">(<span name="lemma">lemma: <a name="net.lemonmodel.patterns.AP" class="extype" href="AP.html">AP</a></span>, <span name="property">property: <span name="java.net.URI" class="extype">URI</span></span>, <span name="relationalArg">relationalArg: <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>)</span><span class="result"> extends <a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a> with <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
+        <span class="params">(<span name="lemma">lemma: <a name="net.lemonmodel.patterns.AP" class="extype" href="AP.html">AP</a></span>, <span name="property">property: <span name="java.net.URI" class="extype">URI</span></span>, <span name="relationalArg">relationalArg: <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>, <span name="register">register: <span name="scala.Option" class="extype">Option</span>[<a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a>]</span>)</span><span class="result"> extends <a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a> with <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
       </span>
       </h4>
       
@@ -63,7 +63,7 @@
       <span class="symbol"> 
         <span class="name">RelationalAdjective</span>
         
-        <span class="params">(<span name="lemma">lemma: <a name="net.lemonmodel.patterns.AP" class="extype" href="AP.html">AP</a></span>, <span name="property">property: <span name="java.net.URI" class="extype">URI</span></span>, <span name="relationalArg">relationalArg: <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>)</span>
+        <span class="params">(<span name="lemma">lemma: <a name="net.lemonmodel.patterns.AP" class="extype" href="AP.html">AP</a></span>, <span name="property">property: <span name="java.net.URI" class="extype">URI</span></span>, <span name="relationalArg">relationalArg: <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>, <span name="register">register: <span name="scala.Option" class="extype">Option</span>[<a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a>]</span>)</span>
       </span>
       </h4>
       
@@ -379,6 +379,28 @@
       </span>
       </h4>
       
+    </li><li visbl="pub" name="net.lemonmodel.patterns.RelationalAdjective#register" data-isabs="false">
+      <a id="register:Option[Register]"></a>
+      <h4 class="signature">
+      <span class="kind">val</span>
+      <span class="symbol"> 
+        <span class="name">register</span>
+        
+        <span class="result">: <span name="scala.Option" class="extype">Option</span>[<a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a>]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Pattern#registerXML" data-isabs="false">
+      <a id="registerXML(Option[Register]):Any"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">registerXML</span>
+        
+        <span class="params">(<span name="register">register: <span name="scala.Option" class="extype">Option</span>[<a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a>]</span>)</span><span class="result">: <span name="scala.Any" class="extype">Any</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a></dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.RelationalAdjective#relationalArg" data-isabs="false">
       <a id="relationalArg:Arg"></a>
       <h4 class="signature">
@@ -487,6 +509,17 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.Adjective" class="extype" href="Adjective.html">Adjective</a></dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.RelationalAdjective#withRegister" data-isabs="false">
+      <a id="withRegister(Register):RelationalAdjective"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withRegister</span>
+        
+        <span class="params">(<span name="register">register: <a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a></span>)</span><span class="result">: <a name="net.lemonmodel.patterns.RelationalAdjective" class="extype" href="">RelationalAdjective</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.RelationalAdjective" class="extype" href="">RelationalAdjective</a> → <a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a></dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.Adjective#withSuperlative" data-isabs="false">
       <a id="withSuperlative(String):Adjective"></a>
       <h4 class="signature">

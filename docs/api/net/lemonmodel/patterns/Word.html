@@ -24,7 +24,7 @@
       <span class="symbol"> 
         <span class="name">Word</span>
         
-        <span class="params">(<span name="lemma">lemma: String</span>, <span name="pos">pos: <a name="net.lemonmodel.patterns.POS" class="extype" href="POS.html">POS</a></span>)</span><span class="result"> extends <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="pos">pos: <a name="net.lemonmodel.patterns.POS" class="extype" href="POS.html">POS</a></span>, <span name="_form">_form: <span name="scala.Option" class="extype">Option</span>[String]</span>)</span><span class="result"> extends <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
       </span>
       </h4>
       
@@ -63,7 +63,7 @@
       <span class="symbol"> 
         <span class="name">Word</span>
         
-        <span class="params">(<span name="lemma">lemma: String</span>, <span name="pos">pos: <a name="net.lemonmodel.patterns.POS" class="extype" href="POS.html">POS</a></span>)</span>
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="pos">pos: <a name="net.lemonmodel.patterns.POS" class="extype" href="POS.html">POS</a></span>, <span name="_form">_form: <span name="scala.Option" class="extype">Option</span>[String]</span>)</span>
       </span>
       </h4>
       
@@ -131,6 +131,17 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>final </dd><dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Word#_form" data-isabs="false">
+      <a id="_form:Option[String]"></a>
+      <h4 class="signature">
+      <span class="kind">val</span>
+      <span class="symbol"> 
+        <span class="name">_form</span>
+        
+        <span class="result">: <span name="scala.Option" class="extype">Option</span>[String]</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.Any#asInstanceOf" data-isabs="false">
       <a id="asInstanceOf[T0]:T0"></a>
       <h4 class="signature">
@@ -203,6 +214,17 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Word#form" data-isabs="false">
+      <a id="form:String"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">form</span>
+        
+        <span class="result">: String</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.AnyRef#getClass" data-isabs="false">
       <a id="getClass():java.lang.Class[_]"></a>
       <h4 class="signature">
@@ -244,6 +266,17 @@
         <span class="name">lemma</span>
         
         <span class="result">: String</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Word#name" data-isabs="false">
+      <a id="name(URINamer):URI"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">name</span>
+        
+        <span class="params">(<span name="namer">namer: <a name="net.lemonmodel.patterns.URINamer" class="extype" href="URINamer.html">URINamer</a></span>)</span><span class="result">: <span name="java.net.URI" class="extype">URI</span></span>
       </span>
       </h4>
       

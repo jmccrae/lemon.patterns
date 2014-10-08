@@ -50,14 +50,26 @@
               <ol><li visbl="pub" name="net.lemonmodel.patterns.AP" data-isabs="false">
       <a id="AP:AP"></a>
       <h4 class="signature">
-      <span class="kind">case class</span>
+      <span class="kind">class</span>
       <span class="symbol"> 
         <a href="AP.html"><span class="name">AP</span></a>
         
-        <span class="params">(<span name="words">words: Word*</span>)</span><span class="result"> extends AbstractPhrase with Product with Serializable</span>
+        <span class="result"> extends AbstractPhrase</span>
       </span>
       </h4>
       
+    </li><li visbl="pub" name="net.lemonmodel.patterns.AbsClassNoun" data-isabs="true">
+      <a id="AbsClassNoun:AbsClassNoun"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="AbsClassNoun.html"><span class="name">AbsClassNoun</span></a>
+        
+        <span class="result"> extends Noun</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Abstract class noun
+</p>
     </li><li visbl="pub" name="net.lemonmodel.patterns.AbstractPhrase" data-isabs="false">
       <a id="AbstractPhrase:AbstractPhrase"></a>
       <h4 class="signature">
@@ -111,7 +123,7 @@
       <span class="symbol"> 
         <a href="ClassNoun.html"><span class="name">ClassNoun</span></a>
         
-        <span class="params">(<span name="lemma">lemma: NP</span>, <span name="sense">sense: URI</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Noun with Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: NP</span>, <span name="sense">sense: URI</span>, <span name="forms">forms: Seq[Form]</span>, <span name="gender">gender: Option[Gender]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends AbsClassNoun with Product with Serializable</span>
       </span>
       </h4>
       <p class="comment cmt">A noun representing a genus of object associated with an ontology class</p>
@@ -122,7 +134,7 @@
       <span class="symbol"> 
         <a href="ClassRelationalNoun.html"><span class="name">ClassRelationalNoun</span></a>
         
-        <span class="params">(<span name="lemma">lemma: NP</span>, <span name="relationClass">relationClass: URI</span>, <span name="relation">relation: URI</span>, <span name="propSubj">propSubj: Arg</span>, <span name="propObj">propObj: Arg</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Noun with Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: NP</span>, <span name="relationClass">relationClass: URI</span>, <span name="relation">relation: URI</span>, <span name="propSubj">propSubj: Arg</span>, <span name="propObj">propObj: Arg</span>, <span name="forms">forms: Seq[Form]</span>, <span name="gender">gender: Option[Gender]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends Noun with Product with Serializable</span>
       </span>
       </h4>
       <p class="comment cmt">A noun representing a relation that also defines a class</p>
@@ -133,10 +145,21 @@
       <span class="symbol"> 
         <a href="ConsequenceVerb.html"><span class="name">ConsequenceVerb</span></a>
         
-        <span class="params">(<span name="lemma">lemma: VP</span>, <span name="conseqProp">conseqProp: URI</span>, <span name="propSubj">propSubj: OntologyFrameElement</span>, <span name="propObj">propObj: OntologyFrameElement</span>, <span name="eventClass">eventClass: URI</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Verb with Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: VP</span>, <span name="conseqProp">conseqProp: URI</span>, <span name="propSubj">propSubj: OntologyFrameElement</span>, <span name="propObj">propObj: OntologyFrameElement</span>, <span name="eventClass">eventClass: URI</span>, <span name="forms">forms: Seq[Form]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends Verb with Product with Serializable</span>
       </span>
       </h4>
       
+    </li><li visbl="pub" name="net.lemonmodel.patterns.DataPropertyNoun" data-isabs="false">
+      <a id="DataPropertyNoun:DataPropertyNoun"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="DataPropertyNoun.html"><span class="name">DataPropertyNoun</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: NP</span>, <span name="prop">prop: URI</span>, <span name="value">value: String</span>, <span name="forms">forms: Seq[Form]</span>, <span name="gender">gender: Option[Gender]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends AbsClassNoun with Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A noun representing a genus of object associated with an anonymous ontology class defined by a property and a value</p>
     </li><li visbl="pub" name="net.lemonmodel.patterns.Direction" data-isabs="true">
       <a id="Direction:Direction"></a>
       <h4 class="signature">
@@ -155,7 +178,7 @@
       <span class="symbol"> 
         <a href="EventVerb.html"><span class="name">EventVerb</span></a>
         
-        <span class="params">(<span name="lemma">lemma: VP</span>, <span name="eventClass">eventClass: URI</span>, <span name="args">args: Seq[OntologyFrameElement]</span>, <span name="telic">telic: Option[Boolean]</span>, <span name="durative">durative: Option[Boolean]</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Verb with Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: VP</span>, <span name="eventClass">eventClass: URI</span>, <span name="args">args: Seq[OntologyFrameElement]</span>, <span name="telic">telic: Option[Boolean]</span>, <span name="durative">durative: Option[Boolean]</span>, <span name="forms">forms: Seq[Form]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends Verb with Product with Serializable</span>
       </span>
       </h4>
       <p class="comment cmt">Event verbs</p>
@@ -170,6 +193,17 @@
       </span>
       </h4>
       <p class="comment cmt">An other (non-canonical) form of a word</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Gender" data-isabs="true">
+      <a id="Gender:Gender"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="Gender.html"><span class="name">Gender</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>sealed </dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.IntersectiveAdjective" data-isabs="false">
       <a id="IntersectiveAdjective:IntersectiveAdjective"></a>
       <h4 class="signature">
@@ -177,7 +211,7 @@
       <span class="symbol"> 
         <a href="IntersectiveAdjective.html"><span class="name">IntersectiveAdjective</span></a>
         
-        <span class="params">(<span name="lemma">lemma: AP</span>, <span name="sense">sense: URI</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Adjective with Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: AP</span>, <span name="sense">sense: URI</span>, <span name="forms">forms: Seq[Form]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends Adjective with Product with Serializable</span>
       </span>
       </h4>
       
@@ -188,7 +222,7 @@
       <span class="symbol"> 
         <a href="IntersectiveDataPropertyAdjective.html"><span class="name">IntersectiveDataPropertyAdjective</span></a>
         
-        <span class="params">(<span name="lemma">lemma: AP</span>, <span name="property">property: URI</span>, <span name="value">value: String</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Adjective with Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: AP</span>, <span name="property">property: URI</span>, <span name="value">value: String</span>, <span name="forms">forms: Seq[Form]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends Adjective with Product with Serializable</span>
       </span>
       </h4>
       
@@ -199,7 +233,7 @@
       <span class="symbol"> 
         <a href="IntersectiveObjectPropertyAdjective.html"><span class="name">IntersectiveObjectPropertyAdjective</span></a>
         
-        <span class="params">(<span name="lemma">lemma: AP</span>, <span name="property">property: URI</span>, <span name="value">value: URI</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Adjective with Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: AP</span>, <span name="property">property: URI</span>, <span name="value">value: URI</span>, <span name="forms">forms: Seq[Form]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends Adjective with Product with Serializable</span>
       </span>
       </h4>
       
@@ -217,11 +251,11 @@
     </li><li visbl="pub" name="net.lemonmodel.patterns.NP" data-isabs="false">
       <a id="NP:NP"></a>
       <h4 class="signature">
-      <span class="kind">case class</span>
+      <span class="kind">class</span>
       <span class="symbol"> 
         <a href="NP.html"><span class="name">NP</span></a>
         
-        <span class="params">(<span name="words">words: Word*</span>)</span><span class="result"> extends AbstractPhrase with NounPhrase with Product with Serializable</span>
+        <span class="result"> extends AbstractPhrase with NounPhrase</span>
       </span>
       </h4>
       
@@ -232,7 +266,7 @@
       <span class="symbol"> 
         <a href="Name.html"><span class="name">Name</span></a>
         
-        <span class="params">(<span name="lemma">lemma: PNP</span>, <span name="sense">sense: URI</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Noun with Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: PNP</span>, <span name="sense">sense: URI</span>, <span name="forms">forms: Seq[Form]</span>, <span name="gender">gender: Option[Gender]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends Noun with Product with Serializable</span>
       </span>
       </h4>
       <p class="comment cmt">A name (proper noun) associated to a named individual in the ontology</p>
@@ -270,6 +304,17 @@
       </span>
       </h4>
       
+    </li><li visbl="pub" name="net.lemonmodel.patterns.ObjectPropertyNoun" data-isabs="false">
+      <a id="ObjectPropertyNoun:ObjectPropertyNoun"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="ObjectPropertyNoun.html"><span class="name">ObjectPropertyNoun</span></a>
+        
+        <span class="params">(<span name="lemma">lemma: NP</span>, <span name="prop">prop: URI</span>, <span name="obj">obj: URI</span>, <span name="forms">forms: Seq[Form]</span>, <span name="gender">gender: Option[Gender]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends AbsClassNoun with Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A noun representing a genus of object associated with an anonymous ontology class defined by a property and a value</p>
     </li><li visbl="pub" name="net.lemonmodel.patterns.OntologyFrameElement" data-isabs="false">
       <a id="OntologyFrameElement:OntologyFrameElement"></a>
       <h4 class="signature">
@@ -277,18 +322,18 @@
       <span class="symbol"> 
         <a href="OntologyFrameElement.html"><span class="name">OntologyFrameElement</span></a>
         
-        <span class="params">(<span name="property">property: URI</span>, <span name="arg">arg: Arg</span>)</span><span class="result"> extends Product with Serializable</span>
+        <span class="params">(<span name="property">property: Option[URI]</span>, <span name="arg">arg: Arg</span>)</span><span class="result"> extends Product with Serializable</span>
       </span>
       </h4>
       <p class="comment cmt">An element of a multivalent frame in the ontology.</p>
     </li><li visbl="pub" name="net.lemonmodel.patterns.PNP" data-isabs="false">
       <a id="PNP:PNP"></a>
       <h4 class="signature">
-      <span class="kind">case class</span>
+      <span class="kind">class</span>
       <span class="symbol"> 
         <a href="PNP.html"><span class="name">PNP</span></a>
         
-        <span class="params">(<span name="words">words: Word*</span>)</span><span class="result"> extends AbstractPhrase with NounPhrase with Product with Serializable</span>
+        <span class="result"> extends AbstractPhrase with NounPhrase</span>
       </span>
       </h4>
       
@@ -321,7 +366,7 @@
       <span class="symbol"> 
         <a href="PatternVisitor.html"><span class="name">PatternVisitor</span></a>
         
-        <span class="result"> extends Visitor[Seq[Lexicon], Map[String, String]] with Visitor[Option[Lexicon], Map[String, String]] with Visitor[Pattern, Map[String, String]] with Visitor[Pattern, Map[String, String]] with Visitor[Pattern, Map[String, String]] with Visitor[Pattern, Map[String, String]] with Visitor[Arg, Map[String, String]] with Visitor[OntologyFrameElement, Map[String, String]] with Visitor[PNP, Map[String, String]] with Visitor[NP, Map[String, String]] with Visitor[VP, Map[String, String]] with Visitor[AP, Map[String, String]] with Visitor[Word, Map[String, String]] with Visitor[ScalarMembership, Map[String, String]] with Visitor[(URI, URI), Map[String, String]] with Visitor[POS, Map[String, String]] with Visitor[URI, Map[String, String]]</span>
+        <span class="result"> extends Visitor[Seq[Lexicon], Map[String, String]] with Visitor[Option[Lexicon], Map[String, String]] with Visitor[Pattern, Map[String, String]] with Visitor[Pattern, Map[String, String]] with Visitor[Pattern, Map[String, String]] with Visitor[Pattern, Map[String, String]] with Visitor[Pattern, Map[String, String]] with Visitor[Arg, Map[String, String]] with Visitor[OntologyFrameElement, Map[String, String]] with Visitor[PNP, Map[String, String]] with Visitor[NP, Map[String, String]] with Visitor[VP, Map[String, String]] with Visitor[AP, Map[String, String]] with Visitor[(Word, Boolean), Map[String, String]] with Visitor[ScalarMembership, Map[String, String]] with Visitor[(URI, URI), Map[String, String]] with Visitor[POS, Map[String, String]] with Visitor[Gender, Map[String, String]] with Visitor[Register, Map[String, String]] with Visitor[URI, Map[String, String]]</span>
       </span>
       </h4>
       
@@ -367,10 +412,21 @@
       <span class="symbol"> 
         <a href="PropertyModifyingAdjective.html"><span class="name">PropertyModifyingAdjective</span></a>
         
-        <span class="params">(<span name="lemma">lemma: AP</span>, <span name="property">property: URI</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Adjective with Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: AP</span>, <span name="property">property: URI</span>, <span name="forms">forms: Seq[Form]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends Adjective with Product with Serializable</span>
       </span>
       </h4>
       
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Register" data-isabs="true">
+      <a id="Register:Register"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="Register.html"><span class="name">Register</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>sealed </dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.RelationalAdjective" data-isabs="false">
       <a id="RelationalAdjective:RelationalAdjective"></a>
       <h4 class="signature">
@@ -378,7 +434,7 @@
       <span class="symbol"> 
         <a href="RelationalAdjective.html"><span class="name">RelationalAdjective</span></a>
         
-        <span class="params">(<span name="lemma">lemma: AP</span>, <span name="property">property: URI</span>, <span name="relationalArg">relationalArg: Arg</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Adjective with Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: AP</span>, <span name="property">property: URI</span>, <span name="relationalArg">relationalArg: Arg</span>, <span name="forms">forms: Seq[Form]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends Adjective with Product with Serializable</span>
       </span>
       </h4>
       
@@ -389,7 +445,7 @@
       <span class="symbol"> 
         <a href="RelationalMultivalentNoun.html"><span class="name">RelationalMultivalentNoun</span></a>
         
-        <span class="params">(<span name="lemma">lemma: NP</span>, <span name="relationClass">relationClass: URI</span>, <span name="args">args: Seq[OntologyFrameElement]</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Noun with Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: NP</span>, <span name="relationClass">relationClass: URI</span>, <span name="args">args: Seq[OntologyFrameElement]</span>, <span name="forms">forms: Seq[Form]</span>, <span name="gender">gender: Option[Gender]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends Noun with Product with Serializable</span>
       </span>
       </h4>
       <p class="comment cmt">A noun representing a relationship with multiple arguments</p>
@@ -400,7 +456,7 @@
       <span class="symbol"> 
         <a href="RelationalNoun.html"><span class="name">RelationalNoun</span></a>
         
-        <span class="params">(<span name="lemma">lemma: NP</span>, <span name="sense">sense: URI</span>, <span name="propSubj">propSubj: Arg</span>, <span name="propObj">propObj: Arg</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Noun with Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: NP</span>, <span name="sense">sense: URI</span>, <span name="propSubj">propSubj: Arg</span>, <span name="propObj">propObj: Arg</span>, <span name="forms">forms: Seq[Form]</span>, <span name="gender">gender: Option[Gender]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends Noun with Product with Serializable</span>
       </span>
       </h4>
       <p class="comment cmt">A noun representing a bivalent relationship associated with an object property
@@ -412,7 +468,7 @@ in the ontology</p>
       <span class="symbol"> 
         <a href="ScalarAdjective.html"><span class="name">ScalarAdjective</span></a>
         
-        <span class="params">(<span name="lemma">lemma: AP</span>, <span name="scalarMemberships">scalarMemberships: Seq[ScalarMembership]</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Adjective with Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: AP</span>, <span name="scalarMemberships">scalarMemberships: Seq[ScalarMembership]</span>, <span name="forms">forms: Seq[Form]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends Adjective with Product with Serializable</span>
       </span>
       </h4>
       
@@ -449,17 +505,6 @@ in the ontology</p>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="net.lemonmodel.patterns.ScalarQuantifyingAdjective" data-isabs="false">
-      <a id="ScalarQuantifyingAdjective:ScalarQuantifyingAdjective"></a>
-      <h4 class="signature">
-      <span class="kind">case class</span>
-      <span class="symbol"> 
-        <a href="ScalarQuantifyingAdjective.html"><span class="name">ScalarQuantifyingAdjective</span></a>
-        
-        <span class="params">(<span name="lemma">lemma: AP</span>, <span name="scalarMembership">scalarMembership: ScalarMembership</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Adjective with Product with Serializable</span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="net.lemonmodel.patterns.StateVerb" data-isabs="false">
       <a id="StateVerb:StateVerb"></a>
       <h4 class="signature">
@@ -467,7 +512,7 @@ in the ontology</p>
       <span class="symbol"> 
         <a href="StateVerb.html"><span class="name">StateVerb</span></a>
         
-        <span class="params">(<span name="lemma">lemma: VP</span>, <span name="sense">sense: URI</span>, <span name="propSubj">propSubj: Arg</span>, <span name="propObj">propObj: Arg</span>, <span name="forms">forms: Seq[Form]</span>)</span><span class="result"> extends Verb with Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: VP</span>, <span name="sense">sense: URI</span>, <span name="propSubj">propSubj: Arg</span>, <span name="propObj">propObj: Arg</span>, <span name="forms">forms: Seq[Form]</span>, <span name="register">register: Option[Register]</span>)</span><span class="result"> extends Verb with Product with Serializable</span>
       </span>
       </h4>
       <p class="comment cmt">A state verb indicating a property</p>
@@ -485,11 +530,11 @@ in the ontology</p>
     </li><li visbl="pub" name="net.lemonmodel.patterns.VP" data-isabs="false">
       <a id="VP:VP"></a>
       <h4 class="signature">
-      <span class="kind">case class</span>
+      <span class="kind">class</span>
       <span class="symbol"> 
         <a href="VP.html"><span class="name">VP</span></a>
         
-        <span class="params">(<span name="words">words: Word*</span>)</span><span class="result"> extends AbstractPhrase with Product with Serializable</span>
+        <span class="result"> extends AbstractPhrase</span>
       </span>
       </h4>
       
@@ -512,7 +557,7 @@ in the ontology</p>
       <span class="symbol"> 
         <a href="Word.html"><span class="name">Word</span></a>
         
-        <span class="params">(<span name="lemma">lemma: String</span>, <span name="pos">pos: POS</span>)</span><span class="result"> extends Product with Serializable</span>
+        <span class="params">(<span name="lemma">lemma: String</span>, <span name="pos">pos: POS</span>, <span name="_form">_form: Option[String]</span>)</span><span class="result"> extends Product with Serializable</span>
       </span>
       </h4>
       
@@ -523,7 +568,18 @@ in the ontology</p>
 
         <div class="values members" id="values">
               <h3>Value Members</h3>
-              <ol><li visbl="pub" name="net.lemonmodel.patterns.AccomplishmentVerb" data-isabs="false">
+              <ol><li visbl="pub" name="net.lemonmodel.patterns.AP" data-isabs="false">
+      <a id="AP:AP"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="AP$.html"><span class="name">AP</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.AccomplishmentVerb" data-isabs="false">
       <a id="AccomplishmentVerb:AccomplishmentVerb"></a>
       <h4 class="signature">
       <span class="kind">object</span>
@@ -556,6 +612,28 @@ in the ontology</p>
       </span>
       </h4>
       <p class="comment cmt">Indicates an event verb that occurs at some point of time</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.BenchLevelRegister" data-isabs="false">
+      <a id="BenchLevelRegister:BenchLevelRegister"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="BenchLevelRegister$.html"><span class="name">BenchLevelRegister</span></a>
+        
+        <span class="result"> extends Register</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.CommonGender" data-isabs="false">
+      <a id="CommonGender:CommonGender"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="CommonGender$.html"><span class="name">CommonGender</span></a>
+        
+        <span class="result"> extends Gender</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="net.lemonmodel.patterns.ConvertPatterns" data-isabs="false">
       <a id="ConvertPatterns:ConvertPatterns"></a>
       <h4 class="signature">
@@ -591,6 +669,17 @@ in the ontology</p>
       </h4>
       <p class="comment cmt">The copulative subject of a noun or adjective
 </p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.DialectRegister" data-isabs="false">
+      <a id="DialectRegister:DialectRegister"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="DialectRegister$.html"><span class="name">DialectRegister</span></a>
+        
+        <span class="result"> extends Register</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="net.lemonmodel.patterns.DirectObject" data-isabs="false">
       <a id="DirectObject:DirectObject"></a>
       <h4 class="signature">
@@ -603,6 +692,50 @@ in the ontology</p>
       </h4>
       <p class="comment cmt">The direct object of a verb
 </p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.FacetiousRegister" data-isabs="false">
+      <a id="FacetiousRegister:FacetiousRegister"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="FacetiousRegister$.html"><span class="name">FacetiousRegister</span></a>
+        
+        <span class="result"> extends Register</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Feminine" data-isabs="false">
+      <a id="Feminine:Feminine"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="Feminine$.html"><span class="name">Feminine</span></a>
+        
+        <span class="result"> extends Gender</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.FormalRegister" data-isabs="false">
+      <a id="FormalRegister:FormalRegister"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="FormalRegister$.html"><span class="name">FormalRegister</span></a>
+        
+        <span class="result"> extends Register</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.InHouseRegister" data-isabs="false">
+      <a id="InHouseRegister:InHouseRegister"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="InHouseRegister$.html"><span class="name">InHouseRegister</span></a>
+        
+        <span class="result"> extends Register</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="net.lemonmodel.patterns.IndirectObject" data-isabs="false">
       <a id="IndirectObject:IndirectObject"></a>
       <h4 class="signature">
@@ -615,6 +748,83 @@ in the ontology</p>
       </h4>
       <p class="comment cmt">The indirect object of a verb
 </p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.IronicRegister" data-isabs="false">
+      <a id="IronicRegister:IronicRegister"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="IronicRegister$.html"><span class="name">IronicRegister</span></a>
+        
+        <span class="result"> extends Register</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Masculine" data-isabs="false">
+      <a id="Masculine:Masculine"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="Masculine$.html"><span class="name">Masculine</span></a>
+        
+        <span class="result"> extends Gender</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.NP" data-isabs="false">
+      <a id="NP:NP"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="NP$.html"><span class="name">NP</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Neuter" data-isabs="false">
+      <a id="Neuter:Neuter"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="Neuter$.html"><span class="name">Neuter</span></a>
+        
+        <span class="result"> extends Gender</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.NeutralRegister" data-isabs="false">
+      <a id="NeutralRegister:NeutralRegister"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="NeutralRegister$.html"><span class="name">NeutralRegister</span></a>
+        
+        <span class="result"> extends Register</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.OtherGender" data-isabs="false">
+      <a id="OtherGender:OtherGender"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="OtherGender$.html"><span class="name">OtherGender</span></a>
+        
+        <span class="result"> extends Gender</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.PNP" data-isabs="false">
+      <a id="PNP:PNP"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="PNP$.html"><span class="name">PNP</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="net.lemonmodel.patterns.PossessiveAdjunct" data-isabs="false">
       <a id="PossessiveAdjunct:PossessiveAdjunct"></a>
       <h4 class="signature">
@@ -659,6 +869,17 @@ in the ontology</p>
       </span>
       </h4>
       <p class="comment cmt">Indicates an event verb that occurs at some point in time (without a duration)</p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.SlangRegister" data-isabs="false">
+      <a id="SlangRegister:SlangRegister"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="SlangRegister$.html"><span class="name">SlangRegister</span></a>
+        
+        <span class="result"> extends Register</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="net.lemonmodel.patterns.Subject" data-isabs="false">
       <a id="Subject:Subject"></a>
       <h4 class="signature">
@@ -671,6 +892,50 @@ in the ontology</p>
       </h4>
       <p class="comment cmt">The subject of a verb
 </p>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.TabooRegister" data-isabs="false">
+      <a id="TabooRegister:TabooRegister"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="TabooRegister$.html"><span class="name">TabooRegister</span></a>
+        
+        <span class="result"> extends Register</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.TechnicalRegister" data-isabs="false">
+      <a id="TechnicalRegister:TechnicalRegister"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="TechnicalRegister$.html"><span class="name">TechnicalRegister</span></a>
+        
+        <span class="result"> extends Register</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.VP" data-isabs="false">
+      <a id="VP:VP"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="VP$.html"><span class="name">VP</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.VulgarRegister" data-isabs="false">
+      <a id="VulgarRegister:VulgarRegister"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="VulgarRegister$.html"><span class="name">VulgarRegister</span></a>
+        
+        <span class="result"> extends Register</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="net.lemonmodel.patterns.WriteAsRDF" data-isabs="false">
       <a id="WriteAsRDF:WriteAsRDF"></a>
       <h4 class="signature">
@@ -859,13 +1124,13 @@ in the ontology</p>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.package" class="extype" href="package$.html">package</a></dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.package#str2Word" data-isabs="false">
-      <a id="str2Word(String):AnyRef { def /(pos: net.lemonmodel.patterns.POS): net.lemonmodel.patterns.Word }"></a>
+      <a id="str2Word(String):AnyRef { ... /* 2 definitions in type refinement */ }"></a>
       <h4 class="signature">
       <span class="kind">implicit def</span>
       <span class="symbol"> 
         <span class="name">str2Word</span>
         
-        <span class="params">(<span name="lemma">lemma: String</span>)</span><span class="result">: AnyRef { def /(pos: net.lemonmodel.patterns.POS): net.lemonmodel.patterns.Word }</span>
+        <span class="params">(<span name="form">form: String</span>)</span><span class="result">: AnyRef { ... /* 2 definitions in type refinement */ }</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>implicit </dd><dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.package" class="extype" href="package$.html">package</a></dd></dl></div>

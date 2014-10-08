@@ -24,7 +24,7 @@
       <span class="symbol"> 
         <span class="name">StateVerb</span>
         
-        <span class="params">(<span name="lemma">lemma: <a name="net.lemonmodel.patterns.VP" class="extype" href="VP.html">VP</a></span>, <span name="sense">sense: <span name="java.net.URI" class="extype">URI</span></span>, <span name="propSubj">propSubj: <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></span>, <span name="propObj">propObj: <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>)</span><span class="result"> extends <a name="net.lemonmodel.patterns.Verb" class="extype" href="Verb.html">Verb</a> with <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
+        <span class="params">(<span name="lemma">lemma: <a name="net.lemonmodel.patterns.VP" class="extype" href="VP.html">VP</a></span>, <span name="sense">sense: <span name="java.net.URI" class="extype">URI</span></span>, <span name="propSubj">propSubj: <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></span>, <span name="propObj">propObj: <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>, <span name="register">register: <span name="scala.Option" class="extype">Option</span>[<a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a>]</span>)</span><span class="result"> extends <a name="net.lemonmodel.patterns.Verb" class="extype" href="Verb.html">Verb</a> with <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
       </span>
       </h4>
       
@@ -64,7 +64,7 @@
       <span class="symbol"> 
         <span class="name">StateVerb</span>
         
-        <span class="params">(<span name="lemma">lemma: <a name="net.lemonmodel.patterns.VP" class="extype" href="VP.html">VP</a></span>, <span name="sense">sense: <span name="java.net.URI" class="extype">URI</span></span>, <span name="propSubj">propSubj: <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></span>, <span name="propObj">propObj: <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>)</span>
+        <span class="params">(<span name="lemma">lemma: <a name="net.lemonmodel.patterns.VP" class="extype" href="VP.html">VP</a></span>, <span name="sense">sense: <span name="java.net.URI" class="extype">URI</span></span>, <span name="propSubj">propSubj: <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></span>, <span name="propObj">propObj: <a name="net.lemonmodel.patterns.Arg" class="extype" href="Arg.html">Arg</a></span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>, <span name="register">register: <span name="scala.Option" class="extype">Option</span>[<a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a>]</span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">sense</dt><dd class="cmt"><p>The sense of the verb</p></dd><dt class="param">forms</dt><dd class="cmt"><p>The set of other forms
@@ -394,6 +394,28 @@
       </span>
       </h4>
       
+    </li><li visbl="pub" name="net.lemonmodel.patterns.StateVerb#register" data-isabs="false">
+      <a id="register:Option[Register]"></a>
+      <h4 class="signature">
+      <span class="kind">val</span>
+      <span class="symbol"> 
+        <span class="name">register</span>
+        
+        <span class="result">: <span name="scala.Option" class="extype">Option</span>[<a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a>]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Pattern#registerXML" data-isabs="false">
+      <a id="registerXML(Option[Register]):Any"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">registerXML</span>
+        
+        <span class="params">(<span name="register">register: <span name="scala.Option" class="extype">Option</span>[<a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a>]</span>)</span><span class="result">: <span name="scala.Any" class="extype">Any</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a></dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.StateVerb#sense" data-isabs="false">
       <a id="sense:URI"></a>
       <h4 class="signature">
@@ -491,6 +513,17 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.StateVerb#withRegister" data-isabs="false">
+      <a id="withRegister(Register):StateVerb"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withRegister</span>
+        
+        <span class="params">(<span name="register">register: <a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a></span>)</span><span class="result">: <a name="net.lemonmodel.patterns.StateVerb" class="extype" href="">StateVerb</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.StateVerb" class="extype" href="">StateVerb</a> → <a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a></dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.Verb#withTable" data-isabs="false">
       <a id="withTable(Namespace,Map[(String, String), Any]):Verb"></a>
       <h4 class="signature">

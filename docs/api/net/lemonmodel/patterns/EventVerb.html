@@ -24,7 +24,7 @@
       <span class="symbol"> 
         <span class="name">EventVerb</span>
         
-        <span class="params">(<span name="lemma">lemma: <a name="net.lemonmodel.patterns.VP" class="extype" href="VP.html">VP</a></span>, <span name="eventClass">eventClass: <span name="java.net.URI" class="extype">URI</span></span>, <span name="args">args: Seq[<a name="net.lemonmodel.patterns.OntologyFrameElement" class="extype" href="OntologyFrameElement.html">OntologyFrameElement</a>]</span>, <span name="telic">telic: <span name="scala.Option" class="extype">Option</span>[<span name="scala.Boolean" class="extype">Boolean</span>]</span>, <span name="durative">durative: <span name="scala.Option" class="extype">Option</span>[<span name="scala.Boolean" class="extype">Boolean</span>]</span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>)</span><span class="result"> extends <a name="net.lemonmodel.patterns.Verb" class="extype" href="Verb.html">Verb</a> with <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
+        <span class="params">(<span name="lemma">lemma: <a name="net.lemonmodel.patterns.VP" class="extype" href="VP.html">VP</a></span>, <span name="eventClass">eventClass: <span name="java.net.URI" class="extype">URI</span></span>, <span name="args">args: Seq[<a name="net.lemonmodel.patterns.OntologyFrameElement" class="extype" href="OntologyFrameElement.html">OntologyFrameElement</a>]</span>, <span name="telic">telic: <span name="scala.Option" class="extype">Option</span>[<span name="scala.Boolean" class="extype">Boolean</span>]</span>, <span name="durative">durative: <span name="scala.Option" class="extype">Option</span>[<span name="scala.Boolean" class="extype">Boolean</span>]</span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>, <span name="register">register: <span name="scala.Option" class="extype">Option</span>[<a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a>]</span>)</span><span class="result"> extends <a name="net.lemonmodel.patterns.Verb" class="extype" href="Verb.html">Verb</a> with <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
       </span>
       </h4>
       
@@ -64,7 +64,7 @@
       <span class="symbol"> 
         <span class="name">EventVerb</span>
         
-        <span class="params">(<span name="lemma">lemma: <a name="net.lemonmodel.patterns.VP" class="extype" href="VP.html">VP</a></span>, <span name="eventClass">eventClass: <span name="java.net.URI" class="extype">URI</span></span>, <span name="args">args: Seq[<a name="net.lemonmodel.patterns.OntologyFrameElement" class="extype" href="OntologyFrameElement.html">OntologyFrameElement</a>]</span>, <span name="telic">telic: <span name="scala.Option" class="extype">Option</span>[<span name="scala.Boolean" class="extype">Boolean</span>]</span>, <span name="durative">durative: <span name="scala.Option" class="extype">Option</span>[<span name="scala.Boolean" class="extype">Boolean</span>]</span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>)</span>
+        <span class="params">(<span name="lemma">lemma: <a name="net.lemonmodel.patterns.VP" class="extype" href="VP.html">VP</a></span>, <span name="eventClass">eventClass: <span name="java.net.URI" class="extype">URI</span></span>, <span name="args">args: Seq[<a name="net.lemonmodel.patterns.OntologyFrameElement" class="extype" href="OntologyFrameElement.html">OntologyFrameElement</a>]</span>, <span name="telic">telic: <span name="scala.Option" class="extype">Option</span>[<span name="scala.Boolean" class="extype">Boolean</span>]</span>, <span name="durative">durative: <span name="scala.Option" class="extype">Option</span>[<span name="scala.Boolean" class="extype">Boolean</span>]</span>, <span name="forms">forms: Seq[<a name="net.lemonmodel.patterns.Form" class="extype" href="Form.html">Form</a>]</span>, <span name="register">register: <span name="scala.Option" class="extype">Option</span>[<a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a>]</span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">eventClass</dt><dd class="cmt"><p>The class of events for this verb</p></dd><dt class="param">args</dt><dd class="cmt"><p>The argument structure of the verb (required)</p></dd><dt class="param">forms</dt><dd class="cmt"><p>The set of other forms
@@ -416,6 +416,28 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.EventVerb" class="extype" href="">EventVerb</a> → Product</dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.EventVerb#register" data-isabs="false">
+      <a id="register:Option[Register]"></a>
+      <h4 class="signature">
+      <span class="kind">val</span>
+      <span class="symbol"> 
+        <span class="name">register</span>
+        
+        <span class="result">: <span name="scala.Option" class="extype">Option</span>[<a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a>]</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="net.lemonmodel.patterns.Pattern#registerXML" data-isabs="false">
+      <a id="registerXML(Option[Register]):Any"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">registerXML</span>
+        
+        <span class="params">(<span name="register">register: <span name="scala.Option" class="extype">Option</span>[<a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a>]</span>)</span><span class="result">: <span name="scala.Any" class="extype">Any</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a></dd></dl></div>
     </li><li visbl="prt" name="net.lemonmodel.patterns.EventVerb#senseXML" data-isabs="false">
       <a id="senseXML(URINamer):NodeSeq"></a>
       <h4 class="signature">
@@ -513,6 +535,17 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li visbl="pub" name="net.lemonmodel.patterns.EventVerb#withRegister" data-isabs="false">
+      <a id="withRegister(Register):EventVerb"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withRegister</span>
+        
+        <span class="params">(<span name="register">register: <a name="net.lemonmodel.patterns.Register" class="extype" href="Register.html">Register</a></span>)</span><span class="result">: <a name="net.lemonmodel.patterns.EventVerb" class="extype" href="">EventVerb</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="net.lemonmodel.patterns.EventVerb" class="extype" href="">EventVerb</a> → <a name="net.lemonmodel.patterns.Pattern" class="extype" href="Pattern.html">Pattern</a></dd></dl></div>
     </li><li visbl="pub" name="net.lemonmodel.patterns.Verb#withTable" data-isabs="false">
       <a id="withTable(Namespace,Map[(String, String), Any]):Verb"></a>
       <h4 class="signature">
