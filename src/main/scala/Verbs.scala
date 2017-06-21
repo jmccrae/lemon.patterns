@@ -11,6 +11,7 @@ trait Verb extends Pattern {
   def makeWithForm(form : Form) : Verb
   protected def makeWithForms(forms : Seq[Form]) : Verb
   protected def senseXML(namer : URINamer) : NodeSeq
+  protected def senseOntoLexXML(namer : URINamer) : NodeSeq
   def extractForms(namespace : Namespace,  table : Map[(String,String),Any], props : List[(URI,URI)]) : Seq[Form] = {
     (for(((prop,propVal),subtable) <- table) yield {
       val propURI = namespace(prop)
@@ -29,6 +30,31 @@ trait Verb extends Pattern {
   }
   def lemma : VP
   def forms : Seq[Form]
+  def toOntoLexXML(namer : URINamer, lang : String) = <ontolex:LexicalEntry rdf:about={namer("verb",lemma.toString())}>
+      <ontolex:canonicalForm>
+        <ontolex:Form rdf:about={namer("verb",lemma.toString(),Some("canonicalForm"))}>
+          <ontolex:writtenRep xml:lang={lang}>{lemma.toString()}</ontolex:writtenRep>
+        </ontolex:Form>
+      </ontolex:canonicalForm> 
+      { lemma.toXML(namer,lang) }
+      {
+        for(form <- forms) yield {
+          <ontolex:otherForm>
+            <ontolex:Form rdf:about={namer("verb",lemma.toString(),Some("form"))}>
+              <ontolex:writtenRep xml:lang={lang}>{form.writtenRep}</ontolex:writtenRep>
+              {
+                for((prop,propVal) <- form.props) yield {
+                  val (prefixUri,prefix,suffix) = prefixURI(prop)
+                  <lingonto:prop rdf:resource={propVal}/>.copy(prefix=prefix, label=suffix) %
+                    Attribute("","xmlns:"+prefix,prefixUri,Null)
+                }
+              }
+            </ontolex:Form>
+          </ontolex:otherForm>
+        }   
+      }
+      {senseOntoLexXML(namer)}
+    </ontolex:LexicalEntry>
   def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer("verb",lemma.toString())}>
       <lemon:canonicalForm>
         <lemon:Form rdf:about={namer("verb",lemma.toString(),Some("canonicalForm"))}>
@@ -71,6 +97,49 @@ case class StateVerb(val lemma : VP,
   def makeWithForm(form : Form) = StateVerb(lemma,sense,propSubj,propObj,forms :+ form,register)
   protected def makeWithForms(extraForms : Seq[Form]) = StateVerb(lemma,sense,propSubj,propObj,forms ++ extraForms,register)
   def withRegister(register : Register) = StateVerb(lemma,sense,propSubj,propObj,forms,Some(register))
+  protected def senseOntoLexXML(namer : URINamer) = {
+     val subjURI = namer("verb",lemma.toString(),Some("subject"))
+     val objURI = namer("verb",lemma.toString(),Some("object"))
+     <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+         <ontolex:reference>
+           <rdf:Property rdf:about={sense}/>
+         </ontolex:reference>
+         {registerXML(register)}
+         <synsem:subjOfProp>
+            <synsem:SyntacticArgument rdf:about={subjURI}/>
+         </synsem:subjOfProp>
+         <synsem:objOfProp>
+            <synsem:SyntacticArgument rdf:about={objURI}/>
+         </synsem:objOfProp>
+        { 
+          if(propSubj.restriction != None) {
+            <synsem:propertyDomain rdf:resource={propSubj.restriction.get}/>
+          }
+        }
+        { 
+          if(propObj.restriction != None) {
+            <synsem:propertyRange rdf:resource={propObj.restriction.get}/>
+          }
+        }
+       </ontolex:LexicalSense>
+    </ontolex:sense> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("verb",lemma.toString(),Some("frame"))}>
+        { (propSubj,propObj) match {
+            case (ArgImpl(_,_,"subject"),ArgImpl(_,_,"directObject")) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
+            case (ArgImpl(_,_,"directObject"),ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
+            case (ArgImpl(_,_,"subject"),PrepositionalObject(_,_,_)) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case (PrepositionalObject(_,_,_),ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case _ => <!--Unrecognised frame-->
+           }
+        }
+        { propSubj.toXML(subjURI,namer) }
+        { propObj.toXML(objURI,namer) }
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior>
+   }
   protected def senseXML(namer : URINamer) = {
      val subjURI = namer("verb",lemma.toString(),Some("subject"))
      val objURI = namer("verb",lemma.toString(),Some("object"))
@@ -146,6 +215,58 @@ case class EventVerb(val lemma : VP,
     case None => URI.create("http://www.lemon-model.net/oils#Event")
   }
   def withRegister(register : Register) = EventVerb(lemma,eventClass,args,telic,durative,forms,Some(register))
+  protected def senseOntoLexXML(namer : URINamer) = {
+     val argURI = (for((arg,i) <- args.zipWithIndex) yield {
+       arg -> namer("verb",lemma.toString(),Some("arg"+(i+1)))
+     }).toMap
+     <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+         <ontolex:reference>
+           <rdfs:Class rdf:about={eventClass}>
+           <rdfs:subClassOf rdf:resource={oilsURI}/>
+           </rdfs:Class>
+         </ontolex:reference> 
+         {registerXML(register)}
+         {
+           for((arg,i) <- args.zipWithIndex) yield {
+            <synsem:submap>
+              <ontolex:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("subsense"+(i+1)))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+                <synsem:objOfProp>
+                  <synsem:SyntacticArgument rdf:about={argURI(arg)}/>
+                  {
+                    if(arg.arg.isOptional) {
+                      <synsem:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</synsem:optional>
+                    } else {
+                      <!-- Mandatory argument -->
+                    }
+                  }
+                </synsem:objOfProp>
+                <ontolex:reference>
+                  <rdf:Property rdf:about={arg.property.getOrElse(namer.anonURI(arg))}/>
+                </ontolex:reference>
+        { 
+          if(arg.arg.restriction != None) {
+            <synsem:propertyRange rdf:resource={arg.arg.restriction.get}/>
+          }
+        }
+              </ontolex:LexicalSense>
+            </synsem:submap>
+           }
+         }
+       </ontolex:LexicalSense>
+    </ontolex:sense> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("verb",lemma.toString(),Some("frame"))}>
+        {
+          for(arg <- args) yield {
+            arg.arg.toXML(argURI(arg),namer)
+          }
+        }
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior>
+   }
   protected def senseXML(namer : URINamer) = {
      val argURI = (for((arg,i) <- args.zipWithIndex) yield {
        arg -> namer("verb",lemma.toString(),Some("arg"+(i+1)))
@@ -272,6 +393,96 @@ case class ConsequenceVerb(val lemma : VP,
   def makeWithForm(form : Form) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms :+ form,register)
   protected def makeWithForms(extraForms : Seq[Form]) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms ++ extraForms,register)
   def withRegister(register : Register) = ConsequenceVerb(lemma,conseqProp,propSubj,propObj,eventClass,forms,Some(register))
+  protected def senseOntoLexXML(namer : URINamer) = {
+     val subjURI = namer("verb",lemma.toString(),Some("subject"))
+     val objURI = namer("verb",lemma.toString(),Some("object"))
+     <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+         { if(eventClass != null)  {
+             <ontolex:reference>
+               <rdf:Property rdf:about={eventClass}/>
+             </ontolex:reference>
+           }
+         }
+         {registerXML(register)}
+         <synsem:submap>
+           <ontolex:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+             <ontolex:reference>
+               <rdf:Property rdf:about={propSubj.property.getOrElse(namer.anonURI(propSubj))}/>
+             </ontolex:reference>
+             <synsem:objOfProp>
+               <synsem:SyntacticArgument rdf:about={subjURI}/>
+             </synsem:objOfProp>
+        { 
+          if(propSubj.arg.restriction != None) {
+            <synsem:propertyDomain rdf:resource={propSubj.arg.restriction.get}/>
+          }
+        }
+           </ontolex:LexicalSense>
+         </synsem:submap>
+         <synsem:submap>
+           <ontolex:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+             <ontolex:reference>
+               <rdf:Property rdf:about={propObj.property.getOrElse(namer.anonURI(propObj))}/>
+             </ontolex:reference>
+             <synsem:objOfProp>
+               <synsem:SyntacticArgument rdf:about={objURI}/>
+             </synsem:objOfProp>
+        { 
+          if(propObj.arg.restriction != None) {
+            <synsem:propertyRange rdf:resource={propObj.arg.restriction.get}/>
+          }
+        }
+           </ontolex:LexicalSense>
+         </synsem:submap>
+       </ontolex:LexicalSense>
+    </ontolex:sense> :+
+    <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("verb",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+        <ontolex:reference>
+          <rdf:Property rdf:about={conseqProp}>
+             <owl:propertyChainAxiom rdf:parseType="Collection">
+               <rdf:Description>
+                 <owl:inverseOf rdf:resource={propSubj.property.getOrElse(namer.anonURI(propSubj))}/>
+               </rdf:Description>
+               <rdf:Description rdf:about={propObj.property.getOrElse(namer.anonURI(propObj))}/>
+             </owl:propertyChainAxiom>
+          </rdf:Property>
+        </ontolex:reference>
+        {registerXML(register)}
+        { 
+          if(propSubj.arg.restriction != None) {
+            <synsem:propertyDomain rdf:resource={propSubj.arg.restriction.get}/>
+          }
+        }
+        { 
+          if(propObj.arg.restriction != None) {
+            <synsem:propertyRange rdf:resource={propObj.arg.restriction.get}/>
+          }
+        }
+        <synsem:subjOfProp rdf:resource={subjURI}/>
+        <synsem:objOfProp rdf:resource={objURI}/>
+      </ontolex:LexicalSense>
+    </ontolex:sense> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("verb",lemma.toString(),Some("frame"))}>
+        { (propSubj.arg,propObj.arg) match {
+            case (ArgImpl(_,_,"subject"),ArgImpl(_,_,"directObject")) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
+            case (ArgImpl(_,_,"directObject"),ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("TransitiveFrame")}/>
+            case (ArgImpl(_,_,"subject"),PrepositionalObject(_,_,_)) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case (PrepositionalObject(_,_,_), ArgImpl(_,_,"subject")) => <rdf:type rdf:resource={lexinfo("IntransitivePPFrame")}/>
+            case _ => <!--Unrecognised frame-->
+           }
+        }
+        { propSubj.arg.toXML(subjURI,namer) }
+        { propObj.arg.toXML(objURI,namer) }
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior>
+   }
   protected def senseXML(namer : URINamer) = {
      val subjURI = namer("verb",lemma.toString(),Some("subject"))
      val objURI = namer("verb",lemma.toString(),Some("object"))

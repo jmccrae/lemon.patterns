@@ -11,6 +11,7 @@ import net.lemonmodel.rdfutil.RDFUtil._
 trait Adjective extends Pattern {
   def makeWithForm(form : Form) : Adjective
   protected def makeWithForms(forms : Seq[Form]) : Adjective
+  protected def senseOntoLexXML(namer : URINamer) : NodeSeq
   protected def senseXML(namer : URINamer) : NodeSeq
   def extractForms(namespace : Namespace,  table : Map[(String,String),Any], props : List[(URI,URI)]) : Seq[Form] = {
     (for(((prop,propVal),subtable) <- table) yield {
@@ -32,6 +33,32 @@ trait Adjective extends Pattern {
   def withSuperlative(superlativeForm : String) = makeWithForm(Form(superlativeForm,Map(lexinfo("degree")->lexinfo("superlative"))))
   def lemma : AP
   def forms : Seq[Form]
+  def toOntoLexXML(namer : URINamer, lang : String) = <ontolex:LexicalEntry rdf:about={namer("adjective",lemma.toString())}>
+      <ontolex:canonicalForm>
+        <ontolex:Form rdf:about={namer("adjective",lemma.toString(),Some("canonicalForm"))}>
+          <ontolex:writtenRep xml:lang={lang}>{lemma.toString()}</ontolex:writtenRep>
+        </ontolex:Form>
+      </ontolex:canonicalForm> 
+      { lemma.toOntoLexXML(namer,lang) }
+      {
+        for(form <- forms) yield {
+          <ontolex:otherForm>
+            <ontolex:Form rdf:about={namer("adjective",lemma.toString(),Some("form"))}>
+              <ontolex:writtenRep xml:lang={lang}>{form.writtenRep}</ontolex:writtenRep>
+              {
+                for((prop,propVal) <- form.props) yield {
+                  val (prefixUri,prefix,suffix) = prefixURI(prop)
+                  <lingonto:prop rdf:resource={propVal}/>.copy(prefix=prefix, label=suffix) %
+                    Attribute("","xmlns:"+prefix,prefixUri,Null)
+                }
+              }
+            </ontolex:Form>
+          </ontolex:otherForm>
+        }   
+      }
+      {senseOntoLexXML(namer)}
+    </ontolex:LexicalEntry>
+
   def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer("adjective",lemma.toString())}>
       <lemon:canonicalForm>
         <lemon:Form rdf:about={namer("adjective",lemma.toString(),Some("canonicalForm"))}>
@@ -66,6 +93,34 @@ case class IntersectiveAdjective(val lemma : AP,
   def makeWithForm(form : Form) = IntersectiveAdjective(lemma,sense,forms :+ form,register)
   protected def makeWithForms(otherForms : Seq[Form]) = IntersectiveAdjective(lemma,sense, forms ++ otherForms,register)
   def withRegister(register : Register) = IntersectiveAdjective(lemma,sense,forms,Some(register))
+  protected def senseOntoLexXML(namer : URINamer) = {
+  val subjURI = namer("adjective",lemma.toString(),Some("subject"))
+    <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+         <ontolex:reference>
+           <owl:Class rdf:about={sense}/>
+         </ontolex:reference>
+         {registerXML(register)}
+         <synsem:isA>
+            <synsem:SyntacticArgument rdf:about={subjURI}/>
+         </synsem:isA>
+       </ontolex:LexicalSense>
+    </ontolex:sense> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("predFrame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
+        <lexinfo:copulativeSubject rdf:resource={subjURI}/>
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
+        <lexinfo:attributiveArg rdf:resource={subjURI}/>
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior>
+  }  
+
   protected def senseXML(namer : URINamer) = {
   val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     <lemon:sense>
@@ -102,6 +157,36 @@ case class IntersectiveObjectPropertyAdjective(val lemma : AP,
   def makeWithForm(form : Form) = IntersectiveObjectPropertyAdjective(lemma,property,value,forms :+ form,register)
   protected def makeWithForms(otherForms : Seq[Form]) = IntersectiveObjectPropertyAdjective(lemma,property,value, forms ++ otherForms,register)
   def withRegister(register : Register) = IntersectiveObjectPropertyAdjective(lemma,property,value,forms,Some(register))
+ protected def senseOntoLexXML(namer : URINamer) = {
+  val subjURI = namer("adjective",lemma.toString(),Some("subject"))
+    <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+         <ontolex:reference>
+           <owl:Restriction rdf:about={namer("adjective",lemma.toString(),Some("reference"))}>
+             <owl:onProperty rdf:resource={property}/>
+             <owl:hasValue rdf:resource={value}/>
+           </owl:Restriction>
+         </ontolex:reference>
+         {registerXML(register)}
+         <synsem:isA>
+            <synsem:SyntacticArgument rdf:about={subjURI}/>
+         </synsem:isA>
+       </ontolex:LexicalSense>
+    </ontolex:sense> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("predFrame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
+        <lexinfo:copulativeSubject rdf:resource={subjURI}/>
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
+        <lexinfo:attributiveArg rdf:resource={subjURI}/>
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior>
+  }
   protected def senseXML(namer : URINamer) = {
   val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     <lemon:sense>
@@ -141,6 +226,36 @@ case class IntersectiveDataPropertyAdjective(val lemma : AP,
   def makeWithForm(form : Form) = IntersectiveDataPropertyAdjective(lemma,property,value,forms :+ form,register)
   protected def makeWithForms(otherForms : Seq[Form]) = IntersectiveDataPropertyAdjective(lemma,property,value, forms ++ otherForms,register)
   def withRegister(register : Register) = IntersectiveDataPropertyAdjective(lemma,property,value,forms,Some(register))
+  protected def senseOntoLexXML(namer : URINamer) = {
+  val subjURI = namer("adjective",lemma.toString(),Some("subject"))
+    <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+         <ontolex:reference>
+           <owl:Restriction rdf:about={namer("adjective",lemma.toString(),Some("reference"))}>
+             <owl:onProperty rdf:resource={property}/>
+             <owl:hasValue>{value}</owl:hasValue>
+           </owl:Restriction>
+         </ontolex:reference>
+         {registerXML(register)}
+         <synsem:isA>
+            <synsem:SyntacticArgument rdf:about={subjURI}/>
+         </synsem:isA>
+       </ontolex:LexicalSense>
+    </ontolex:sense> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("predFrame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
+        <lexinfo:copulativeSubject rdf:resource={subjURI}/>
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
+        <lexinfo:attributiveArg rdf:resource={subjURI}/>
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior>
+  }
   protected def senseXML(namer : URINamer) = {
   val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     <lemon:sense>
@@ -179,6 +294,32 @@ case class PropertyModifyingAdjective(val lemma : AP,
   def makeWithForm(form : Form) = PropertyModifyingAdjective(lemma,property,forms :+ form, register)
   protected def makeWithForms(otherForms : Seq[Form]) = PropertyModifyingAdjective(lemma,property,forms ++ otherForms,register)
   def withRegister(register : Register) = PropertyModifyingAdjective(lemma,property,forms,Some(register))
+  protected def senseOntoLexXML(namer : URINamer) = {
+    val subjURI = namer("adjective",lemma.toString(),Some("subject"))
+    val objURI = namer("adjective",lemma.toString(),Some("attributive"))
+    <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+         <ontolex:reference>
+           <rdf:Property rdf:about={property}/>
+         </ontolex:reference>
+         {registerXML(register)}
+         <synsem:subjOfProp>
+            <synsem:SyntacticArgument rdf:about={subjURI}/>
+         </synsem:subjOfProp>
+         <synsem:objOfProp>
+            <synsem:SyntacticArgument rdf:about={objURI}/>
+         </synsem:objOfProp>
+       </ontolex:LexicalSense>
+    </ontolex:sense> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectivePropertyModifyingFrame")}/>
+        <lexinfo:copulativeSubject rdf:resource={subjURI}/>
+        <lexinfo:attributeArg rdf:resource={objURI}/>
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior>
+  }
   protected def senseXML(namer : URINamer) = {
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     val objURI = namer("adjective",lemma.toString(),Some("attributive"))
@@ -214,6 +355,37 @@ case class RelationalAdjective(val lemma : AP,
   def makeWithForm(form : Form) = RelationalAdjective(lemma,property,relationalArg,forms :+ form,register)
   protected def makeWithForms(otherForms : Seq[Form]) = RelationalAdjective(lemma,property,relationalArg,forms ++ otherForms,register)
   def withRegister(register : Register) = RelationalAdjective(lemma,property,relationalArg,forms,Some(register))
+  protected def senseOntoLexXML(namer : URINamer) = {
+    val subjURI = namer("adjective",lemma.toString(),Some("subject"))
+    val objURI = namer("adjective",lemma.toString(),Some("attributive"))
+    <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+         <ontolex:reference>
+           <rdf:Property rdf:about={property}/>
+         </ontolex:reference>
+         {registerXML(register)}
+         <synsem:subjOfProp>
+            <synsem:SyntacticArgument rdf:about={subjURI}/>
+         </synsem:subjOfProp>
+         <synsem:objOfProp>
+            <synsem:SyntacticArgument rdf:about={objURI}/>
+         </synsem:objOfProp>
+        { 
+          if(relationalArg.restriction != None) {
+            <synsem:propertyDomain rdf:resource={relationalArg.restriction.get}/>
+          }
+        }
+       </ontolex:LexicalSense>
+    </ontolex:sense> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectivePPFrame")}/>
+        <lexinfo:copulativeSubject rdf:resource={subjURI}/>
+        { relationalArg.toXML(objURI,namer) }
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior>
+  }
   protected def senseXML(namer : URINamer) = {
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     val objURI = namer("adjective",lemma.toString(),Some("attributive"))
@@ -254,6 +426,90 @@ case class ScalarAdjective(val lemma : AP,
   def makeWithForm(form : Form) = ScalarAdjective(lemma,scalarMemberships,forms :+ form,register)
   protected def makeWithForms(otherForms : Seq[Form]) = ScalarAdjective(lemma,scalarMemberships,forms ++ otherForms,register)
   def withRegister(register : Register) = ScalarAdjective(lemma,scalarMemberships,forms,Some(register))
+  protected def senseOntoLexXML(namer : URINamer) = {
+    val subjURI = namer("adjective",lemma.toString(),Some("subject"))
+    val scaleSubjURI = namer("adjective",lemma.toString(),Some("scaleSubj"))
+    val scaleObjURI = namer("adjective",lemma.toString(),Some("scaleObj"))
+    (for(ScalarMembership(property,forClass,boundary,direction,boundary2) <- scalarMemberships) yield {
+    <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+         <ontolex:reference>
+            <owl:Class rdf:about={namer("adjective",lemma.toString(),Some("reference"))}>
+              { 
+                if(forClass != null) {
+                 <rdfs:subClassOf rdf:resource={forClass}/>
+                }
+              }
+              {
+                if(!boundary.isNaN) {
+              <owl:equivalentClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource={property}/>
+                  <owl:someValuesFrom>
+                    <rdfs:Datatype>
+                      <owl:withRestrictions rdf:parseType="Collection">
+                        <rdf:Description>{            if(direction == positive) {
+                            <xsd:minExclusive>{boundary}</xsd:minExclusive>
+                          } else if(direction == central) {
+                            <xsd:minExclusive>{boundary}</xsd:minExclusive>
+                            <xsd:maxExclusive>{boundary2}</xsd:maxExclusive>
+                          } else {
+                            <xsd:maxExclusive>{boundary}</xsd:maxExclusive> 
+                          }
+                        }</rdf:Description>
+                      </owl:withRestrictions>
+                    </rdfs:Datatype>
+                  </owl:someValuesFrom>
+                </owl:Restriction>
+              </owl:equivalentClass>
+                }
+            }
+            <oils:boundTo rdf:resource={property}/>
+            {
+              if(direction == positive) {
+                <rdfs:subClassOf rdf:resource="http://lemon-model.net/oils#CovariantScalar"/>
+              } else {
+                <rdfs:subClassOf rdf:resource="http://lemon-model.net/oils#ContravariantScalar"/>
+              }
+            }
+            </owl:Class>
+         </ontolex:reference>
+         {registerXML(register)}
+         <synsem:isA>
+            <synsem:SyntacticArgument rdf:about={subjURI}/>
+         </synsem:isA>
+       </ontolex:LexicalSense>
+    </ontolex:sense> :+
+    <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+          <ontolex:reference rdf:resource={property}/>
+          <synsem:subjOfProp rdf:resource={scaleSubjURI}/>
+          <synsem:objOfProp rdf:resource={scaleObjURI}/>
+      </ontolex:LexicalSense>
+    </ontolex:sense>
+    }).flatten :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("predFrame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
+        <lexinfo:copulativeSubject rdf:resource={subjURI}/>
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
+        <lexinfo:attributiveArg rdf:resource={subjURI}/>
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("attrFrame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectiveScaleFrame")}/>
+        <lexinfo:copulativeSubject rdf:resource={scaleSubjURI}/>
+        <lexinfo:adverbialComplement rdf:resource={scaleObjURI}/>
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior>
+  }
   protected def senseXML(namer : URINamer) = {
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     val scaleSubjURI = namer("adjective",lemma.toString(),Some("scaleSubj"))
@@ -398,6 +654,55 @@ case class ScalarParticleAdjective(val lemma : AP,
                              
   def makeWithForm(form : Form) = ScalarAdjective(lemma,scalarMemberships,forms :+ form)
   protected def makeWithForms(otherForms : Seq[Form]) = ScalarAdjective(lemma,scalarMemberships,forms ++ otherForms)
+  protected def senseOntoLexXML(namer : URINamer) = {
+    val subjURI = namer("adjective",lemma.toString(),Some("subject"))
+    val subjURI = namer("adjective",lemma.toString(),Some("object"))
+    <ontolex:sense>
+    {
+      for(ScalarMembership(property,boundary,direction) <- scalarMemberships) yield {
+      <ontolex:LexicalSense rdf:about={namer("adjective",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+         <ontolex:reference>
+            <rdfs:Datatype>
+                <owl:withRestrictions rdf:parseType="Collection">
+                <rdf:Description>{
+                  if(direction == positive) {
+                    <xsd:minExclusive>{boundary}</xsd:minExclusive>
+                  } else {
+                    <xsd:maxExclusive>{boundary}</xsd:maxExclusive>
+                  }
+                }
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+         </ontolex:reference>
+         <synsem:isA>
+            <synsem:SyntacticArgument rdf:about={subjURI}/>
+         </synsem:isA>
+       </ontolex:LexicalSense>
+      }
+    }
+    </ontolex:sense> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectivePredicativeFrame")}/>
+        <lexinfo:subject rdf:resource={subjURI}/>
+      </synsem:SyntacticFrame>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectiveAttributiveFrame")}/>
+        <lexinfo:attributiveArg rdf:resource={subjURI}/>
+      </synsem:SyntacticFrame>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectiveComparativeFrame")}/>
+        <lexinfo:subject rdf:resource={subjURI}/>
+        <lexinfo:comparativeAdjunct rdf:resource={objURI}/>
+      </synsem:SyntacticFrame>
+      <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
+        <rdf:type rdf:resource={lexinfo("AdjectiveSuperlativeFrame")}/>
+        <lexinfo:superlativeAdjunct rdf:resource={objURI}/>
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior>
+  }
   protected def senseXML(namer : URINamer) = {
     val subjURI = namer("adjective",lemma.toString(),Some("subject"))
     val subjURI = namer("adjective",lemma.toString(),Some("object"))

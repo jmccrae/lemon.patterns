@@ -62,6 +62,15 @@ case class Lexicon(uri : URI, lang : String, val patterns : Pattern*) {
       }
     }
   }
+  def toOntoLexXML() = {
+    <lime:Lexicon rdf:about={uri.toString} ontolex:language={lang}>
+      {(for(pattern <- patterns) yield {
+        <lime:entry>
+        {pattern.toOntoLexXML(uriNamer,lang)}
+        </lime:entry>
+     } ++ uriNamer.auxXML)}
+   </lime:Lexicon>
+  }
   
   def toXML() = {
     <lemon:Lexicon rdf:about={uri.toString} lemon:language={lang}>

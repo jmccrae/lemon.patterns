@@ -69,6 +69,7 @@ package net.lemonmodel {
       def makeWithForm(form : Form) : Pattern
       def withRegister(register : Register) : Pattern
       def toXML(namer : URINamer, lang : String)  : Node
+      def toOntoLexXML(namer : URINamer, lang : String) : Node
       def registerXML(register : Option[Register]) = {
 	{register match {
 	    case Some(r) => <lexinfo:register rdf:resource={lexinfo(r.toString()).toString()}/>

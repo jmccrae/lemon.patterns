@@ -2,6 +2,7 @@ package net.lemonmodel.patterns
 
 trait Phrase {
   def toXML(namer : URINamer, lang : String) : scala.xml.NodeSeq
+  def toOntoLexXML(namer : URINamer, lang : String) : scala.xml.NodeSeq
 }
 
 trait POS {
@@ -9,7 +10,22 @@ trait POS {
 }
 
 case class Word(val lemma : String, val pos : POS, _form : Option[String] = None) {
-  def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer(pos.toString,lemma)}>
+  def toOntoLexXML(namer : URINamer, lang : String) = <ontolex:LexicalEntry rdf:about={namer(pos.toString,lemma)}>
+     <ontolex:canonicalForm>
+       <ontolex:Form rdf:about={namer(pos.toString,lemma.toString(),Some("canonicalForm"))}>
+         <ontolex:writtenRep xml:lang={lang}>{lemma}</ontolex:writtenRep>
+       </ontolex:Form>
+     </ontolex:canonicalForm>
+     {if(_form != None && _form.get != lemma) {
+       <ontolex:otherForm>
+         <ontolex:Form rdf:about={namer(pos.toString,lemma.toString(),Some("otherForm"))}>
+           <ontolex:writtenRep xml:lang={lang}>{_form.get}</ontolex:writtenRep>
+         </ontolex:Form>
+       </ontolex:otherForm>
+     } }
+     <lexinfo:partOfSpeech rdf:resource={lexinfo(pos.toString)}/>
+   </ontolex:LexicalEntry>
+   def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer(pos.toString,lemma)}>
      <lemon:canonicalForm>
        <lemon:Form rdf:about={namer(pos.toString,lemma.toString(),Some("canonicalForm"))}>
          <lemon:writtenRep xml:lang={lang}>{lemma}</lemon:writtenRep>
@@ -32,7 +48,24 @@ case class Word(val lemma : String, val pos : POS, _form : Option[String] = None
 }
 
 class AbstractPhrase(words : Seq[Word], lexinfoType : String, pos : String, val head : Option[Word]) {
-  def toXML(namer : URINamer, lang : String) : xml.NodeSeq = if(words.length == 1) {
+  def toOntoLexXML(namer : URINamer, lang : String) : xml.NodeSeq = if(words.length == 1) {
+    <lexinfo:partOfSpeech rdf:resource={lexinfo(words(0).pos.toString)}/>
+  } else {
+    <rdf:type rdf:resource={lexinfo(lexinfoType)}/> +:
+    <decomp:constituent>{
+      for((word,idx) <- words.zipWithIndex) yield {
+        <decomp:Component rdf:about={namer(pos,toString(),Some("element_"+idx))}>
+          <decomp:correspondsTo>{word.toXML(namer,lang)}</decomp:correspondsTo>
+        </decomp:Component>
+      }
+    }</decomp:constituent> ++:
+    (words.zipWithIndex map { case (word,idx) => xml.Elem("rdf", "_" + (idx + 1), xml.Null, xml.TopScope) % new xml.PrefixedAttribute("rdf", "resource", namer(pos, toString(), Some("element_"+idx)).toString,xml.Null) }) ++: 
+    (head match {
+      case Some(w) => List(<lexinfo:head rdf:resource={w.name(namer)}/>)
+      case None => Nil
+    })
+  }
+   def toXML(namer : URINamer, lang : String) : xml.NodeSeq = if(words.length == 1) {
     <lexinfo:partOfSpeech rdf:resource={lexinfo(words(0).pos.toString)}/>
   } else {
     <rdf:type rdf:resource={lexinfo(lexinfoType)}/> +:
