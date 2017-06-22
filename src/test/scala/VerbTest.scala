@@ -55,98 +55,98 @@ class VerbTest extends FlatSpec with ShouldMatchers {
     StateVerb("amare",ontology("loves")).withTable(lexinfo, Map(("tense","present") -> "amo")).forms.size should equal (1)
   }
   
-  "The state verb pattern" should "produce valid lemon" in {
-    xmlCheck(StateVerb("amare",ontology("loves")) withTable (lexinfo,Map(
-      ("tense","present") -> Map(
-        ("number","singular") -> Map(
-          ("person","firstPerson") -> "amo",
-          ("person","secondPerson") -> "amas",
-          ("person","thirdPerson") -> "amat"
-        ),
-        ("number","plural") -> Map(
-          ("person","firstPerson") -> "amamus",
-          ("person","secondPerson") -> "amatis",
-          ("person","thirdPerson") -> "amant"
-        )
-      )
-    )),
-    <lemon:LexicalEntry rdf:about="file:example/amare-verb">
-         <lemon:canonicalForm>
-           <lemon:Form rdf:about="file:example/amare-verb#canonicalForm">
-             <lemon:writtenRep xml:lang="la">amare</lemon:writtenRep>
-           </lemon:Form>
-         </lemon:canonicalForm>
-         <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#verb"></lexinfo:partOfSpeech>
-         <lemon:otherForm>
-           <lemon:Form rdf:about="file:example/amare-verb#form">
-             <lemon:writtenRep xml:lang="la">amo</lemon:writtenRep>
-             <lexinfo:tense rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-             <lexinfo:number rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#singular" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-             <lexinfo:person rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#firstPerson" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-           </lemon:Form>
-         </lemon:otherForm>
-         <lemon:otherForm>
-           <lemon:Form rdf:about="file:example/amare-verb#form2">
-             <lemon:writtenRep xml:lang="la">amas</lemon:writtenRep>
-             <lexinfo:tense rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-             <lexinfo:number rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#singular" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-             <lexinfo:person rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#secondPerson" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-           </lemon:Form>
-         </lemon:otherForm>
-         <lemon:otherForm>
-           <lemon:Form rdf:about="file:example/amare-verb#form3">
-             <lemon:writtenRep xml:lang="la">amat</lemon:writtenRep>
-             <lexinfo:tense rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-             <lexinfo:number rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#singular" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-             <lexinfo:person rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#thirdPerson" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-           </lemon:Form>
-         </lemon:otherForm>
-         <lemon:otherForm>
-           <lemon:Form rdf:about="file:example/amare-verb#form4">
-             <lemon:writtenRep xml:lang="la">amamus</lemon:writtenRep>
-             <lexinfo:tense rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-             <lexinfo:number rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#plural" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-             <lexinfo:person rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#firstPerson" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-           </lemon:Form>
-         </lemon:otherForm>
-         <lemon:otherForm>
-           <lemon:Form rdf:about="file:example/amare-verb#form5">
-             <lemon:writtenRep xml:lang="la">amatis</lemon:writtenRep>
-             <lexinfo:tense rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-             <lexinfo:number rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#plural" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-             <lexinfo:person rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#secondPerson" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-           </lemon:Form>
-         </lemon:otherForm>
-         <lemon:otherForm>
-           <lemon:Form rdf:about="file:example/amare-verb#form6">
-             <lemon:writtenRep xml:lang="la">amant</lemon:writtenRep>
-             <lexinfo:tense rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-             <lexinfo:number rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#plural" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-             <lexinfo:person rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#thirdPerson" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
-           </lemon:Form>
-         </lemon:otherForm>
-         <lemon:sense>
-           <lemon:LexicalSense rdf:about="file:example/amare-verb#sense">
-             <lemon:reference>
-               <rdf:Property rdf:about="http://www.example.com/ontology#loves"/>
-             </lemon:reference>
-             <lemon:subjOfProp>
-               <lemon:Argument rdf:about="file:example/amare-verb#subject"/>
-             </lemon:subjOfProp>
-             <lemon:objOfProp>
-               <lemon:Argument rdf:about="file:example/amare-verb#object"/>
-             </lemon:objOfProp>
-           </lemon:LexicalSense>
-         </lemon:sense>
-         <lemon:synBehavior>
-           <lemon:Frame rdf:about="file:example/amare-verb#frame">
-             <rdf:type rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#TransitiveFrame"/>
-             <lexinfo:subject rdf:resource="file:example/amare-verb#subject"/>
-             <lexinfo:directObject rdf:resource="file:example/amare-verb#object"/>
-           </lemon:Frame>
-         </lemon:synBehavior>
-       </lemon:LexicalEntry>,"la")
-  }
+//  "The state verb pattern" should "produce valid lemon" in {
+//    xmlCheck(StateVerb("amare",ontology("loves")) withTable (lexinfo,Map(
+//      ("tense","present") -> Map(
+//        ("number","singular") -> Map(
+//          ("person","firstPerson") -> "amo",
+//          ("person","secondPerson") -> "amas",
+//          ("person","thirdPerson") -> "amat"
+//        ),
+//        ("number","plural") -> Map(
+//          ("person","firstPerson") -> "amamus",
+//          ("person","secondPerson") -> "amatis",
+//          ("person","thirdPerson") -> "amant"
+//        )
+//      )
+//    )),
+//    <lemon:LexicalEntry rdf:about="file:example/amare-verb">
+//         <lemon:canonicalForm>
+//           <lemon:Form rdf:about="file:example/amare-verb#canonicalForm">
+//             <lemon:writtenRep xml:lang="la">amare</lemon:writtenRep>
+//           </lemon:Form>
+//         </lemon:canonicalForm>
+//         <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#verb"></lexinfo:partOfSpeech>
+//         <lemon:otherForm>
+//           <lemon:Form rdf:about="file:example/amare-verb#form">
+//             <lemon:writtenRep xml:lang="la">amo</lemon:writtenRep>
+//             <lexinfo:tense rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//             <lexinfo:number rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#singular" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//             <lexinfo:person rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#firstPerson" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//           </lemon:Form>
+//         </lemon:otherForm>
+//         <lemon:otherForm>
+//           <lemon:Form rdf:about="file:example/amare-verb#form2">
+//             <lemon:writtenRep xml:lang="la">amas</lemon:writtenRep>
+//             <lexinfo:tense rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//             <lexinfo:number rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#singular" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//             <lexinfo:person rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#secondPerson" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//           </lemon:Form>
+//         </lemon:otherForm>
+//         <lemon:otherForm>
+//           <lemon:Form rdf:about="file:example/amare-verb#form3">
+//             <lemon:writtenRep xml:lang="la">amat</lemon:writtenRep>
+//             <lexinfo:tense rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//             <lexinfo:number rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#singular" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//             <lexinfo:person rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#thirdPerson" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//           </lemon:Form>
+//         </lemon:otherForm>
+//         <lemon:otherForm>
+//           <lemon:Form rdf:about="file:example/amare-verb#form4">
+//             <lemon:writtenRep xml:lang="la">amamus</lemon:writtenRep>
+//             <lexinfo:tense rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//             <lexinfo:number rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#plural" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//             <lexinfo:person rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#firstPerson" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//           </lemon:Form>
+//         </lemon:otherForm>
+//         <lemon:otherForm>
+//           <lemon:Form rdf:about="file:example/amare-verb#form5">
+//             <lemon:writtenRep xml:lang="la">amatis</lemon:writtenRep>
+//             <lexinfo:tense rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//             <lexinfo:number rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#plural" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//             <lexinfo:person rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#secondPerson" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//           </lemon:Form>
+//         </lemon:otherForm>
+//         <lemon:otherForm>
+//           <lemon:Form rdf:about="file:example/amare-verb#form6">
+//             <lemon:writtenRep xml:lang="la">amant</lemon:writtenRep>
+//             <lexinfo:tense rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#present" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//             <lexinfo:number rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#plural" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//             <lexinfo:person rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#thirdPerson" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"/>
+//           </lemon:Form>
+//         </lemon:otherForm>
+//         <lemon:sense>
+//           <lemon:LexicalSense rdf:about="file:example/amare-verb#sense">
+//             <lemon:reference>
+//               <rdf:Property rdf:about="http://www.example.com/ontology#loves"/>
+//             </lemon:reference>
+//             <lemon:subjOfProp>
+//               <lemon:Argument rdf:about="file:example/amare-verb#subject"/>
+//             </lemon:subjOfProp>
+//             <lemon:objOfProp>
+//               <lemon:Argument rdf:about="file:example/amare-verb#object"/>
+//             </lemon:objOfProp>
+//           </lemon:LexicalSense>
+//         </lemon:sense>
+//         <lemon:synBehavior>
+//           <lemon:Frame rdf:about="file:example/amare-verb#frame">
+//             <rdf:type rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#TransitiveFrame"/>
+//             <lexinfo:subject rdf:resource="file:example/amare-verb#subject"/>
+//             <lexinfo:directObject rdf:resource="file:example/amare-verb#object"/>
+//           </lemon:Frame>
+//         </lemon:synBehavior>
+//       </lemon:LexicalEntry>,"la")
+//  }
   
   "The event verb frame" should "produce valid lemon" in {
     
@@ -156,13 +156,13 @@ class VerbTest extends FlatSpec with ShouldMatchers {
                   ontology("givenObject") as IndirectObject)),
        <lemon:LexicalEntry rdf:about="file:example/give-verb">
          <lemon:canonicalForm>
-           <lemon:Form rdf:about="file:example/give-verb#canonicalForm2">
+           <lemon:Form rdf:about="file:example/give-verb#canonicalForm">
              <lemon:writtenRep xml:lang="en">give</lemon:writtenRep>
            </lemon:Form>
          </lemon:canonicalForm>
          <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#verb"></lexinfo:partOfSpeech>
          <lemon:sense>
-           <lemon:LexicalSense rdf:about="file:example/give-verb#sense2">
+           <lemon:LexicalSense rdf:about="file:example/give-verb#sense">
              <lemon:reference>
                <rdfs:Class rdf:about="http://www.example.com/ontology#GivingEvent">
                  <rdfs:subClassOf rdf:resource="http://www.lemon-model.net/oils#Achievement"/>
@@ -204,7 +204,7 @@ class VerbTest extends FlatSpec with ShouldMatchers {
            </lemon:LexicalSense>
          </lemon:sense>
          <lemon:synBehavior>
-           <lemon:Frame rdf:about="file:example/give-verb#frame2">
+           <lemon:Frame rdf:about="file:example/give-verb#frame">
              <lexinfo:subject rdf:resource="file:example/give-verb#arg1"/>
              <lexinfo:directObject rdf:resource="file:example/give-verb#arg2"/>
              <lexinfo:indirectObject rdf:resource="file:example/give-verb#arg3"/>
@@ -217,30 +217,30 @@ class VerbTest extends FlatSpec with ShouldMatchers {
      xmlCheck(StateVerb("play",ontology("playsFor"),propObj=PrepositionalObject("for")),
      <lemon:LexicalEntry rdf:about="file:example/play-verb">
          <lemon:canonicalForm>
-           <lemon:Form rdf:about="file:example/play-verb#canonicalForm3">
+           <lemon:Form rdf:about="file:example/play-verb#canonicalForm2">
              <lemon:writtenRep xml:lang="en">play</lemon:writtenRep>
            </lemon:Form>
          </lemon:canonicalForm>
          <lexinfo:partOfSpeech rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#verb"></lexinfo:partOfSpeech>
          <lemon:sense>
-           <lemon:LexicalSense rdf:about="file:example/play-verb#sense3">
+           <lemon:LexicalSense rdf:about="file:example/play-verb#sense2">
              <lemon:reference>
                <rdf:Property rdf:about="http://www.example.com/ontology#playsFor"/>
              </lemon:reference>
              <lemon:subjOfProp>
-               <lemon:Argument rdf:about="file:example/play-verb#subject2"/>
+               <lemon:Argument rdf:about="file:example/play-verb#subject"/>
              </lemon:subjOfProp>
              <lemon:objOfProp>
-               <lemon:Argument rdf:about="file:example/play-verb#object2"/>
+               <lemon:Argument rdf:about="file:example/play-verb#object"/>
              </lemon:objOfProp>
            </lemon:LexicalSense>
          </lemon:sense>
          <lemon:synBehavior>
-           <lemon:Frame rdf:about="file:example/play-verb#frame3">
+           <lemon:Frame rdf:about="file:example/play-verb#frame2">
              <rdf:type rdf:resource="http://www.lexinfo.net/ontology/2.0/lexinfo#IntransitivePPFrame"/>
-             <lexinfo:subject rdf:resource="file:example/play-verb#subject2"/>
+             <lexinfo:subject rdf:resource="file:example/play-verb#subject"/>
              <lexinfo:prepositionalObject>
-               <lemon:Argument rdf:about="file:example/play-verb#object2">
+               <lemon:Argument rdf:about="file:example/play-verb#object">
                  <lemon:marker rdf:resource="file:example/for"/>
                </lemon:Argument>
              </lexinfo:prepositionalObject>

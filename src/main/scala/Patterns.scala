@@ -69,6 +69,7 @@ package net.lemonmodel {
       def makeWithForm(form : Form) : Pattern
       def withRegister(register : Register) : Pattern
       def toXML(namer : URINamer, lang : String)  : Node
+      def toOntoLexXML(namer : URINamer, lang : String) : Node
       def registerXML(register : Option[Register]) = {
 	{register match {
 	    case Some(r) => <lexinfo:register rdf:resource={lexinfo(r.toString()).toString()}/>
@@ -112,10 +113,10 @@ package net.lemonmodel {
     
     case class ArgImpl(val isOptional : Boolean, val restriction : Option[URI], val name : String) extends Arg{
       def toXML(uri : URI, namer : URINamer) = if(!isOptional) {
-        xml.Elem("lexinfo",name,Null,TopScope) % new xml.PrefixedAttribute("rdf","resource",uri.toString,Null)
+        xml.Elem("lexinfo",name,Null,TopScope,true) % new xml.PrefixedAttribute("rdf","resource",uri.toString,Null)
       } else {
         val a = <lemon:Argument rdf:about={uri}><lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional></lemon:Argument>
-        xml.Elem("lexinfo",name,Null,TopScope,a)
+        xml.Elem("lexinfo",name,Null,TopScope,true,a)
       }
       def optional = ArgImpl(true,restriction,name)
       def restrictedTo(uri : URI) = ArgImpl(isOptional,Some(uri),name)

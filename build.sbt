@@ -6,11 +6,12 @@ name := "lemon-patterns"
 
 version := "1.12.9"
 
-scalaVersion := "2.10.6"
+scalaVersion := "2.11.11"
 
 libraryDependencies ++= Seq(
-   "org.scalatest" %% "scalatest" % "1.9.2" % "test",
-   "de.jflex" % "jflex" % "1.4.3"
+   "org.scalatest" %% "scalatest" % "2.1.5" % "test",
+   "de.jflex" % "jflex" % "1.4.3",
+   "org.scala-lang.modules" %% "scala-xml" % "1.0.6"
 )
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")

@@ -10,6 +10,7 @@ import net.lemonmodel.rdfutil.RDFUtil._
 trait Noun extends Pattern {
   def makeWithForm(form : Form) : Noun
   protected def senseXML(namer : URINamer) : NodeSeq
+  protected def senseOntoLexXML(namer : URINamer) : NodeSeq
   protected def isProper = false
   def withPlural(form : String) = makeWithForm(Form(form,Map(lexinfo("number")->lexinfo("plural"))))
   def withAbessive(form : String) = makeWithForm(Form(form,Map(lexinfo("case")->lexinfo("abessiveCase"))))
@@ -148,6 +149,37 @@ trait Noun extends Pattern {
   def gender : Option[Gender]
   def lemma : NounPhrase
   def forms : Seq[Form]
+  def toOntoLexXML(namer : URINamer, lang : String) = <ontolex:LexicalEntry rdf:about={namer("noun",lemma.toString())}>
+      <ontolex:canonicalForm>
+        <ontolex:Form rdf:about={namer("noun",lemma.toString(),Some("canonicalForm"))}>
+          <ontolex:writtenRep xml:lang={lang}>{lemma.toString()}</ontolex:writtenRep>
+        </ontolex:Form>
+      </ontolex:canonicalForm>
+      {gender match {
+        case Some(g) => <lexinfo:gender rdf:resource={lexinfo(g.toString()).toString()}/>
+        case None => 
+        }
+      }
+      { lemma.toOntoLexXML(namer,lang) }
+      {
+        for(form <- forms) yield {
+          <ontolex:otherForm>
+            <ontolex:Form rdf:about={namer("noun",lemma.toString(),Some("form"))}>
+              <ontolex:writtenRep xml:lang={lang}>{form.writtenRep}</ontolex:writtenRep>
+              {
+                for((prop,propVal) <- form.props) yield {
+                  val (prefixUri,prefix,suffix) = prefixURI(prop)
+                  <lingonto:prop rdf:resource={propVal}/>.copy(prefix=prefix, label=suffix) %
+                    Attribute("","xmlns:"+prefix,prefixUri,Null)
+                }
+              }
+            </ontolex:Form>
+          </ontolex:otherForm>
+        }   
+      }
+      {senseOntoLexXML(namer)}
+    </ontolex:LexicalEntry>
+
   def toXML(namer : URINamer, lang : String) = <lemon:LexicalEntry rdf:about={namer("noun",lemma.toString())}>
       <lemon:canonicalForm>
         <lemon:Form rdf:about={namer("noun",lemma.toString(),Some("canonicalForm"))}>
@@ -202,7 +234,15 @@ case class Name(val lemma : PNP,
   def makeWithForm(form : Form) = Name(lemma,sense, forms :+ form,gender,register)
   def withGender(gender : Gender) = Name(lemma,sense,forms,Some(gender),register)
   def withRegister(register : Register) = Name(lemma,sense,forms,gender,Some(register))
-  protected def senseXML(namer : URINamer) = <lemon:sense>
+  protected def senseOntoLexXML(namer : URINamer) = <ontolex:sense>
+       <ontolex:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("sense"))}>
+         <ontolex:reference>
+           <owl:NamedIndividual rdf:about={sense}/>
+         </ontolex:reference>
+         {registerXML(register)}
+       </ontolex:LexicalSense>
+    </ontolex:sense>
+   protected def senseXML(namer : URINamer) = <lemon:sense>
        <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("sense"))}>
          <lemon:reference>
            <owl:NamedIndividual rdf:about={sense}/>
@@ -219,6 +259,27 @@ case class Name(val lemma : PNP,
 trait AbsClassNoun extends Noun {
   def register : Option[Register]
   def referenceXML(namer : URINamer) : Elem
+  def senseOntoLexXML(namer : URINamer) = {
+  val subjURI = namer("noun",lemma.toString(),Some("subject"))
+    <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+         <ontolex:reference>
+         {referenceXML(namer)}
+         </ontolex:reference>
+         {registerXML(register)}
+         <synsem:isA>
+            <synsem:SyntacticArgument rdf:about={subjURI}/>
+         </synsem:isA>
+       </ontolex:LexicalSense>
+    </ontolex:sense> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
+        <rdf:type rdf:resource={lexinfo("NounPredicateFrame")}/>
+        <lexinfo:subject rdf:resource={subjURI}/>
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior>
+  }
   def senseXML(namer : URINamer) = {
   val subjURI = namer("noun",lemma.toString(),Some("subject"))
     <lemon:sense>
@@ -320,6 +381,49 @@ case class RelationalNoun(val lemma : NP,
    def makeWithForm(inflForm : Form) = RelationalNoun(lemma,sense,propSubj,propObj,forms :+ inflForm,gender,register)
    def withGender(gender : Gender) = RelationalNoun(lemma,sense,propSubj,propObj,forms,Some(gender),register)
    def withRegister(register : Register) = RelationalNoun(lemma,sense,propSubj,propObj,forms,gender,Some(register))
+   protected def senseOntoLexXML(namer : URINamer) = {
+     val subjURI = namer("noun",lemma.toString(),Some("subject"))
+     val objURI = namer("noun",lemma.toString(),Some("adpositionalObject"))
+     <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+         <ontolex:reference>
+           <rdf:Property rdf:about={sense}/>
+         </ontolex:reference>
+         {registerXML(register)}
+         <synsem:subjOfProp>
+            <synsem:SyntacticArgument rdf:about={subjURI}/>
+         </synsem:subjOfProp>
+         <synsem:objOfProp>
+            <synsem:SyntacticArgument rdf:about={objURI}/>
+         </synsem:objOfProp>
+        { 
+          if(propSubj.restriction != None) {
+            <synsem:propertyDomain rdf:resource={propSubj.restriction.get}/>
+          }
+        }
+        { 
+          if(propObj.restriction != None) {
+            <synsem:propertyRange rdf:resource={propObj.restriction.get}/>
+          }
+        }
+       </ontolex:LexicalSense>
+    </ontolex:sense> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
+        { (propSubj,propObj) match {
+          case (ArgImpl(_,_,"copulativeArg"),PrepositionalObject(_,_,_)) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+            case (PrepositionalObject(_,_,_),ArgImpl(_,_,"copulativeArg")) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+            case (ArgImpl(_,_,"copulativeArg"),ArgImpl(_,_,"possessiveAdjunct")) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
+            case (ArgImpl(_,_,"possessiveAdjunct"),ArgImpl(_,_,"copulativeArg")) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
+            case _ => <!--Unrecognised frame-->
+           }
+        }
+        { propSubj.toXML(subjURI,namer) }
+        { propObj.toXML(objURI,namer) }
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior>
+   }
    protected def senseXML(namer : URINamer) = {
      val subjURI = namer("noun",lemma.toString(),Some("subject"))
      val objURI = namer("noun",lemma.toString(),Some("adpositionalObject"))
@@ -380,6 +484,59 @@ case class RelationalMultivalentNoun(val lemma : NP,
    def makeWithForm(form : Form) = RelationalMultivalentNoun(lemma,relationClass,args,forms :+ form,gender,register)
    def withGender(gender : Gender) = RelationalMultivalentNoun(lemma,relationClass,args,forms,Some(gender),register)
    def withRegister(register : Register) = RelationalMultivalentNoun(lemma,relationClass,args,forms,gender,Some(register))
+   protected def senseOntoLexXML(namer : URINamer) = {
+     val argURI = (for((arg,i) <- args.zipWithIndex) yield {
+       arg -> namer("noun",lemma.toString(),Some("arg"+(i+1)))
+     }).toMap
+     <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("sense"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+         <ontolex:reference>
+           <rdfs:Class rdf:about={relationClass}>
+             <rdfs:subClassOf rdf:resource="http://www.lemon-model.net/oils#Relationship"/>
+           </rdfs:Class>
+         </ontolex:reference>
+         {registerXML(register)}
+         {
+           for((arg,i) <- args.zipWithIndex) yield {
+            <synsem:submap>
+              <ontolex:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("subsense"+(i+1)))}>
+              <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+                <synsem:objOfProp>
+                  <synsem:SyntacticArgument rdf:about={argURI(arg)}>
+                  {
+                    if(arg.arg.isOptional) {
+                      <synsem:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</synsem:optional>
+                    } else {
+                      <!-- Mandatory argument -->
+                    }
+                  }
+                 </synsem:SyntacticArgument>
+                </synsem:objOfProp>
+                <ontolex:reference>
+                  <rdf:Property rdf:about={arg.property.getOrElse(namer.anonURI(arg))}/>
+                </ontolex:reference>
+                {
+                  if(arg.arg.restriction != None) {
+                    <synsem:propertyRange rdf:resource={arg.arg.restriction.get}/>
+                   }
+                }
+              </ontolex:LexicalSense>
+            </synsem:submap>
+           }
+         }
+       </ontolex:LexicalSense>
+    </ontolex:sense> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
+        {
+          for(arg <- args) yield {
+            arg.arg.toXML(argURI(arg),namer)
+          }
+        }
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior>
+   }
    protected def senseXML(namer : URINamer) = {
      val argURI = (for((arg,i) <- args.zipWithIndex) yield {
        arg -> namer("noun",lemma.toString(),Some("arg"+(i+1)))
@@ -453,11 +610,69 @@ case class ClassRelationalNoun(val lemma : NP,
    def makeWithForm(form : Form) = ClassRelationalNoun(lemma,relationClass,relation,propSubj,propObj,forms :+ form,gender,register)
    def withGender(gender : Gender) = ClassRelationalNoun(lemma,relationClass,relation,propSubj,propObj,forms,Some(gender),register)
    def withRegister(register : Register) = ClassRelationalNoun(lemma,relationClass,relation,propSubj,propObj,forms,gender,Some(register))
+   protected def senseOntoLexXML(namer : URINamer) = {
+     val subjURI = namer("noun",lemma.toString(),Some("subject"))
+     val objURI = namer("noun",lemma.toString(),Some("adpositionalObject"))
+     <ontolex:sense>
+      <ontolex:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("senseRel"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
+         <ontolex:reference>
+           <rdf:Property rdf:about={relation}/>
+         </ontolex:reference>
+         {registerXML(register)}
+         <synsem:subjOfProp>
+            <synsem:SyntacticArgument rdf:about={subjURI}/>
+         </synsem:subjOfProp>
+         <synsem:objOfProp>
+            <synsem:SyntacticArgument rdf:about={objURI}/>
+         </synsem:objOfProp>
+        { 
+          if(propSubj.restriction != None) {
+            <synsem:propertyDomain rdf:resource={propSubj.restriction.get}/>
+          }
+        }
+        { 
+          if(propObj.restriction != None) {
+            <synsem:propertyRange rdf:resource={propObj.restriction.get}/>
+          }
+        }
+      </ontolex:LexicalSense>
+      <ontolex:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("senseClass"))}>
+         <ontolex:reference>
+           <rdf:Property rdf:about={relationClass}/>
+         </ontolex:reference>
+         <synsem:isA>
+            <synsem:SyntacticArgument rdf:about={subjURI}/>
+         </synsem:isA>
+       </ontolex:LexicalSense>
+    </ontolex:sense> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
+        { (propSubj,propObj) match {
+          case (ArgImpl(_,_,"copulativeArg"),PrepositionalObject(_,_,_)) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+            case (PrepositionalObject(_,_,_), ArgImpl(_,_,"copulativeArg")) => <rdf:type rdf:resource={lexinfo("NounPPFrame")}/>
+            case (ArgImpl(_,_,"copulativeArg"),ArgImpl(_,_,"possessiveAdjunct")) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
+            case (ArgImpl(_,_,"possessiveAdjunct"),ArgImpl(_,_,"copulativeArg")) => <rdf:type rdf:resource={lexinfo("NounPossessiveFrame")}/>
+            case _ => <!--Unrecognised frame-->
+           }
+        }
+        { propSubj.toXML(subjURI,namer) }
+        { propObj.toXML(objURI,namer) }
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior> :+
+    <synsem:synBehavior>
+      <synsem:SyntacticFrame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
+        <rdf:type rdf:resource={lexinfo("NounPredicateFrame")}/>
+        { propSubj.toXML(subjURI,namer) }
+      </synsem:SyntacticFrame>
+    </synsem:synBehavior>
+   }
    protected def senseXML(namer : URINamer) = {
      val subjURI = namer("noun",lemma.toString(),Some("subject"))
      val objURI = namer("noun",lemma.toString(),Some("adpositionalObject"))
      <lemon:sense>
       <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("senseRel"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
          <lemon:reference>
            <rdf:Property rdf:about={relation}/>
          </lemon:reference>
@@ -480,6 +695,7 @@ case class ClassRelationalNoun(val lemma : NP,
         }
       </lemon:LexicalSense>
       <lemon:LexicalSense rdf:about={namer("noun",lemma.toString(),Some("senseClass"))}>
+         <rdf:type rdf:resource="http://www.w3.org/ns/lemon/synsem#OntoMap"/>
          <lemon:reference>
            <rdf:Property rdf:about={relationClass}/>
          </lemon:reference>

@@ -18,8 +18,13 @@ object ConvertPatterns {
         new Yylex(new StringReader(buf.toString()))*/
        System.err.println("Please specify an input file")
        return
-      } else {
+      } else if(args.length == 1) {
         new Yylex(new FileReader(args(0)))
+      } else if(args.length == 2 && args(0) == "--lemon") {
+        new Yylex(new FileReader(args(1)))
+      } else {
+       System.err.println("Please specify an input file")
+       return
       }
     } catch {
       case x : FileNotFoundException => {
@@ -31,14 +36,15 @@ object ConvertPatterns {
     val p = new parser(l);
     try
     {
+      val ontolex = (args.length == 0)
       val parse_tree = p.pStatements();
       val visitor = new PatternVisitor();
       val lexicons = parse_tree.accept(visitor,collection.mutable.Map[String,String]())
       if(args.length == 1) {
-        println(WriteAsRDF.apply(for(lexicon <- lexicons) yield { lexicon.toXML() }))
+        println(WriteAsRDF.apply(for(lexicon <- lexicons) yield { if(ontolex) { lexicon.toOntoLexXML() } else { lexicon.toXML() } }))
       } else {
         val out = new PrintWriter(args(1))
-        out.println(WriteAsRDF.apply(for(lexicon <- lexicons) yield { lexicon.toXML() }))
+        out.println(WriteAsRDF.apply(for(lexicon <- lexicons) yield { if(ontolex) { lexicon.toOntoLexXML() } else { lexicon.toXML() } }))
         out.flush
         out.close
       }
