@@ -419,8 +419,8 @@ case class RelationalNoun(val lemma : NP,
             case _ => <!--Unrecognised frame-->
            }
         }
-        { propSubj.toXML(subjURI,namer) }
-        { propObj.toXML(objURI,namer) }
+        { propSubj.toXML(subjURI,namer,true) }
+        { propObj.toXML(objURI,namer,true) }
       </synsem:SyntacticFrame>
     </synsem:synBehavior>
    }
@@ -461,8 +461,8 @@ case class RelationalNoun(val lemma : NP,
             case _ => <!--Unrecognised frame-->
            }
         }
-        { propSubj.toXML(subjURI,namer) }
-        { propObj.toXML(objURI,namer) }
+        { propSubj.toXML(subjURI,namer,false) }
+        { propObj.toXML(objURI,namer,false) }
       </lemon:Frame>
     </lemon:synBehavior>
    }
@@ -531,7 +531,7 @@ case class RelationalMultivalentNoun(val lemma : NP,
       <synsem:SyntacticFrame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
         {
           for(arg <- args) yield {
-            arg.arg.toXML(argURI(arg),namer)
+            arg.arg.toXML(argURI(arg),namer,true)
           }
         }
       </synsem:SyntacticFrame>
@@ -582,7 +582,7 @@ case class RelationalMultivalentNoun(val lemma : NP,
       <lemon:Frame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
         {
           for(arg <- args) yield {
-            arg.arg.toXML(argURI(arg),namer)
+            arg.arg.toXML(argURI(arg),namer,false)
           }
         }
       </lemon:Frame>
@@ -656,14 +656,14 @@ case class ClassRelationalNoun(val lemma : NP,
             case _ => <!--Unrecognised frame-->
            }
         }
-        { propSubj.toXML(subjURI,namer) }
-        { propObj.toXML(objURI,namer) }
+        { propSubj.toXML(subjURI,namer,true) }
+        { propObj.toXML(objURI,namer,true) }
       </synsem:SyntacticFrame>
     </synsem:synBehavior> :+
     <synsem:synBehavior>
       <synsem:SyntacticFrame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("NounPredicateFrame")}/>
-        { propSubj.toXML(subjURI,namer) }
+        { propSubj.toXML(subjURI,namer,true) }
       </synsem:SyntacticFrame>
     </synsem:synBehavior>
    }
@@ -714,14 +714,14 @@ case class ClassRelationalNoun(val lemma : NP,
             case _ => <!--Unrecognised frame-->
            }
         }
-        { propSubj.toXML(subjURI,namer) }
-        { propObj.toXML(objURI,namer) }
+        { propSubj.toXML(subjURI,namer,false) }
+        { propObj.toXML(objURI,namer,false) }
       </lemon:Frame>
     </lemon:synBehavior> :+
     <lemon:synBehavior>
       <lemon:Frame rdf:about={namer("noun",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("NounPredicateFrame")}/>
-        { propSubj.toXML(subjURI,namer) }
+        { propSubj.toXML(subjURI,namer,false) }
       </lemon:Frame>
     </lemon:synBehavior>
    }

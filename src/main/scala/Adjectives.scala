@@ -382,7 +382,7 @@ case class RelationalAdjective(val lemma : AP,
       <synsem:SyntacticFrame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectivePPFrame")}/>
         <lexinfo:copulativeSubject rdf:resource={subjURI}/>
-        { relationalArg.toXML(objURI,namer) }
+        { relationalArg.toXML(objURI,namer,true) }
       </synsem:SyntacticFrame>
     </synsem:synBehavior>
   }
@@ -412,7 +412,7 @@ case class RelationalAdjective(val lemma : AP,
       <lemon:Frame rdf:about={namer("adjective",lemma.toString(),Some("frame"))}>
         <rdf:type rdf:resource={lexinfo("AdjectivePPFrame")}/>
         <lexinfo:copulativeSubject rdf:resource={subjURI}/>
-        { relationalArg.toXML(objURI,namer) }
+        { relationalArg.toXML(objURI,namer,false) }
       </lemon:Frame>
     </lemon:synBehavior>
   }

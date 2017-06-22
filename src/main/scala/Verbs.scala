@@ -135,8 +135,8 @@ case class StateVerb(val lemma : VP,
             case _ => <!--Unrecognised frame-->
            }
         }
-        { propSubj.toXML(subjURI,namer) }
-        { propObj.toXML(objURI,namer) }
+        { propSubj.toXML(subjURI,namer,true) }
+        { propObj.toXML(objURI,namer,true) }
       </synsem:SyntacticFrame>
     </synsem:synBehavior>
    }
@@ -177,8 +177,8 @@ case class StateVerb(val lemma : VP,
             case _ => <!--Unrecognised frame-->
            }
         }
-        { propSubj.toXML(subjURI,namer) }
-        { propObj.toXML(objURI,namer) }
+        { propSubj.toXML(subjURI,namer,false) }
+        { propObj.toXML(objURI,namer,false) }
       </lemon:Frame>
     </lemon:synBehavior>
    }
@@ -261,7 +261,7 @@ case class EventVerb(val lemma : VP,
       <synsem:SyntacticFrame rdf:about={namer("verb",lemma.toString(),Some("frame"))}>
         {
           for(arg <- args) yield {
-            arg.arg.toXML(argURI(arg),namer)
+            arg.arg.toXML(argURI(arg),namer,true)
           }
         }
       </synsem:SyntacticFrame>
@@ -311,7 +311,7 @@ case class EventVerb(val lemma : VP,
       <lemon:Frame rdf:about={namer("verb",lemma.toString(),Some("frame"))}>
         {
           for(arg <- args) yield {
-            arg.arg.toXML(argURI(arg),namer)
+            arg.arg.toXML(argURI(arg),namer,false)
           }
         }
       </lemon:Frame>
@@ -478,8 +478,8 @@ case class ConsequenceVerb(val lemma : VP,
             case _ => <!--Unrecognised frame-->
            }
         }
-        { propSubj.arg.toXML(subjURI,namer) }
-        { propObj.arg.toXML(objURI,namer) }
+        { propSubj.arg.toXML(subjURI,namer,true) }
+        { propObj.arg.toXML(objURI,namer,true) }
       </synsem:SyntacticFrame>
     </synsem:synBehavior>
    }
@@ -564,8 +564,8 @@ case class ConsequenceVerb(val lemma : VP,
             case _ => <!--Unrecognised frame-->
            }
         }
-        { propSubj.arg.toXML(subjURI,namer) }
-        { propObj.arg.toXML(objURI,namer) }
+        { propSubj.arg.toXML(subjURI,namer,false) }
+        { propObj.arg.toXML(objURI,namer,false) }
       </lemon:Frame>
     </lemon:synBehavior>
    }

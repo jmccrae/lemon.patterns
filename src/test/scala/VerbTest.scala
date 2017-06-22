@@ -26,7 +26,7 @@ class VerbTest extends FlatSpec with ShouldMatchers {
       })
       URI.create("file:example/"+form+"-"+pos+frag)
     }
-    def auxiliaryEntry(form : String, pos : String) = URI.create("file:example/"+form)
+    def auxiliaryEntry(form : String, pos : String, ontolex : Boolean) = URI.create("file:example/"+form)
     def auxXML = Nil
     private val anonURIs = collection.mutable.Map[Any,URI]()
     private def randomID = (math.random * 10000000000l).toLong.toString

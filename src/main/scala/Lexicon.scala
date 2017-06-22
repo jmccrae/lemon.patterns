@@ -35,10 +35,21 @@ case class Lexicon(uri : URI, lang : String, val patterns : Pattern*) {
       }
       case None => URI.create(uri + joinChar(uri) + URLEncoder.encode(form,"UTF-8") + "__" + pos)
     }
-    def auxiliaryEntry(form : String, pos : String) = {
+    def auxiliaryEntry(form : String, pos : String, ontolex : Boolean) = {
       val auxURI = URI.create(uri + joinChar(uri) + form + "__" + pos)
       if(!(auxSet contains form)) {
         auxSet += form
+        if(ontolex) {
+        auxNodes ::= <lime:entry><ontolex:LexicalEntry rdf:about={auxURI}>
+        <lexinfo:partOfSpeech rdf:resource={lexinfo(pos)}/>
+        <ontolex:canonicalForm>
+          <ontolex:Form rdf:about={auxURI + joinChar(auxURI.toString()) + "canonicalForm"}>
+            <ontolex:writtenRep xml:lang={lang}>{form}</ontolex:writtenRep>
+          </ontolex:Form>
+        </ontolex:canonicalForm>
+      </ontolex:LexicalEntry></lime:entry>
+ 
+        } else {
         auxNodes ::= <lemon:entry><lemon:LexicalEntry rdf:about={auxURI}>
         <lexinfo:partOfSpeech rdf:resource={lexinfo(pos)}/>
         <lemon:canonicalForm>
@@ -47,6 +58,7 @@ case class Lexicon(uri : URI, lang : String, val patterns : Pattern*) {
           </lemon:Form>
         </lemon:canonicalForm>
       </lemon:LexicalEntry></lemon:entry>
+        }
       }
       auxURI
     }

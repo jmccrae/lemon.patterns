@@ -2,28 +2,32 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.lemon-model</groupId>
-    <artifactId>lemon.patterns_2.9.1</artifactId>
+    <artifactId>lemon.patterns_2.11.11</artifactId>
     <packaging>jar</packaging>
     <description>lemon.patterns</description>
-    <version>1.12.9</version>
+    <version>1.17.6</version>
     <name>lemon-patterns</name>
     <dependencies>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>2.9.1</version>
-            <scope>compile</scope>
+            <version>2.11.11</version>
         </dependency>
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_2.9.1</artifactId>
-            <version>1.8</version>
+            <artifactId>scalatest_2.11</artifactId>
+            <version>2.1.5</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-        	<groupId>de.jflex</groupId>
-        	<artifactId>jflex</artifactId>
-        	<version>1.4.3</version>
+            <groupId>de.jflex</groupId>
+            <artifactId>jflex</artifactId>
+            <version>1.4.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang.modules</groupId>
+            <artifactId>scala-xml_2.11</artifactId>
+            <version>1.0.6</version>
         </dependency>
     </dependencies>
     <build>

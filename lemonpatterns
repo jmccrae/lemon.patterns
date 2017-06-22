@@ -20,11 +20,18 @@ then
   mkdir lib
 fi
 
-if [ ! -e $LEMONPATTERNS_HOME/lib/scala-library-2.9.1.jar ]
+if [ ! -e $LEMONPATTERNS_HOME/lib/scala-library-2.11.11.jar ]
 then
   echo "Obtaining Scala library"
-  wget http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.1/scala-library-2.9.1.jar -O lib/scala-library-2.9.1.jar || die "wget failed"
+  wget http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.11/scala-library-2.11.11.jar -O lib/scala-library-2.11.11.jar || die "wget failed"
 fi
+
+if [ ! -e $LEMONPATTERNS_HOME/lib/scala-xml_2.11-1.0.6.jar ]
+then
+  echo "Obtaining Scala library"
+  wget http://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.11/1.0.6/scala-xml_2.11-1.0.6.jar -O lib/scala-xml_2.11-1.0.6.jar
+fi
+
 
 if [ ! -e $LEMONPATTERNS_HOME/lib/jflex-1.4.3.jar ]
 then
@@ -32,11 +39,11 @@ then
   wget http://repo1.maven.org/maven2/de/jflex/jflex/1.4.3/jflex-1.4.3.jar -O lib/jflex-1.4.3.jar || die "wget failed"
 fi
 
-if [ ! -e $LEMONPATTERNS_HOME/target/lemon.patterns_2.9.1-1.12.9.jar ]
+if [ ! -e $LEMONPATTERNS_HOME/target/lemon.patterns_2.11.11-1.17.6.jar ]
 then
   echo "Compiling sources"
   mvn install || die "Maven failed"
 fi
 
-java -cp $LEMONPATTERNS_HOME/lib/scala-library-2.9.1.jar:$LEMONPATTERNS_HOME/lib/jflex-1.4.3.jar:$LEMONPATTERNS_HOME/target/lemon.patterns_2.9.1-1.12.9.jar net.lemonmodel.patterns.ConvertPatterns "$@"
+java -cp $LEMONPATTERNS_HOME/lib/scala-xml_2.11-1.0.6.jar:$LEMONPATTERNS_HOME/lib/scala-library-2.11.11.jar:$LEMONPATTERNS_HOME/lib/jflex-1.4.3.jar:$LEMONPATTERNS_HOME/target/lemon.patterns_2.11.11-1.17.6.jar net.lemonmodel.patterns.ConvertPatterns "$@"
 

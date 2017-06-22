@@ -55,7 +55,7 @@ class AbstractPhrase(words : Seq[Word], lexinfoType : String, pos : String, val 
     <decomp:constituent>{
       for((word,idx) <- words.zipWithIndex) yield {
         <decomp:Component rdf:about={namer(pos,toString(),Some("element_"+idx))}>
-          <decomp:correspondsTo>{word.toXML(namer,lang)}</decomp:correspondsTo>
+          <decomp:correspondsTo>{word.toOntoLexXML(namer,lang)}</decomp:correspondsTo>
         </decomp:Component>
       }
     }</decomp:constituent> ++:

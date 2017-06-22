@@ -50,17 +50,31 @@ package net.lemonmodel {
     }
     
     object WriteAsRDF {
-      def apply(ns : Seq[Node]) = (<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      def apply(ns : Seq[Node], ontolex : Boolean) = if(ontolex) {
+        (<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:ontolex="http://www.w3.org/ns/lemon/ontolex#" 
+        xmlns:synsem="http://www.w3.org/ns/lemon/synsem#" 
+        xmlns:lime="http://www.w3.org/ns/lemon/lime#" 
+        xmlns:decomp="http://www.w3.org/ns/lemon/decomp#" 
+        xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"
+        xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:oils="http://lemon-model.net/oils#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">{for(n <- ns) yield
+        n}
+</rdf:RDF>).toString()
+        
+      } else {
+        (<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
         xmlns:lemon="http://lemon-model.net/lemon#" xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"
         xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:oils="http://lemon-model.net/oils#"
         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">{for(n <- ns) yield
         n}
 </rdf:RDF>).toString()
+      }
     }
     
     trait URINamer {
       def apply(pos : String, form : String, element : Option[String] = None) : URI
-      def auxiliaryEntry(form : String, pos : String) : URI
+      def auxiliaryEntry(form : String, pos : String, ontolex : Boolean) : URI
       def auxXML : Seq[Node]
       def anonURI(ref : Any) : URI
     }
@@ -106,13 +120,13 @@ package net.lemonmodel {
     trait Arg {
       def isOptional : Boolean
       def restriction : Option[URI]
-      def toXML(uri : URI, namer : URINamer) : Node
+      def toXML(uri : URI, namer : URINamer, ontolex : Boolean) : Node
       def optional : Arg
       def restrictedTo(uri : URI) : Arg
     }
     
     case class ArgImpl(val isOptional : Boolean, val restriction : Option[URI], val name : String) extends Arg{
-      def toXML(uri : URI, namer : URINamer) = if(!isOptional) {
+      def toXML(uri : URI, namer : URINamer, ontolex : Boolean) = if(!isOptional) {
         xml.Elem("lexinfo",name,Null,TopScope,true) % new xml.PrefixedAttribute("rdf","resource",uri.toString,Null)
       } else {
         val a = <lemon:Argument rdf:about={uri}><lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional></lemon:Argument>
@@ -151,29 +165,59 @@ package net.lemonmodel {
     * A prepositional object in a frame
     */
     case class PrepositionalObject(val isOptional : Boolean, val restriction : Option[URI], val preposition : String) extends Arg {
-      def toXML(uri : URI, namer : URINamer) = if(isOptional) {
-        <lexinfo:prepositionalObject>
-          <lemon:Argument rdf:about={uri}>
-            <lemon:marker rdf:resource={namer.auxiliaryEntry(preposition,"preposition")}/>
-            <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
-           </lemon:Argument>
-        </lexinfo:prepositionalObject>
-      } else {
-        <lexinfo:prepositionalObject>
-          <lemon:Argument rdf:about={uri}>
-            <lemon:marker rdf:resource={namer.auxiliaryEntry(preposition,"preposition")}/>
-           </lemon:Argument>
-        </lexinfo:prepositionalObject>
+      def toXML(uri : URI, namer : URINamer, ontolex : Boolean) = {
+        if(ontolex) {
+          if(isOptional) {
+            <lexinfo:prepositionalObject>
+              <synsem:SyntacticArgument rdf:about={uri}>
+                <synsem:marker rdf:resource={namer.auxiliaryEntry(preposition,"preposition", ontolex)}/>
+                <synsem:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</synsem:optional>
+               </synsem:SyntacticArgument>
+            </lexinfo:prepositionalObject>
+          } else {
+            <lexinfo:prepositionalObject>
+              <synsem:SyntacticArgument rdf:about={uri}>
+                <synsem:marker rdf:resource={namer.auxiliaryEntry(preposition,"preposition", ontolex)}/>
+               </synsem:SyntacticArgument>
+            </lexinfo:prepositionalObject>
+          }
+        } else {
+          if(isOptional) {
+            <lexinfo:prepositionalObject>
+              <lemon:Argument rdf:about={uri}>
+                <lemon:marker rdf:resource={namer.auxiliaryEntry(preposition,"preposition", ontolex)}/>
+                <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
+               </lemon:Argument>
+            </lexinfo:prepositionalObject>
+          } else {
+            <lexinfo:prepositionalObject>
+              <lemon:Argument rdf:about={uri}>
+                <lemon:marker rdf:resource={namer.auxiliaryEntry(preposition,"preposition", ontolex)}/>
+               </lemon:Argument>
+            </lexinfo:prepositionalObject>
+          }
+        }
       }
       def optional = PrepositionalObject(true,restriction, preposition)
       def restrictedTo(uri : URI) = PrepositionalObject(isOptional,Some(uri),preposition)
-      def aux(uri : URI, namer : URINamer, lang : String) = Some(<lemon:LexicalEntry rdf:about={uri}>
-        <lemon:canonicalForm>
-          <lemon:Form>
-            <lemon:writtenRep xml:lang={lang}>{preposition}</lemon:writtenRep>
-          </lemon:Form>
-        </lemon:canonicalForm>
-      </lemon:LexicalEntry>)
+      def aux(uri : URI, namer : URINamer, lang : String, ontolex : Boolean) = 
+        if(ontolex) {
+          Some(<ontolex:LexicalEntry rdf:about={uri}>
+            <ontolex:canonicalForm>
+              <ontolex:Form>
+                <ontolex:writtenRep xml:lang={lang}>{preposition}</ontolex:writtenRep>
+              </ontolex:Form>
+            </ontolex:canonicalForm>
+          </ontolex:LexicalEntry>)
+        } else {
+           Some(<lemon:LexicalEntry rdf:about={uri}>
+            <lemon:canonicalForm>
+              <lemon:Form>
+                <lemon:writtenRep xml:lang={lang}>{preposition}</lemon:writtenRep>
+              </lemon:Form>
+            </lemon:canonicalForm>
+          </lemon:LexicalEntry>)
+        }
     }
     
     object PrepositionalObject {
@@ -184,29 +228,58 @@ package net.lemonmodel {
      * A postposition object in a frame
      */
     case class PostpositionalObject(val isOptional : Boolean, val restriction : Option[URI], val postposition : String) extends Arg {
-      def toXML(uri : URI, namer : URINamer) = if(isOptional) {
+      def toXML(uri : URI, namer : URINamer, ontolex : Boolean) = if(ontolex) {
+        if(isOptional) {
+        <lexinfo:postpositionalObject>
+          <synsem:SyntacticArgument rdf:about={uri}>
+            <synsem:marker rdf:resource={namer.auxiliaryEntry(postposition,"postposition", ontolex)}/>
+            <synsem:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</synsem:optional>
+           </synsem:SyntacticArgument>
+        </lexinfo:postpositionalObject>
+      } else {
+        <lexinfo:postpositionalObject>
+          <synsem:SyntacticArgument rdf:about={uri}>
+            <synsem:marker rdf:resource={namer.auxiliaryEntry(postposition,"postposition", ontolex)}/>
+           </synsem:SyntacticArgument>
+        </lexinfo:postpositionalObject>
+      }
+      } else {
+         if(isOptional) {
         <lexinfo:postpositionalObject>
           <lemon:Argument rdf:about={uri}>
-            <lemon:marker rdf:resource={namer.auxiliaryEntry(postposition,"postposition")}/>
+            <lemon:marker rdf:resource={namer.auxiliaryEntry(postposition,"postposition", ontolex)}/>
             <lemon:optional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</lemon:optional>
            </lemon:Argument>
         </lexinfo:postpositionalObject>
       } else {
         <lexinfo:postpositionalObject>
           <lemon:Argument rdf:about={uri}>
-            <lemon:marker rdf:resource={namer.auxiliaryEntry(postposition,"postposition")}/>
+            <lemon:marker rdf:resource={namer.auxiliaryEntry(postposition,"postposition", ontolex)}/>
            </lemon:Argument>
         </lexinfo:postpositionalObject>
       }
+      }
       def optional = PostpositionalObject(true,restriction, postposition)
       def restrictedTo(uri : URI) = PostpositionalObject(isOptional,Some(uri),postposition)
-      def aux(uri : URI, namer : URINamer, lang : String) = Some(<lemon:LexicalEntry rdf:about={uri}>
-        <lemon:canonicalForm>
-          <lemon:Form>
-            <lemon:writtenRep xml:lang={lang}>{postposition}</lemon:writtenRep>
-          </lemon:Form>
-        </lemon:canonicalForm>
-      </lemon:LexicalEntry>)
+      def aux(uri : URI, namer : URINamer, lang : String, ontolex : Boolean) = 
+        if(ontolex) {
+          Some(<ontolex:LexicalEntry rdf:about={uri}>
+          <ontolex:canonicalForm>
+            <ontolex:Form>
+              <ontolex:writtenRep xml:lang={lang}>{postposition}</ontolex:writtenRep>
+            </ontolex:Form>
+          </ontolex:canonicalForm>
+        </ontolex:LexicalEntry>)
+ 
+        } else {
+          Some(<lemon:LexicalEntry rdf:about={uri}>
+          <lemon:canonicalForm>
+            <lemon:Form>
+              <lemon:writtenRep xml:lang={lang}>{postposition}</lemon:writtenRep>
+            </lemon:Form>
+          </lemon:canonicalForm>
+        </lemon:LexicalEntry>)
+        }
     }
     
     object PostpositionalObject {

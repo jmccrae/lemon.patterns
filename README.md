@@ -17,10 +17,12 @@ The project may be compiled using [sbt](http://www.scala-sbt.org/) or [Maven](ht
 
 The converter may be executed as follows:
 
-    ./lemonpatterns lexicon.ldp lexicon.xml
+    ./lemonpatterns [--lemon] lexicon.ldp [lexicon.xml]
     
 You may omit the second argument to print to standard out. Note that the first
-execution may require downloading some libraries and may take some time.
+execution may require downloading some libraries and may take some time. Use the 
+`--lemon` flag to output using the Monnet Lemon vocabulary, otherwise the output 
+will be according to the OntoLex Lemon vocabulary.
 
 If you execute `lemonpatterns` from another directory you must set the 
 `LEMONPATTERNS_HOME` variable, e.g., 

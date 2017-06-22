@@ -4,7 +4,7 @@ assemblySettings
 
 name := "lemon-patterns"
 
-version := "1.12.9"
+version := "1.17.6"
 
 scalaVersion := "2.11.11"
 
