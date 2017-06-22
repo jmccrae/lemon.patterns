@@ -10,6 +10,8 @@ class PatternsServlet extends HttpServlet {
   override def service(req : HttpServletRequest, resp : HttpServletResponse) {
     req.getPathInfo() match {
       case "/" => 
+        val ontolex = req.getParameter("ontolex") != "lemon"
+        println(ontolex)
         val pattern = req.getParameter("pattern")
         if(pattern == null) {
           resp.setStatus(200)
@@ -36,7 +38,7 @@ class PatternsServlet extends HttpServlet {
           resp.setStatus(200)
           resp.setContentType("application/rdf+xml")
           val out = resp.getWriter()
-          out.println(WriteAsRDF.apply(for(lexicon <- lexicons) yield { lexicon.toXML() }))
+          out.println(WriteAsRDF.apply(for(lexicon <- lexicons) yield { if(ontolex) { lexicon.toOntoLexXML() } else { lexicon.toXML() }}, ontolex))
           out.flush
           out.close
         } catch {
@@ -129,6 +131,22 @@ class PatternsServlet extends HttpServlet {
 Lexicon(&lt;http://www.example.org/lexicon&gt;, "en",
   ClassNoun("test",&lt;http://www.example.org/ontology#Test&gt;)
 )</textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-11">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="ontolex" value="ontolex" checked="checked"/>
+                            Use the OntoLex Lemon Vocabulary
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="ontolex" value="lemon"/>
+                            Use the Monnet Lemon Vocabulary
+                        </label>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group">
