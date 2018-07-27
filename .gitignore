@@ -9,3 +9,4 @@ docs/*.log
 *.swo
 places.xml
 test-utf8.ldp
+build.properties

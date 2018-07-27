@@ -1,4 +1,4 @@
-seq(webSettings :_*)
+enablePlugins(JettyPlugin)
 
 name := "lemon-patterns-web"
 
@@ -11,7 +11,9 @@ libraryDependencies ++= Seq(
    "de.jflex" % "jflex" % "1.4.3",
    "org.scala-lang.modules" %% "scala-xml" % "1.0.6",
    "javax.servlet" % "servlet-api" % "2.5" % "provided",
-   "org.mortbay.jetty" % "jetty" % "6.1.22" % "container"
+   "org.mortbay.jetty" % "jetty" % "6.1.22" % "container",
+   "org.apache.jena" % "jena-arq" % "3.8.0"
+   
 )
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")

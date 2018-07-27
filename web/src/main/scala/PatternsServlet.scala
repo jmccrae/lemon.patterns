@@ -11,7 +11,7 @@ class PatternsServlet extends HttpServlet {
     req.getPathInfo() match {
       case "/" => 
         val ontolex = req.getParameter("ontolex") != "lemon"
-        println(ontolex)
+        val rdfxml = req.getParameter("format") != "turtle"
         val pattern = req.getParameter("pattern")
         if(pattern == null) {
           resp.setStatus(200)
@@ -21,7 +21,7 @@ class PatternsServlet extends HttpServlet {
           out.flush
           out.close
           return
-        }
+        } 
         val l = try {
           new Yylex(new StringReader(pattern))
         } catch {
@@ -35,12 +35,31 @@ class PatternsServlet extends HttpServlet {
           val parse_tree = p.pStatements();
           val visitor = new PatternVisitor();
           val lexicons = parse_tree.accept(visitor,collection.mutable.Map[String,String]())
-          resp.setStatus(200)
-          resp.setContentType("application/rdf+xml")
-          val out = resp.getWriter()
-          out.println(WriteAsRDF.apply(for(lexicon <- lexicons) yield { if(ontolex) { lexicon.toOntoLexXML() } else { lexicon.toXML() }}, ontolex))
-          out.flush
-          out.close
+          val content = WriteAsRDF.apply(
+            for(lexicon <- lexicons) yield { 
+              if(ontolex) { 
+                lexicon.toOntoLexXML() 
+              } else { 
+                lexicon.toXML() 
+              }
+            }, ontolex)
+          if(rdfxml) {
+            resp.setStatus(200)
+            resp.setContentType("application/rdf+xml")
+            val out = resp.getWriter()
+            out.println(content)
+            out.flush
+            out.close
+          } else {
+            resp.setStatus(200)
+            resp.setContentType("text/turtle")
+            val model = org.apache.jena.rdf.model.ModelFactory.createDefaultModel()
+            model.read(new java.io.StringReader(content), "http://server1.nlp.insight-centre.org/lemonpatterns#")
+            val out = resp.getOutputStream()
+            model.write(out, "TURTLE")
+            out.flush
+            out.close
+          }
         } catch {
           case (e : Throwable) => {
             resp.setStatus(400)
@@ -145,6 +164,22 @@ Lexicon(&lt;http://www.example.org/lexicon&gt;, "en",
                         <label>
                           <input type="radio" name="ontolex" value="lemon"/>
                             Use the Monnet Lemon Vocabulary
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-11">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="format" value="rdfxml" checked="checked"/>
+                          RDF/XML
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="format" value="turtle"/>
+                          Turtle
                         </label>
                       </div>
                     </div>
