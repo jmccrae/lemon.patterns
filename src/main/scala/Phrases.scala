@@ -52,13 +52,15 @@ class AbstractPhrase(words : Seq[Word], lexinfoType : String, pos : String, val 
     <lexinfo:partOfSpeech rdf:resource={lexinfo(words(0).pos.toString)}/>
   } else {
     <rdf:type rdf:resource={lexinfo(lexinfoType)}/> +:
-    <decomp:constituent>{
+    {
       for((word,idx) <- words.zipWithIndex) yield {
+        <decomp:constituent>
         <decomp:Component rdf:about={namer(pos,toString(),Some("element_"+idx))}>
           <decomp:correspondsTo>{word.toOntoLexXML(namer,lang)}</decomp:correspondsTo>
         </decomp:Component>
+      </decomp:constituent>
       }
-    }</decomp:constituent> ++:
+    } ++:
     (words.zipWithIndex map { case (word,idx) => xml.Elem("rdf", "_" + (idx + 1), xml.Null, xml.TopScope, true) % new xml.PrefixedAttribute("rdf", "resource", namer(pos, toString(), Some("element_"+idx)).toString,xml.Null) }) ++: 
     (head match {
       case Some(w) => List(<lexinfo:head rdf:resource={w.name(namer)}/>)
